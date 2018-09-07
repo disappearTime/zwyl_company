@@ -1,0 +1,633 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta content="telephone=no" name="format-detection" />
+	<title>满减活动</title>
+	<link rel="stylesheet" href="css/tbase.css" />
+	<link rel="stylesheet" href="css/events.css" />
+	<link rel="stylesheet" href="last/css/mod.css" />
+	<script type="text/javascript" src="js/tbase.js"></script>
+</head>
+<style>
+	.bgClass{
+		padding-bottom:1.5rem;
+		min-height:80%;
+	}
+	.full-img p{
+		margin-bottom:0;
+	}
+	.countDown{
+		line-height: 0.8rem;
+		color: #fff;  
+		background:#ce0f32;
+		font-size:0.55rem;
+		text-align: center;
+		padding: 0.9rem 0;
+	}
+	.countDown span{
+		display: inline-block;
+		background: black ;
+		border-radius:0.1rem;
+		padding: 0 0.1rem;
+		font-size:0.4rem;      
+	}
+	.padding-t {
+		padding: 0.7rem 0;
+	}
+	.bt{
+		text-align: center;
+		font-size: 0.8rem;
+	}
+</style>
+<body>
+<div class="v-root" id="app">
+	
+	<!--头部活动介绍 -->
+	<div class="v-main v-events">
+		<section class="events-hd">
+			<img src="" id="img_rule"> 
+		</section>
+		<!--<section class="events-info c-blue plr20 fs14 hl15 mt15">
+			<div class="events-info__item">
+				<div class="events-info__item-hd b fl">活动时间：</div>
+				<div class="events-info__item-com c-base oh">2014年4月24日-27日，共4天</div>
+			</div>
+			<div class="events-info__item">
+				<div class="events-info__item-hd b fl">活动规则：</div>
+				<div class="events-info__item-com c-base oh">活动期间内，通过当当购物手机客户端成  功购买图书的用户，均视为成功参与此次  活动；每个用户只可参与一次。</div>
+			</div>
+		</section>-->
+		<div class="countDown">
+			<label>活动倒计时：</label>
+			<span id="day">00</span>:
+			<span id="min">00</span>:
+			<span id="second">00</span>
+        </div> 
+		<div class="bgClass">
+			<section class="events-navs padding-t fs16 c-blue tc">	
+			</section>
+			<section class="events-tabs__contents" >
+				<div class="events-tabs__contents__wrapper clear">
+					<ul class="events-goods" id="proList">
+							
+					</ul>		
+				</div>
+			</section>
+		</div>
+		
+
+		<section class="full-img plr10" style="display: none">
+			<img src="upload/events-2.jpg" alt="">
+		</section>
+
+		<section class="events-navs1  fs16 c-blue tc" style="display:none">
+		  
+		</section>
+
+		<section class="events-tabs__contents" >
+			<div class="events-tabs__contents__wrapper clear" >
+				<ul class="events-goods" >			
+				</ul>
+			</div>
+		</section>
+		<section class="full-img plr10" style="display:none">
+			<img src="upload/events-3.jpg" alt="">
+		</section>
+		<section class="lists" style="display: none">
+			<section class="project-list">
+				<div class="project-list__img">
+					<img src="upload/events-6.jpg">
+				</div>
+				<div class="project-list__hd plr10">
+					<div class="project-list__hd-tit mt15">
+						[硅胶隆鼻] 混血小翘鼻 院长手术下单送面膜 院长手术下单送面膜
+					</div>
+					<div class="project-list__hd-price mt10 pos-rel">
+						<span class="price c-main fs18 lh1">￥1650</span>
+						<span class="ori-price pos-right fs10">
+						<span class="mr15">折后价￥1250</span>
+						<span class="ori del">原价￥1650</span>
+					</span>
+					</div>
+				</div>
+				<div class="project-list__tit plr10 fs16 mb15 b">
+					包含<span>2</span>个子项目
+				</div>
+				<div class="sublists">
+					<div class="project-list__item">
+						<div class="project-list__item-tag mb10">
+							<span class="bg-main plr10">项目1</span>
+						</div>
+						<div class="project-list__item-con plr10">
+							<label class="pos-rel v-checkbox">
+								<div class="project-list__item-img">
+									<!--<input type="checkbox">-->
+									<!--<span class="checkbox"></span>-->
+									<span class="img">
+								<img src="upload/events-7.jpg">
+							</span>
+								</div>
+								<div class="project-list__item-r pos-right">
+									<div class="project-list__item-tit fs14">
+										[硅胶隆鼻] 混血小翘鼻 院长手术 下单送面膜混血小翘鼻
+									</div>
+									<div class="project-list__item-price mt15">
+										<span class="c-main fs15">￥1650</span>
+									</div>
+								</div>
+							</label>
+						</div>
+					</div>
+
+					<p class="showSubs">+展开全部10个子项目</p>
+				</div>
+			</section>
+			
+		</section>
+		<section class="coupon-set" style="display: none">
+			<label class="v-checkbox">
+				<input type="checkbox">
+				<span class="checkbox"></span><span class="fs14 ml10 lh1">使用代金券抵扣<span>300</span>元</span>
+			</label>
+		</section>
+	</div>
+	<div class="loading" id="loading" ></div>	
+</div>
+<div class="layer_toast">
+	<p>
+		<span>该活动已下架</span>
+	</p>
+</div>
+<script src="js/zepto.js"></script>
+<script src="./js/common.js"></script>
+<script src="js/api.js"></script>
+<script type="text/javascript" src="last/js/http.js"></script>
+
+<script>
+
+    var shareUserId = myAxios.GetQueryString('userId');
+    localStorage.setItem("shareUserId",shareUserId);
+	//封装的方法
+	window.toolFunc = {
+		setupWebViewJavascriptBridge: function (callback) {
+			if (window.WebViewJavascriptBridge) {
+				return callback(WebViewJavascriptBridge);
+			} else {
+				document.addEventListener(
+						'WebViewJavascriptBridgeReady'
+						, function () {
+							callback(WebViewJavascriptBridge)
+						},
+						false
+				);
+			}
+			if (window.WVJBCallbacks) {
+				return window.WVJBCallbacks.push(callback);
+			}
+			window.WVJBCallbacks = [callback];
+			var WVJBIframe = document.createElement('iframe');
+			WVJBIframe.style.display = 'none';
+			WVJBIframe.src = 'https://__bridge_loaded__';
+			document.documentElement.appendChild(WVJBIframe);
+			setTimeout(function () {
+				document.documentElement.removeChild(WVJBIframe)
+			}, 0)
+		},
+
+	};
+	function getPhoneType(){ // 获取手机类型
+		var phoneType = '';
+		var u = navigator.userAgent;
+		if(u.indexOf('Android') > -1 || u.indexOf('Adr') > -1 ){
+			phoneType = 'android'
+		}else if(!!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/)){
+			phoneType = 'ios'
+		};
+		return phoneType;
+	}
+	/*获取url参数*/
+	function GetQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return unescape(r[2]);
+        return null;
+    }
+
+
+	var activityId = GetQueryString('activityId')||'e40c3270696d4474be183ab24d5cf2fe' ;
+	
+
+	/*背景活动*/
+	function background() {
+		//var activityId = GetQueryString('activityId')
+		$.ajax({
+			url:host+"/client/html/activity/single",
+			type:"POST",
+			contentType:"application/x-www-form-urlencoded",
+			data:{
+				activityId: activityId
+			},
+			success:function (data) {
+				if(data.resultCode==200){
+					console.log(data)
+					var result=data.resultInfo;
+					// 活动默认为上架false,点击上架状态为true,点击下架状态为false,只有点击上架才会出现在banner位上。分享出来的链接一定是上架过的
+					var isOnLine = result.online || false; // 是否下架
+					var isOver = result.over; // 活动是否过期 true为活动未过期
+					if(isOnLine){ // 已上架活动
+						var nowTime = new Date().getTime();
+						var activityStartTime = result.startdate; // 活动开始时间
+						var activityEndeTime = result.enddate;
+						if(isOver){ // 活动未过期
+							if(nowTime<activityStartTime){ // 活动未开始
+								$('.countDown label').html('距活动开始:');
+								var timing = activityStartTime;
+								var timer = setInterval(function(){
+									var now_time = new Date().getTime();
+									if(now_time>activityStartTime){ // 活动开始
+										var html = $('.countDown label').html();
+										if(html == '距活动开始:'){
+											$('.countDown label').html('活动倒计时:');
+										}
+										timing = activityEndeTime
+									}
+									count_Down(timing)
+								},1000)
+							}else{ // 活动期间
+								$('.countDown label').html('活动倒计时:');
+								var timer = setInterval(function(){
+									var now_time = new Date().getTime();
+									if(now_time>activityEndeTime){
+										clearInterval(timer);
+										$('.countDown').html('该活动已过期，仍可原价购买');
+									}
+									count_Down(activityEndeTime)
+								},1000)
+								
+							}	
+						}else{ // 活动过期，不显示倒计时
+							$('.countDown').html('该活动已过期，仍可原价购买');
+						}
+					}else{ // 活动下架 
+						//$('#app').hide();
+						$('.countDown').hide();
+						$('.layer_toast').show();
+					}
+					attainReduce();
+					schemePlan();
+					if(result && result.activityIntroduce){
+						$('.events-hd').empty().html(result.activityIntroduce);		
+					}
+					if(result && result.activityName){
+						var titleContent = result.activityName;
+						// if(titleContent.length>8){
+						//     titleContent = sub_str(titleContent,8)+"..."
+						// }
+						$('title').html(titleContent);						
+					}
+					if(result && result.acvitityBackdropUrlPath){
+						$(".bgClass").css({
+							'background':"url("+result.acvitityBackdropUrlPath+") no-repeat center center",
+							'backgroundSize': "cover"
+						});
+					}	
+				}
+			},
+			error:function (data) {
+				console.log(data);
+			}
+		});
+	}
+
+	background();
+
+	/*满减活动项目*/
+	function attainReduce() {
+	//	var activityId = GetQueryString('activityId')
+		$.ajax({
+			url:host+"/client/html/activity/attainReduce/project",
+			type:"POST",
+			contentType:"application/x-www-form-urlencoded",
+			data:{
+				activityId:activityId // '755627b7195c478d9ddb8d568fd1bc8b'
+			},
+			success:function (data) {
+				if(data.resultCode==200){
+					var result=data.resultInfo;
+					var nameArr=[];
+					var nameArr1=[];
+					var newData=[];
+					if(result.length){
+						for(var i=0;i<result.length;i++){
+							//** 2018-07-17 16:30/zhaojiahui/ 应客户要求要去掉分类展示，在整个列表中显示 							
+                            var type=result[i].projects;
+							if(type.length){
+								var obj=result[i].projectClassifyTwoName;
+								nameArr.push(obj);
+								//如果每个子分类下面有关联项目，那么都push到newData里；
+								for(var j=0;j<type.length;j++){
+									newData.push(type[j])
+								}
+							}		
+						}		
+					}
+					var nav=$('.events-navs');
+					nav.empty();
+					for(var j=0;j<nameArr.length;j++){
+						    var name=$('<span class="event-navs-name">'+nameArr[j]+'</span>');
+						    // nav.append(name);		
+					};
+					for(var k=0;k<newData.length;k++){					
+						var oli=$('<li projectId="'+newData[k].projectId+'" onclick="goDetail(this)">'+
+								'<div class="events-goods__img">'+
+								'<em class="myicon"></em>'+
+								'<img src="'+newData[k].projectImg.split(';')[0]+'">'+
+								'</div>'+
+								'<div class="events-goods__tit">'+newData[k].projectName+'</div>'+
+								'<div class="events-goods__prev">'+	
+								'<span class="fs12 c-gray"></span>'+
+								'<span class="c-main">￥'+newData[k].projectPrices+'</span>'+
+								'</div>'+
+								'<div class="events-goods__price pos-rel">'+
+								'<span class="pos_left">原价￥'+newData[k].projectBeforePrices+'</span>'+
+								'<span class="pos-right">'+newData[k].doctorName+'</span>'+
+								'</div>'+
+								'</li>');			
+							$('#proList').append(oli);
+					}
+					//choose(nav.find('.event-navs-name').eq(0),result);
+
+					//监听导航切换事件
+					// $(document).off("click",'.event-navs-name').on("click",'.event-navs-name',function () {
+					// 	choose($(this),result);
+					// });
+				}
+			},
+			error:function (data) {
+				console.log(data);
+			}
+		});
+	}
+	
+	
+
+
+	/*活动关联方案*/
+	function schemePlan() {
+	//	var activityId = GetQueryString('activityId')
+		$.ajax({
+			url:host+"/client/html/activity/rebate/schemePlan",
+			type:"POST",
+			contentType:"application/x-www-form-urlencoded",
+			data:{
+				activityId:activityId  //'755627b7195c478d9ddb8d568fd1bc8b'
+			},
+			success:function (data) {
+				if(data.resultCode==200){
+					console.log(data);
+					var result=data.resultInfo;
+
+					var lists=$('.v-main .lists');
+
+					if(result){
+						lists.empty();
+						for(var i=0;i<result.length;i++){
+							var obj=result[i];
+							var projects=obj.projectList;
+							var subs=obj.projectList.length;
+							var subNum=subs;
+							//var price = obj.schemeDiscountPrice?obj.schemeDiscountPrice:'0'
+							var price = obj.projectDiscountedPrice?obj.projectDiscountedPrice:'0'
+							price = toFixed_len(price,2)
+							var schemePrice = obj.schemePrice?obj.schemePrice:'0';
+							schemePrice = toFixed_len(schemePrice,2)
+							var schemeReadyPrice = obj.schemeReadyPrice?obj.schemeReadyPrice:'0';
+							schemeReadyPrice = toFixed_len(schemeReadyPrice,2)
+							var oDiv=$('<section class="project-list" schemeId="'+obj.schemeId+'" onclick="goSingDetail(this)">'+
+									'<div class="project-list__img">'+
+									'<img src="'+obj.schemeImg+'">'+
+									'</div>'+
+									'<div class="project-list__hd plr10">'+
+									'<div class="project-list__hd-tit mt15">'+ obj.schemeName+ '</div>'+
+									'<div class="project-list__hd-price mt10 pos-rel">'+
+									'<span class="price c-main fs18 lh1">￥'+schemeReadyPrice+'</span>'+
+									'<span class="ori-price pos-right fs10">'+
+									'<span class="mr15">折后价￥'+ price +'</span>'+
+									'<span class="ori del">原价￥'+schemePrice+'</span>'+
+									'</span>'+
+									'</div>'+
+									'</div>'+
+									'<div class="project-list__tit plr10 fs16 mb15 b">'+
+									'包含<span>'+subNum+'</span>个子项目'+
+									'</div>'+
+									'<div class="sublists"></div>'+
+									'</section>');
+
+							if(subs>=1){
+								for(var j=0;j<projects.length;j++){
+									var subObj=projects[j];
+									var projectPrice = subObj.projectPrices?obj.projectPrices:'0';
+									projectPrice = toFixed_len(projectPrice,2)
+									var subDiv=$('<div class="project-list__item">'+
+											'<div class="project-list__item-tag mb10">'+
+											'<span class="bg-main plr10">项目'+(j+1)+'</span>'+
+											'</div>'+
+											'<div class="project-list__item-con plr10">'+
+											'<label class="pos-rel v-checkbox">'+
+											'<div class="project-list__item-img">'+
+											/*'<input type="checkbox">'+
+											'<span class="checkbox"></span>'+*/
+											'<span class="img">'+
+											'<img src="'+subObj.projectImg+'">'+
+											'</span>'+
+											'</div>'+
+											'<div class="project-list__item-r pos-right">'+
+											'<div class="project-list__item-tit fs14">'+subObj.projectName +'</div>'+
+											'<div class="project-list__item-price mt15">'+
+											'<span class="c-main fs15">￥'+projectPrice+'</span>'+
+											'</div>'+
+											'</div>'+
+											'</label>'+
+											'</div>'+
+											'</div>');
+
+									oDiv.find('.sublists').append(subDiv);
+									if(j==1){
+										break;
+									}
+								}
+							}
+
+							if(subs>2){
+								var showSubs=$('<p class="showSubs" schemeId="'+obj.schemeId+'" onclick="showAllPro(this)">+展开全部'+subs+'个子项目</p>');
+								oDiv.append(showSubs);
+							}
+							lists.after(oDiv);
+						}
+					}
+				}
+			},
+			error:function (data) {
+				console.log(data);
+			}
+
+		});
+	}
+	
+
+	/*导航切换*/
+	function choose(proObj,result) {
+		var self=proObj;
+		console.log(self.text());
+		self.addClass('current').siblings().removeClass('current');
+		for(var i=0;i<result.length;i++){
+			if(result[i].projectClassifyTwoName){
+				if(self.text()==result[i].projectClassifyTwoName){
+					var projects=result[i].projects;
+					console.log(projects);
+					var tabs=$('.events-tabs__contents__wrapper .events-goods');
+					tabs.empty();
+					for(var j=0;j<projects.length;j++){
+						if(projects[j]){
+							var oli=$('<li projectId="'+projects[j].projectId+'" onclick="goDetail(this)">'+
+								'<div class="events-goods__img">'+
+								'<img src="'+projects[j].projectImg.split(';')[0]+'">'+
+								'</div>'+
+								'<div class="events-goods__tit">'+projects[j].projectName+'</div>'+
+								'<div class="events-goods__prev">'+	
+								'<span class="fs12 c-gray"></span>'+
+								'<span class="c-main">￥'+projects[j].projectPrices+'</span>'+
+								'</div>'+
+								'<div class="events-goods__price pos-rel">'+
+								'<span class="pos_left">原价￥'+projects[j].projectBeforePrices+'</span>'+
+								'<span class="pos-right">'+projects[j].doctorName+'</span>'+
+								'</div>'+
+								'</li>');
+							tabs.append(oli);
+						}
+					}
+				}
+			}
+		}
+	}
+
+
+	/*点击进入详情页(满减详情页)*/
+	function goDetail(that) {
+		var self=$(that);
+		var projectId=self.attr('projectId');
+		var isInApp = GetQueryString('isInApp'); // 同android，ios约定app中加载此页面加此字段
+		if(isInApp && isInApp=='1'){ // app里的详情页
+			var phoneType = getPhoneType();
+			var json = {
+				"projectId":projectId
+			}
+			if(phoneType == 'ios'){ // ios交互
+				window.webkit.messageHandlers.ProjectDetail.postMessage(json);
+			}else if(phoneType == 'android'){ // android交互
+				//window.ProjectDetail.postMessage(JSON.stringify(json));
+				toolFunc.setupWebViewJavascriptBridge(function(bridge) {
+					//向app发送消息       //方法名
+					bridge.callHandler('ProjectDetail', json, function (response,responseCallback) {
+							responseCallback({'result': 'handle success'})
+						})	
+					});	
+					bridge.registerHandler('ProjectDetail', function (data, responseCallback) {
+					responseCallback({'result': 'handle success'})
+		        });		
+			}
+		}else{
+			//alert('h5')
+			 // 分享出去的详情页
+			window.location.href="last/single-group/single-detail-2.html?projectId="+projectId+"&userId="+shareUserId;
+		}	
+	}
+
+
+	/*一体化详情页*/
+	function goSingDetail(that) {
+	    var self=$(that);
+		var  schemeId=self.attr('schemeid');
+		window.location.href="last/single-group/single-detail-choose.html?schemeId="+schemeId;
+	}
+	
+
+	/*展示全部子项目*/
+	function showAllPro(that) {
+		var self=$(that);
+		var schemeId=self.attr('schemeId');
+		$('.showSubs').css('height','')
+		var currentScheme=self.parent().children('.sublists');
+		console.log(currentScheme)
+		
+		currentScheme.empty();
+		$.ajax({
+			url:host+"/client-shopping/scheme/getProjects",
+			type:"POST",
+			contentType:"application/x-www-form-urlencoded",
+			data:{
+				schemeId:schemeId
+			},
+			success:function (data) {
+				if(data.resultCode==200){
+					console.log(data);
+					var result=data.resultInfo;
+					if(result.length){
+						for(var i=0;i<result.length;i++){
+						var subObj=result[i];
+						var subDiv=$('<div class="project-list__item">'+
+								'<div class="project-list__item-tag mb10">'+
+								'<span class="bg-main plr10">项目'+(i+1)+'</span>'+
+								'</div>'+
+								'<div class="project-list__item-con plr10">'+
+								'<label class="pos-rel v-checkbox">'+
+								'<div class="project-list__item-img">'+
+								/*'<input type="checkbox">'+
+								 '<span class="checkbox"></span>'+*/
+								'<span class="img">'+
+								'<img src="'+subObj.projectImg+'">'+
+								'</span>'+
+								'</div>'+
+								'<div class="project-list__item-r pos-right">'+
+								'<div class="project-list__item-tit fs14">'+subObj.projectName +'</div>'+
+								'<div class="project-list__item-price mt15">'+
+								'<span class="c-main fs15">￥'+subObj.projectPrices+'</span>'+
+								'</div>'+
+								'</div>'+
+								'</label>'+
+								'</div>'+
+								'</div>');
+
+						currentScheme.append(subDiv);
+					    }
+						currentScheme.append('<p class="toggle" onclick="myToggle()">收起此项目</p>');
+					}
+				}
+                $('.showSubs').hide()
+
+			},
+			error:function (data) {
+				console.log(data);
+			}
+
+		});
+
+
+	}
+	function myToggle(){
+		//$('.showSubs').show();
+		// $('.sublists').empty();
+		// schemePlan();	
+	}   
+	// $('.layer_toast').on('click', function(){ // 下架蒙层点击影藏
+	// 	$(this).hide();
+	// })
+	document.onreadystatechange=function(){
+		if(document.readyState=="complete") {
+			$('#loading').hide();
+		}
+	}
+</script>
+</body>
+</html>

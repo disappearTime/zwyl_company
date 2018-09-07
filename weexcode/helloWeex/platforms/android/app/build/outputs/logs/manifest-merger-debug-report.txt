@@ -1,0 +1,294 @@
+-- Merging decision tree log ---
+manifest
+ADDED from F:\code_zww\weexcode\helloWeex\platforms\android\app\src\main\AndroidManifest.xml:2:1-47:12
+INJECTED from F:\code_zww\weexcode\helloWeex\platforms\android\app\src\main\AndroidManifest.xml:2:1-47:12
+INJECTED from F:\code_zww\weexcode\helloWeex\platforms\android\app\src\main\AndroidManifest.xml:2:1-47:12
+INJECTED from F:\code_zww\weexcode\helloWeex\platforms\android\app\src\main\AndroidManifest.xml:2:1-47:12
+MERGED from [com.taobao.android:weex_sdk:0.16.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\weex_sdk-0.16.0.aar\fd85c86aaf7ca54fba95dcc52c64112b\AndroidManifest.xml:20:1-37:12
+MERGED from [com.android.support:design:26.1.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\design-26.1.0.aar\ec39945736a9fef91a59b6127588033f\AndroidManifest.xml:17:1-31:12
+MERGED from [com.android.support:appcompat-v7:26.1.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\appcompat-v7-26.1.0.aar\56f5ae3a633b399b08b8675776a26319\AndroidManifest.xml:17:1-31:12
+MERGED from [com.journeyapps:zxing-android-embedded:3.4.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\zxing-android-embedded-3.4.0.aar\0b3648e55c1151170e4ba5bc589cfd73\AndroidManifest.xml:17:1-55:12
+MERGED from [com.android.support:transition:26.1.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\transition-26.1.0.aar\c28d20f1d041c72d406fa850f3eb138d\AndroidManifest.xml:17:1-28:12
+MERGED from [com.android.support:support-v4:26.1.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\support-v4-26.1.0.aar\7384ec847a7f6606a957ae11d71d8c4e\AndroidManifest.xml:17:1-31:12
+MERGED from [com.android.support:animated-vector-drawable:26.1.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-26.1.0.aar\feb0081d84743ae2cbd59cf9d3889303\AndroidManifest.xml:17:1-28:12
+MERGED from [com.android.support:support-vector-drawable:26.1.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-26.1.0.aar\a66e3fc9c4f3fcc997440677d6d6faa0\AndroidManifest.xml:17:1-28:12
+MERGED from [com.android.support:recyclerview-v7:26.1.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-26.1.0.aar\f485d520b1b9489f3d517061496d13fc\AndroidManifest.xml:17:1-28:12
+MERGED from [com.android.support:support-fragment:26.1.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\support-fragment-26.1.0.aar\965e583713ec9d843910d620acdcdd9d\AndroidManifest.xml:17:1-31:12
+MERGED from [com.android.support:support-core-ui:26.1.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\support-core-ui-26.1.0.aar\18e9512f75c40c33095be94355c13fd5\AndroidManifest.xml:17:1-31:12
+MERGED from [com.android.support:support-media-compat:26.1.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\support-media-compat-26.1.0.aar\98b395f051d175a273485ce2b4452ed3\AndroidManifest.xml:17:1-31:12
+MERGED from [com.android.support:support-core-utils:26.1.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\support-core-utils-26.1.0.aar\7049624ff393e7ca2568317208820af2\AndroidManifest.xml:17:1-31:12
+MERGED from [com.android.support:support-compat:26.1.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\support-compat-26.1.0.aar\0e9dfa1987da38bf29f0fdddb7807b93\AndroidManifest.xml:17:1-31:12
+MERGED from [com.taobao.android:weex_inspector:0.10.0.5] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\weex_inspector-0.10.0.5.aar\f5ee5984146bb42b4baeebefca93d377\AndroidManifest.xml:2:1-15:12
+MERGED from [com.taobao.android:weexplugin-loader:1.3] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\weexplugin-loader-1.3.aar\6a3032b7c15d8788a9dcb2f010645ca6\AndroidManifest.xml:2:1-15:12
+MERGED from [android.arch.lifecycle:runtime:1.0.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\runtime-1.0.0.aar\75fa8fb1506aa8f81520d0e7adb66981\AndroidManifest.xml:17:1-30:12
+INJECTED from F:\code_zww\weexcode\helloWeex\platforms\android\app\src\main\AndroidManifest.xml:2:1-47:12
+INJECTED from F:\code_zww\weexcode\helloWeex\platforms\android\app\src\main\AndroidManifest.xml:2:1-47:12
+INJECTED from F:\code_zww\weexcode\helloWeex\platforms\android\app\src\main\AndroidManifest.xml:2:1-47:12
+	package
+		ADDED from F:\code_zww\weexcode\helloWeex\platforms\android\app\src\main\AndroidManifest.xml:4:11-33
+		INJECTED from F:\code_zww\weexcode\helloWeex\platforms\android\app\src\main\AndroidManifest.xml
+		INJECTED from F:\code_zww\weexcode\helloWeex\platforms\android\app\src\main\AndroidManifest.xml
+	android:versionName
+		INJECTED from F:\code_zww\weexcode\helloWeex\platforms\android\app\src\main\AndroidManifest.xml
+		ADDED from F:\code_zww\weexcode\helloWeex\platforms\android\app\src\main\AndroidManifest.xml:2:1-47:12
+		INJECTED from F:\code_zww\weexcode\helloWeex\platforms\android\app\src\main\AndroidManifest.xml
+	xmlns:tools
+		ADDED from F:\code_zww\weexcode\helloWeex\platforms\android\app\src\main\AndroidManifest.xml:3:11-57
+	android:versionCode
+		INJECTED from F:\code_zww\weexcode\helloWeex\platforms\android\app\src\main\AndroidManifest.xml
+		ADDED from F:\code_zww\weexcode\helloWeex\platforms\android\app\src\main\AndroidManifest.xml:2:1-47:12
+		INJECTED from F:\code_zww\weexcode\helloWeex\platforms\android\app\src\main\AndroidManifest.xml
+	xmlns:android
+		ADDED from F:\code_zww\weexcode\helloWeex\platforms\android\app\src\main\AndroidManifest.xml:2:11-69
+uses-permission#android.permission.INTERNET
+ADDED from F:\code_zww\weexcode\helloWeex\platforms\android\app\src\main\AndroidManifest.xml:6:5-66
+	android:name
+		ADDED from F:\code_zww\weexcode\helloWeex\platforms\android\app\src\main\AndroidManifest.xml:6:22-64
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from F:\code_zww\weexcode\helloWeex\platforms\android\app\src\main\AndroidManifest.xml:7:5-80
+	android:name
+		ADDED from F:\code_zww\weexcode\helloWeex\platforms\android\app\src\main\AndroidManifest.xml:7:22-78
+uses-permission#android.permission.READ_EXTERNAL_STORAGE
+ADDED from F:\code_zww\weexcode\helloWeex\platforms\android\app\src\main\AndroidManifest.xml:8:5-79
+	android:name
+		ADDED from F:\code_zww\weexcode\helloWeex\platforms\android\app\src\main\AndroidManifest.xml:8:22-77
+uses-permission#android.permission.CAMERA
+ADDED from F:\code_zww\weexcode\helloWeex\platforms\android\app\src\main\AndroidManifest.xml:9:5-64
+MERGED from [com.journeyapps:zxing-android-embedded:3.4.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\zxing-android-embedded-3.4.0.aar\0b3648e55c1151170e4ba5bc589cfd73\AndroidManifest.xml:21:5-65
+MERGED from [com.journeyapps:zxing-android-embedded:3.4.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\zxing-android-embedded-3.4.0.aar\0b3648e55c1151170e4ba5bc589cfd73\AndroidManifest.xml:21:5-65
+	android:name
+		ADDED from F:\code_zww\weexcode\helloWeex\platforms\android\app\src\main\AndroidManifest.xml:9:22-62
+uses-permission#com.android.launcher.permission.INSTALL_SHORTCUT
+ADDED from F:\code_zww\weexcode\helloWeex\platforms\android\app\src\main\AndroidManifest.xml:10:5-87
+	android:name
+		ADDED from F:\code_zww\weexcode\helloWeex\platforms\android\app\src\main\AndroidManifest.xml:10:22-85
+uses-feature#android.hardware.camera
+ADDED from F:\code_zww\weexcode\helloWeex\platforms\android\app\src\main\AndroidManifest.xml:12:5-59
+MERGED from [com.journeyapps:zxing-android-embedded:3.4.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\zxing-android-embedded-3.4.0.aar\0b3648e55c1151170e4ba5bc589cfd73\AndroidManifest.xml:24:5-26:36
+MERGED from [com.journeyapps:zxing-android-embedded:3.4.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\zxing-android-embedded-3.4.0.aar\0b3648e55c1151170e4ba5bc589cfd73\AndroidManifest.xml:24:5-26:36
+	android:name
+		ADDED from F:\code_zww\weexcode\helloWeex\platforms\android\app\src\main\AndroidManifest.xml:12:19-57
+uses-feature#android.hardware.camera.autofocus
+ADDED from F:\code_zww\weexcode\helloWeex\platforms\android\app\src\main\AndroidManifest.xml:13:5-69
+MERGED from [com.journeyapps:zxing-android-embedded:3.4.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\zxing-android-embedded-3.4.0.aar\0b3648e55c1151170e4ba5bc589cfd73\AndroidManifest.xml:32:5-34:36
+MERGED from [com.journeyapps:zxing-android-embedded:3.4.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\zxing-android-embedded-3.4.0.aar\0b3648e55c1151170e4ba5bc589cfd73\AndroidManifest.xml:32:5-34:36
+	android:name
+		ADDED from F:\code_zww\weexcode\helloWeex\platforms\android\app\src\main\AndroidManifest.xml:13:19-67
+application
+ADDED from F:\code_zww\weexcode\helloWeex\platforms\android\app\src\main\AndroidManifest.xml:15:5-45:19
+MERGED from [com.taobao.android:weex_sdk:0.16.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\weex_sdk-0.16.0.aar\fd85c86aaf7ca54fba95dcc52c64112b\AndroidManifest.xml:29:5-35:19
+MERGED from [com.taobao.android:weex_sdk:0.16.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\weex_sdk-0.16.0.aar\fd85c86aaf7ca54fba95dcc52c64112b\AndroidManifest.xml:29:5-35:19
+MERGED from [com.android.support:design:26.1.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\design-26.1.0.aar\ec39945736a9fef91a59b6127588033f\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:design:26.1.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\design-26.1.0.aar\ec39945736a9fef91a59b6127588033f\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:appcompat-v7:26.1.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\appcompat-v7-26.1.0.aar\56f5ae3a633b399b08b8675776a26319\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:appcompat-v7:26.1.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\appcompat-v7-26.1.0.aar\56f5ae3a633b399b08b8675776a26319\AndroidManifest.xml:25:5-29:19
+MERGED from [com.journeyapps:zxing-android-embedded:3.4.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\zxing-android-embedded-3.4.0.aar\0b3648e55c1151170e4ba5bc589cfd73\AndroidManifest.xml:45:5-53:19
+MERGED from [com.journeyapps:zxing-android-embedded:3.4.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\zxing-android-embedded-3.4.0.aar\0b3648e55c1151170e4ba5bc589cfd73\AndroidManifest.xml:45:5-53:19
+MERGED from [com.android.support:transition:26.1.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\transition-26.1.0.aar\c28d20f1d041c72d406fa850f3eb138d\AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:transition:26.1.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\transition-26.1.0.aar\c28d20f1d041c72d406fa850f3eb138d\AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:support-v4:26.1.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\support-v4-26.1.0.aar\7384ec847a7f6606a957ae11d71d8c4e\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-v4:26.1.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\support-v4-26.1.0.aar\7384ec847a7f6606a957ae11d71d8c4e\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:animated-vector-drawable:26.1.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-26.1.0.aar\feb0081d84743ae2cbd59cf9d3889303\AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:animated-vector-drawable:26.1.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-26.1.0.aar\feb0081d84743ae2cbd59cf9d3889303\AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:support-vector-drawable:26.1.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-26.1.0.aar\a66e3fc9c4f3fcc997440677d6d6faa0\AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:support-vector-drawable:26.1.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-26.1.0.aar\a66e3fc9c4f3fcc997440677d6d6faa0\AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:recyclerview-v7:26.1.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-26.1.0.aar\f485d520b1b9489f3d517061496d13fc\AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:recyclerview-v7:26.1.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-26.1.0.aar\f485d520b1b9489f3d517061496d13fc\AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:support-fragment:26.1.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\support-fragment-26.1.0.aar\965e583713ec9d843910d620acdcdd9d\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-fragment:26.1.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\support-fragment-26.1.0.aar\965e583713ec9d843910d620acdcdd9d\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-core-ui:26.1.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\support-core-ui-26.1.0.aar\18e9512f75c40c33095be94355c13fd5\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-core-ui:26.1.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\support-core-ui-26.1.0.aar\18e9512f75c40c33095be94355c13fd5\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-media-compat:26.1.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\support-media-compat-26.1.0.aar\98b395f051d175a273485ce2b4452ed3\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-media-compat:26.1.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\support-media-compat-26.1.0.aar\98b395f051d175a273485ce2b4452ed3\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-core-utils:26.1.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\support-core-utils-26.1.0.aar\7049624ff393e7ca2568317208820af2\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-core-utils:26.1.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\support-core-utils-26.1.0.aar\7049624ff393e7ca2568317208820af2\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-compat:26.1.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\support-compat-26.1.0.aar\0e9dfa1987da38bf29f0fdddb7807b93\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-compat:26.1.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\support-compat-26.1.0.aar\0e9dfa1987da38bf29f0fdddb7807b93\AndroidManifest.xml:25:5-29:19
+MERGED from [com.taobao.android:weex_inspector:0.10.0.5] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\weex_inspector-0.10.0.5.aar\f5ee5984146bb42b4baeebefca93d377\AndroidManifest.xml:13:5-20
+MERGED from [com.taobao.android:weex_inspector:0.10.0.5] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\weex_inspector-0.10.0.5.aar\f5ee5984146bb42b4baeebefca93d377\AndroidManifest.xml:13:5-20
+MERGED from [com.taobao.android:weexplugin-loader:1.3] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\weexplugin-loader-1.3.aar\6a3032b7c15d8788a9dcb2f010645ca6\AndroidManifest.xml:9:5-13:19
+MERGED from [com.taobao.android:weexplugin-loader:1.3] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\weexplugin-loader-1.3.aar\6a3032b7c15d8788a9dcb2f010645ca6\AndroidManifest.xml:9:5-13:19
+MERGED from [android.arch.lifecycle:runtime:1.0.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\runtime-1.0.0.aar\75fa8fb1506aa8f81520d0e7adb66981\AndroidManifest.xml:24:5-28:19
+MERGED from [android.arch.lifecycle:runtime:1.0.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\runtime-1.0.0.aar\75fa8fb1506aa8f81520d0e7adb66981\AndroidManifest.xml:24:5-28:19
+	android:supportsRtl
+		ADDED from F:\code_zww\weexcode\helloWeex\platforms\android\app\src\main\AndroidManifest.xml:20:9-35
+	android:label
+		ADDED from F:\code_zww\weexcode\helloWeex\platforms\android\app\src\main\AndroidManifest.xml:19:9-41
+	tools:overrideLibrary
+		ADDED from F:\code_zww\weexcode\helloWeex\platforms\android\app\src\main\AndroidManifest.xml:22:9-60
+	android:icon
+		ADDED from F:\code_zww\weexcode\helloWeex\platforms\android\app\src\main\AndroidManifest.xml:18:9-43
+	android:allowBackup
+		ADDED from F:\code_zww\weexcode\helloWeex\platforms\android\app\src\main\AndroidManifest.xml:17:9-36
+		REJECTED from [com.taobao.android:weexplugin-loader:1.3] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\weexplugin-loader-1.3.aar\6a3032b7c15d8788a9dcb2f010645ca6\AndroidManifest.xml:10:9-36
+	android:theme
+		ADDED from F:\code_zww\weexcode\helloWeex\platforms\android\app\src\main\AndroidManifest.xml:21:9-40
+	tools:replace
+		ADDED from F:\code_zww\weexcode\helloWeex\platforms\android\app\src\main\AndroidManifest.xml:23:9-44
+	android:name
+		ADDED from F:\code_zww\weexcode\helloWeex\platforms\android\app\src\main\AndroidManifest.xml:16:9-50
+activity#com.weex.app.SplashActivity
+ADDED from F:\code_zww\weexcode\helloWeex\platforms\android\app\src\main\AndroidManifest.xml:24:9-35:20
+	android:screenOrientation
+		ADDED from F:\code_zww\weexcode\helloWeex\platforms\android\app\src\main\AndroidManifest.xml:28:13-49
+	android:label
+		ADDED from F:\code_zww\weexcode\helloWeex\platforms\android\app\src\main\AndroidManifest.xml:27:13-45
+	android:configChanges
+		ADDED from F:\code_zww\weexcode\helloWeex\platforms\android\app\src\main\AndroidManifest.xml:26:13-74
+	android:theme
+		ADDED from F:\code_zww\weexcode\helloWeex\platforms\android\app\src\main\AndroidManifest.xml:29:13-51
+	android:name
+		ADDED from F:\code_zww\weexcode\helloWeex\platforms\android\app\src\main\AndroidManifest.xml:25:13-55
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from F:\code_zww\weexcode\helloWeex\platforms\android\app\src\main\AndroidManifest.xml:30:13-34:29
+action#android.intent.action.MAIN
+ADDED from F:\code_zww\weexcode\helloWeex\platforms\android\app\src\main\AndroidManifest.xml:31:17-68
+	android:name
+		ADDED from F:\code_zww\weexcode\helloWeex\platforms\android\app\src\main\AndroidManifest.xml:31:25-66
+category#android.intent.category.LAUNCHER
+ADDED from F:\code_zww\weexcode\helloWeex\platforms\android\app\src\main\AndroidManifest.xml:33:17-76
+	android:name
+		ADDED from F:\code_zww\weexcode\helloWeex\platforms\android\app\src\main\AndroidManifest.xml:33:27-74
+activity#com.weex.app.WXPageActivity
+ADDED from F:\code_zww\weexcode\helloWeex\platforms\android\app\src\main\AndroidManifest.xml:36:9-40:20
+	android:screenOrientation
+		ADDED from F:\code_zww\weexcode\helloWeex\platforms\android\app\src\main\AndroidManifest.xml:39:13-49
+	android:label
+		ADDED from F:\code_zww\weexcode\helloWeex\platforms\android\app\src\main\AndroidManifest.xml:38:13-45
+	android:name
+		ADDED from F:\code_zww\weexcode\helloWeex\platforms\android\app\src\main\AndroidManifest.xml:37:13-55
+activity#com.journeyapps.barcodescanner.CaptureActivity
+ADDED from F:\code_zww\weexcode\helloWeex\platforms\android\app\src\main\AndroidManifest.xml:41:9-44:48
+MERGED from [com.journeyapps:zxing-android-embedded:3.4.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\zxing-android-embedded-3.4.0.aar\0b3648e55c1151170e4ba5bc589cfd73\AndroidManifest.xml:46:9-52:63
+MERGED from [com.journeyapps:zxing-android-embedded:3.4.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\zxing-android-embedded-3.4.0.aar\0b3648e55c1151170e4ba5bc589cfd73\AndroidManifest.xml:46:9-52:63
+	android:clearTaskOnLaunch
+		ADDED from [com.journeyapps:zxing-android-embedded:3.4.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\zxing-android-embedded-3.4.0.aar\0b3648e55c1151170e4ba5bc589cfd73\AndroidManifest.xml:48:13-45
+	android:screenOrientation
+		ADDED from F:\code_zww\weexcode\helloWeex\platforms\android\app\src\main\AndroidManifest.xml:43:13-49
+		REJECTED from [com.journeyapps:zxing-android-embedded:3.4.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\zxing-android-embedded-3.4.0.aar\0b3648e55c1151170e4ba5bc589cfd73\AndroidManifest.xml:49:13-56
+	android:stateNotNeeded
+		ADDED from [com.journeyapps:zxing-android-embedded:3.4.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\zxing-android-embedded-3.4.0.aar\0b3648e55c1151170e4ba5bc589cfd73\AndroidManifest.xml:50:13-42
+	android:windowSoftInputMode
+		ADDED from [com.journeyapps:zxing-android-embedded:3.4.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\zxing-android-embedded-3.4.0.aar\0b3648e55c1151170e4ba5bc589cfd73\AndroidManifest.xml:52:13-60
+	android:theme
+		ADDED from [com.journeyapps:zxing-android-embedded:3.4.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\zxing-android-embedded-3.4.0.aar\0b3648e55c1151170e4ba5bc589cfd73\AndroidManifest.xml:51:13-54
+	tools:replace
+		ADDED from F:\code_zww\weexcode\helloWeex\platforms\android\app\src\main\AndroidManifest.xml:44:13-46
+	android:name
+		ADDED from F:\code_zww\weexcode\helloWeex\platforms\android\app\src\main\AndroidManifest.xml:42:13-74
+uses-sdk
+INJECTED from F:\code_zww\weexcode\helloWeex\platforms\android\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from F:\code_zww\weexcode\helloWeex\platforms\android\app\src\main\AndroidManifest.xml
+INJECTED from F:\code_zww\weexcode\helloWeex\platforms\android\app\src\main\AndroidManifest.xml
+MERGED from [com.taobao.android:weex_sdk:0.16.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\weex_sdk-0.16.0.aar\fd85c86aaf7ca54fba95dcc52c64112b\AndroidManifest.xml:25:5-27:41
+MERGED from [com.taobao.android:weex_sdk:0.16.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\weex_sdk-0.16.0.aar\fd85c86aaf7ca54fba95dcc52c64112b\AndroidManifest.xml:25:5-27:41
+MERGED from [com.android.support:design:26.1.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\design-26.1.0.aar\ec39945736a9fef91a59b6127588033f\AndroidManifest.xml:21:5-23:62
+MERGED from [com.android.support:design:26.1.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\design-26.1.0.aar\ec39945736a9fef91a59b6127588033f\AndroidManifest.xml:21:5-23:62
+MERGED from [com.android.support:appcompat-v7:26.1.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\appcompat-v7-26.1.0.aar\56f5ae3a633b399b08b8675776a26319\AndroidManifest.xml:21:5-23:78
+MERGED from [com.android.support:appcompat-v7:26.1.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\appcompat-v7-26.1.0.aar\56f5ae3a633b399b08b8675776a26319\AndroidManifest.xml:21:5-23:78
+MERGED from [com.journeyapps:zxing-android-embedded:3.4.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\zxing-android-embedded-3.4.0.aar\0b3648e55c1151170e4ba5bc589cfd73\AndroidManifest.xml:19:5-43
+MERGED from [com.journeyapps:zxing-android-embedded:3.4.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\zxing-android-embedded-3.4.0.aar\0b3648e55c1151170e4ba5bc589cfd73\AndroidManifest.xml:19:5-43
+MERGED from [com.android.support:transition:26.1.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\transition-26.1.0.aar\c28d20f1d041c72d406fa850f3eb138d\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:transition:26.1.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\transition-26.1.0.aar\c28d20f1d041c72d406fa850f3eb138d\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-v4:26.1.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\support-v4-26.1.0.aar\7384ec847a7f6606a957ae11d71d8c4e\AndroidManifest.xml:21:5-23:54
+MERGED from [com.android.support:support-v4:26.1.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\support-v4-26.1.0.aar\7384ec847a7f6606a957ae11d71d8c4e\AndroidManifest.xml:21:5-23:54
+MERGED from [com.android.support:animated-vector-drawable:26.1.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-26.1.0.aar\feb0081d84743ae2cbd59cf9d3889303\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:26.1.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-26.1.0.aar\feb0081d84743ae2cbd59cf9d3889303\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:26.1.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-26.1.0.aar\a66e3fc9c4f3fcc997440677d6d6faa0\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:26.1.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-26.1.0.aar\a66e3fc9c4f3fcc997440677d6d6faa0\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:recyclerview-v7:26.1.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-26.1.0.aar\f485d520b1b9489f3d517061496d13fc\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:recyclerview-v7:26.1.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-26.1.0.aar\f485d520b1b9489f3d517061496d13fc\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-fragment:26.1.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\support-fragment-26.1.0.aar\965e583713ec9d843910d620acdcdd9d\AndroidManifest.xml:21:5-23:60
+MERGED from [com.android.support:support-fragment:26.1.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\support-fragment-26.1.0.aar\965e583713ec9d843910d620acdcdd9d\AndroidManifest.xml:21:5-23:60
+MERGED from [com.android.support:support-core-ui:26.1.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\support-core-ui-26.1.0.aar\18e9512f75c40c33095be94355c13fd5\AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-core-ui:26.1.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\support-core-ui-26.1.0.aar\18e9512f75c40c33095be94355c13fd5\AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-media-compat:26.1.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\support-media-compat-26.1.0.aar\98b395f051d175a273485ce2b4452ed3\AndroidManifest.xml:21:5-23:63
+MERGED from [com.android.support:support-media-compat:26.1.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\support-media-compat-26.1.0.aar\98b395f051d175a273485ce2b4452ed3\AndroidManifest.xml:21:5-23:63
+MERGED from [com.android.support:support-core-utils:26.1.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\support-core-utils-26.1.0.aar\7049624ff393e7ca2568317208820af2\AndroidManifest.xml:21:5-23:61
+MERGED from [com.android.support:support-core-utils:26.1.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\support-core-utils-26.1.0.aar\7049624ff393e7ca2568317208820af2\AndroidManifest.xml:21:5-23:61
+MERGED from [com.android.support:support-compat:26.1.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\support-compat-26.1.0.aar\0e9dfa1987da38bf29f0fdddb7807b93\AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-compat:26.1.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\support-compat-26.1.0.aar\0e9dfa1987da38bf29f0fdddb7807b93\AndroidManifest.xml:21:5-23:58
+MERGED from [com.taobao.android:weex_inspector:0.10.0.5] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\weex_inspector-0.10.0.5.aar\f5ee5984146bb42b4baeebefca93d377\AndroidManifest.xml:8:5-11:60
+MERGED from [com.taobao.android:weex_inspector:0.10.0.5] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\weex_inspector-0.10.0.5.aar\f5ee5984146bb42b4baeebefca93d377\AndroidManifest.xml:8:5-11:60
+MERGED from [com.taobao.android:weexplugin-loader:1.3] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\weexplugin-loader-1.3.aar\6a3032b7c15d8788a9dcb2f010645ca6\AndroidManifest.xml:5:5-7:41
+MERGED from [com.taobao.android:weexplugin-loader:1.3] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\weexplugin-loader-1.3.aar\6a3032b7c15d8788a9dcb2f010645ca6\AndroidManifest.xml:5:5-7:41
+MERGED from [android.arch.lifecycle:runtime:1.0.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\runtime-1.0.0.aar\75fa8fb1506aa8f81520d0e7adb66981\AndroidManifest.xml:20:5-22:41
+MERGED from [android.arch.lifecycle:runtime:1.0.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\runtime-1.0.0.aar\75fa8fb1506aa8f81520d0e7adb66981\AndroidManifest.xml:20:5-22:41
+INJECTED from F:\code_zww\weexcode\helloWeex\platforms\android\app\src\main\AndroidManifest.xml
+INJECTED from F:\code_zww\weexcode\helloWeex\platforms\android\app\src\main\AndroidManifest.xml
+	tools:overrideLibrary
+		ADDED from [com.android.support:design:26.1.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\design-26.1.0.aar\ec39945736a9fef91a59b6127588033f\AndroidManifest.xml:23:9-59
+	android:targetSdkVersion
+		INJECTED from F:\code_zww\weexcode\helloWeex\platforms\android\app\src\main\AndroidManifest.xml
+		ADDED from F:\code_zww\weexcode\helloWeex\platforms\android\app\src\main\AndroidManifest.xml
+		INJECTED from F:\code_zww\weexcode\helloWeex\platforms\android\app\src\main\AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from F:\code_zww\weexcode\helloWeex\platforms\android\app\src\main\AndroidManifest.xml
+		ADDED from F:\code_zww\weexcode\helloWeex\platforms\android\app\src\main\AndroidManifest.xml
+		INJECTED from F:\code_zww\weexcode\helloWeex\platforms\android\app\src\main\AndroidManifest.xml
+receiver#com.taobao.weex.WXGlobalEventReceiver
+ADDED from [com.taobao.android:weex_sdk:0.16.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\weex_sdk-0.16.0.aar\fd85c86aaf7ca54fba95dcc52c64112b\AndroidManifest.xml:30:9-34:20
+	android:enabled
+		ADDED from [com.taobao.android:weex_sdk:0.16.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\weex_sdk-0.16.0.aar\fd85c86aaf7ca54fba95dcc52c64112b\AndroidManifest.xml:32:13-35
+	android:exported
+		ADDED from [com.taobao.android:weex_sdk:0.16.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\weex_sdk-0.16.0.aar\fd85c86aaf7ca54fba95dcc52c64112b\AndroidManifest.xml:33:13-37
+	android:name
+		ADDED from [com.taobao.android:weex_sdk:0.16.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\weex_sdk-0.16.0.aar\fd85c86aaf7ca54fba95dcc52c64112b\AndroidManifest.xml:31:13-65
+meta-data#android.support.VERSION
+ADDED from [com.android.support:design:26.1.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\design-26.1.0.aar\ec39945736a9fef91a59b6127588033f\AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:appcompat-v7:26.1.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\appcompat-v7-26.1.0.aar\56f5ae3a633b399b08b8675776a26319\AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:appcompat-v7:26.1.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\appcompat-v7-26.1.0.aar\56f5ae3a633b399b08b8675776a26319\AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:transition:26.1.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\transition-26.1.0.aar\c28d20f1d041c72d406fa850f3eb138d\AndroidManifest.xml:23:9-25:38
+MERGED from [com.android.support:transition:26.1.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\transition-26.1.0.aar\c28d20f1d041c72d406fa850f3eb138d\AndroidManifest.xml:23:9-25:38
+MERGED from [com.android.support:support-v4:26.1.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\support-v4-26.1.0.aar\7384ec847a7f6606a957ae11d71d8c4e\AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-v4:26.1.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\support-v4-26.1.0.aar\7384ec847a7f6606a957ae11d71d8c4e\AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:animated-vector-drawable:26.1.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-26.1.0.aar\feb0081d84743ae2cbd59cf9d3889303\AndroidManifest.xml:23:9-25:38
+MERGED from [com.android.support:animated-vector-drawable:26.1.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-26.1.0.aar\feb0081d84743ae2cbd59cf9d3889303\AndroidManifest.xml:23:9-25:38
+MERGED from [com.android.support:support-vector-drawable:26.1.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-26.1.0.aar\a66e3fc9c4f3fcc997440677d6d6faa0\AndroidManifest.xml:23:9-25:38
+MERGED from [com.android.support:support-vector-drawable:26.1.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-26.1.0.aar\a66e3fc9c4f3fcc997440677d6d6faa0\AndroidManifest.xml:23:9-25:38
+MERGED from [com.android.support:recyclerview-v7:26.1.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-26.1.0.aar\f485d520b1b9489f3d517061496d13fc\AndroidManifest.xml:23:9-25:38
+MERGED from [com.android.support:recyclerview-v7:26.1.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-26.1.0.aar\f485d520b1b9489f3d517061496d13fc\AndroidManifest.xml:23:9-25:38
+MERGED from [com.android.support:support-fragment:26.1.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\support-fragment-26.1.0.aar\965e583713ec9d843910d620acdcdd9d\AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-fragment:26.1.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\support-fragment-26.1.0.aar\965e583713ec9d843910d620acdcdd9d\AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-core-ui:26.1.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\support-core-ui-26.1.0.aar\18e9512f75c40c33095be94355c13fd5\AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-core-ui:26.1.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\support-core-ui-26.1.0.aar\18e9512f75c40c33095be94355c13fd5\AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-media-compat:26.1.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\support-media-compat-26.1.0.aar\98b395f051d175a273485ce2b4452ed3\AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-media-compat:26.1.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\support-media-compat-26.1.0.aar\98b395f051d175a273485ce2b4452ed3\AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-core-utils:26.1.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\support-core-utils-26.1.0.aar\7049624ff393e7ca2568317208820af2\AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-core-utils:26.1.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\support-core-utils-26.1.0.aar\7049624ff393e7ca2568317208820af2\AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-compat:26.1.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\support-compat-26.1.0.aar\0e9dfa1987da38bf29f0fdddb7807b93\AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-compat:26.1.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\support-compat-26.1.0.aar\0e9dfa1987da38bf29f0fdddb7807b93\AndroidManifest.xml:26:9-28:38
+	android:value
+		ADDED from [com.android.support:design:26.1.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\design-26.1.0.aar\ec39945736a9fef91a59b6127588033f\AndroidManifest.xml:28:13-35
+	android:name
+		ADDED from [com.android.support:design:26.1.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\design-26.1.0.aar\ec39945736a9fef91a59b6127588033f\AndroidManifest.xml:27:13-51
+uses-feature#android.hardware.camera.front
+ADDED from [com.journeyapps:zxing-android-embedded:3.4.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\zxing-android-embedded-3.4.0.aar\0b3648e55c1151170e4ba5bc589cfd73\AndroidManifest.xml:27:5-29:36
+	android:required
+		ADDED from [com.journeyapps:zxing-android-embedded:3.4.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\zxing-android-embedded-3.4.0.aar\0b3648e55c1151170e4ba5bc589cfd73\AndroidManifest.xml:29:9-33
+	android:name
+		ADDED from [com.journeyapps:zxing-android-embedded:3.4.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\zxing-android-embedded-3.4.0.aar\0b3648e55c1151170e4ba5bc589cfd73\AndroidManifest.xml:28:9-53
+uses-feature#android.hardware.camera.flash
+ADDED from [com.journeyapps:zxing-android-embedded:3.4.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\zxing-android-embedded-3.4.0.aar\0b3648e55c1151170e4ba5bc589cfd73\AndroidManifest.xml:35:5-37:36
+	android:required
+		ADDED from [com.journeyapps:zxing-android-embedded:3.4.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\zxing-android-embedded-3.4.0.aar\0b3648e55c1151170e4ba5bc589cfd73\AndroidManifest.xml:37:9-33
+	android:name
+		ADDED from [com.journeyapps:zxing-android-embedded:3.4.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\zxing-android-embedded-3.4.0.aar\0b3648e55c1151170e4ba5bc589cfd73\AndroidManifest.xml:36:9-53
+uses-feature#android.hardware.screen.landscape
+ADDED from [com.journeyapps:zxing-android-embedded:3.4.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\zxing-android-embedded-3.4.0.aar\0b3648e55c1151170e4ba5bc589cfd73\AndroidManifest.xml:38:5-40:36
+	android:required
+		ADDED from [com.journeyapps:zxing-android-embedded:3.4.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\zxing-android-embedded-3.4.0.aar\0b3648e55c1151170e4ba5bc589cfd73\AndroidManifest.xml:40:9-33
+	android:name
+		ADDED from [com.journeyapps:zxing-android-embedded:3.4.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\zxing-android-embedded-3.4.0.aar\0b3648e55c1151170e4ba5bc589cfd73\AndroidManifest.xml:39:9-57
+uses-feature#android.hardware.wifi
+ADDED from [com.journeyapps:zxing-android-embedded:3.4.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\zxing-android-embedded-3.4.0.aar\0b3648e55c1151170e4ba5bc589cfd73\AndroidManifest.xml:41:5-43:36
+	android:required
+		ADDED from [com.journeyapps:zxing-android-embedded:3.4.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\zxing-android-embedded-3.4.0.aar\0b3648e55c1151170e4ba5bc589cfd73\AndroidManifest.xml:43:9-33
+	android:name
+		ADDED from [com.journeyapps:zxing-android-embedded:3.4.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\zxing-android-embedded-3.4.0.aar\0b3648e55c1151170e4ba5bc589cfd73\AndroidManifest.xml:42:9-45
+meta-data#android.arch.lifecycle.VERSION
+ADDED from [android.arch.lifecycle:runtime:1.0.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\runtime-1.0.0.aar\75fa8fb1506aa8f81520d0e7adb66981\AndroidManifest.xml:25:9-27:47
+	android:value
+		ADDED from [android.arch.lifecycle:runtime:1.0.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\runtime-1.0.0.aar\75fa8fb1506aa8f81520d0e7adb66981\AndroidManifest.xml:27:13-44
+	android:name
+		ADDED from [android.arch.lifecycle:runtime:1.0.0] C:\Users\zww\.gradle\caches\transforms-1\files-1.1\runtime-1.0.0.aar\75fa8fb1506aa8f81520d0e7adb66981\AndroidManifest.xml:26:13-58

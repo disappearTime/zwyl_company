@@ -1,0 +1,5 @@
+<view class="container">
+  <view class="activity_bg">
+    <image mode='widthFix' src='https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=936227850,3877896489&fm=27&gp=0.jpg'></image>
+  </view>
+</view>

@@ -1,0 +1,49 @@
+<view class="container">
+  <view class='search_box flex_cenetr'>
+    <image mode='aspectFit' src='/image/search.png'></image>
+    <text>输入关键词</text>
+  </view>
+  <swiper indicator-dots="{{indicatorDots}}"
+    autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="{{circular}}">
+    <block wx:for="{{imgUrls}}">
+      <swiper-item>
+        <image src="{{item}}" class="slide-image" mode='aspectFill'/>
+      </swiper-item>
+    </block>
+  </swiper>
+  <view class='activity_title'>
+    <image src='/image/group-title.png' mode='aspectFit'></image>
+  </view>
+  <view class='group'>
+    <view class='group_item' wx:for="{{[1,2,3,4]}}">
+      <view class='count_down'>
+        <image src='/image/time.png'></image>
+        <text class='hour'>08</text>
+        <text class='minute'>48</text>
+        <text class='second'>30</text>
+      </view>
+      <image class='project_img' src='http://img4.imgtn.bdimg.com/it/u=4058493991,4135087309&fm=27&gp=0.jpg' mode='aspectFill'></image>
+      <view class='project_name'>无痛光子嫩肤</view>
+      <view class='group_people'>10人团</view>
+      <view class='flex_space_between group_open'>
+        <view class='flex_left flex_space_center_column'>
+          <text class='pay_price'>￥488</text>
+          <text class='origin_price'>￥2000</text>
+        </view>
+        <button class='flex_right' type='warn' size='mini'>去拼团</button>
+      </view>
+    </view>
+  </view>
+  <view class='activity_title'>
+    <image src='/image/sale-title.png' mode='aspectFit'></image>
+  </view>
+  <view class='sale'>
+    <ProjectInfo wx:for="{{[1,2,3]}}" 
+      projectTitle="鼻部综合" 
+      projectIntro="三八女神节，让你美美做女神！！！"
+      payPrice="488"
+      originPrice="2000">
+      <image class='discount' src='/image/sale.png' slot="sale_img_class_discount"></image>
+    </ProjectInfo>
+  </view>
+</view>

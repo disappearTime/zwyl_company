@@ -1,0 +1,10 @@
+<view class="container">
+  <form bindsubmit="formSubmit">
+    <view class='group_name'>
+      <text>活动名称</text>
+      <input type='text' name="group_name" placeholder='请输入活动名称'></input>
+    </view>
+    <button formType="submit">保存</button>
+    <button bindtap='cancel'>取消</button>
+  </form>
+</view>

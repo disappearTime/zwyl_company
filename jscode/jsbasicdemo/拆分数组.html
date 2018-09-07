@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var arr = ["user:zhu","name:wei"];
+        function getObj(arr){
+            var obj;
+            for(var i=0;i<arr.length;i++){
+                var arr_ = arr[i].split(":");
+                var key = arr_[0];
+                console.log(arr_[1])
+                obj[key] = arr_[1];
+            }
+            return obj;
+        }
+        var obj_ = getObj(arr);
+        console.log(obj_);
+    </script>
+</body>
+</html>

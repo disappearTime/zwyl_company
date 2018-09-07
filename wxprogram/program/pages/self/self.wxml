@@ -1,0 +1,28 @@
+<view class='wrapper self-wrapper'>
+  <view class='userInfo'>
+    <image src='{{userInfo.avatarUrl}}'></image>
+    <view class='nickName'>{{userInfo.nickName}}</view>
+    <view class='userType' wx:if="{{!userInfo}}">
+      <button wx:if="{{canIUse}}" type='primary' size='mini' open-type='getUserInfo' bindtap='getUserInfo'>授权登录</button>
+      <view wx:else>请升级微信版本</view>
+    </view>
+  </view>
+  <view class='wx_api box-item'>
+    <button type='primary' size='mini' bindtap='chooseImg'>上传图片</button>
+    <button type='primary' size='mini' bindtap='getLocation'>获取位置</button>
+  </view>
+  <view wx:if="{{imgList.length>0}}" class='img_box box-item'>
+    <view>
+      <!-- <image wx:for="imgList" src='{{item}}'></image> -->
+      <view wx:for="{{imgList}}">
+        <!-- aspectFill方式可以填充容器，图片不变形，超出部分裁剪 -->
+        <image class='close' data-index="{{index}}" src='/image/close.png' bindtap='delImg'></image>
+        <image class='upImg' data-index="{{index}}" src='{{item}}' mode='aspectFill' bindtap='previewImg'></image>
+      </view>
+    </view>
+  </view>
+  <view wx:if="{{location}}" class='location_box box-item'>
+    <text>经度:{{location.longitude}}</text>
+    <text>维度:{{location.latitude}}</text>
+  </view>
+</view>

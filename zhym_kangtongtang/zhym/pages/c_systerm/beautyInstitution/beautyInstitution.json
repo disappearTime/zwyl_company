@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "美丽机构",
+  "usingComponents": {
+    "BeautyParlor": "/components/BeautyParlor/BeautyParlor"
+  }
+}

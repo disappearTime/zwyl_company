@@ -1,0 +1,30 @@
+<!--pages/site/site.wxml-->
+<view class="container">
+    <view class="site-list" wx:if="{{sitelist.length != 0}}">
+        <block wx:for="{{sitelist}}" wx:key="{{item.address_id}}">
+            <view class="site-items">
+                <view class="site-items-info">
+                    <view class="site-items-msg">
+                        <view>{{item.name}}    {{item.tel}}</view>
+                        <view><text wx:if="{{item.is_default==1}}">[默认地址]</text>{{item.province}}省{{item.city}}市{{item.district}}区{{item.address}}</view>
+                    </view>
+                    <view class="site-items-state" bindtap="editsite" data-address_id="{{item.address_id}}">
+                        <image src="/image/xuanzhong.png" wx:if="{{item.is_default == 1}}" />
+                        <image src="/image/weixuanzhong.png" wx:else/>
+                    </view>
+                </view>
+                <view class="site-items-handle">
+                    <view bindtap="redact" data-id="{{item.address_id}}">编辑</view>
+                    <view bindtap="sitedel" data-id="{{item.address_id}}">删除</view>
+                </view>
+            </view>
+        </block>
+    </view>
+    <view class="site-null" wx:else>
+        <image src="/image/zanwudd.png" />
+        <text>暂无地址</text>
+    </view>
+    <view class="site-add" bindtap="addsite">
+        新增地址
+    </view>
+</view>

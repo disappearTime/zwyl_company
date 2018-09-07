@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 执行上下文(Execution Context) 可以理解为一个对象
+        // js解释器如何找到我们定义的函数和变量？ 变量对象(Variable Object,缩写为vo)是一个抽象概念中的‘对象’，它用于存储执行上下文中的：1.变量 2.函数声明 3.函数参数
+
+        // 一个函数在执行时会有两个阶段，第一个阶段变量初始化阶段 vo按照如下顺序填充:
+        // 1 函数参数(若未传入，初始化该参数值为undefined)
+        // 2 函数声明(若发生命名冲突，会覆盖)
+        // 3 变量声明(初始化变量值为undefined,若发生命名冲突，会忽略。)
+        function test(a,b){
+            var c = 10;
+            function d(){}
+            var e = function _e(){};
+            (function x(){});
+            b = 20;
+        }
+        test(10);
+        /*
+            AO(test) = {
+                a: 10,
+                b: undefined,
+                c：undefined,
+                d: <ref to func 'd'>
+                e：undefined
+            }
+        
+        */
+    </script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+.cart_wrap{
+  text-align: center;
+}
+image{
+  width: 200rpx;
+  height: 200rpx;
+  margin-top: 100rpx;
+}
+.cart_wrap view{
+  margin-top: 15px;
+  font-size: 12px;
+}

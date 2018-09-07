@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var flag = true;
+        setTimeout(function(){
+            flag = false
+        },1000)
+        // while(flag){
+        //     alert('end'); // 一直弹end
+        // }
+        //console.log(a);
+        let a = 1;
+        function fn(){
+            console.log(b) // 不会报错 undefined
+            var b = 10
+        }
+        fn()
+    </script>
+</body>
+</html>

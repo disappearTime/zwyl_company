@@ -1,0 +1,80 @@
+<view class='container flex_space_between_column'>
+  <view class='home_content'>
+    <view class='beautyTask' hidden='{{currentPage!="1"}}'>美丽任务</view>
+    <view class='customerManage' hidden='{{currentPage!="2"}}'>顾客管理</view>
+    <view class='myPage' hidden='{{currentPage!="3"}}'>
+      <view class='manager_info flex_space_between margin_bot_10'>
+        <view class='flex_left'>
+          <image mode='aspectFit' src='http://img0.imgtn.bdimg.com/it/u=522639347,1146682111&fm=200&gp=0.jpg'></image>
+          <view class='name_role flex_space_center_column'>
+            <view class='name'>王美丽</view>
+            <view class='role'>管理员</view>
+          </view>
+        </view>
+        <view class="flex_right">
+          <image></image>
+        </view>
+      </view>
+      <view class='financial_statisc margin_bot_10'>
+        <view class='total_income'>当月总收入:2388288元</view>
+        <view>今日成交总金额:4543元</view>
+        <view>今日成交订单量:4单</view>
+      </view>
+      <view class='trends'>
+        <view class='my_tearm'>
+          <image mode='aspectFit' src='/image/index.png'></image>
+          <view class='text'>我的团队</view>
+        </view>
+        <view class='project_in_store' bindtap='toShopProjectPage'>
+          <image mode='aspectFit' src='/image/index.png'></image>
+          <view class='text'>店内项目</view>
+        </view>
+        <view class='content_community'>
+          <image mode='aspectFit' src='/image/index.png'></image>
+          <view class='text'>内容社区</view>
+        </view>
+        <view class='customer_evaluation'>
+          <image mode='aspectFit' src='/image/index.png'></image>
+          <view class='text'>顾客评价</view>
+        </view>
+        <view class='my_live'>
+          <image mode='aspectFit' src='/image/index.png'></image>
+          <view class='text'>我的直播</view>
+        </view>
+        <view class='my_activity'>
+          <image mode='aspectFit' src='/image/index.png'></image>
+          <view class='text'>我的活动</view>
+        </view>
+        <view class='setting'>
+          <image mode='aspectFit' src='/image/index.png'></image>
+          <view class='text'>账号设置</view>
+        </view>
+        <view class='personal_data'>
+          <image mode='aspectFit' src='/image/index.png'></image>
+          <view class='text'>个人资料</view>
+        </view>
+        <view class='extension_tool' bindtap='toExtensionPage'>
+          <image mode='aspectFit' src='/image/index.png'></image>
+          <view class='text'>拓客工具</view>
+        </view>
+        <view></view>
+        <view></view>
+        <view></view>
+      </view>
+    </view>
+  </view>
+  <view class='tab_bar flex_space_between'>
+    <view class='tab_item beauty_task' data-cur='1' bindtap='tabClick'>
+      <image mode='aspectFit' src='{{currentPage=="1"?"/image/index-xz.png":"/image/index.png"}}'></image>
+      <view class='{{currentPage=="1"?"theme_font_color":""}}'>美丽任务</view>
+    </view>
+    <view class='tab_item customer_manage' data-cur='2' bindtap='tabClick'>
+      <image mode='aspectFit' src='{{currentPage=="2"?"/image/area-xz.png":"/image/area.png"}}'></image>
+      <view class='{{currentPage=="2"?"theme_font_color":""}}'>顾客管理</view>
+    </view>
+    <view class='tab_item my_page' data-cur='3' bindtap='tabClick'>
+      <image mode='aspectFit' src='{{currentPage=="3"?"/image/my-xz.png":"/image/my.png"}}'></image>
+      <view class='{{currentPage=="3"?"theme_font_color":""}}'>我的</view>
+    </view>
+  </view>
+</view>

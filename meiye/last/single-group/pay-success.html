@@ -1,0 +1,452 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<script type="text/javascript" src="../js/h5.js"></script>
+	<link rel="stylesheet" href="../css/h5.css" />
+	<link rel="stylesheet" href="../css/mod.css" />
+	<!-- <link rel="stylesheet" href="../js/share/css/smohan.pop&share.css"> -->
+</head>
+<style>
+	.share-2{
+		position: fixed;
+		left:0;
+		bottom: 0;
+		width:100%;
+		height:2rem;
+		background: #fff;
+		display: none;
+	}
+
+</style>
+<body>
+<div class="v-root" id="app">
+	<!--header-->
+	<header style="display:none;" class="v-head bg-drak">
+		<div class="v-head__in">
+			<div class="v-head__l left">
+				<span class="v-head__btn icon-back"></span>
+			</div>
+			<div class="v-head__m">
+				<h2 class="v-head__title">支付成功</h2>
+			</div>
+			<div class="v-head__r right"></div>
+		</div>
+	</header>
+
+	<div class="v-main bg-light">
+		<div class="success-hd">
+			<div class="success-hd-countdown">
+				剩余
+				<span id="day">128</span>:<span id="min">90</span>:<span id="second">89</span>
+				结束
+			</div>
+		</div>
+
+		<div class="sucess-con">
+			<div class="sucess-con-item">
+				<div class="media-img-txt pos-rel" id="projectBox">
+					<!-- <div class="media-img-txt__img-box pos-abs pos-fl">
+						<img src="../upload/head-01.jpg">
+					</div>
+					<div class="media-img-txt__con">
+						<div class="media-img-txt__con-tit">
+							[硅胶隆鼻] 混血小翘鼻 院长手术下单送面膜
+						</div>
+						<div class="media-img-txt__con-ft clear">
+							<div class="fl"><span>￥6500</span><small>x1</small></div>
+							<div class="fr"><span class="icon"></span><span></span></div>
+						</div>
+					</div> -->
+				</div>
+			</div>
+			<div class="sucess-con-item">
+				<div class="sucess-con-item-tit fs16 b">店铺地址</div>
+				<div class="sucess-con-item-con fs14 c-gray mt10 address">
+				
+				</div>
+			</div>
+			<div class="sucess-con-item mypin">
+				<div class="sucess-con-item-tit fs16 b join">已参团人数1人</div>
+				<div class="sucess-con-item-con fs14 c-gray mt10 clear">
+					<div class="group-buy__heads" id="userImgs">
+						<!-- <span><img src="../upload/head-01.jpg"></span>
+						<span><img src="../upload/head-def.jpg"></span>
+						<span><img src="../upload/head-def.jpg"></span> -->
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="success-ft mt20 mb20 plr20">
+			<div>
+				<button class="btn btn-red btn-block share" id="shareBtn">邀请闺蜜</button>
+			</div>
+			<div class="mt15">
+				<button onclick="download_app()" class="btn btn-block btn-red-hole">查看订单下载<span class="appName"></span>APP</button>
+			</div>
+			<div id="share" class="share-2 m-share"></div>
+		</div>
+	</div>
+</div>
+<div class="loading"></div>
+
+<script src="http://www.jq22.com/jquery/1.7.2/jquery.min.js"></script>
+<script src="../../js/api.js"></script>
+<script src="../../js/common.js"></script>
+<script src="../js/share/nativeshare.js"></script>
+<script  src="http://www.w3cways.com/demo/LazyLoad/js/jquery.lazyload.js"></script>
+<script src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+
+
+
+
+<script>
+	// 团购活动支付成功界面
+	window.onload = function(){
+		var groupsinglebuy;
+		if(GetQueryString("groupsinglebuy")){ // 是否是团购页点击支付进来的
+			groupsinglebuy = GetQueryString("groupsinglebuy");
+		}
+		if(groupsinglebuy){
+			$('.mypin').hide();
+			$('.success-hd-countdown').hide();
+			$("#shareBtn").hide();
+		}
+		// app下载
+		var href_ = window.location.href;
+		$('.appName').html(platFormName);
+		function checkNum(n){
+			return n=n<10?'0'+n:n;
+		};
+		var isWx = isWeiXin()
+		//倒计时
+		function countDown(endTime){
+			var endTime=endTime;
+			//var startTmie=startTmie;
+			var now =new Date().getTime();
+			var d,h,m,s;
+			if(endTime>now){
+				var leftTime=endTime-now;
+				var d,h,m,s;
+				d =checkNum( Math.floor(leftTime/1000/60/60/24)).toString();
+				h= checkNum(Math.floor(leftTime/1000/60/60%24)).toString();
+				m =checkNum(Math.floor(leftTime/1000/60%60)).toString() ;
+				s = checkNum(Math.floor(leftTime/1000%60)).toString();
+				var totalH = checkNum(Math.floor(leftTime/1000/60/60)).toString();
+				$('#day').html(totalH);
+				$('#min').html(m)
+				$('#second').html(s)
+			}else{
+				$('.success-hd-countdown').html('该活动已经结束');
+				
+			}
+		};
+
+		var userId = localStorage.getItem("userId");
+		// var orderData=JSON.parse(localStorage.getItem("orderData"));
+
+		// var orderId=orderData.resultMsg;
+		// 	orderId=orderId.substring(1,orderId.length);
+		var setPayUrl=localStorage.getItem('setPayUrl');
+		
+		var orderId;
+		if(GetQueryString('order')){
+			orderId = GetQueryString('order')
+		}
+		if(orderId.indexOf(',')){
+			var orderArr = orderId.split(',');
+			orderId = orderArr[0];
+		}	
+		var shareUserId;
+		if(GetQueryString("userId")){
+			shareUserId = GetQueryString("userId");
+		} 
+		var activityId;
+		if(GetQueryString("activityId")){
+			activityId = GetQueryString("activityId")
+		}
+		//alert(orderId);
+		var timer;
+		// 进入页面轮训查支付结果
+		var count = 0;
+		timer = setInterval(function(){
+			count++;
+			if(count>6){
+				clearInterval(timer);
+				window.location.href='./single-detail.html?'+setPayUrl;
+			}else{
+				getpay();
+			}
+		},1000)
+		function getpay(){
+			var random = Math.random();
+			$.ajax({
+				url:host+'/supplier-shopping/html/order/queryIsPay?random='+random,
+				type:'post',
+				data:{orderId:orderId},
+				dataType:'json',
+				success:function(res){
+					if(res.resultCode==200){
+						if(res.resultInfo.success==1){
+							renderData();
+							clearInterval(timer);
+						}
+					}
+				}
+			});
+		}
+		function reloadData(){
+			$.ajax({
+				url:host+'/client-shopping/html/order/payFinish',
+				data:{
+					"userId":userId,
+					"orderId":orderId
+				},
+				dataType:'json',
+				type:'post',
+				success:function(res){
+					if(res.resultCode==200){
+						var data=res.resultInfo;
+						var projectPrice = data.projectPrice?data.projectPrice:0;
+						projectPrice = toFixed_len(projectPrice,2)
+						var tpl='<div class="media-img-txt__img-box pos-abs pos-fl">'
+							+'<img src='+data.projectImgUrl+'>'
+						+'</div>'
+						+'<div class="media-img-txt__con">'
+							+'<div class="media-img-txt__con-tit">'
+							+data.projectName
+							+'</div>'
+							+'<div class="media-img-txt__con-ft clear">'
+								+'<div class="fl"><span>￥'+projectPrice+'</span><small></small></div>'
+								+'<div class="fr"><span class="icon"></span><span></span></div>'
+							+'</div>'
+						+'</div>';
+						$('#projectBox').html(tpl);
+						$('.address').html(data.serviceAddress);
+						var userImgs=data.groupUsers;
+						var len=userImgs.length||0;
+						if(len){
+							$('.join').html('已参团人数'+ len +'人');
+								var imgStr='';
+								for(var i=0;i<len;i++){
+									var s='<span><img src="'+userImgs[i]+'"></span>';
+									imgStr+=s;
+								}
+								$('#userImgs').html(imgStr)
+						}else{
+							// $('#userImgs').hide();
+							$('.mypin').hide()
+						}
+						//alert('关闭弹窗')
+						$('.loading').hide();
+					}else if(res.resultCode==400){
+						$('.loading').hide();
+						$('.success-hd-countdown').html('该活动已经结束');
+					}
+				}
+			});
+		}
+		
+		function renderData(){
+			//alert('调用数据')
+			$.ajax({
+				url:host+'/client-shopping/html/order/payFinish',
+				data:{
+					"userId":userId,
+					"orderId":orderId
+				},
+				dataType:'json',
+				type:'post',
+				success:function(res){
+					if(res.resultCode==200){
+						var data=res.resultInfo;
+						var projectPrice = data.projectPrice?data.projectPrice:0;
+						projectPrice = toFixed_len(projectPrice,2)
+						var tpl='<div class="media-img-txt__img-box pos-abs pos-fl">'
+							+'<img src='+data.projectImgUrl+'>'
+						+'</div>'
+						+'<div class="media-img-txt__con">'
+							+'<div class="media-img-txt__con-tit">'
+							+data.projectName
+							+'</div>'
+							+'<div class="media-img-txt__con-ft clear">'
+								+'<div class="fl"><span>￥'+projectPrice+'</span><small></small></div>'
+								+'<div class="fr"><span class="icon"></span><span></span></div>'
+							+'</div>'
+						+'</div>';
+						$('#projectBox').html(tpl);
+						//countDown(data.endTime);
+						if(!groupsinglebuy){
+							setInterval(function(){	 
+								countDown(data.endTime)
+							},1000)
+						}
+						
+						
+						$('.address').html(data.serviceAddress);
+						
+						var userImgs=data.groupUsers;
+						var len=userImgs.length||0;
+						if(len){
+							$('.join').html('已参团人数'+ len +'人');
+							var imgStr='';
+							for(var i=0;i<len;i++){
+								var s='<span><img src="'+userImgs[i]+'"></span>';
+								imgStr+=s;
+							}
+							$('#userImgs').html(imgStr)
+							//getpay();
+						}else{
+							// $('#userImgs').hide();
+							$('.mypin').hide()
+						}
+						//alert('定时器')
+						$('.loading').hide();
+					}else if(res.resultCode==400){
+						$('.loading').hide();
+						$('.success-hd-countdown').html('该活动已经结束');
+					}
+				}
+			})
+		}
+		
+		// 邀请闺蜜
+		// var config = {
+        //     title: 'm-share', // 标题，默认读取document.title
+        //     desc: 'm-share的描述', // 描述, 默认读取head标签：<meta name="description" content="desc" />
+        //     link: 'http://backtonature.github.io/project/m-share/', // 网址，默认使用window.location.href
+        //     imgUrl: 'http://backtonature.github.io/project/m-share/shareIcon.jpg', // 图片, 默认取网页中第一个img标签
+        //     types: ['wx', 'wxline', 'qq', 'qzone', 'sina'], // 开启的分享图标, 默认为全部
+        //     infoMap: {
+        //         wx: {
+        //             title: 'm-share微信分享',
+        //             desc: '我是微信的分享',
+        //             link: 'http://backtonature.github.io/project/m-share/?ADTAG=wx',
+        //             imgUrl: 'http://backtonature.github.io/project/m-share/shareIcon.jpg'
+        //         }
+        //     },
+        //     fnDoShare(type) {
+        //         console.log(1);
+        //     }
+        // };
+		// $('#shareBtn').on('click',function(){
+		// 	Mshare.popup(config);
+		// })
+
+		var pro = window.localStorage.getItem('projectId');
+		var nativeShare = new NativeShare()
+		var shareData = {
+			title: '名医在线！如何开启美丽人生？',
+			desc: '专业微整形！即刻开始美丽人生！',
+			// 如果是微信该link的域名必须要在微信后台配置的安全域名之内的。
+			link: host_ + 'h5/meiye/last/single-group/group-purchase.html?activityId='+activityId+'&userId='+shareUserId+'&order='+orderId,
+			icon: 'http://meiye-qz.oss-cn-beijing.aliyuncs.com/meiyeFiles/gallery1517205949688.png',
+			// 不要过于依赖以下两个回调，很多浏览器是不支持的
+			success: function() {
+				console.log("success")
+			},
+			fail: function() {
+				console.log("fail")
+			}
+		}
+		nativeShare.setShareData(shareData)
+
+		function call(command) {
+			try {
+				nativeShare.call(command)
+			} catch (err) {
+				// 如果不支持，你可以在这里做降级处理
+				alert(err.message)
+				// console.log("err.message")
+			}
+		}
+		// 微信分享
+		var wxParam = {};
+        var wx_share = function(param, url) {
+        $.ajax({
+            url:  host_ + 'api/client-shopping/order/getSignature',
+            type: "post",
+            data: {
+                url:url
+            },
+            success: function(res) {
+                if (res.resultCode == 200) {
+                    var data = res.resultInfo;
+                    wxParam = param;
+                    // 分享配置	
+                    wx.config({
+                        debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+                        appId: appid_wx, // 必填，企业号的唯一标识
+                        timestamp: data.timestamp, // 必填，生成签名的时间戳
+                        nonceStr: data.noncestr, // 必填，生成签名的随机串
+                        signature: data.signature,// 必填，签名，见附录1
+                        jsApiList: ['onMenuShareTimeline','onMenuShareAppMessage','onMenuShareQQ','onMenuShareWeibo','onMenuShareQZone'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+					});
+
+
+					var shsreData={
+						title: wxParam.title,
+						link: wxParam.link,
+						imgUrl: wxParam.imgUrl,
+						success: function () {
+							if (wxParam.successFn) {wxParam.successFn();}
+						}, cancel: function () {
+							if (wxParam.cancelFn) {wxParam.cancelFn();}
+						}
+						
+					};
+	
+                     wx.ready(function () {
+                        //分享到朋友圈
+                        wx.onMenuShareTimeline(shsreData);
+                        
+                        //分享给朋友
+                        wx.onMenuShareAppMessage(shsreData);
+                        
+                        //分享到QQ
+                        wx.onMenuShareQQ(shsreData);
+                        
+                        //分享到腾讯微博
+                        wx.onMenuShareWeibo(shsreData);
+                        
+                        //分享到QQ空间
+                        wx.onMenuShareQZone(shsreData);
+                    });
+                }
+            },  
+            error : function(res) {}
+        })
+	}
+		if(isWx){
+			wx_share({
+				title: "名医在线！如何开启美丽人生？",
+				desc: "专业微整形！即刻开始美丽人生！",
+				link: host_ + 'h5/meiye/last/single-group/group-purchase.html?activityId='+activityId+'&userId='+shareUserId+'&order='+orderId,
+				imgUrl: "http://meiye-qz.oss-cn-beijing.aliyuncs.com/meiyeFiles/gallery1517205949688.png",
+				successFn: function(){
+					// 用户确认分享后执行的回调函数；
+					alert("分享成功")
+				},
+				cancelFn: function(){
+					// 用户取消分享后执行的回调函数
+					alert("分享失败")
+				}
+			},window.location.href);
+		};
+
+		
+		$('#shareBtn').on('click', function(){
+			if(isWx){
+				alert("请点击右上角'...'去分享");				
+			}else{
+				call();
+			}
+			
+		})
+	}
+</script>    
+</body>
+</html>

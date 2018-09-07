@@ -1,0 +1,75 @@
+.logo_box{
+  text-align: center;
+  background: rgba(242, 242, 242, 1);
+}
+.logo_pic{
+  width: 128rpx;
+  height: 128rpx;
+  display: inline-block;
+  margin-top: 10rpx;
+  position: relative;
+}
+.logo_pic image{
+  width: 100%;
+  border-radius: 50%;
+}
+.logo_pic text{
+  position: absolute;
+  display: inline-block;
+  font-size: 24rpx;
+  color: #ffffff;
+  top: 10rpx;
+  right: 0;
+  padding: 4rpx 10rpx;
+  border-radius: 4rpx;
+  background: rgba(255, 102, 0, 1);
+  transform: translateX(30rpx);
+}
+.brand_name{
+  font-size: 28rpx;
+  padding: 10rpx 0;
+}
+.institution_honor{
+  width: 100%;
+  padding: 30rpx 0;
+  box-sizing: border-box;
+}
+.major_area{
+  font-size: 24rpx;
+  color: #999999;
+  padding: 20rpx 30rpx;
+  display: inline-block;
+}
+.institution_honor>view{
+  width: 33.3%;
+  flex-grow: 1;
+  text-align: center;
+  font-size: 24rpx;
+}
+.institution_honor>view image{
+  width: 60rpx;
+  height: 46rpx;
+}
+.flex_box{
+  padding: 30rpx;
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+}
+.flex_box image{
+  width: 60rpx;
+  height: 60rpx;
+  flex-shrink: 0;
+  flex-grow: 0;
+}
+.flex_box text{
+  width: 58.6%;
+  flex-grow: 0;
+  flex-shrink: 0;
+  padding: 0 20rpx;
+  font-size: 24rpx;
+}
+.right_picture{
+  margin-left: 130rpx;
+}

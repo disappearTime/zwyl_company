@@ -1,0 +1,34 @@
+<view class='container'>
+  <view class='userInfo flex_space_between margin_bot_10'>
+    <view class='flex_left'>
+      <view class='user_header'>
+        <image src='http://img5.imgtn.bdimg.com/it/u=2053377847,2838900842&fm=27&gp=0.jpg'></image>
+      </view>
+      <view class='user_name flex_space_center_column'>
+        <text class='user_count'>13718499463</text>
+        <text class='user_nick'>我的美我做主</text>
+      </view>
+    </view>
+    <view class='flex_right'>
+      <image src='/image/area.png'></image>
+    </view>
+  </view>
+  <view class='trends flex_space_between margin_bot_10'>
+    <view class='beauty_instit flex_space_center_column bor_r_1' bindtap='toBeautyPage'>
+      <image mode='aspectFit' src='/image/area.png'></image>
+      <text>美丽机构</text>
+    </view>
+    <view class='order flex_space_center_column bor_r_1' bindtap='toMyOrderPage'>
+      <image mode='aspectFit' src='/image/area.png'></image>
+      <text>我的订单</text>
+    </view>
+    <view class='bespoke flex_space_between_column'>
+      <image mode='aspectFit' src='/image/area.png'></image>
+      <text>我的预约</text>
+    </view>
+  </view>
+  <viewMore content="我的卡券" bind:viewMore="viewMyCoupon"></viewMore>
+  <viewMore content="我的消息" bind:viewMore="viewMyNews"></viewMore>
+  <viewMore content="账号设置" bind:viewMore="setting"></viewMore>
+  <viewMore content="进入后台" bind:viewMore="toBackstage"></viewMore>
+</view>

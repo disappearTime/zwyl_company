@@ -1,0 +1,231 @@
+/* pages/event/event.wxss */
+.container{
+    display: flex;
+}
+.container > view{
+    flex: 1;
+    width: 100%;
+    box-sizing: border-box;
+}
+.item-null{
+    flex: 1;
+}
+/* 打折商品 */
+.discount-list{
+    background-color: #f7f7f7;
+}
+.discount-list .discount-items{
+    float: left;
+    width: 370rpx;
+    margin: 10rpx 10rpx 0 0;
+    background-color: #Fff;
+}
+.discount-list .discount-items:nth-child(2n+2){
+    margin-right: 0;
+}
+.discount-list .discount-items > image{
+    width: 370rpx;
+    height: 370rpx;
+}
+.discount-list .discount-items .discount-info{
+    padding: 0 28rpx 0 30rpx;
+}
+.discount-list .discount-items .discount-info .dis-info-name{
+    height: 80rpx;
+    line-height: 40rpx;
+    font-size: 28rpx;
+    color: #2D2D2D;
+    margin: 12rpx 0 17rpx 0;
+    text-overflow: ellipsis;
+	  display: -webkit-box; /** 对象作为伸缩盒子模型显示 **/
+	  -webkit-box-orient: vertical; /** 设置或检索伸缩盒对象的子元素的排列方式 **/
+	  -webkit-line-clamp: 2; /** 显示的行数 **/
+	  overflow: hidden;  /** 隐藏超出的内容 **/
+}
+.discount-list .discount-items .discount-info .dis-info-count{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: relative;
+}
+.discount-list .discount-items .discount-info .dis-info-count .discounth{
+    color: #fff;
+    background: #EB0000;
+    font-size: 20rpx;
+    height: 28rpx;
+    line-height: 28rpx;
+    padding: 0 5rpx;
+    border-radius: 6rpx;
+    margin-right: 10rpx;
+}
+.discount-list .discount-items .discount-info .dis-info-count .dis_price{
+    flex: 1;
+    font-size: 20rpx;
+    color: #EB0000;
+    height: 40rpx;
+    line-height: 40rpx;
+}
+.discount-list .discount-items .discount-info .dis-info-count .dis_price text{
+    font-size: 28rpx;
+    line-height: 28rpx;
+}
+.discount-list .discount-items .discount-info .dis-info-count image{
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50rpx;
+    height: 50rpx;
+}
+.discount-list .discount-items .discount-info .dis-info-price{
+    display: flex;
+    flex-direction: row;
+    margin: 19rpx 0 15rpx 0;
+}
+.discount-list .discount-items .discount-info .dis-info-price view{
+    flex: 1;
+    height: 28rpx;
+    line-height: 28rpx;
+    font-size: 20rpx;
+    color: #8E8E8E;
+}
+.discount-list .discount-items .discount-info .dis-info-price view:nth-child(2){
+    text-align: right;
+}
+
+
+/* 新品热销 */
+.new-list{
+    padding: 0 30rpx;
+    border-top: 1px solid #E7E7E7;
+}
+.new-list .new-items{
+    padding: 30rpx 0;
+    border-bottom: 1px solid #E7E7E7;
+    display: flex;
+    flex: row;
+}
+.new-list .new-items > image{
+    width: 200rpx;
+    height: 200rpx;
+}
+.new-list .new-items .new-info{
+    flex: 1;
+    margin-left: 30rpx;
+    display: flex;
+    flex-direction: column;
+}
+.new-list .new-items .new-info .new-info-name{
+    font-size: 28rpx;
+    color: #2D2D2D;
+    line-height: 46rpx;
+    height: 92rpx;
+    text-overflow: ellipsis;
+	  display: -webkit-box; /** 对象作为伸缩盒子模型显示 **/
+	  -webkit-box-orient: vertical; /** 设置或检索伸缩盒对象的子元素的排列方式 **/
+	  -webkit-line-clamp: 2; /** 显示的行数 **/
+	  overflow: hidden;  /** 隐藏超出的内容 **/
+}
+.new-list .new-items .new-info .new-info-price{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: relative;
+}
+.new-list .new-items .new-info .new-info-price .new-pri{
+    font-size: 20rpx;
+    color: #EB0000;
+    height: 40rpx;
+    line-height: 40rpx;
+}
+.new-list .new-items .new-info .new-info-price .new-pri text{
+    font-size: 28rpx;
+}
+.new-list .new-items .new-info .new-info-price .new-num{
+    flex: 1;
+    margin-left: 27rpx;
+    font-size: 20rpx;
+    color: #B8B8B8;
+    height: 28rpx;
+    line-height: 28rpx;
+}
+.new-list .new-items .new-info .new-info-price image{
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    width: 50rpx;
+    height: 50rpx;
+}
+
+/* 热销商品 */
+.hot-list{
+    background-color: #f7f7f7;
+    padding: 0 30rpx;
+}
+.hot-list .hot-items{
+    margin-top: 30rpx;
+    background-color: #fff;
+    border-radius: 14rpx;
+    padding:  30rpx 30rpx 26rpx 30rpx;
+}
+.hot-list .hot-items > image{
+    width: 630rpx;
+    height: 630rpx;
+}
+.hot-list .hot-items .hot-info .hot-name{
+    font-size: 28rpx;
+    color: #2D2D2D;
+    height: 40rpx;
+    line-height: 40rpx;
+    margin: 22rpx 0;
+    text-overflow: ellipsis;
+	  display: -webkit-box; /** 对象作为伸缩盒子模型显示 **/
+	  -webkit-box-orient: vertical; /** 设置或检索伸缩盒对象的子元素的排列方式 **/
+	  -webkit-line-clamp: 1; /** 显示的行数 **/
+	  overflow: hidden;  /** 隐藏超出的内容 **/
+}
+.hot-list .hot-items .hot-info .hot-price{
+    position: relative;
+}
+.hot-list .hot-items .hot-info .hot-price .hot-price-info{
+    display: flex;
+    flex-flow: row
+}
+.hot-list .hot-items .hot-info .hot-price .hot-price-info .hot-dis-pri{
+    font-size: 24rpx;
+    color: #EB0000;
+    height: 45rpx;
+    line-height: 45rpx;
+}
+.hot-list .hot-items .hot-info .hot-price .hot-price-info .hot-dis-pri text{
+    font-size: 32rpx;
+    line-height: 32rpx;
+}
+.hot-list .hot-items .hot-info .hot-price .hot-price-info .hot-old-pri{
+    font-size: 24rpx;
+    color: #8E8E8E;
+    height: 33rpx;
+    line-height: 33rpx;
+    margin-left: 13rpx;
+}
+.hot-list .hot-items .hot-info .hot-price .hot-num{
+    font-size: 20rpx;
+    color: #B8B8B8;
+    height: 28rpx;
+    line-height: 28rpx;
+    margin-top: 4rpx;
+}
+.hot-list .hot-items .hot-info .hot-price .buy{
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    color: #fff;
+    background: #FE4E4E;
+    border-radius: 100px;
+    font-size: 28rpx;
+    height: 40rpx;
+    line-height: 40rpx;
+    padding: 10rpx 29rpx;
+}

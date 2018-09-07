@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="ueditor-config.js" type="text/javascript" charset="utf-8"></script>
+		<script src="ueditor.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div class="">
+			<script id="editor" type="text/plain" style="width:1024px;height:500px;"></script>
+		</div>
+		<button class="btn">点我</button>
+	</body>
+</html>
+<script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	 var ue = UE.getEditor('editor');
+	 $(".btn").click(function(){
+	 	var content = UE.getEditor('editor').getContent();
+	 	console.log(content)
+	 })
+</script>

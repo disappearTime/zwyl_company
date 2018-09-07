@@ -1,0 +1,3 @@
+<view class="container">
+  <button bindtap='cancel'>取消</button>
+</view>

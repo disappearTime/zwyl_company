@@ -1,0 +1,180 @@
+.my_info{
+    width: 100%;
+    height: 14.6rem;
+    padding: 3.68rem 1.25rem 0;
+    box-sizing: border-box;
+    background: url(../../assets/img/my-bg.png) no-repeat center center;
+    background-size: cover;
+    position: relative;
+}
+.user{
+    width: 100%;
+    height: 3.75rem;
+}
+.user_head_name{
+    height: 100%;
+    flex-grow: 1;
+}
+.user_head_name .head{
+    width: 3.75rem;
+    height: 3.75rem;
+    margin-right: 0.625rem;
+    flex-grow: 0;
+}
+.user_head_name .name{
+    flex-grow: 1;
+    color: #ffffff;
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.user_head_name .name p:nth-of-type(1){
+    font-size: 1rem;
+}
+.user_head_name .name p:nth-of-type(2){
+    font-size: 0.875rem;
+}
+.user_head_name .head img{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+.code_scan{
+    width: 1.56rem;
+    height: 1.56rem;
+    flex-grow: 0;
+}
+.code_scan img{
+    width: 100%;
+    height: 100%;
+}
+.my_trends{
+    width: 100%;
+    height: 9.38rem;
+    border-radius: 4px;
+    transform: translateY(2.1rem);
+    box-shadow: 0 0 8px 0;
+    background: #FFFFFF;
+}
+.my_trends .money{
+    height: 5.18rem;
+    width: 100%;
+    border-bottom: 1px solid #E7E7E7; 
+    box-sizing: border-box;
+}
+.my_trends .money>div, .my_trends .trends>div{
+    text-align: center;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.my_trends .money>div p:nth-of-type(1){
+    font-size: 1.5rem;
+    padding: 2px 0;
+}
+.my_trends .money>div p:nth-of-type(2){
+    font-size: 0.875rem;
+    color: #2D2D2D;
+    padding: 2px 0;
+}
+.my_trends .trends{
+    height: 4.2rem;
+    width: 100%;
+    font-size: 0.875rem;
+}
+.my_trends .trends>div p:nth-of-type(1){
+    color: #2D2D2D;
+    padding: 2px 0;
+}
+.my_trends .trends>div p:nth-of-type(2){
+    color: #8E8E8E;
+    padding: 2px 0;
+}
+.my_relative{
+    width: 100%;
+    margin-top: 6.25rem;
+    padding: 0 1.25rem;
+    box-sizing: border-box;
+}
+.card {
+    width: 100%;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid #E7E7E7;
+}
+.card .card_title{
+    height: 1.4rem;
+    padding: 0.5rem 0;
+}
+.card .card_title>span:nth-of-type(1){
+    font-size: 1rem;
+    color: #2D2D2D;
+}
+.card .card_title>span:nth-of-type(2){
+    font-size: 12px;
+    color: #8E8E8E;
+}
+.card ul.card_content{
+    width: 100%;
+}
+.card ul.card_content li{
+    width: 25%;
+    text-align: center;
+    height: 3.75rem;
+    float: left;
+    position: relative;
+}
+.card ul.card_content li img{
+    height: 1.47rem;
+    margin-bottom: 0.5rem;
+}
+.card ul.card_content li p{
+    font-size: 12px;
+    color: #2D2D2D;
+}
+.card ul.card_content li .num{
+    display: flex;
+    width: 1rem;
+    height: 1rem;
+    border: 1px solid;
+    box-sizing: border-box;
+    border-radius: 50%;
+    font-size: 1rem;
+    position: absolute;
+    top: -0.5rem;
+    left: 50%;
+    margin-left: 0.807rem;
+    justify-content: center;
+    align-items: center;
+}
+.card ul.card_content li .num span{
+    display: inline-block;
+    transform: scale(0.8);
+}
+.my_about{
+    width: 100%;
+    padding-bottom: 1.5625rem;
+}
+.flex_box{
+    width: 100%;
+    text-align: center;
+    padding-top: 1.5625rem;
+}
+.flex_box .flex_item{
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+.flex_box .flex_item img{
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+}
+.flex_box .flex_item p{
+    padding-top: 4px;
+    font-size: 12px;
+    color: #2D2D2D;
+}

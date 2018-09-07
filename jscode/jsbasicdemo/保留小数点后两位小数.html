@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function tofixed(num){
+            var num_ = Number(num);
+            //console.log(typeof num_);
+            //console.log(num_);
+            console.log(num_.toFixed(2));
+        }
+        function toFixed(num,len){ // 保留参数len位小数,参数是字符串数字或则数字
+            var ret = num + "";
+            if(ret){ // 0为false "0"为真   参数不为空
+            var num_ = Number(num);
+            ret = num_.toFixed(len); 
+            }
+            return ret;
+        }   
+        console.log(toFixed(0,2));
+        console.log(toFixed("12.456",2));
+        console.log(toFixed("12.45",2)); 
+    </script>
+</body>
+</html>

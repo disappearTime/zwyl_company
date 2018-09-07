@@ -1,0 +1,19 @@
+/*组件样式用样式 最好不要用子选择器，后代选择器 id选择器等*/
+.view_more_container{
+  width: 100%;
+  height: 90rpx;
+  padding: 0 40rpx 0 60rpx;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1rpx solid #ccc;
+}
+.text_content{
+  font-size: 24rpx;
+}
+.right_cursor{
+  width: 30rpx;
+  height: 30rpx;
+  flex-grow: 0;
+}

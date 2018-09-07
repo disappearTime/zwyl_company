@@ -1,0 +1,407 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>项目详情</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<script type="text/javascript" src="../js/h5.js"></script>
+	<link rel="stylesheet" href="../css/h5.css" />
+	<link rel="stylesheet" href="../css/mod.css" />
+</head>
+<style>
+.integration-case{
+	margin-top: 1.25rem;
+	color: #2d2d2d;
+}
+.integration-case__wrapper{
+	background: #f7f7f7;
+	padding:0.46875rem 0;
+	border-radius: 6px;
+	margin-top: .46875rem;
+}
+.integration-case__hd{
+	padding:0 .46875rem;
+	border-bottom: 1px solid #fff;	
+	padding-bottom: .375rem;
+}
+.integration-case__hd-tit{
+	font-size: .4375rem;
+	line-height: .625rem;
+}
+.integration-case__imgs{
+	width: 8.53125rem;
+	overflow-x: scroll;
+	margin-bottom: .3125rem;
+	font-size: .375rem;
+	border-bottom: 1px solid #fff;
+	padding-bottom: .46875rem;
+}
+.integration-case__imgs ul{
+	width: 15rem;
+	margin-top: .46875rem;
+	padding: 0 .46875rem;
+}
+.integration-case__imgs li{
+	float: left;
+	width: 3rem;
+	margin-right: .3125rem;
+}
+.integration-case__imgs li .img-wrapper{
+	height: 3rem;
+	border-radius: 6px;
+	overflow: hidden;
+	margin-bottom: .3125rem;
+}
+.integration-case__imgs li img{
+	width:100%;
+}
+.integration-case__ft{
+	padding: 0 .46875rem;
+}
+</style>
+<body>
+<div class="v-root" id="app">
+	<!--header-->
+	<header style="display:none;" class="v-head bg-drak">
+		<div class="v-head__in">
+			<div class="v-head__l left">
+				<span class="v-head__btn icon-back"></span>
+			</div>
+			<div class="v-head__m">
+				<h2 class="v-head__title">项目详情</h2>
+			</div>
+			<div class="v-head__r right"></div>
+		</div>
+	</header>
+
+	<div class="v-main v-main-goods">
+		<div class="goods-big">
+			<img src="../upload/goods-3.jpg" class="full-img">
+		</div>
+
+		<div class="group-buy pos-rel clear">
+			<div class="group-buy__heads ml20">
+				<span><img src="../upload/head-01.jpg"></span>
+				<span><img src="../upload/head-def.jpg"></span>
+				<span><img src="../upload/head-def.jpg"></span>
+			</div>
+			<div class="group-buy__info">
+				<div class="b group-buy__info-count">2人</div>
+				<div class="fs10">已参团人数</div>
+			</div>
+			<div class="group-buy__countdown pos-fr mr20">
+				<div class="fs12">团购截止时间</div>
+				<div class="group-buy__countdown-time">
+					<span>24</span> : <span>12</span> : <span>20</span>
+				</div>
+			</div>
+		</div>
+
+		<section class="goods__info">
+			<div class="goods__info-hd plr20 mt15">
+				<div class="goods__info-hd-tit fs16 lh25">
+					薇诺娜舒敏保湿丝滑面膜6片改善敏感肌肤护肤品泛红补水面膜男女
+				</div>
+				<div class="goods__info-hd-price pos-rel mt10 pb15 line-b">
+					<span class="c-red fs18 lh-1">￥399</span>
+					<span class="fs12 c-gray">折扣价</span>
+					<div class="pos-fr goods__info-hd-old-price">
+						<span class="fs12 c-gray">原价￥1900</span>
+					</div>
+				</div>
+			</div>
+			<div class="pos-rel pt10 pb10 ml20 mr20 line-b clear">
+				<div class="fl pos-rel mr10">
+					<span class="single-head">
+						<img src="../upload/head-01.jpg">
+					</span>
+					<span class="badge-v"></span>
+				</div>
+				<div class="fl lh">
+					<div><span class="fs14 mr10">张医生</span><span>主任医生</span></div>
+					<div class="c-gray">操作143 预约143 案例98 好评率92%</div>
+				</div>
+				<span class="arrow-r"></span>
+			</div>
+			<div class="goods__info-std pos-rel ml20 mr20 line-b">
+				<span class="fs14 b">服务地址</span>
+				<span class="c-gray fs14">北京</span>
+			</div>
+		</section>
+
+		<section class="group-step plr20">
+			<div class="b fs20 mb15">步骤说明</div>
+			<div class="group-step__legend"></div>
+		</section>
+
+		<section class="project-case plr20">
+			<div class="b fs20 mb15">项目案例</div>
+			<div class="project-case-item">
+				<div class="project-case-item__hd clear">
+					<div class="fl">
+						<div class="single-head mr10">
+							<img src="../upload/author.jpg" alt="">
+						</div>
+					</div>
+					<div class="fl">
+						<div class="fs14 b">Daniel Tan</div>
+						<div class="c-gray fs10 mt10">4小时前</div>
+					</div>
+					<div class="fr">
+						<button class="focus-btn"></button>
+					</div>
+				</div>
+				<div class="project-case-item__con">
+					又来更新了～～  宝宝们有木有想偶啦？现在术后有三个，现在处在比较稳定的阶段啦
+				</div>
+				<div class="project-case-item__tags clear">
+					<span class="project-case-item__tag">自有脂肪填充面部</span>
+					<span class="project-case-item__tag">隆鼻</span>
+					<span class="project-case-item__tag">开眼角</span>
+				</div>
+				<ul class="project-case-item__imgs">
+					<li><img src="../upload/mm3.jpg" alt=""></li>
+				</ul>
+				<div class="project-case-item__ft">
+					<span class="icon-nice">赞25</span>
+					<span class="icon-comment">评论245</span>
+				</div>
+			</div>
+			<div class="project-case-item">
+				<div class="project-case-item__hd clear">
+					<div class="fl">
+						<div class="single-head mr10">
+							<img src="../upload/author.jpg" alt="">
+						</div>
+					</div>
+					<div class="fl">
+						<div class="fs14 b">Daniel Tan</div>
+						<div class="c-gray fs10 mt10">4小时前</div>
+					</div>
+					<div class="fr">
+						<button class="focus-btn"></button>
+					</div>
+				</div>
+				<div class="project-case-item__con">
+					又来更新了～～  宝宝们有木有想偶啦？现在术后有三个，现在处在比较稳定的阶段啦
+				</div>
+				<div class="project-case-item__tags clear">
+					<span class="project-case-item__tag">自有脂肪填充面部</span>
+					<span class="project-case-item__tag">隆鼻</span>
+					<span class="project-case-item__tag">开眼角</span>
+				</div>
+				<ul class="project-case-item__imgs imgs-x2 clear">
+					<li><img src="../upload/mm1.jpg" alt=""><span class="compare-tag">Before</span></li>
+					<li><img src="../upload/mm2.jpg" alt=""><span class="compare-tag">After</span></li>
+				</ul>
+				<div class="project-case-item__ft">
+					<span class="icon-niced">赞25</span>
+					<span class="icon-comment">评论245</span>
+				</div>
+			</div>
+			<div class="project-case-item">
+				<div class="project-case-item__hd clear">
+					<div class="fl">
+						<div class="single-head mr10">
+							<li><img src="../upload/mm1.jpg" alt=""></li>
+						</div>
+					</div>
+					<div class="fl">
+						<div class="fs14 b">Daniel Tan</div>
+						<div class="c-gray fs10 mt10">4小时前</div>
+					</div>
+					<div class="fr">
+						<button class="focus-btn"></button>
+					</div>
+				</div>
+				<div class="project-case-item__con">
+					又来更新了～～  宝宝们有木有想偶啦？现在术后有三个，现在处在比较稳定的阶段啦
+				</div>
+				<div class="project-case-item__tags clear">
+					<span class="project-case-item__tag">自有脂肪填充面部</span>
+					<span class="project-case-item__tag">隆鼻</span>
+					<span class="project-case-item__tag">开眼角</span>
+				</div>
+				<ul class="project-case-item__imgs imgs-x3 clear">
+					<li><img src="../upload/mm2.jpg" alt=""></li>
+					<li><img src="../upload/head-01.jpg" alt=""></li>
+					<li><img src="../upload/mm1.jpg" alt=""></li>
+
+				</ul>
+				<div class="project-case-item__ft">
+					<span class="icon-niced">赞25</span>
+					<span class="icon-comment">评论245</span>
+				</div>
+			</div>						
+		</section>
+
+		<section class="comment plr20">
+			<div class="b fs20 mb15">用户评论</div>
+			<div class="comment-item">
+				<div class="comment-item__author pos-rel">
+					<span class="comment-item__author-icon">
+						<img src="../upload/author.jpg" alt="">
+					</span><span class="comment-item__author-name">Daniel Tan</span>
+					<div class="comment-item__time pos-fr">
+						<span class="c-gray">4小时前</span>
+					</div>
+				</div>
+				<div class="comment-item__content">
+					又来更新了～～  宝宝们有木有想偶啦？现在术后有三个，现在处在比较稳定的阶段啦
+				</div>
+				<div class="comment-item__op">
+					<span class="comment-item__op-item op-icon-like">20</span>
+					<span class="comment-item__op-item op-icon-report">举报</span>
+				</div>
+			</div>
+			<div class="comment-item">
+				<div class="comment-item__author pos-rel">
+					<span class="comment-item__author-icon">
+						<img src="../upload/author.jpg" alt="">
+					</span><span class="comment-item__author-name">Daniel Tan</span>
+					<div class="comment-item__time pos-fr">
+						<span class="c-gray">4小时前</span>
+					</div>
+				</div>
+				<div class="comment-item__content">
+					又来更新了～～  宝宝们有木有想偶啦？现在术后有三个，现在处在比较稳定的阶段啦
+				</div>
+				<div class="comment-item__op">
+					<span class="comment-item__op-item op-icon-like op-icon-liked">10</span>
+					<span class="comment-item__op-item op-icon-report">举报</span>
+				</div>
+				<div class="comment-item__reply">
+					<div class="comment-item__reply-item clear">
+						<div class="comment-item__reply-hd">
+							<span class="comment-item__reply-name">魅影</span>
+						</div>
+						<div class="comment-item__reply-con c-gray">送给了啵主一个我喜欢你。</div>
+					</div>
+					<div class="comment-item__reply-item clear">
+						<div class="comment-item__reply-hd">
+							<span class="comment-item__reply-name">田小美</span><strong>回复</strong><span class="comment-item__reply-name">小可爱</span>
+						</div>
+						<div class="comment-item__reply-con c-gray">喜欢你，真的。</div>
+					</div>
+					<div class="comment-item__reply-item clear">
+						<div class="comment-item__reply-hd">
+							<span class="comment-item__reply-name">田小美</span>
+						</div>
+						<div class="comment-item__reply-con c-gray">如果能够真的见到，和你一起看海哦。如果能够真的见到，和你一起看海哦。如果能够真的见到，和你一起看海哦。如果能够真的见到，和你一起看海哦。如果能够真的见到，和你一起看海哦。如果能够真的见到，和你一起看海哦。如果能够真的见到，和你一起看海哦。</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="integration-case plr20">
+			<div class="b fs20">一体化方案推荐</div>
+			<div class="integration-case__wrapper">
+				<div class="integration-case__hd">
+					<div class="integration-case__hd-tit">[一体化方案]混血小翘鼻 院长手术 下单送超级豪华面膜套装大礼包</div>
+					<div class="clear">
+						<div class="fl c-red fs18 mt5">￥16580</div>
+					</div>
+				</div>
+				<div class="integration-case__imgs clear">
+					<ul>
+						<li>
+							<div class="img-wrapper">
+								<img src="../upload/mm1.jpg" alt="">	
+							</div>
+							<div class="integration-case__imgs-tit">
+								混血小翘鼻
+							</div>
+						</li>
+						<li>
+							<div class="img-wrapper">
+									<img src="../upload/mm2.jpg" alt="">	
+							</div>
+							<div class="integration-case__imgs-tit">
+								混血小翘鼻
+							</div>
+						</li>
+						<li>
+							<div class="img-wrapper">
+									<img src="../upload/goods-1.jpg" alt="">	
+							</div>
+							<div class="integration-case__imgs-tit">
+								混血小翘鼻
+							</div>
+						</li>
+					</ul>
+				</div>
+				<div class="integration-case__ft clear">
+					<div class="fl fs14">一体化方案代金券</div>
+					<div class="fr c-red fs10">
+						<span>满500减30</span>
+						<span>满100减80</span>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<div class="goods-imgs plr20 mt20 pt20">
+			<div class="b fs20">项目介绍</div>
+			<img src="../upload/project-1.jpg" class="full-img">
+			<img src="../upload/project-2.jpg" class="full-img">
+		</div>
+		<section class="goods__buy-info plr20 pb20">
+			<div class="goods__buy-info-hd b">
+				购买须知
+			</div>
+			<div class="goods__buy-info-tit mt20 b">
+				消费流程
+			</div>
+			<div class="goods__buy-info-con">
+				广义的消费者购买决策是指消费者为了满足某种需求，在一定 的购买动机的支配下，在可供选择的两个或者两个以上的购买 方案中，经过分析、评价、选择并且实施最佳的购买方案，以 及购后评价的活动过程。
+			</div>
+			<div class="goods__buy-info-tit mt20 b">
+				消费须知
+			</div>
+			<div class="goods__buy-info-con">
+				广义的消费者购买决策是指消费者为了满足某种需求，在一定 的购买动机的支配下，在可供选择的两个或者两个以上的购买 方案中，经过分析、评价、选择并且实施最佳的购买方案，以 及购后评价的活动过程。
+			</div>
+		</section>
+	</div>
+	<div class="group-buy-bar pos-abs">
+		<div class="group-buy-bar__l w50">
+			<div class="group-buy-bar__tit">单人购买</div>
+			<div class="group-buy-bar__price">原价￥1399</div>
+		</div>
+		<div class="group-buy-bar__r pos-abs pos-fr w50">
+			<div class="group-buy-bar__tit">立即开团</div>
+			<div class="group-buy-bar__price">团购价￥399</div>
+		</div>
+	</div>
+	<div class="v-make"></div>
+	<div class="v-pop">
+		<div class="v-pop__goods pos-rel">
+			<span class="v-pop__goods-close">x</span>
+			<div class="v-pop__goods-img">
+				<img src="../upload/goods-2.jpg">
+			</div>
+			<div class="v-pop__goods-r pos-fr mt10">
+				<div class="v-pop__goods-price fs18 c-red b">￥2399</div>
+				<div class="v-pop__goods-price fs14 b mt10">已选: 6片装</div>
+			</div>
+		</div>
+		<div class="v-pop__goods-std plr20">
+			<div class="v-pop__goods-std-tit fs16 b mb15">产品规格</div>
+			<div class="v-pop__goods-std-items mt15">
+				<span class="current">6片装</span>
+				<span>10片装</span>
+			</div>
+		</div>
+		<div class="v-pop__goods-num plr20">
+			<div class="v-pop__goods-numt__tit fs16 b mb15">产品数量</div>
+			<div class="v-pop__goods-numt__set mt15">
+				<span class="num-btn">-</span>
+				<input type="text" value="1">
+				<span class="num-btn">+</span>
+			</div>
+		</div>
+		<a href="javascript: void(0)" class="v-pop__buy-btn bg-red tc fs16">立即购买</a>
+	</div>
+</div>
+</body>
+</html>

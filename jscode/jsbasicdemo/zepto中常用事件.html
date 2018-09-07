@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<meta content="telephone=no" name="format-detection" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html,body{
+            width: 100%;
+            height: 100%;
+        }
+        body{
+            overflow: hidden;
+            background: #eee;
+        }
+        button{
+            display: block;
+            margin: auto;
+            width: 90%;
+            height: 45px;
+            border: none;
+            background: skyblue;
+            color: #fff;
+            font-size: 16px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            position: relative;
+        }
+        .btn_box{
+            width: 100%;
+            height: 100%;
+            overflow: scroll;
+        }
+        .btn{
+            width: 100%;
+            height: 800px;
+        }
+        .fixed{
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 45px;
+            background: salmon;
+            color: #fff;
+            line-height: 45px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="btn_box">
+        <div class="btn">
+            <button class="tap">tap</button>
+            <button class="doubleTap">doubleTap</button>
+            <button class="hold">hold</button>
+        </div>
+    </div>
+    <div class="fixed">立即下载</div>
+    <script src="https://cdn.bootcss.com/zepto/1.1.6/zepto.min.js"></script>
+    <script src="https://cdn.bootcss.com/touchjs/0.2.14/touch.min.js"></script>
+    <script>
+        //使用absolute实现fixed定位效果，ios手机的safari浏览器fixed定位有问题。注意布局
+        // tap点击(没有300毫秒延迟) doubletap双击hold长按 swipeup向上滑动 swipedown向下滑动 swipeleft向左滑动 swiperight向右滑动
+        $('.tap').on('tap',function(){
+            console.log('tap')
+        })
+        $('.doubleTap').on('doubletap',function(){
+            console.log('doubletap')
+        })
+        $('.hold').on('hold',function(){
+            console.log('longtap')
+        })
+        // touch.on('body','swipeup',function(){
+        //     console.log('swipeup')
+        // })
+        $('body').on('swipeup',function(){ // 上下两种方式都一样
+            console.log('swipeup')
+        })
+        touch.on('body','swipedown',function(){
+            console.log('swipedown')
+        })
+        touch.on('body','swipeleft',function(){
+            console.log('swipeleft')
+        })
+        touch.on('body','swiperight',function(){
+            console.log('swiperight')
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,131 @@
+.search_box{
+  width: 90%;
+  height: 56rpx;
+  border: 1px solid #E3E3E3;
+  background: rgba(255,255,255,0.70);
+  border-radius: 10rpx;
+  position: absolute;
+  top: 20rpx;
+  left: 5%;
+  z-index: 2;
+}
+.search_box text{
+  font-size: 20rpx;
+  color: #ccc;
+  padding-left: 10rpx;
+}
+.search_box image{
+  height: 25rpx;
+  width: 25rpx;
+}
+.slide-image{
+  width: 100%;
+  height: 300rpx;
+}
+.activity_title{
+  padding: 30rpx 0;
+  text-align: center;
+}
+.activity_title image{
+  width: 148rpx;
+  height: 68rpx;
+}
+.activityCount{
+  font-size: 28rpx;
+  display: flex;
+  align-items: center;
+  padding-left: 20rpx;
+}
+.activityCount text{
+  color: #ffffff;
+  display: inline-block;
+  background: rgba(255, 102, 0, 1);
+  padding: 4rpx 10rpx;
+  border-radius: 6rpx;
+}
+.group{
+  width: 100%;
+  height: 516rpx;
+  overflow-y: hidden;
+  white-space: nowrap;
+  overflow-x: scroll;
+  -webkit-overflow-scrolling: touch;
+}
+.group_item{
+  width: 340rpx;
+  height: 516rpx;
+  padding: 30rpx;
+  box-sizing: border-box;
+  display: inline-block;
+  position: relative;
+  box-shadow: 0 0 17rpx 0 rgba(0,0,0,0.10); 
+}
+.group_item .project_img{
+  width: 100%;
+  height: 280rpx;
+  margin-bottom: 20rpx;
+}
+.group_item .project_name{
+  font-family: 'PingFangSC-Regular';
+  font-size: 28rpx;
+  color: #666666; 
+}
+.group_item .group_open{
+  width: 100%;
+  margin-top: 18rpx;
+}
+.group_item .group_people{
+  font-family: 'PingFangSC-Regular';
+  font-size: 24rpx;
+  color: #979797;
+  line-height: 24rpx;
+}
+.group_item .pay_price{
+  font-family: 'PingFangSC-Medium';
+  font-size: 36rpx;
+  color: #FF4948;
+  line-height: 36rpx;
+}
+.group_item .origin_price{
+  font-family: 'PingFangSC-Regular';
+  font-size: 24rpx;
+  color: #979797;
+  line-height: 24rpx;
+  text-decoration: line-through;
+}
+.group_item button{
+  width: 120rpx;
+  height: 56rpx;
+  margin: 0;
+  padding: 0;
+}
+.group_item .count_down{
+  position: absolute;
+  width: 116rpx;
+  height: 34rpx;
+  left: 0;
+  top: 29rpx;
+}
+.group_item .count_down image{
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.group_item .count_down text{
+  font-size: 20rpx;
+  color: #ffffff;
+  position: absolute;
+  top: 3rpx;
+}
+.group_item .count_down text.hour{
+  right: 82rpx;
+}
+.group_item .count_down text.minute{
+  right: 42rpx;
+}
+.group_item .count_down text.second{
+  right: 12rpx;
+}
+.sale{
+  width: 100%;
+}

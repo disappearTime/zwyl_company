@@ -1,0 +1,1188 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>项目详情</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<meta content="telephone=no" name="format-detection" />
+	<script type="text/javascript" src="../js/h5.js"></script>
+	<link rel="stylesheet" href="../css/h5.css" />
+	<link rel="stylesheet" href="../css/mod.css" />
+</head>
+<style>
+	.integration-case{
+		margin-top: 1.25rem;
+		color: #2d2d2d;
+	}
+	.integration-case__wrapper{
+		background: #f7f7f7;
+		padding:0.46875rem 0;
+		border-radius: 6px;
+		margin-top: .46875rem;
+	}
+	.integration-case__hd{
+		padding:0 .46875rem;
+		border-bottom: 1px solid #fff;
+		padding-bottom: .375rem;
+	}
+	.integration-case__hd-tit{
+		font-size: .4375rem;
+		line-height: .625rem;
+		word-break:break-all;
+
+	}
+	.integration-case__imgs{
+		width: 8.53125rem;
+		overflow-x: scroll;
+		margin-bottom: .3125rem;
+		font-size: .375rem;
+		border-bottom: 1px solid #fff;
+		padding-bottom: .46875rem;
+	}
+	.integration-case__imgs ul{
+		width:20rem;
+		margin-top: .46875rem;
+		padding: 0 .46875rem;
+		overflow:hidden;
+	}
+	.integration-case__imgs li{
+		float: left;
+		width: 3rem;
+		margin-right: .3125rem;
+	}
+
+	.integration-case__imgs li .integration-case__imgs-tit{
+		padding-top:0.2rem;
+		line-height:0.5rem;
+		margin-bottom:0.5rem;
+	}
+	.integration-case__imgs li .img-wrapper{
+		height: 3rem;
+		border-radius: 6px;
+		overflow: hidden;
+		margin-bottom: .3125rem;
+		display:table-cell;
+		vertical-align:middle;
+		background:rgba(0,0,0,0.13);
+		margin-bottom:20px;
+	}
+	.integration-case__imgs li img{
+		width:100%;
+		vertical-align:middle;
+	}
+	.integration-case__ft{
+		padding: 0 .46875rem;
+	}
+	#buyNow{
+		position: fixed;
+		left: 0;
+		bottom: 0;
+		line-height: 50px;
+		font-size: 18px;
+		z-index: 997;
+		width: 100%;
+		color: #fff;
+		background: #ce0f32;
+		text-align: center;
+	}
+	.choose_buy{
+		position: fixed;
+		left: 0;
+		bottom: 0;
+		z-index: 997;
+		width: 100%;
+		height: 50px;
+		background: #ffffff;
+	}
+	.choose_buy .buy_flex{
+		border-top: 1px solid #ccc;
+		width: 100%;
+		height: 100%;
+		display: -webkit-box;
+		display: -ms-flexbox;
+		display: flex;
+		-webkit-box-pack: justify;
+		-ms-flex-pack: justify;
+		justify-content: space-between;
+		-webkit-box-align: center;
+		-ms-flex-align: center;
+		align-items: center;
+	}
+	.buy_flex .subs, .buy_flex .buy_item{
+		height: 100%;
+		display: -webkit-box;
+		display: -ms-flexbox;
+		display: flex;
+	}
+	.buy_flex .subs{
+		width: 55%;
+		-webkit-box-orient: vertical;
+		-webkit-box-direction: normal;
+		-ms-flex-direction: column;
+		flex-direction: column;
+		padding-left: 10px;
+		-webkit-box-sizing: border-box;
+		box-sizing: border-box;
+		font-size: 12px;
+		color: #ccc;
+		-ms-flex-pack: distribute;
+		justify-content: space-around;
+	}
+	.buy_flex .subs p{
+		padding: 0;
+		margin: 0;
+	}
+	.buy_flex .buy_item{
+		width: 45%;
+		display: -webkit-box;
+		display: -ms-flexbox;
+		display: flex;
+		text-align: center;
+		-webkit-box-pack: justify;
+		-ms-flex-pack: justify;
+		justify-content: space-between;
+		-webkit-box-align: center;
+		-ms-flex-align: center;
+		align-items: center;
+	}
+	.buy_flex .buy_item>div{
+		width: 50%;
+		height: 100%;
+		font-size: 14px;
+		color: #ffffff;
+		line-height: 50px;
+	}
+	.buy_flex .buy_item .add_goods_cart{
+		background: #333;
+	}
+	.buy_flex .buy_item .pay_immediately{
+		background: #ce0f32;
+	}
+	.download{
+		width: 100%;
+		height: 100%;
+		position: fixed;
+		left: 0;
+		top: 0;
+		z-index: 1000;
+		background: rgba(0, 0, 0, 0.2);
+		display: none;
+	}
+	.download .download-card{
+		width: 100%;
+		height: 20.7%;
+		position: absolute;
+		bottom: 0;
+		background-color: #ffffff;
+		border-top-left-radius: 0.3rem;
+		border-top-right-radius: 0.3rem;
+		-webkit-box-sizing: border-box;
+		box-sizing: border-box;
+		text-align: center;
+	}
+	.download .download-card .close{
+		position: absolute;
+		width: 0.5rem;
+		top: 0.5rem;
+		right: 0.5rem;
+	}
+	.download .download-card p{
+		padding: 0.625rem 0 0.65rem 0;
+	}
+	.download .download-card button{
+		width: 3.675rem;
+		height: 0.975rem;
+		border: none;
+		border-radius: 0.4675rem;
+		background: #ce0f31;
+		color: #ffffff;
+	}
+	.count_down{
+		width: 100%;
+		height: 1.333333rem;
+		background: url(../images/group-buy_bg.png) no-repeat center center;
+		background-size: cover;
+		display: none;
+	}
+	.count_down .right_time{
+		height: 100%;
+		width: 50%;
+		padding-right: 5px;
+		float: right;
+		position: relative;
+		color: #ffffff;
+	}
+	.count_down .right_time .count_down_title{
+		position: absolute;
+		color: #ffffff;
+		height: 0.34rem;
+		right: 5px;
+		top: 0.2rem;
+	}
+	.count_down .right_time .count_down_box{
+		position: absolute;
+		bottom: 0.15rem;
+		right: 5px;
+	}
+	.count_down .right_time .count_down_box span{
+		display: inline-block;
+		background: #ffffff;
+		color: #ce0f32;
+		border-radius: 3px;
+		font-size: 12px;
+		font-weight: 600;
+	}
+	.goods__buy-info{
+		padding-bottom: 50px!important;
+	}
+	.project-case-item__imgs img{
+		width: 100%;
+		height: 100%;
+	}
+</style>
+<body>
+	<div class="my_warp">
+			<div class="v-root" id="app">
+					<!--header-->
+				
+					<div class="my_head" style="display: none">
+							<a href="../../login.html"><span class="loginBtn">贴换账号</span></a>
+							
+						<img src="###" id="currentImg" ><label id="currentName" >spring698</label> 
+					</div> 
+
+					<header style="display:none;" class="v-head bg-drak">
+						<div class="v-head__in">
+							<div class="v-head__l left">
+								<span class="v-head__btn icon-back" onclick="back()"></span>
+							</div>
+							<div class="v-head__m">
+								<h2 class="v-head__title">项目详情</h2>
+							</div>
+							<div class="v-head__r right"></div>
+						</div>
+					</header>
+				
+					<div class="v-main v-main-goods">
+						<div class="goods-big">
+							<img src="../upload/goods-3.jpg" class="full-img">
+						</div>
+						<div class="count_down">
+							<div class="right_time">
+								<div class="count_down_title">活动开始时间</div>
+								<div class="count_down_box" >
+									<span id="day">24</span> : <span id="min">12</span> : <span id="second">20</span>
+								</div>
+							</div>
+						</div>
+						
+				
+						<section class="goods__info">
+							<div class="goods__info-hd plr20 mt15">
+								<div class="goods__info-hd-tit fs16 lh25">
+									
+								</div>
+								<div class="goods__info-hd-price pos-rel mt10 pb15 line-b">
+									<span class="c-red fs18 lh-1 myadd">￥399</span>
+									<span class="fs12 c-gray zhekou" style="text-decoration: line-through;"></span>
+									<div class="pos-fr goods__info-hd-old-price">
+										<span class="fs12 c-gray yuyue"></span>
+									</div>
+								</div>
+							</div>
+							<div class="pos-rel pt10 pb10 ml20 mr20 line-b clear doctor">
+								<div class="fl pos-rel mr10">
+									<span class="single-head">
+										<img src="../upload/head-01.jpg">
+									</span>
+									<span class="badge-v"></span>
+								</div>
+								<div class="fl lh">
+									<!--<div><span class="fs14 mr10">张医生</span><span>主任医生</span></div>
+									<div class="c-gray">操作143 预约143 案例98 好评率92%</div>-->
+								</div>
+								<span class="arrow-r" onclik=""></span>
+							</div>
+							<div class="goods__info-std pos-rel ml20 mr20 line-b">
+								<span class="fs14 b">服务地址</span>
+								<!--<span class="c-gray fs14">北京</span>-->
+							</div>
+						</section>
+				
+						<section class="group-step plr20" style="display:none">
+							<div class="b fs20 mb15">步骤说明</div>
+							<div class="group-step__legend"></div>
+						</section>
+				
+						<section class="project-case plr20">
+							<div class="b fs20 mb15">项目案例</div>
+							<div class="project-list">
+								<!-- <div class="project-case-item">
+									<div class="project-case-item__hd clear">
+										<div class="fl">
+											<div class="single-head mr10">
+												<img src="../upload/author.jpg" alt="">
+											</div>
+										</div>
+										<div class="fl">
+											<div class="fs14 b">Daniel Tan</div>
+											<div class="c-gray fs10 mt10">4小时前</div>
+										</div>
+										<div class="fr">
+											<button class="focus-btn"></button>
+										</div>
+									</div>
+									<div class="project-case-item__con">
+										又来更新了～～ 宝宝们有木有想偶啦？现在术后有三个，现在处在比较稳定的阶段啦
+									</div>
+									<div class="project-case-item__tags clear">
+										<span class="project-case-item__tag">自有脂肪填充面部</span>
+										<span class="project-case-item__tag">隆鼻</span>
+										<span class="project-case-item__tag">开眼角</span>
+									</div>
+									<ul class="project-case-item__imgs">
+										<li><img src="../upload/mm3.jpg" alt=""></li>
+									</ul>
+									<div class="project-case-item__ft">
+										<span class="icon-nice">赞25</span>
+										<span class="icon-comment">评论245</span>
+									</div>
+								</div> -->
+							
+								
+							</div>
+						</section>
+				
+						<section class="comment plr20">
+							<div class="b fs20 mb15">用户评论</div>
+							<div id="comments">
+				
+				
+				
+				
+							</div>
+				
+							<!--<div class="comment-item">
+								<div class="comment-item__author pos-rel">
+									<span class="comment-item__author-icon">
+										<img src="../upload/author.jpg" alt="">
+									</span><span class="comment-item__author-name">Daniel Tan</span>
+									<div class="comment-item__time pos-fr">
+										<span class="c-gray">4小时前</span>
+									</div>
+								</div>
+								<div class="comment-item__content">
+									又来更新了～～  宝宝们有木有想偶啦？现在术后有三个，现在处在比较稳定的阶段啦
+								</div>
+								<div class="comment-item__op">
+									<span class="comment-item__op-item op-icon-like">23</span>
+									<span class="comment-item__op-item op-icon-report">举报</span>
+								</div>
+							</div>-->
+				
+				
+				
+						</section>
+						<section class="integration-case plr20" style="display:none;">
+							<div class="b fs20 mg20">一体化方案推荐</div>
+							<div class="integration-case__wrapper">
+								<div class="integration-case__hd">
+									<div class="integration-case__hd-tit">[一体化方案]混血小翘鼻 院长手术 下单送超级豪华面膜套装大礼包</div>
+									<div class="clear">
+										<div class="fl c-red fs18 mt5">￥16580</div>
+									</div>
+								</div>
+								<div class="integration-case__imgs clear">
+									<ul>
+										
+									</ul>
+								</div>
+								<!--<div class="integration-case__ft clear">
+									<div class="fl fs14">一体化方案代金券</div>
+									<div class="fr c-red fs10">
+										<span>满500减30</span>
+										<span>满100减80</span>
+									</div>
+								</div>-->
+							</div>
+						</section>
+				
+						<div class="goods-imgs plr20 mt20 pt20">
+							<div class="b fs20 mb20">项目介绍</div>
+							<div class="traitImg">
+								<img src="../upload/project-1.jpg" class="full-img">
+								<img src="../upload/project-2.jpg" class="full-img">
+							</div>
+						</div>
+						<!--<div class="goods-imgs plr20">
+							<img src="../upload/detail-2.jpg" class="full-img">
+							<img src="../upload/detail-3.jpg" class="full-img">
+						</div>-->
+						<section class="goods__buy-info plr20" id="activityBox" style="display: none">
+							<div class="goods__buy-info-hd b">
+								购买须知
+							</div>
+							<!-- <div class="goods__buy-info-tit mt20 b">
+								消费流程
+							</div> -->
+							<div class="goods__buy-info-con mb10">
+								1.为保证活动的顺利进行，参与用户须确保已年满18周岁，具备完全民事行为能力。用户须妥善保管自己的用户名、密码等注册信息，因注册信息有误、遗忘遗失密码造成用户损失的，不承担任何责任。
+							</div>
+							<div class="goods__buy-info-con mb10">
+								2.此次活动的参与用户必须与实际购买人一致。
+
+							</div>
+							<div class="goods__buy-info-con mb10">
+								3.活动期间，因参与用户操作不当或参与用户所在区域网络故障、电信运营商故障等非本医疗投资集团所能控制的原因导致的参与用户无法参与活动、或者参与失败，本医疗投资集团不予负责。
+							</div>
+							<div class="goods__buy-info-con mb10">
+								4.在法律允许的范围内，本医疗投资集团有权决定取消、终止、修改或暂停本活动，本医疗投资集团无需为此承担赔偿责任或进行任何形式的补偿。
+							</div>
+							<div class="goods__buy-info-con mb10">
+								5.本次活动如价格或优惠政策有调整，请以到院实际价格或优惠政策为准。
+							</div>
+						</section>
+
+						<section class="goods__buy-info plr20" id="noActivityBox" style="display: none">
+							<div class="goods__buy-info-hd b">
+								购买须知
+							</div>
+							<!-- <div class="goods__buy-info-tit mt20 b">
+								消费流程
+							</div> -->
+							<div class="goods__buy-info-con mb10">
+								1.在预约手术时间时，不可预约当日的手术，预约时间为次日至3个月内的时间。
+
+							</div>
+							<div class="goods__buy-info-con mb10">
+								2.预约时要准确无误的填写手机号码及所需相关信息，以保证到院治疗的信息与网上预约的信息一致。
+
+
+							</div>
+							<div class="goods__buy-info-con mb10">
+								3.网上支付预约金后，app会下发唯一的产品预约码短信到您的手机，到院需扫描预约二维码进行身份及预约项目确认，在您的项目内容、项目价格及项目时间未与医院达成一致前，请勿将预约码泄露给医院或其他人，以保障自己的合法权益。
+							</div>
+							
+						</section>
+					</div>
+					<!--<div class="group-buy-bar pos-abs">
+						<div class="group-buy-bar__l w50">
+							<div class="group-buy-bar__tit">单人购买</div>
+							<div class="group-buy-bar__price">原价￥1399</div>
+						</div>
+						<div class="group-buy-bar__r pos-abs pos-fr w50">
+							<div class="group-buy-bar__tit">立即开团</div>
+							<div class="group-buy-bar__price">团购价￥399</div>
+						</div>
+					</div>-->
+					<!-- <div class="v-make"></div>
+					<div class="v-pop">
+						<div class="v-pop__goods pos-rel">
+							<span class="v-pop__goods-close">x</span>
+							<div class="v-pop__goods-img">
+								<img src="../upload/goods-2.jpg">
+							</div>
+							<div class="v-pop__goods-r pos-fr mt10">
+								<div class="v-pop__goods-price fs18 c-red b">￥2399</div>
+								<div class="v-pop__goods-price fs14 b mt10">已选: 6片装</div>
+							</div>
+						</div>
+						<div class="v-pop__goods-std plr20">
+							<div class="v-pop__goods-std-tit fs16 b mb15">产品规格</div>
+							<div class="v-pop__goods-std-items mt15">
+								<span class="current">6片装</span>
+								<span>10片装</span>
+							</div>
+						</div>
+						<div class="v-pop__goods-num plr20">
+							<div class="v-pop__goods-numt__tit fs16 b mb15">产品数量</div>
+							<div class="v-pop__goods-numt__set mt15">
+								<span class="num-btn">-</span>
+								<input type="text" value="1">
+								<span class="num-btn">+</span>
+							</div>
+						</div>
+						<a href="javascript: void(0)" class="v-pop__buy-btn bg-red tc fs16 ">立即购买</a>
+					</div> -->
+					<div style="display: none;" class="bg-red w100 c-fff tc goumaim" id="pay-btn">加入购物车</div>
+					<div style="display: none;" id="buyNow">立即购买</div>
+					<div class="choose_buy">
+						<div class="buy_flex">
+							<div class="subs">
+								<p>预约金：<span class="ready_price"></span></p>
+								<p>到店再付：<span class="arrival_price"></span></p>
+							</div>
+							<div class="buy_item">
+								<div class="add_goods_cart">加入购物车</div>
+								<div class="pay_immediately">支付预约金</div>
+							</div>
+						</div>
+					</div>
+				
+				
+					 <!-- 复制链接下载弹框-->
+					<div class="mask" style="display:none" id="my_mask"></div>
+					<div class="zkq_popup" style="display:none" id="my_popup">
+						<div class="popup_con" style="text-align:center;">
+							<div class="msg">更多操作请长按下方二维码下载APP</div>
+							<div class="msg" style="background:#eee;border-radius: 4px;padding:10px 0;">
+								<img class="img_code" style="width: 130px;" src="" alt="">
+							</div>
+							<div onclick="hidePop()" class="close_" style="display:inline-block;width:30px;height:30px;border-radius:50%;background:rgba(0,0,0,0.3);margin-top:10px;">
+								<img style="width:100%;" src="../images/close.png" alt="">
+							</div>
+						</div>
+					</div>
+					<div class="download">
+						<div class="download-card">
+							<img class="close" src="../../images/close_.png" alt="">
+							<p>下载<span class="appName"></span>APP,美丽从此开始</p>
+							<button onclick="download_app()" type="button">立即下载</button>
+						</div>
+					</div>
+					<div class="loading"></div>
+				
+				</div>
+
+
+	</div>
+
+<script src="../../js/zepto.js"></script>
+<script src="../../js/api.js"></script>
+<script src="../../js/common.js"></script>
+<script>
+	// 缓存参数 在支付成功页面查询支付结果失败时使用
+	var urlStr = window.location.href;
+	var strUrl=urlStr.split("?")[1];
+	window.localStorage.setItem('activityParam',strUrl);
+
+
+	var currentUser=window.localStorage.getItem('userId');
+	
+
+	if(currentUser){
+       // $('.my_head').show()
+	}else{
+        $('.my_head').hide()
+	}
+
+	//获取头部用户信息；
+	$.ajax({
+		url:host+'/client/client/user/userDetailInfo',
+		data:{
+			userId:currentUser
+		},
+		type:'post',
+		dataType:'json',
+		success:function(res){
+			if(res.resultCode==200){
+				var s=res.resultInfo.userImgUrl;
+				var n=res.resultInfo.userName;
+				    n= hidePhone(n)
+			   $('#currentImg').attr('src',s )
+			   $('#currentName').text(n)
+			}else{
+				alert(res.resultMsg)
+			}
+		}
+	})
+
+
+	$('.buy_notice').html(platFormName);
+	function hidePop(){
+		$('#my_popup').hide();
+		$('#my_mask').hide();
+	}
+	function getPhoneType(){ // 获取手机类型
+		var phoneType = '';
+		var u = navigator.userAgent;
+		if(u.indexOf('Android') > -1 || u.indexOf('Adr') > -1 ){
+			phoneType = 'android'
+		}else if(!!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/)){
+			phoneType = 'ios'
+		};
+		return phoneType;
+    }
+	//封装的方法
+	window.toolFunc = {
+		setupWebViewJavascriptBridge: function (callback) {
+			if (window.WebViewJavascriptBridge) {
+				return callback(WebViewJavascriptBridge);
+			} else {
+				document.addEventListener(
+						'WebViewJavascriptBridgeReady'
+						, function () {
+							callback(WebViewJavascriptBridge)
+						},
+						false
+				);
+			}
+			if (window.WVJBCallbacks) {
+				return window.WVJBCallbacks.push(callback);
+			}
+			window.WVJBCallbacks = [callback];
+			var WVJBIframe = document.createElement('iframe');
+			WVJBIframe.style.display = 'none';
+			WVJBIframe.src = 'https://__bridge_loaded__';
+			document.documentElement.appendChild(WVJBIframe);
+			setTimeout(function () {
+				document.documentElement.removeChild(WVJBIframe)
+			}, 0)
+		},
+
+	};
+
+
+	var projectId=GetQueryString(projectId);
+	var urlStr = window.location.href;
+	if (urlStr.indexOf("?") != -1) {
+		var urlStr = urlStr.substr(urlStr.indexOf("?") + 1);
+		var strs = urlStr.split("&");
+		var tempArr = strs[0].split("=");
+		var projectId = window.decodeURIComponent(tempArr[1]).replace(/(\d{4})\/(\d{2})\/(\d{2})\s+(\d{2})-(\d{2})-(\d{2})/g, "$1-$2-$3 $4:$5:$6");
+		console.log(projectId);
+		console.log(typeof projectId);
+		detailBack(projectId);
+		comment(projectId);
+	}
+
+	/*获取url参数*/
+	function GetQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return unescape(r[2]);
+        return null;
+    }
+	var shareUserId;
+	if(GetQueryString('userId')){
+		shareUserId = GetQueryString('userId')
+	}
+	/*立即购买*/
+	function purchase(that) {
+		window.location.href="../login.html?projectId="+projectId;
+	}
+	/*详情背景*/
+	function detailBack(proId) {
+		//proId="75229400233975537329";//测试数据
+		$.ajax({
+			url:host+"/client-shopping/html/project/oneProjectDetails",
+			type:"POST",
+			contentType:"application/x-www-form-urlencoded",
+			data:{
+				projectId:proId
+			},
+			success:function (data) {
+				if(data.resultCode==200){
+					var result=data.resultInfo[0];
+
+					var project=result.project;
+					if(project.projectImg){
+						var bg=$('<img class="full-img" src="'+project.projectImg+'">');
+						$('.v-main .goods-big').empty().append(bg);
+					}
+
+					var nowUserNum=result.nowUserNum;
+					var userNum=$('<div class="b group-buy__info-count">目前已团'+nowUserNum+'份</div>');
+					$('.v-main .group-buy__info').empty().append(userNum);
+					var endTime = result.endTime;
+					var nowTime = new Date().getTime();
+					var startTime = result.startTime;
+					var projectName=project.projectName;
+					var projectReadyPrice_pay = project.projectReady?project.projectReady:0; // 需要支付的预约金，参与活动的
+					$('.goods__info .goods__info-hd').append($('<div class="goods__info-hd-tit fs16 lh25">'+projectName+'</div>'));
+					$('.goods__info-hd-tit').html(projectName)
+					var price= $('.goods__info .goods__info-hd-price');
+					/*项目价格 如果是满减，取projectPrices 如果不是满减，而是其他活动取activityPrice，如果项目没有参与活动，取projectPrices*/
+					var project_real_price;
+					if(result.activityType){ // 项目参与过活动，且还没有过期或下架
+						if(nowTime < startTime){ // 活动未开始
+							$('.count_down_title').html('活动开始时间');
+							project_real_price = project.projectPrices?project.projectPrices:0;
+							projectReadyPrice_pay = project.projectReadyPrice?project.projectReadyPrice:0;
+							var timing = startTime;
+							var count = 0;
+							var timer = setInterval(function(){
+								var now_time = new Date().getTime();
+								if(now_time>startTime){
+									++count;
+									if(result.activityType == '243001'){
+										project_real_price = project.projectPrices?project.projectPrices:0;
+									}else{
+										project_real_price = result.activityPrice?result.activityPrice:0;
+									}
+									
+									projectReadyPrice_pay = project.projectReady?project.projectReady:0;
+									if(count <= 1){
+										var projectReadyPrice_r = toFixed_len(projectReadyPrice_pay,2);
+										$('.ready_price').html('￥'+projectReadyPrice_r);
+										var arrival_price_r = project_real_price - projectReadyPrice_pay;
+										arrival_price_r = toFixed_len(arrival_price_r,2);
+										$('.arrival_price').html('￥'+arrival_price_r);
+
+									}
+									timing = endTime;
+									var html = $('.count_down_title').html();
+									if(html == '活动开始时间'){
+										$('.count_down_title').html('活动截止时间');
+									}
+								}
+								count_Down(timing)
+							},1000)
+						}else{ // 活动期间
+							$('.count_down_title').html('活动截止时间');
+							if(result.activityType == '243001'){ // 项目参与满减显示原价
+								project_real_price = project.projectPrices?project.projectPrices:0;
+							}else{
+								project_real_price = result.activityPrice?result.activityPrice:0;
+							};
+
+
+							var timer = setInterval(function(){
+								var now_time = new Date().getTime();
+								if(now_time>=endTime){
+									clearInterval(timer);
+									project_real_price = project.projectPrices?project.projectPrices:0;
+									projectReadyPrice_pay = project.projectReady?project.projectReady:0;
+									var arrival_price_r = project_real_price - projectReadyPrice_pay;
+									arrival_price_r = toFixed_len(arrival_price_r,2);
+									$('.arrival_price').html('￥'+arrival_price_r);
+									$('.count_down').html('活动已过期');
+								}
+							},1000)
+						}
+						$('.count_down').show();
+						$('#noActivityBox').hide();
+						$('#activityBox').show();
+					}else{ // 项目未参与过活动或活动已过期或下架
+						$('.count_down').hide();
+						$('#noActivityBox').show();
+						$('#activityBox').hide();
+						project_real_price = project.projectPrices?project.projectPrices:0;
+					}
+					var project_real_price_ = toFixed_len(project_real_price,2);
+					$('.myadd').html('￥'+project_real_price_);
+					// if(result.activityType == "243003"){ 
+					// 	var proPrice = project.projectPrices?project.projectPrices:0;
+					// 	proPrice = toFixed_len(proPrice,2)
+					// 	$('.myadd').html('￥'+proPrice);
+					// }else{
+					// 	var act_price = result.activityPrice?result.activityPrice:0;
+					// 	act_price = toFixed_len(act_price,2)
+					// 	$('.myadd').html('￥'+act_price);
+					// }
+					/*预约金*/
+					var projectReadyPrice = project.projectReady?project.projectReady:0; // 预约金 项目最原始的预约金，没有参与活动的
+					var projectReadyPrice_ = toFixed_len(projectReadyPrice_pay,2);
+					$('.ready_price').html('￥'+projectReadyPrice_);
+					if(projectReadyPrice>0){
+						$('.pay_immediately').html('支付预约金');
+					}else{
+						$('.pay_immediately').html('付全款');
+					}
+					/*到店支付*/
+					var arrival_price = project_real_price - projectReadyPrice_pay;
+					arrival_price = toFixed_len(arrival_price,2);
+					$('.arrival_price').html('￥'+arrival_price);
+					// var nowPrice=result.activityPrice || project.projectPrices;
+					// nowPrice = toFixed_len(nowPrice,2)
+					// $('.myadd').html('￥'+nowPrice);
+
+
+					// $('.myadd').html('￥'+project.projectPrices);
+					var projectBeforePrices = project.projectBeforePrices?project.projectBeforePrices:0;
+					projectBeforePrices = toFixed_len(projectBeforePrices,2)
+					$(".yuyue").html("已预约"+project.projectReserve+'人')
+					$(".zhekou").html('￥'+projectBeforePrices)
+					/*预约医生*/
+					var doctor=result.doctor;
+					var doctorInfo=$('.goods__info .doctor');
+
+					doctorInfo.empty();
+
+					doctorInfo.append($('<div class="fl pos-rel mr10">'+
+							'<span class="single-head">'+
+							'<img src="'+doctor.doctorImgUrl+'">'+
+							'</span>'+
+							'<span class="badge-v"></span>'+
+							'</div>'));
+
+					doctorInfo.append($('<div class="fl lh">'+
+							'<div><span class="fs14 mr10">'+doctor.doctorName+'</span><span>'+doctor.doctorPosition+'</span></div>'+
+							'<div class="c-gray">'+' 预约'+doctor.doctorReserveCount+' 案例'+doctor.caseNum+' 好评率'+doctor.goodRate+'</div>'+
+					'</div>'));
+
+					doctorInfo.append('<span class="arrow-r" onclick="goDownLoad()"></span>');
+
+
+					/*服务地址*/
+					$('.goods__info .goods__info-std').append($('<span class="c-gray fs14">'+result.serviceAddress+'</span>'));
+
+					/*项目案例*/
+					var diary=result.diary;
+					var projectLists=$('.project-case .project-list');
+					projectLists.empty();
+					if(diary.length){
+						for(var i=0;i<diary.length;i++){
+							var diaryObj=diary[i];
+							var oneCase=null;
+							var diaryBeforeImgArr = [];
+							var diaryBeforeImg_ = diaryObj.diaryBeforeImg;
+							if(diaryBeforeImg_){
+								if(diaryBeforeImg_.indexOf(';')>-1){ // 多张
+									var diaryBeforeImg_arr = diaryBeforeImg_.split(';');
+									for(var k=0;k<diaryBeforeImg_arr.length;k++){
+										diaryBeforeImgArr.push(diaryBeforeImg_arr[k])
+									}
+								}else{
+									diaryBeforeImgArr.push(diaryBeforeImg_)
+								}
+							}
+							var diaryBeforeImg_str = '';
+							if(diaryBeforeImgArr.length>0){ // 术前术后照都只显示第一张
+								// for(var n=0;n<diaryBeforeImgArr.length;n++){
+								// 	diaryBeforeImg_str+= '<li><img src="'+ diaryBeforeImgArr[n] +'" alt=""><span class="compare-tag">Before</span></li>'
+								// }
+								diaryBeforeImg_str = '<li><img src="'+ diaryBeforeImgArr[0] +'" alt=""><span class="compare-tag">Before</span></li>'
+							}
+							var diaryAfterImgArr = [];
+							var diaryAfterImg_ = diaryObj.diaryAfterImg;
+							if(diaryAfterImg_){
+								if(diaryAfterImg_.indexOf(';')>-1){ // 多张
+									var diaryAfterImg_arr = diaryAfterImg_.split(';');
+									for(var k=0;k<diaryAfterImg_arr.length;k++){
+										diaryAfterImgArr.push(diaryAfterImg_arr[k])
+									}
+								}else{
+									diaryAfterImgArr.push(diaryAfterImg_)
+								}
+							}
+							var diaryAfterImg_str = '';
+							if(diaryAfterImgArr.length>0){
+								// for(var n=0;n<diaryAfterImgArr.length;n++){
+								// 	diaryAfterImg_str+= '<li><img src="'+diaryAfterImgArr[n]+'" alt=""><span class="compare-tag">After</span></li>'
+								// }
+								diaryAfterImg_str = '<li><img src="'+diaryAfterImgArr[0]+'" alt=""><span class="compare-tag">After</span></li>'
+							}
+							if(diaryObj.diaryFileType==202001){
+								oneCase=$('<div class="project-case-item">'+
+										'<div class="project-case-item__hd clear">'+
+										'<div class="fl">'+
+										'<div class="single-head mr10">'+
+										'<img src="'+diaryObj.userImg+'" alt="">'+
+										'</div>'+
+										'</div>'+
+										'<div class="fl">'+
+										'<div class="fs14 b">'+diaryObj.userName+'</div>'+
+										'<div class="c-gray fs10 mt10">'+diaryObj.createTime+'</div>'+
+										'</div>'+
+										'<div class="fr">'+
+	//								'<button class="focus-btn"></button>'+
+										'</div>'+
+										'</div>'+
+										'<div class="project-case-item__con">'+diaryObj.diaryInfo +'</div>'+
+										'<div class="project-case-item__tags clear">'+
+										'<span class="project-case-item__tag">自有脂肪填充面部</span>'+
+										'<span class="project-case-item__tag">隆鼻</span>'+
+										'<span class="project-case-item__tag">开眼角</span>'+
+										'</div>'+
+										'<ul class="project-case-item__imgs imgs-x2 clear">'+
+										diaryBeforeImg_str +
+										diaryAfterImg_str+
+										'</ul>'+
+										/*'<div class="project-case-item__ft">'+
+										'<span class="icon-nice">赞25</span>'+
+										'<span class="icon-comment">评论245</span>'+
+										'</div>'+*/
+										'</div>');
+							}else if(diaryObj.diaryFileType==202001){
+								oneCase=$('<div class="project-case-item">'+
+										'<div class="project-case-item__hd clear">'+
+										'<div class="fl">'+
+										'<div class="single-head mr10">'+
+										'<img src="'+diaryObj.userImg+'" alt="">'+
+										'</div>'+
+										'</div>'+
+										'<div class="fl">'+
+										'<div class="fs14 b">'+diaryObj.userName+'</div>'+
+										'<div class="c-gray fs10 mt10">'+diaryObj.createTime+'</div>'+
+										'</div>'+
+										'<div class="fr">'+
+	//								'<button class="focus-btn"></button>'+
+										'</div>'+
+										'</div>'+
+										'<div class="project-case-item__con">'+diaryObj.diaryInfo +'</div>'+
+										'<div class="project-case-item__tags clear">'+
+										'<span class="project-case-item__tag">自有脂肪填充面部</span>'+
+										'<span class="project-case-item__tag">隆鼻</span>'+
+										'<span class="project-case-item__tag">开眼角</span>'+
+										'</div>'+
+										'<ul class="project-case-item__imgs">'+
+										'<li><img src="'+diaryObj.diaryFileUrl+'" alt=""></li>'+
+										'</ul>'+
+										/*'<div class="project-case-item__ft">'+
+										'<span class="icon-nice">赞25</span>'+
+										'<span class="icon-comment">评论245</span>'+
+										'</div>'+*/
+										'</div>');
+							}	
+							projectLists.append(oneCase);
+						}
+                    }else{
+						projectLists.empty().html('暂无数据...');
+					};
+
+					/*一体化方案推荐*/
+
+					/*
+					var recommend=result.recommendScheme[0];
+					var recommendDiv=$('.integration-case .integration-case__wrapper');
+					recommendDiv.empty();
+					var recommendHead=$('<div class="integration-case__hd">'+
+						'<div class="integration-case__hd-tit"><b>[一体化方案]+</b><span>'+recommend.schemeName+'</span><img src="'+recommend.schemeDescription+'" width="100%"/></div>'+
+					'<div class="clear">'+
+							'<div class="fl c-red fs18 mt5">￥'+recommend.schemePrice+'</div>'+
+							'</div>'+
+							'</div>');
+
+					var recommendMain=$('<div class="integration-case__imgs clear"></div>');
+					var projects=recommend.projects;
+					recommendMain.empty();
+					recommendMain.append($('<ul class="intergration-case-list" id="rec-project"></ul>'));
+					recommendDiv.append(recommendHead);
+					recommendDiv.append(recommendMain);
+					//recommendDiv.append(recommendMain);
+					var len=projects.length;
+					var recommendList=$('.integration-case__imgs .intergration-case-list');
+					$('#rec-project').css('width',3.65*len+'rem')
+
+
+					for(var k=0;k<projects.length;k++){
+						var oli=$('<li>'+
+								'<div class="img-wrapper">'+
+								'<img src="'+projects[k].projectImg.split(';')[0]+'" alt="" >'+
+								'</div>'+
+								'<div class="integration-case__imgs-tit">'+ projects[k].projectName+'</div>'+
+								'</li>');
+						recommendList.append(oli);
+					}
+					*/
+
+
+					/*项目介绍*/
+					var projectTraitImg=result.project.projectInfo;
+					//$('.goods-imgs .traitImg').empty().append($('<img src="'+projectTraitImg+'" class="full-img">'));
+					$('.goods-imgs .traitImg').empty().html(projectTraitImg)
+
+					$('.loading').hide();
+				}
+			},
+			error:function (data) {
+				console.log(data);
+			}
+
+		});
+	}
+
+
+
+	/*用户评论*/
+	function comment(proId) {
+		//proId="75229400233975537329";//测试数据
+
+		$.ajax({
+			url:host+"/client-shopping/html/project/queryOrderComment",
+			type:"POST",
+			contentType:"application/x-www-form-urlencoded",
+			data:{
+				projectId:proId
+			},
+			success:function (data) {
+				if(data.resultCode==200){	
+					var result=data.resultInfo;
+					//var lists=$('#comments');
+					//lists.empty();
+					if(result.length){
+						for(var i=0;i<result.length;i++){
+						var commentObj=result[i];
+						var oneComment=$('<div class="comment-item">'+
+								'<div class="comment-item__author pos-rel">'+
+								'<span class="comment-item__author-icon">'+
+								'<img src="'+commentObj.userImg+'" alt="">'+
+								'</span><span class="comment-item__author-name">'+commentObj.userName+'</span>'+
+						'<div class="comment-item__time pos-fr">'+
+								'<span class="c-gray">'+new Date(commentObj.createTime).toLocaleString()+'</span>'+
+						'</div>'+
+						'</div>'+
+						'<div class="comment-item__content">'+commentObj.commentInfo+'</div>'+
+						'<div class="comment-item__op">'+
+								'<span class="comment-item__op-item op-icon-like" style="display:none" onclick="goDownLoad()">20</span>'+
+								'<span class="comment-item__op-item op-icon-report"  style="display:none" onclick="goDownLoad()">举报</div>'+
+								'</div>'+
+								'</div>');
+						 //lists.append('<p>5645665</p>');
+						   $("#comments").append(oneComment);
+					}
+				    }else{
+						$("#comments").empty().html('暂无数据...')
+					}
+				}
+			},
+			error:function (data) {
+				
+			}
+
+		});
+	}
+	/*返回按钮*/
+	function back(){
+		window.history.go(-1);
+	};
+	// 隐藏下载弹窗
+	$('.download').on("click",function(e){
+		var target = e.target;
+		var loadCard = document.getElementsByClassName('download')[0];
+		var close = document.getElementsByClassName('close')[0];
+		if(target == loadCard || target == close){
+			$(".download").hide();
+		}
+	})
+	function goDownLoad(){
+		// $('#my_popup').show();
+		// $('#my_mask').show();
+		// var phoneType = getPhoneType()
+		// if(phoneType == 'ios'){
+		// 	$('.img_code').attr('src',host_code + '/ios.png')
+		// }else if(phoneType == 'android'){
+		// 	$('.img_code').attr('src',host_code + '/android.png')
+		// }
+		$('.download').show();
+	}
+	function countDown(endTime){
+		var endTime=endTime;
+		//var startTmie=startTmie;
+        var now =new Date().getTime();
+		var d,h,m,s;
+		if(endTime>now){
+			var leftTime=endTime-now;
+			var d,h,m,s;
+			d = Math.floor(leftTime/1000/60/60/24);
+			h= checkNumber(Math.floor(leftTime/1000/60/60%24));
+			m =checkNumber(Math.floor(leftTime/1000/60%60)) ;
+			s = checkNumber(Math.floor(leftTime/1000%60));
+			var totalH = checkNumber(Math.floor(leftTime/1000/60/60));
+	        $('#day').text(totalH);
+	        $('#min').text(m)
+	        $('#second').text(s);
+	        var str=d+'-'+m+'-'+s
+
+		}else{
+			$('.group-buy__countdown-time').html('该活动已经结束')
+			//alert('该活动已经结束');
+			//console.log('该活动已经结束')
+		}
+
+
+	}
+
+
+
+	function checkNumber(n){
+		var n=parseFloat(n)
+		return n=n>9?n:'0'+n;
+	}
+
+
+
+	//加入购物车
+	$('#pay-btn,.add_goods_cart').on('click',function(){
+		//判断当前用户是否登录;
+		var str=window.location.href;
+		var projectId=GetQueryString("projectId");
+		var userId=window.localStorage.getItem('userId');
+		var activityId='';
+		if(userId){
+            $.ajax({
+                url:host+"/client-shopping/html/cart/addSchemeCart",
+                type:"POST",
+                contentType:"application/x-www-form-urlencoded",
+                data:{
+                    projectType: '206002',
+                    projectId: projectId,
+                    userId: userId,
+                    childProjectId:"",
+                },
+                success:function (data) {
+                    if(data.resultCode==200){
+                        window.location.href="./shopping-cart.html?userId="+shareUserId;
+                    }else if(data.resultCode == 400){
+						console.log(data)
+						alert(data.resultMsg);
+						if(data.resultMsg == "用户不存在"){
+							window.location.href="../../login.html?mark=1";
+						}else if(data.resultMsg == "该项目已经在购物车"){
+							window.location.href="./shopping-cart.html?userId="+shareUserId;
+						}
+					}
+                },
+                error:function (data) {
+                    console.log(data);
+                }
+            });
+		}else{
+			window.location.href="../../login.html?mark=1";
+		};
+        
+	});
+	// 立即购买
+	$('#buyNow,.pay_immediately').on('click',function(){
+		//判断当前用户是否登录；
+		var str=window.location.href;
+		var projectId=GetQueryString("projectId");
+		var activityId;
+		if(GetQueryString("activityId")){
+			activityId = GetQueryString("activityId")
+		}
+		var userId;
+		if(window.localStorage.getItem('userId')){
+			userId = window.localStorage.getItem('userId')
+		}
+		if(userId){ // 直接生成订单进入支付界面
+            $.ajax({
+				url: host + "/client-shopping/html/order/cartAddOrder",
+				type: "post",
+				dataType: "json",
+				data: {
+					projectId: projectId,
+					projectType: "206002",
+					buyNum: 1,
+					userId:userId,
+					buyMethod: 0,
+					buyMethodId: 0,
+					serviceId: 0,
+					activityId: activityId,
+					shareUserId: shareUserId,
+					shoppingCartId: "",
+				},
+				success: function(res){
+					if(res.resultCode == 200){ // 进入支付页面
+						localStorage.setItem("orderData",JSON.stringify(res));
+                        var order = res.resultMsg
+                        window.location.href = "./order-payment.html"+"?order="+order+"&userId="+shareUserId
+					}else{
+						alert(res.resultMsg);
+					}
+				}
+			})
+		}else{
+			window.location.href="../../login.html?mark=1";
+		};
+        
+	});
+
+
+
+
+</script>
+
+</body>
+</html>

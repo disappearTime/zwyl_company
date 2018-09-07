@@ -1,0 +1,96 @@
+body{
+    position: relative;
+}
+#app{
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+}
+.header{
+    height: 2.75rem;
+    width: 100%;
+    background: #ffffff;
+    position: absolute;
+    top: 0;
+    z-index: 100;
+}
+.comment_content{
+    width: 100%;
+    padding: 2.75rem 1.25rem 0 1.25rem;
+    box-sizing: border-box;
+}
+.statistics{
+    height: 1.875rem;
+    width: 100%;
+    padding: 1.375rem 0 1rem 0;
+}
+.statistics button{
+    border: none;
+    height: 100%;
+    margin-right: 0.625rem;
+    padding: 0 0.625rem;
+    border-radius: 0.9375rem;
+    font-size: 12px;
+}
+.statistics .comment_all{
+    color: #ffffff;
+}
+.statistics .comment_graph{
+    background: #FDE9AF;
+    color: #2D2D2D; 
+}
+/*评论*/
+.comment_list{
+    width: 100%;
+}
+.comment_item{
+    width: 100%;
+    padding: 0.91rem 0;
+}
+.comment_user{
+    width: 100%;
+    height: 2.1875rem;
+}
+.comment_user .left{
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+.comment_user .left img{
+    height: 2.1875rem;
+    width: 2.1875rem;
+    border-radius: 50%;
+    margin-right: 0.6875rem;
+}
+.comment_user .left span{
+    font-size: 0.875rem;
+    font-family: 'PingFangSC-Medium';
+}
+.comment_user .right{
+    font-family: 'PingFangSC-Regular';
+    font-size: 12px;
+    color: #8E8E8E;
+    letter-spacing: 0;
+}
+.comment_info{
+    padding: 0.625rem 0;
+    font-size: 12px;
+    line-height: 1.25rem;
+}
+.comment_photo{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.comment_photo>div{
+    width: 5rem;
+    height: 5rem;
+    margin-bottom: 5px;
+}
+.comment_photo>div img{
+    width: 100%;
+    height: 100%;
+    border-radius: 3px;
+}

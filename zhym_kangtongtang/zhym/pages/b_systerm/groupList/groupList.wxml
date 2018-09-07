@@ -1,0 +1,17 @@
+<view class="container">
+  <button bindtap='toOpenGroupPage'>发起拼团</button>
+  <view class='tab_bar'>
+    <view data-cur='1' class='{{current=="1"?"tab_item tab_active":"tab_item"}}' bindtap='tabClick'>进行中</view>
+    <view data-cur='2' class='{{current=="2"?"tab_item tab_active":"tab_item"}}' bindtap='tabClick'>未开始</view>
+    <view data-cur='3' class='{{current=="3"?"tab_item tab_active":"tab_item"}}' bindtap='tabClick'>已失效</view>
+  </view>
+  <view class='ongoing' hidden='{{current!="1"}}'>
+    进行中
+  </view>
+  <view class='no_start' hidden='{{current!="2"}}'>
+    未开始
+  </view>
+  <view class='invalid' hidden='{{current!="3"}}'>
+    已失效
+  </view>
+</view>

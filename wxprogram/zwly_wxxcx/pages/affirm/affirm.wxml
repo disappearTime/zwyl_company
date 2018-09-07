@@ -1,0 +1,206 @@
+<!-- pages/affirm/affirm.wxml -->
+<view class="container">
+    <!-- 订单详情 -->
+    <view class="line-item">
+        <!-- 购物清单 -->
+        <view class="shopping-list">
+            <view class="sl-title">购物清单</view>
+            <block wx:for="{{goods}}" wx:key="{{item}}">
+                <view class="sl-item">
+                    <image class="sl-item-img" src="{{imgurl}}{{item.cover_img}}"></image>
+                    <view class="sl-item-info">
+                        <view class="sl-item-name">{{item.goods_name}}</view>
+                        <view class="sl-item-labels">
+                            <text wx:if="{{item.discount == 2}}">折扣</text>
+                            <text wx:if="{{item.new == 2}}">新品</text>
+                            <text wx:if="{{item.hot == 2}}">热销</text>
+                        </view>
+                        <view class="sl-item-price">
+                            <view class="preferential-price">
+                                ￥
+                                <text wx:if="{{item.discount == 2}}">{{item.discount_price}}</text>
+                                <text wx:else>{{item.shop_price}}</text>
+                            </view>
+                            <view class="sl-item-yj">
+                                <block wx:if="{{item.discount == 2}}">
+                                    已降￥{{item.shop_price - item.discount_price}}
+                                </block>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </block>
+        </view>
+        <!-- 选择 -->
+        <view class="sl-item-choice">
+            <view class="choice-item">
+                <view>收货地址</view>
+                <view class="choice-item-msg" bindtap="sitemodel">
+                    <block wx:if="{{profile == 1}}">
+                        <text>{{siteinfo.name}}  {{siteinfo.tel}}</text>
+                        <text>
+                            {{siteinfo.province}}省{{siteinfo.city}}市{{siteinfo.district}}区{{siteinfo.address}}
+                        </text>
+                    </block>
+                    <block wx:else>
+                        <text>选择收货地址</text>
+                    </block>
+                </view>
+                <image src="/image/jiantou.png"></image>
+            </view>
+            <view class="choice-item">
+                <view>发票</view>
+                <view class="choice-item-msg">暂不支持发票功能</view>
+                <image src="/image/jiantou.png"></image>
+            </view>
+            <view class="choice-item" bindtap="couponstart" wx:if="{{couponlist.length != 0}}">
+                <view>优惠券</view>
+                <view class="choice-item-msg" wx:if="{{couponinfo.cid}}">满{{couponinfo.min_price}}立减{{couponinfo.price}}</view>
+                <view class="choice-item-msg" wx:else >选择优惠券</view>
+                <image src="/image/jiantou.png"></image>
+            </view>
+            <view class="choice-item" bindtap="couponnull"  wx:else>
+                <view>优惠券</view>
+                <view class="choice-item-msg" wx:if="{{couponinfo.cid}}">满{{couponinfo.min_price}}立减{{couponinfo.price}}</view>
+                <view class="choice-item-msg" wx:else >选择优惠券</view>
+                <image src="/image/jiantou.png"></image>
+            </view>
+        </view>
+        <!-- 金额结算 -->
+        <view class="price-calculation">
+            <view>商品总价：￥{{zj}}</view>
+            <view>运费：￥{{lp}}</view>
+            <view>优惠：-￥{{yh}}</view>
+            <view>
+                应付总额：
+                <view>
+                    ￥
+                    <text>{{yf}}</text>
+                </view>
+            </view>
+        </view>
+    </view>
+    <!-- 确认支付 -->
+    <view class="affirm-pay">
+        <!-- 协议 -->
+        <view class="consent-agreement" bindtap="xi">
+            <image src="/image/xuanzhong.png" wx:if="{{xstart}}" />
+            <image src="/image/weixuanzhong.png" wx:else />
+            本人同意并接受以上协议
+        </view>
+        <!-- 支付 -->
+        <view class="open-pay" bindtap="begin">微信支付</view>
+    </view>
+    <!-- 遮罩层 -->
+    <view class="shade" wx:if="{{shadestart == 1}}">
+        <!-- 地址列表 -->
+        <view class="affirm-site-list" wx:if="{{editstart}}">
+            <!-- 标题 -->
+            <view class="site-list-title">
+                <text>收货地址</text>
+                <text bindtap="closemodel">完成</text>
+            </view>
+            <!-- 列表 -->
+            <scroll-view scroll-y="{{true}}" class="site-list-info">
+                <block wx:for="{{sitelist}}" wx:key="index">
+                    <view class="site-items">
+                        <view>
+                            <view>
+                                <view>{{item.name}}    {{item.tel}}</view>
+                                <view>
+                                    <text wx:if="{{item.is_default == 1}}">[默认地址]</text>
+                                    {{item.province}}省{{item.city}}市{{item.district}}区{{item.address}}
+                                </view>
+                            </view>
+                            <image src="/image/xuanzhong.png" wx:if="{{item.is_default == 1}}" bindtap="sitexz" data-id="{{item.address_id}}" />
+                            <image src="/image/weixuanzhong.png" wx:else bindtap="sitexz" data-id="{{item.address_id}}" />
+                        </view>
+                        <view>
+                            <view bindtap="editsite" data-address_id="{{item.address_id}}">编辑</view>
+                            <view bindtap="ordersitedel" data-id="{{item.address_id}}">删除</view>
+                        </view>
+                    </view>
+                </block>
+            </scroll-view>
+            <!-- 添加 -->
+            <view class="address" bindtap="editsite">新增收货地址</view>
+        </view>
+        <!-- 编辑地址 -->
+        <view class="edit-address" wx:else>
+            <view class="edit-address-title">
+                <block wx:if="{{shade}}">编辑收货地址</block>
+                <block wx:else>新增收货地址</block>
+                <text bindtap="cupmodel">取消</text>
+            </view>
+            <view class="edit-address-info">
+                <view class="edit-address-item">
+                    <input type="text" placeholder="收货人姓名" value="{{ress.name}}" bindblur="inputname" />
+                </view>
+                <view class="edit-address-item">
+                    <input type="number" placeholder="手机号" value="{{ress.tel}}" bindblur="inputtel" />
+                </view>
+                <view class="edit-address-item">
+                    <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" range="{{regionarrys}}" range-key="region_name">
+                        <view class="picker">
+                            <block wx:if="{{district}}">
+                                <block wx:if="{{province.region_name != city.region_name}}">
+                                    {{province.region_name}}省
+                                </block>
+                                {{city.region_name}}市{{district.region_name}}区
+                            </block>
+                            <block wx:else>省、市、区</block>
+                        </view>
+                    </picker>
+                    <image src="/image/jiantou.png" />
+                </view>
+                <!-- <view class="edit-address-item">
+                    <picker mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
+                        <view class="picker">街道</view>
+                    </picker>
+                    <image src="/image/jiantou.png" />
+                </view> -->
+                <view class="edit-address-item">
+                    <textarea placeholder="详细地址" auto-height value="{{ress.address}}" bindblur="inputmsg"></textarea>
+                </view>
+            </view>
+            <view class="edit-address-save" wx:if="{{shade}}" bindtap="editsites">保存</view>
+            <view class="edit-address-save" bindtap="addsite" wx:else>保存</view>
+        </view>
+    </view>
+    <!-- 优惠券 -->
+    <view class="couponmodel" wx:if="{{couponstart}}">
+        <view class="item-null"></view>
+        <view class="coupon-mag">
+            <view class="coupon-msg-title">
+                <text>选择优惠券</text>
+            </view>
+            <view class="coupon-list">
+                <scroll-view scroll-y="{{true}}" class="coupon-list-msg">
+                    <block wx:for="{{couponlist}}" wx:key="index">
+                        <view class="coupon-list-item">
+                            <view class="coupon-item-left">
+                                <view class="item-left-title">
+                                    满{{item.min_price}}减{{item.price}}
+                                </view>
+                                <view class="item-left-msg">
+                                    <text>限新注册用户使用</text>
+                                    <text>有效期：{{item.start_time}}至{{item.end_time}}</text>
+                                </view>
+                            </view>
+                            <view class="coupon-item-right" bindtap="cupcoupon" data-item="{{item}}" wx:if="{{item.status}}">
+                                <image src="/image/xuanzhong.png" wx:if="{{couponinfo.id == item.id}}" />
+                                <image src="/image/weixuanzhong.png" wx:else />
+                            </view>
+                            <view class="coupon-item-right" wx:else>
+                                不满足使用条件
+                            </view>
+                        </view>
+                    </block>
+                </scroll-view>
+            </view>
+            <view class="coupon-msg-btn">
+                <button bindtap="closeconpon">关闭</button>
+            </view>
+        </view>
+    </view>
+</view>

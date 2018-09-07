@@ -1,0 +1,133 @@
+<!--pages/proDetails/prodetails.wxml-->
+<import src="/wxParse/wxParse.wxml" />
+<view class='container'>
+    <!-- 商品详情 -->
+    <view class='prodet-info'>
+        <swiper  autoplay="true" interval="5000" duration="500" indicator-dots="true" indicator-color="rgba(0, 0, 0, .3)" indicator-active-color="red">
+            <block wx:for="{{goods_info.imgs}}" wx:key="index">
+                <swiper-item>
+                    <image src="{{imgurl}}{{item}}" />
+                </swiper-item>
+            </block>
+        </swiper>
+        <!-- 数据 -->
+        <view class='commodity'>
+            <view class='commodity-items commodity-correlate'>
+                <view>
+                    <view>¥ <text wx:if="{{goods_info.discount == 2}}">{{goods_info.discount_price}}</text><text wx:else>{{goods_info.shop_price}}</text></view>
+                    
+                    <view>
+                        <text wx:if="{{goods_info.new == 2}}">新品</text>
+                        <text wx:if="{{goods_info.discount == 2}}">折扣</text>
+                        <text wx:if="{{goods_info.hot == 2}}">热销</text>                        
+                    </view>
+                </view>
+                <view>
+                    <block wx:if="{{goods_info.discount==2}}">原价:<text>￥{{goods_info.shop_price}}</text></block>
+                    <block wx:else>原价:<text>￥{{goods_info.market_price}}</text></block>
+                </view>
+                <view>
+                    <text>运费：{{goods_info.logistics[0].price}}</text>
+                    <text>已售{{goods_info.sales}}件</text>
+                </view>
+            </view>
+            <view class='commodity-items commodity-name'>
+                <view>
+                    {{goods_info.goods_name}}
+                </view>
+                <view>
+                    <!-- <text>假一赔十  ·  7天无忧退货</text> -->
+                </view>
+            </view>
+            <view class='commodity-stuck' bindtap='openformat' data-num="1" >
+                <view class="commodity-stuck-title">规格</view>
+                <view class='commodity-stuck-data'>
+                    <block wx:if="{{goods_info.sku != []}}">
+                        <block wx:if="{{sku.sid}}" >
+                           
+                            <block wx:for="{{goods_info.skuattr}}" wx:key="id">
+                                <block wx:if="{{sku.sid == item.sku_id}}">
+                                    {{item.attr_value}}
+                                </block>
+                                <block wx:else></block>
+                            </block>
+                        </block>
+                        <block wx:else>
+                            
+                            <block wx:for="{{goods_info.sku}}" wx:key="id">
+                                {{index}}
+                            </block>
+                        </block>
+                    </block>
+                    <block wx:else></block>
+                </view>
+                <image src="../../image/more.png" />
+            </view>
+        </view>
+        <!-- 图文详情 -->
+        <view class='graphic-details'>
+            <text>图文详情</text>
+            <view class="wxParse">
+                <template is="wxParse" data="{{wxParseData:goods_desc.nodes}}" />
+            </view>
+        </view>
+    </view>
+    <!-- 底部功能 -->
+    <view class='prodet-baction'>
+        <button class='service prodel-assist ' open-type='contact'>
+            <image src="/image/xq-kefu.png"></image>
+            <text>客服</text>
+        </button>
+        <button class='cart prodel-assist' bindtap="gocart">
+            <image src="/image/shop.png"></image>
+            <text>购物车</text>
+            <view class="cartlen" wx:if="{{cartnum}}">{{cartnum}}</view>
+        </button>
+        <view class='addcart prodel-chief' bindtap='openformat' data-num="2">添加购物车</view>
+        <view class='purchasenow prodel-chief' bindtap="openformat" data-num="3">立即购买</view>
+    </view>
+    <!-- 格式选择 -->
+    <view class='shade' wx:if="{{shade!=0}}">
+        <view class='null-block'></view>
+        <view class='format-selection'>
+            <!-- 名字 -->
+            <view class='format-title'>
+                <view>
+                    ￥
+                    <text wx:if="{{skuinfo}}">{{skuinfo.price}}</text>
+                    <text wx:else>
+                        <block wx:if="{{goods_info.discount == 2}}">{{goods_info.discount_price}}</block>
+                        <block wx:else>{{goods_info.shop_price}}</block>
+                    </text>
+                </view>
+                <view wx:if="{{skuinfo}}">库存{{skuinfo.sku_number}}件</view>
+                <view wx:else>库存{{goods_info.goods_number}}件</view>
+            </view>
+            <block  wx:for="{{attrValueList}}" wx:for-item="attrValueObj" wx:for-index="attrIndex" wx:key="id">
+                <view class='format-items'>
+                    <text>{{attrValueObj.attrKey}}</text>
+                    <view>
+                        <text class="{{attrIndex==firstIndex || attrValueObj.attrValueStatus[valueIndex]?(value==attrValueObj.selectedValue?'active':''):'disable'}}" bindtap="selectAttrValue" data-status="{{attrValueObj.attrValueStatus[valueIndex]}}" data-value="{{value}}" data-key="{{attrValueObj.attrKey}}" data-index="{{attrIndex}}" data-selectedvalue="{{attrValueObj.selectedValue}}" wx:for="{{attrValueObj.attrValues}}" wx:for-item="value" wx:for-index="valueIndex" wx:key="id">{{value}}</text>
+                    </view>
+                </view>
+            </block>
+            <!-- 数量 -->
+            <view class='format-number'>
+                <text class='format-number-name'>购买数量</text>
+                <view class='format-number-alter'>
+                    <view class='format-number-jian' bindtap="delnum">-</view>
+                    <view class="format-num">{{sku.num}}</view>
+                    <view class='format-number-jia' bindtap="addnum" data-num="{{skuinfo.sku_number}}" wx:if="{{skuinfo}}">+</view>
+                    <view class='format-number-jia' bindtap="addnum" data-num="{{goods_info.goods_number}}" wx:else>+</view>
+                </view>
+
+            </view>
+            <!-- 确定 -->
+            <view class='format-ensure' wx:if="{{shade == 1}}" bindtap="ensure">确定</view>
+            <view class='format-ensure' wx:if="{{shade == 2}}" bindtap="addcart">确定</view>
+            <view class='format-ensure' wx:if="{{shade == 3}}" bindtap="buynow">确定</view>
+            <!-- 关闭 -->
+            <image src="/image/tanchuang-gb.png" class='format-shut' bindtap='openformat' data-num="0" />
+        </view>
+    </view>
+</view>

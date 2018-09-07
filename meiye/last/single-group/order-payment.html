@@ -1,0 +1,671 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>确认支付</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <script type="text/javascript" src="../js/h5.js"></script>
+    <link rel="stylesheet" href="../css/h5.css"/>
+    <link rel="stylesheet" href="../css/mod.css"/>
+</head>
+<body>
+    <style>
+        .my_coupon{
+            line-height: 1.2rem;
+            border-bottom: 1px solid #f5f5f5;
+            color: #999;
+            font-size:0.4rem;
+
+        }
+        .my_coupon span{
+            float:right;
+        }
+        .coupon-list{
+            position:fixed;
+            bottom: 0;
+            left:0;
+            left:0;
+            width:100%;
+            padding: 10%;
+            height:8rem;
+            background: #fff;
+            border: 1px solid #f5f5f5;
+            display:none;
+            z-index:999;
+            border-radius:10px 10px 0 0;
+        }
+        .coupon-list li{
+            height:1.2rem;
+            line-height:1.2rem;
+            clear: both;
+        }
+        .coupon-list li span.check{
+            float: left;
+            display:block;
+            width:0.4rem;
+            height:0.4rem;
+            border-radius:50%;
+            background: #fff;
+            margin: 0.4rem;
+            border:1px solid #ccc;
+        }
+        .coupon-list li label{
+            float: left;
+            font-size:0.4rem;
+        }
+        .coupon-list li label input{
+            display: none;
+        }
+        .coupon-list li span.on{
+            background: url(../../images/checkbox-selected.png) no-repeat;
+            background-size:contain;
+        }
+        .coupon-list  span.my_close{
+            position: absolute;
+            right: 0.5rem;
+            top:0.5rem;
+            font-size:0.7rem;
+        }
+        .mask{
+            display: none;
+        }
+        .download{
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+            z-index: 100;
+            background: rgba(0, 0, 0, 0.2);
+            display: none;
+        }
+        .download .download-card{
+            width: 100%;
+            height: 20.7%;
+            position: absolute;
+            bottom: 0;
+            background-color: #ffffff;
+            border-top-left-radius: 0.3rem;
+            border-top-right-radius: 0.3rem;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            text-align: center;
+        }
+        .download .download-card .close{
+            position: absolute;
+            width: 0.5rem;
+            top: 0.5rem;
+            right: 0.5rem;
+        }
+        .download .download-card p{
+            padding: 0.625rem 0 0.65rem 0;
+        }
+        .download .download-card button{
+            width: 3.675rem;
+            height: 0.975rem;
+            border: none;
+            border-radius: 0.4675rem;
+            background: #ce0f31;
+            color: #ffffff;
+        }
+    </style>
+<div class="v-root state-buy" id="app" v-cloak>
+    <!--header-->
+    <header style="display:none;" class="v-head bg-drak">
+        <div class="v-head__in">
+            <div class="v-head__l left">
+                <span class="v-head__btn icon-back"></span>
+            </div>
+            <div class="v-head__m">
+                <h2 class="v-head__title">确认支付</h2>
+            </div>
+            <div class="v-head__r right"></div>
+        </div>
+    </header>
+    <div class="v-main v-main-goods plr10">
+        <div class="goodsItem group pay" v-for="item in goods"
+             :class="{'group':item.projectType==206001,'single':item.projectType!=206001}">
+            <div v-if="item.projectType==206001">
+                <div class="dt">
+                    <div class="d1">
+                        <i class="media-txt__tit-badge">一体化方案</i>
+                        <span>{{item.schemeName}}</span>
+                    </div>
+                    <div class="d2">
+                        <i>包含{{item.projects.length}}个子项目</i>
+                        <span style="font-weight:bold;">总价<span>￥{{toFixed_len_(item.schemePrice,2)}}</span></span>
+                    </div>
+                </div>
+                <div class="dbItem" v-for="project in item.projects">
+                    <img :src="project.projectImg" class="img">
+                    <div class="imgR">
+                        <p>{{project.projectName}}</p>
+                        <i>￥{{toFixed_len_(project.projectPrices,2)}}</i>
+                    </div>
+                </div>
+            </div>
+
+            <div v-if="item.projectType!=206001" v-for="p_item in item.projects">
+                <img :src="p_item.projectImg" class="img">
+                <div class="imgR">
+                    <p>{{p_item.projectName}}</p>
+                    <div class="count">
+                        <i v-if="p_item.projectReady>0">￥{{toFixed_len_(p_item.readPrice,2)}}(预约金)</i>
+                        <i v-else>￥{{toFixed_len_(p_item.projectPrices,2)}}(全款)</i>
+                        <!--<div class="countHandle">-->
+                            <!--<input type="button" value="-" @click="deduct($event)"/>-->
+                            <!--<strong>1</strong>-->
+                            <!--<input type="button" value="+" @click="add($event)"/>-->
+                        <!--</div>-->
+                    </div>
+                </div>
+            </div>
+
+        </div>
+         <div class="my_coupon"  @click="toggle">
+            <span>></span>
+            优惠券
+        </div>
+        <div class="coupon-list" id="coupon-list">
+            <span class="my_close" @click="closeFn">x</span>
+            <p class="tips" v-if="!coupondata.length">您暂无可用优惠券哦</p>
+            <ul id="couponBox" v-if="coupondata.length>0">
+                <li v-for="item in coupondata">
+                    <span class="check " @click="chooseCoupon($event,item.couponPrice,item.userCouponId)"></span> 
+                    <label> <input type="radio" name="coupon"/>{{item.couponName}}满{{toFixed_len_(item.fullPrice,2)}}减{{toFixed_len_(item.couponPrice,2)}}元</label>
+                </li>
+               
+            </ul>   
+        </div>
+    </div>
+    <div id="mask" class="mask"></div>
+
+    
+
+    <div class="bottomBtn">
+        <i>实际需支付 ￥{{toFixed_len_(allMoney-reduceMoney,2)}}</i>
+        <span class="payBtn" @click="payment">确认支付</span>
+        <!--      支付做好后上面的点击事件需要换成这个-->
+    </div>
+
+    <!-- 复制链接下载弹框-->
+    <div class="mask" style="display:none" id="my_mask"></div>
+    <div class="zkq_popup" style="display:none" id="my_popup">
+        <div class="popup_con" style="text-align:center;">
+            <div class="msg">更多操作请长按下方二维码下载APP</div>
+            <div class="msg" style="background:#eee;border-radius: 4px;padding:10px 0;">
+				<img style="width: 130px;" :src="codeUrl" alt="">
+			</div>
+			<div @click="hidePop" class="close_" style="display:inline-block;width:30px;height:30px;border-radius:50%;background:rgba(0,0,0,0.3);margin-top:10px;">
+				<img style="width:100%;" src="../images/close.png" alt="">
+			</div>
+        </div>
+    </div>
+    <div class="download">
+        <div class="download-card">
+            <img class="close" src="../../images/close_.png" alt="">
+            <p>下载<span class="appName"></span>APP,美丽从此开始</p>
+            <button onclick="download_app()" type="button">立即下载</button>
+        </div>
+    </div>
+</div>
+<script src="../../js/zepto.js"></script>
+<script src="../js/vue2_5_13.js"></script>
+<script src="../js/axios.min.js"></script>
+<script src="../../js/api.js"></script>
+<script type="text/javascript" src="../js/http.js"></script>
+<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>
+<script src="../../js/common.js"></script>
+<script src="https://cdn.bootcss.com/babel-polyfill/6.26.0/polyfill.min.js"></script>
+<script>
+    var appid = appid_wx; // 公众号id
+    var isWx = isWeiXin();
+    var code;
+    var payObj;
+    var wxRedirectUrl;
+    var order_id='';
+    if(GetQueryString("order")){ // order-payment.html页面中的订单号是服务端返回的原始订单号，选择多个订单下单的时候，会有多个订单号
+        order_id = GetQueryString("order")
+    }
+    var order_ = order_id.substring(1,order_id.length);// 将第一个逗号去掉
+    var shareUserId;
+    if(GetQueryString("userId")){
+        shareUserId = GetQueryString("userId");
+    } 
+    var activityId;
+    if(GetQueryString("activityId")){
+        activityId = GetQueryString("activityId")
+    }
+    var groupsinglebuy;// 是否是团购详情页点击单人购买进来的
+    if(GetQueryString("groupsinglebuy")){
+        groupsinglebuy = GetQueryString("groupsinglebuy")
+    }
+    function get_client_ip() {
+        if(getenv('HTTP_CLIENT_IP') && strcasecmp(getenv('HTTP_CLIENT_IP'), 'unknown')) {
+            $ip = getenv('HTTP_CLIENT_IP');
+        } else if(getenv('HTTP_X_FORWARDED_FOR') && strcasecmp(getenv('HTTP_X_FORWARDED_FOR'), 'unknown')) {
+            $ip = getenv('HTTP_X_FORWARDED_FOR');
+        } else if(getenv('REMOTE_ADDR') && strcasecmp(getenv('REMOTE_ADDR'), 'unknown')) {
+            $ip = getenv('REMOTE_ADDR');
+        } else if(isset($_SERVER['REMOTE_ADDR']) && $_SERVER['REMOTE_ADDR'] && strcasecmp($_SERVER['REMOTE_ADDR'], 'unknown')) {
+            $ip = $_SERVER['REMOTE_ADDR'];
+        }
+        return preg_match ( '/[\d\.]{7,15}/', $ip, $matches ) ? $matches [0] : '';
+    }
+    function onBridgeReady(){
+        WeixinJSBridge.invoke(
+            'getBrandWCPayRequest', payObj,
+            function(res){  
+                if(res.err_msg == "get_brand_wcpay_request:ok" ) {// 支付成功回调
+                    if(groupsinglebuy){
+                        window.location.href = wxRedirectUrl + "?order="+order_+"&userId="+shareUserId+"&activityId="+activityId+"&groupsinglebuy=1";
+                    }else{
+                        window.location.href = wxRedirectUrl + "?order="+order_+"&userId="+shareUserId+"&activityId="+activityId;
+                    }
+                    
+                }     
+            }
+        ); 
+    }
+    // 如果微信中打开，直接默认授权
+    if(isWx){
+        if(GetQueryString("code")){
+            code = GetQueryString('code');
+        }
+        if(!code){ // 用户未授权
+            var href_ = window.location.href;
+            var redirectUrl = encodeURIComponent(href_);
+            var scope = "snsapi_base";
+            window.location.href = "https://open.weixin.qq.com/connect/oauth2/authorize?appid="+ appid +"&redirect_uri="+ redirectUrl +"&response_type=code&scope="+ scope +"&state=123#wechat_redirect"
+        }
+    }
+
+
+    function toPayMoney(openid,isGroup,orderId,ip){ // 调用微信支付
+        var data = {};
+        if(isGroup){ // 从团购页点击立即开团进来的支付页面
+            data = {
+                payType: "216002",
+                //orderId: self.orderData.resultMsg,
+                orderId: orderId,
+                moneyType: "245001",
+                couponLinkId:self.userCouponId,
+                ip: ip, 
+                tradeType:"1", // 团购传1
+                openid: openid
+            }
+        }else{ // 从其他活动页面，或则团购页面点击立即购买进来的支付页面
+            data = {
+                payType: "216002",
+                //orderId: self.orderData.resultMsg,
+                orderId: orderId,
+                moneyType: "245001",
+                couponLinkId:self.userCouponId,
+                ip: ip, 
+                tradeType:"tt", 
+                openid: openid
+            }
+        }
+        myAxios.post('client-shopping/html/order/aliSign', data, function (data) {
+            if(isWx){
+                wxRedirectUrl = data.resultInfo.mwebUrl;
+                payObj = data.resultInfo.payInfo;
+                if (typeof WeixinJSBridge == "undefined"){
+                    if( document.addEventListener ){
+                        document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
+                    }else if (document.attachEvent){
+                        document.attachEvent('WeixinJSBridgeReady', onBridgeReady); 
+                        document.attachEvent('onWeixinJSBridgeReady', onBridgeReady);
+                    }
+                }else{
+                    onBridgeReady();
+                }
+            }else{
+                if(groupsinglebuy){
+                    window.location.href = data.resultInfo.mwebUrl+'?order='+order_+'&userId='+shareUserId+'&activityId='+activityId+'&groupsinglebuy=1'; 
+                }else{
+                    window.location.href = data.resultInfo.mwebUrl+'?order='+order_+"&userId="+shareUserId+"&activityId="+activityId; 
+                }
+                 
+            }                 
+        });
+    }
+    new Vue({
+        el: '#app',
+        data: {
+            isShow: false,
+            copyPath:"http://www.baidu.com",
+            goods: "",
+            orderData: "",
+            userId: "",
+            shareUserId: "",
+            cfg:"",
+            allMoney:0,
+            codeUrl: '',
+            coupon:'',
+            coupondata:'',
+            price:0,
+            reduceMoney: 0,
+            userCouponId:'',
+            orderId: '',
+        },
+        computed: {},
+        methods: {
+            toFixed_len_(num,len){ // 保留参数len位小数,参数是字符串数字或则数字
+                var ret = num + "";
+                if(ret){ // 0为false "0"为真   参数不为空
+                var num_ = Number(num);
+                ret = num_.toFixed(len); 
+                }
+                return ret;
+            },
+            chooseCoupon(e,money,userCouponId){
+                var ipt = $(e.target).siblings("label").find('input');
+                if($(e.target).hasClass('on')){
+                    $(e.target).removeClass('on')
+                    ipt.prop('checked',false);
+                    this.reduceMoney = 0;  
+                    this.userCouponId=userCouponId;
+                }else{
+                    $(e.target).addClass('on').parent('li').siblings().find('check').removeClass('on');
+                    ipt.prop('checked',true); 
+                    this.reduceMoney = money;
+                    this.userCouponId=userCouponId;
+                }
+            },
+            closeFn(){
+                $('#mask').hide()
+                $('#coupon-list').hide()
+
+            },
+            toggle(){
+                $('#mask').show()
+                $('#coupon-list').show()
+            },
+            hidePop(){
+                $('#my_popup').hide();
+                $('#my_mask').hide();
+            },
+            getPhoneType: function (){ // 获取手机类型
+				var phoneType = '';
+				var u = navigator.userAgent;
+				if(u.indexOf('Android') > -1 || u.indexOf('Adr') > -1 ){
+					phoneType = 'android'
+				}else if(!!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/)){
+					phoneType = 'ios'
+				};
+				return phoneType;
+			},
+            copyNum: function(){
+                var NumClip = document.getElementById("clip_num");
+                var NValue = NumClip.value;
+                var valueLength = NValue.length;
+                this.selectText(NumClip, 0, valueLength);
+                document.execCommand("Copy", "false", null); // 执行浏览器复制命令
+                document.getElementById("clip_num").blur();
+                $('#my_popup').hide();
+                $('#my_mask').hide();
+                alert("复制成功");
+            },
+            selectText: function(obj, startIndex, stopIndex) {
+                if (obj.setSelectionRange) {
+                    obj.setSelectionRange(startIndex, stopIndex);
+                } else if (obj.createTextRange) {
+                    var range = obj.createTextRange();
+                    range.collapse(true);
+                    range.moveStart('character', startIndex);
+                    range.moveEnd('character', stopIndex - startIndex);
+                    range.select();
+                }
+                obj.focus();
+            },
+            goDownLoad: function () {
+                // $('#my_popup').show();
+                // $('#my_mask').show()
+                $('.download').show();
+            },
+            payment: function () {
+                var cfg = this.cfg;
+                var self = this;
+                // localStorage.setItem("finish","");
+                var isGroup;
+                if(GetQueryString('isGroup')){
+                    isGroup = GetQueryString('isGroup');
+                }
+                var ip = returnCitySN.cip;
+                //var ip_ = get_client_ip();
+                // 判断是否是微信
+                //console.log(appid_wx);
+                if(isWx){ // 在微信内置浏览器中使用公众号支付
+                    // 1 用户同意授权获取code
+                    // 2 通过code换取网页授权access_token
+                    // 3 刷新access_token
+                    // 4 拉取用户信息(需scope为snsapi_userinfo)
+                    if(code){ // 用户已同意授权
+                        // 通过code换取网页授权access_token access_token和secret安全级别高，不允许存在客户端，换取access_token的过程必须由服务端发起
+                        // 将code传给服务端，由服务端请求https://api.weixin.qq.com/sns/oauth2/access_token?appid=APPID&secret=SECRET&code=CODE&grant_type=authorization_code 获取access_token和openid
+                        $.ajax({
+                            url: host + "/client-shopping/html/order/sendGet",
+                            type: "post",
+                            data: {
+                                code: code
+                            },
+                            dataType: "json",
+                            success: function(res){
+                                //alert(JSON.stringify(res))
+                                var openid = res.openid;
+                                toPayMoney(openid,isGroup,order_id,ip)
+                            },
+                            error: function(e){
+
+                            }
+                        })
+
+                    }else{ // 用户未授权则引导授权 同意授权回调到redirectUrl
+                        var href_ = window.location.href;
+                        var href_url = window.location.href.split('?')[0];
+                        var href_parm = window.location.href.split('?')[1]
+                        var redirectUrl = encodeURIComponent(href_);
+                        var scope = "snsapi_base";
+                        window.location.href = "https://open.weixin.qq.com/connect/oauth2/authorize?appid="+ appid +"&redirect_uri="+ redirectUrl +"&response_type=code&scope="+ scope +"#wechat_redirect"
+                    }   
+                }else{
+                    var data = {};
+                    if(isGroup){
+                        data = {
+                            payType: "216002",
+                            //orderId: self.orderData.resultMsg,
+                            orderId: order_id,
+                            moneyType: "245001",
+                            couponLinkId:self.userCouponId,
+                            ip: ip, 
+                            tradeType:"1", // 团购传1
+                        }
+                    }else{
+                        data = {
+                            payType: "216002",
+                            //orderId: self.orderData.resultMsg,
+                            orderId: order_id,
+                            moneyType: "245001",
+                            couponLinkId:self.userCouponId,
+                            ip: ip, 
+                            tradeType:"tt", 
+                        }
+                    }
+                    myAxios.post('client-shopping/html/order/aliSign', data, function (data) {
+                        if(groupsinglebuy){
+                            window.location = data.resultInfo.mwebUrl+"?order="+order_+"&userId="+shareUserId+"&activityId="+activityId+"&groupsinglebuy=1";
+                        }else{
+                            window.location = data.resultInfo.mwebUrl+"?order="+order_+"&userId="+shareUserId+"&activityId="+activityId;
+                        }
+                                
+                    });
+                }
+            },
+            curentTime: function () {
+                var now = new Date();
+
+                var year = now.getFullYear();       //年
+                var month = now.getMonth() + 1;     //月
+                var day = now.getDate();            //日
+
+                var hh = now.getHours();            //时
+                var mm = now.getMinutes();          //分
+                var ss = now.getSeconds();           //秒
+
+                var clock = year + "-";
+
+                if (month < 10)
+                    clock += "0";
+
+                clock += month + "-";
+
+                if (day < 10)
+                    clock += "0";
+
+                clock += day + " ";
+
+                if (hh < 10)
+                    clock += "0";
+
+                clock += hh + ":";
+                if (mm < 10) clock += '0';
+                clock += mm + ":";
+
+                if (ss < 10) clock += '0';
+                clock += ss;
+                return (clock);
+            },
+            get_client_ip: function () {
+              $cip = 'unknown';
+              if($_SERVER['REMOTE_ADDR']){
+                cip = $_SERVER['REMOTE_ADDR'];
+              }else if(getenv('REMOTE_ADDR')){
+                cip = getenv['REMOTE_ADDR'];
+              }
+              return $cip;
+            }
+        },
+        mounted: function () {
+
+            var self = this;
+            this.userId = localStorage.getItem("userId");
+            this.shareUserId = localStorage.getItem("shareUserId");
+            if(localStorage.getItem("orderData")){
+                this.orderData = JSON.parse(localStorage.getItem("orderData"));
+            }
+            
+            if(this.orderData && this.orderData.resultInfo){
+                this.goods = this.orderData.resultInfo;
+            }
+            console.log(this.goods)
+            // 实际支付价格
+            if(this.goods.length>0){
+                if(this.goods[0].projects[0]){
+                    this.allMoney = this.goods[0].projects[0].readPayMoney;// readPayMoney此次需要支付的钱，residueMoney剩余要支付的钱
+                }
+                // 优惠券
+                this.coupondata = this.goods[0].userCoupon;
+            }
+            
+            
+            // 隐藏下载弹窗
+            $('.download').on("click",function(e){
+                var target = e.target;
+                var loadCard = document.getElementsByClassName('download')[0];
+                var close = document.getElementsByClassName('close')[0];
+                if(target == loadCard || target == close){
+                    $(".download").hide();
+                }
+            })
+
+            // $.ajax({
+            //     url:host+"/client-shopping/html/order/getCouponList", // 获取优惠券
+            //     type:"POST",
+            //     contentType:"application/x-www-form-urlencoded",
+            //     data:{
+            //         userId: this.userId, 
+            //         couponStatus:'227002',
+            //         payPrcie:this.allMoney     
+            //     },
+            //     dataType:'json',
+            //     success:function (data) {
+            //         if(data.resultCode==200){
+            //             //this.coupondata=data;
+            //             self.len = data.resultInfo.length;
+            //             if(self.len>0){   
+            //                 self.coupondata=data.resultInfo;       
+            //             }    
+            //         }
+            //     }
+            // });
+
+
+           
+             
+
+
+
+            // 获取优惠券；
+
+           // var userCoupon= this.orderData.resultInfo[0].userCoupon;
+           // console.log(userCoupon)
+             
+
+
+
+            //微信支付加签
+            // myAxios.post('client-shopping/html/order/aliSign', {
+            //     moneyType: "245001",
+            //     orderId: ",o3474087407634303655",
+            //     payType: "216002",
+            //     tradeType:"4",
+            // }, function (data) {
+            //     self.cfg = data.resultInfo;
+            //     var cfg = data.resultInfo;
+            //     wx.config({
+            //         debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+            //         appId: cfg.appid, // 必填，公众号的唯一标识
+            //         timestamp: cfg.timestamp, // 必填，生成签名的时间戳
+            //         nonceStr: cfg.noncestr, // 必填，生成签名的随机串
+            //         signature: cfg.sign,// 必填，签名，见附录1
+            //         jsApiList: ['chooseWXPay'] // 必填，需要使用的JS接口列表，这里只写支付的
+            //     });
+            // });
+
+            
+            // var ip=returnCitySN.cip;
+            // alert(ip);
+            // myAxios.post('client-shopping/html/order/aliSign', {
+            //   // outTradeNo: this.goods.outTradeNo,
+            //   tradeType:'1',
+            //   payType: "216002",
+            //   orderId: ",o3474087407634303655",
+            //   moneyType: "245001",
+            //   tradeType:"4",
+            //   ip: ip, 
+            // }, function (data) {
+            //     self.cfg = data.resultInfo;
+            //     var cfg = data.resultInfo;
+            //     wx.config({
+            //         debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+            //         appId: cfg.appid, // 必填，公众号的唯一标识
+            //         timestamp: cfg.timestamp, // 必填，生成签名的时间戳
+            //         nonceStr: cfg.noncestr, // 必填，生成签名的随机串
+            //         signature: cfg.sign,// 必填，签名，见附录1
+            //         jsApiList: ['chooseWXPay'] // 必填，需要使用的JS接口列表，这里只写支付的
+            //     });
+            // });
+            // 获取下载二维码地址
+            // var phoneType = this.getPhoneType();
+            // if(phoneType == 'ios' ){ // ios下载二维码
+            //    this.codeUrl = host_code + '/ios.png'
+            // }else if(phoneType == 'android'){ // android下载二维码
+            //    this.codeUrl = host_code + '/android.png'
+            // }
+        },
+    });
+</script>
+</body>
+</html>

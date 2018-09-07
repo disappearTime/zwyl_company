@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "赋美",
+  "usingComponents": {
+    "ProjectInfo": "/components/ProjectInfo/ProjectInfo"
+  }
+}

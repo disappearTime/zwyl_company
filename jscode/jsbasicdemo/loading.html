@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			html,body{
+				width: 100%;
+				height: 100%;
+			}
+			.imgbox{
+				height: 100%;
+			}
+			.imgbox img{
+				height: 100%;
+			}
+			.loading{
+				width: 100%;
+				height: 100%;
+				background: #ffffff;
+				position: fixed;
+				left: 0;
+				top: 0;
+				z-index: 100;
+			}
+			.loading span{
+				display: block;
+				width: 50px;
+				height: 30px;
+				position: absolute;
+				left: 0;
+				top: 0;
+				bottom: 0;
+				right: 0;
+				margin:auto;
+			}
+			.loading i{
+				display: inline-block;
+				height: 100%;
+				width: 6px;
+				margin: 0 2px;
+				float: left;
+				transform: scaleY(0.4);
+				background: #7CFC00;
+				animation: ani 1s infinite;
+			}
+			.loading i:nth-of-type(1){
+				animation-delay: 0.1s;
+			}
+			.loading i:nth-of-type(2){
+				animation-delay: 0.2s;
+			}
+			.loading i:nth-of-type(3){
+				animation-delay: 0.3s;
+			}
+			.loading i:nth-of-type(4){
+				animation-delay: 0.4s;
+			}
+			.loading i:nth-of-type(5){
+				animation-delay: 0.5s;
+			}
+			@-webkit-keyframes ani{
+				/*from{}
+				to{}*/
+				
+				0%,40%,100%{
+					transform: scaleY(0.4);
+				}
+				20%{
+					transform: scaleY(1);
+				}
+            }
+            .overHidden{
+                overflow: hidden;
+            }
+		</style>
+	</head>
+	<body class="overHidden">
+		<div class="imgbox">
+			<img src="http://pic.qqtn.com/up/2018-3/2018030213082155038.jpg"/>
+			<img src="http://image.tupian114.com/20130514/11275950.jpg"/>
+			<img src="http://pic28.photophoto.cn/20130830/0005018667531249_b.jpg"/>
+			<img src="http://e.hiphotos.baidu.com/zhidao/wh%3D450%2C600/sign=1a3963408f94a4c20a76ef2f3bc437e3/e4dde71190ef76c66b5e79649516fdfaae5167f5.jpg"/>
+            <img src="http://pic24.photophoto.cn/20120814/0005018348123206_b.jpg"/>
+            <img src="http://a.hiphotos.baidu.com/zhidao/pic/item/37d12f2eb9389b50cf3e28068235e5dde6116ea5.jpg"/>
+			<img src="http://f8.topitme.com/8/25/80/1125177570eea80258o.jpg"/>
+		</div>
+		<div class="loading">
+			<span>
+				<i></i>
+				<i></i>
+				<i></i>
+				<i></i>
+				<i></i>
+			</span>
+		</div>
+		<script src="https://cdn.bootcss.com/jquery/2.2.2/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			//用定时器制作进度条不切实际
+			//document.onreadystatechange 页面加载状态改变时的事件
+			//document.readyState 返回当前文档的状态
+			//uninitialized-还未开始载入  loading-载入中  interactive-已加载，文档与用户可以开始交互 complete-载入完成
+			document.onreadystatechange = function(){
+				//console.log(document.readyState)
+				if(document.readyState=="complete"){
+                    $(".loading").fadeOut();
+                    $('body').removeClass('overHidden')
+				}
+			}
+			//代码可以用codepen或autoprefixer.github.io做兼容
+		</script>
+	</body>
+</html>

@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>登录</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<script type="text/javascript" src="../js/h5.js"></script>
+	<link rel="stylesheet" href="../css/h5.css" />
+	<link rel="stylesheet" href="../css/mod.css" />
+</head>
+<style>
+.plr35{
+    padding-left: .933333rem;
+    padding-right: .933333rem;
+}
+.v-login{
+    padding-top: 2.733333rem;
+}
+.login-item__label{
+    font-size: .533333rem;
+    font-weight: 600;
+    margin-bottom: .426667rem;
+}
+.login-item_ipt{
+    font-size: .373333rem;
+    color: #8e8e8e;
+    border: none;
+}
+.login-item{
+    border-bottom: 1px solid #f7f7f7;
+    padding: .533333rem 0;
+    position: relative;
+}
+.login-item:last-child{
+    border: none;
+}
+.loigin-item__r{
+    position: absolute;
+    bottom:.433333rem;
+    right:0;
+}
+.login-item__verify-btn{
+    height: .666667rem;
+    font-size: .373333rem;
+    border: 1px solid #ce0f32;
+    color:#ce0f32;
+    border-radius: .78125rem;
+    background: transparent;
+    cursor: pointer;
+    padding: 0 .4rem;
+}
+.login-item__verify-btn.sending{
+    border: 1px solid #999;
+    color:#999;
+}
+.login-item__login-btn{
+    display: block;
+    width: 8.133333rem;
+    height: 1.333333rem;
+    border:none;
+    background-color: #ce0f32;
+    color:#fff;
+    border-radius: .78125rem;
+    cursor: pointer;
+    font-weight: 400;
+    font-size: .533333rem;
+}
+.bottom-msg{
+    position: absolute;
+    text-align: center;
+    bottom: 1rem;
+    left: 0;
+    right: 0;
+    transform: translateY(3rem);
+    opacity: 0;
+	xdisplay:none;
+}
+.bottom-msg__con{
+    display: inline-block;
+    padding:.4rem .8rem;
+    border-radius: 8px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #e8e8e8;
+    font-size: .373333rem;
+}
+.msgShow {
+    animation: msgShow 2s ;
+	display:block;
+}
+@-webkit-keyframes  msgShow{
+    0% {transform:translateY(300%);opacity: 1;}
+    10% {transform:translateY(0)}
+    90% {opacity: 1;transform:translateY(0)}
+    100% {transform:translateY(200%);opacity: 0}
+}
+@keyframes  msgShow{
+    0% {transform:translateY(300%);opacity: 1}
+    10% {transform:translateY(0)}
+    90% {opacity: 1;transform:translateY(0)}
+    100% {transform:translateY(200%);opacity: 0}
+}
+.bottom-fixed{
+	height:5rem;
+	position:fixed;
+	bottom:0;
+	left:0;
+	width:10rem;
+	overflow:hidden;
+}
+</style>
+<body class="is-app">
+<div class="v-root" id="app">
+	<!--header-->
+	<header style="display:none;" class="v-head bg-drak">
+		<div class="v-head__in">
+			<div class="v-head__l left">
+				<span class="v-head__btn icon-back"></span>
+			</div>
+			<div class="v-head__m">
+				<h2 class="v-head__title">登录</h2>
+			</div>
+			<div class="v-head__r right"></div>
+		</div>
+	</header>
+	<div class="v-main oh plr35">
+        <div class="v-login">
+            <div class="login-item">
+                <div class="login-item__label">手机号</div>
+                <input type="text" class="login-item_ipt block" placeholder="请输入手机号" v-model="phoneNum" />
+            </div>
+            <div class="login-item">
+                <div class="login-item__label">验证码</div>
+                <input type="text" class="login-item_ipt" placeholder="请输入验证码" v-model="verifyNum" />
+                <div class="loigin-item__r">
+                    <button class="login-item__verify-btn" @click="sendVerify" v-text="verifyBtnText" :class="{'sending': isSending}">发送验证码</button>
+                </div>
+            </div>
+            <div class="login-item">
+                <button class="login-item__login-btn" @click="submit">快捷登录</button>
+            </div>
+        </div>
+    </div>
+	<div class="bottom-fixed">
+		<div class="bottom-msg" :class="{'msgShow': error}">
+			<div class="bottom-msg__con">
+				{{error}}
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+<script src="../js/vue2_5_13.js"></script>
+<script src="../js/axios.min.js"></script>
+<script src="../js/cookie.js"></script>
+<script src="https://cdn.bootcss.com/babel-polyfill/6.26.0/polyfill.min.js"></script>
+<script>
+
+function jsonToParam(obj){
+	var ret = [];
+    for(var k in obj){
+		ret.push(k + '=' + encodeURIComponent(obj[k]));
+    }
+	return ret.join('&');
+}
+new Vue({
+    el: '#app',
+    data: {
+        phoneNum: '',
+        verifyNum: '',
+        isSending: false,
+        coutDown: 60,
+        error: '',
+		authCodeId: ''
+    },
+    computed: {
+        verifyBtnText: function(){
+            if(this.isSending){
+                return this.coutDown + "秒后重新发送";
+            }else{
+                return "发送验证码";
+            }
+        }
+    },
+    methods: {
+		showError: function (){
+            if(this.error){
+                var self = this;
+                self.fxTimer = setTimeout(function(){
+                    self.error = '';
+                    self.fxTimer = null;
+                }, 2000);
+            }
+		},
+        submit: function () {
+            if(this.fxTimer){
+                return;
+            }
+            if(!/^1\d{10}$/.test(this.phoneNum)){
+                this.error = "请输入正确的手机号码";
+            }else if(!/^\w{4,}$/.test(this.verifyNum)){
+                this.error = "请输入验证码"
+            }else{
+                this.error = '';
+                this.login();
+            }
+			this.showError();
+        },
+        getAuthCode: function (){
+			var self = this;
+			axios.post('/api/client/client/user/sendAuthCode/', jsonToParam({
+				userPhone: this.phoneNum
+			})).then(function (ret){
+				var data = ret.data;
+				if (data.resultCode == 200) {
+					self.error = "验证码发送成功";
+					self.authCodeId = data.resultInfo.authCodeId;
+				}
+			}).catch(function (e){
+			    console.log(e);
+			});
+        },
+        login: function (){
+			var self = this;
+			axios.post('/api/client/client/user/easyLogin/', jsonToParam({
+				userPhone: this.phoneNum,
+				authCodeId: this.authCodeId,
+				authCode: this.verifyNum
+			})).then(function (ret){
+				var data = ret.data;
+				if (data.resultCode != 200) {
+					self.error = data.resultMsg;
+					self.showError();
+				}else{
+					var user = data.resultInfo.user;
+					for(var k in user){
+						var v = user[k];
+						if (v) {
+							vueCookie(k, v, {expires: 1});
+						}else{
+							vueCookie.remove(k)
+						}
+					}
+					console.log(data.resultInfo.user.userName + ', 登录成功!');
+				}
+			}).catch(function (e){
+			    console.log(e);
+			});
+        },
+        sendVerify: function (){
+            if(!/^1\d{10}$/.test(this.phoneNum)){
+                this.error = "请输入正确的手机号码";
+				return this.showError();
+            }
+            if(this.isSending){
+                return;
+            }
+			this.getAuthCode();
+            this.isSending = true;
+            this.coutDown = 60;
+            var timeId;
+            var self = this;
+            timeId = setInterval(function(){
+                var i = self.coutDown - 1;
+                if(i > 0){
+                    self.coutDown = i;
+                }else{
+                    clearInterval(timeId);
+                    self.isSending = false;
+                }
+            }, 1000);
+        }
+    }
+});
+</script>
+</html>

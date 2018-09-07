@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta content="telephone=no" name="format-detection" />
+	<title>优惠券</title>
+	<link rel="stylesheet" href="css/tbase.css" />
+	<script type="text/javascript" src="js/tbase.js"></script>
+</head>
+<style>
+.coupon_bg{
+	background-color:#F9F0E7;
+}
+.coupon_main-img img{
+	display:block;
+	width:100%;
+}
+.coupon__op{
+	margin-bottom:1.466667rem;
+}
+.coupon__op-info{
+	background:url(images/yhq.png) no-repeat;
+	background-size: cover;
+	width:8.4rem;
+	height:2.933333rem;
+	margin:0 auto;
+	position:relative;
+}
+.coupon__op-info__l{
+	padding-top:0.553333rem;
+	width:3.946667rem;
+	text-align:center;
+}
+.coupon__op-info__r{
+	padding-top:0.533333rem;
+	width:3.946667rem;
+	position:absolute;
+	top:0;
+	left:4.346667rem;
+}
+.coupon-price{
+	font-size:1.066667rem;
+	color:#ce0f32;
+	line-height: 1;
+	padding-bottom:0.2rem;
+}
+.coupon-name{
+	line-height: 1;
+	color:#2d2d2d;
+	font-size:0.373333rem;
+}
+.coupon-received .coupon-price,
+.coupon-received .coupon-name{
+	color:#8e8e8e;
+}
+.coupon-type{
+	font-size:0.48rem;
+	color:#2d2d2d;
+	font-weight: 600;
+}
+.coupon-date{
+	font-size:0.32rem;
+	margin-top:0.226667rem;
+	color:#8e8e8e;
+}
+.coupon-receive-icon{
+	position:absolute;
+	z-index:10;
+	width:1.98666rem;
+	height:1.98666rem;
+	background:url(images/yilingqu.png) no-repeat;
+	right: 0.533333rem;
+	top: 0.426667rem;
+	background-size: cover;
+	display:none;
+}
+.coupon-received .coupon-receive-icon{
+	display:block;
+}
+.coupon__op-btn{
+	margin-top:0.746667rem;
+	display:block;
+	width:8.133333rem;
+	height:1.333333rem;
+	line-height:1.333333rem;
+	border-radius:1.333333rem;
+	font-size:0.533333rem;
+	color:#fff;
+	background:#ce0f32;
+	text-align:center;
+	margin-left:auto;
+	margin-right:auto;
+	box-shadow: 5px 5px 20px rgba(206, 15, 50, 0.25);
+}
+</style>
+<body>
+<div class="v-root" id="app">
+	<!--header-->
+	<header style="display:none;" class="v-head bg-base">
+		<div class="v-head__in">
+			<div class="v-head__l left">
+				<span class="v-head__btn icon-back"></span>
+			</div>
+			<div class="v-head__m">
+				<h2 class="v-head-title">优惠券</h2>
+			</div>
+			<div class="v-head__r right"></div>
+		</div>
+	</header>
+	<!-- coupon -->
+	<div class="v-main coupon_bg">
+		<section class="coupon_main-img"><img src="upload/yhj-bg.png" alt=""></section>
+		<section class="coupon__op coupon-received">
+			<div class="coupon__op-info">
+				<div class="coupon__op-info__l">
+					<div class="coupon-price">￥500</div>
+					<div class="coupon-name">护肤类服务抵用券</div>
+				</div>
+				<div class="coupon__op-info__r">
+					<div class="coupon-type">抵用券</div>
+					<div class="coupon-date">有效期至: 2018-6-30</div>
+					<span class="coupon-receive-icon"></span>
+				</div>
+			</div>
+			<a href="javascript:void(0)" class="coupon__op-btn">去花掉</a>
+		</section>
+	</div>
+</div>
+</body>
+</html>

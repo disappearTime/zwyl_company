@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>登录</title>
+	<link rel="stylesheet" href="css/tbase.css" />
+	<link rel="stylesheet" href="lib/layer_mobile/need/layer.css">
+	<script type="text/javascript" src="js/tbase.js"></script>
+</head>
+<style>
+
+</style>
+<body>
+<div class="v-root" id="app">
+	<!--header-->
+	<header style="display:none;" class="v-head bg-base">
+		<div class="v-head__in">
+			<div class="v-head__l left">
+				<span class="v-head__btn icon-back"></span>
+			</div>
+			<div class="v-head__m">
+				<h2 class="v-head-title">登录</h2>
+			</div>
+			<div class="v-head__r right">
+				<span class="v-head__btn-r icon-user"></span>
+			</div>
+		</div>
+	</header>
+	<!--login-form-->
+	<div class="v-main">
+		<section class="login-form plr">
+			<form action="#">
+				<div class="form-item">
+					<div class="form-item__title">手机号</div>
+					<div class="form-item__input"><input type="text" maxlength="11" placeholder="请输入手机号" class="phone"></div>
+				</div>
+				<div class="form-item">
+					<div class="form-item__title">验证码</div>
+					<div class="form-item__input form-item__pr"><input type="text" maxlength="6" placeholder="请输入验证码" class="password"></div>
+					<div class="form-item__r">
+						<a class="form-item__send-btn" onclick="sendCode(this)">发送验证码</a>
+					</div>
+				</div>
+				<div class="form-item">
+					<div class="form-item__submit"><a onclick="login(this)">快捷登录</a></div>
+				</div>
+			</form>
+		</section>
+	</div>
+</div>
+<script src="js/zepto.js"></script>
+<script src="js/api.js"></script>
+<script src="lib/layer_mobile/layer.js"></script>
+<script>
+
+	var urlStr = window.location.href;
+	//var authCodeId;
+
+	if (urlStr.indexOf("?") != -1) {
+		var urlStr = urlStr.substr(urlStr.indexOf("?") + 1);
+		console.log(urlStr);
+		var strs = urlStr.split("&");
+		console.log(strs);
+		var tempArr = strs[0].split("=");
+		var projectId = window.decodeURIComponent(tempArr[1]).replace(/(\d{4})\/(\d{2})\/(\d{2})\s+(\d{2})-(\d{2})-(\d{2})/g, "$1-$2-$3 $4:$5:$6");
+		console.log(projectId);
+
+	}
+
+	function sendCode(that) {
+		var self=$(that);
+		var phoneNum=$('.form-item__input .phone').val();
+		var reg=/^1[3|4|5|6|7|8][0-9]\d{4,8}$/;
+		if(reg.test(phoneNum)){
+			self.attr('disabled',true);
+			self.css({
+				color:'#e7e7e7',
+				borderColor: '#e7e7e7'
+			});
+
+			var count=60;
+			var timer=null;
+			timer= window.setInterval(function () {
+				count--;
+				if(count <=0){
+					clearInterval(timer);
+					count = 60;
+					self.attr('disabled',false);
+					self.text('发送验证码');
+					self.css({
+						color:'#ce0f32',
+						borderColor:'#ce0f32'
+					});
+				}else {
+					self.text('剩余' + count + '秒');
+				}
+			},1000);
+			$.ajax({
+				url:host+"/client/html/user/sendAuthCode",
+				type:"POST",
+				contentType:"application/x-www-form-urlencoded",
+				data:{
+					userPhone:phoneNum
+				},
+				success:function (data) {
+					if(data.resultCode==200){
+						console.log(data);
+						// authCodeId=data.authCodeId;
+
+						 window.localStorage.setItem("authCodeId",data.resultInfo.authCodeId);
+					}
+				},
+				error:function (data) {
+					console.log(data);
+				}
+			});
+		}else{
+		   alert('请填写正确的手机号码')
+		}
+	}
+
+	function login(that) {
+		var phoneNum=$('.form-item__input .phone').val();
+		var passW=$('.form-item__input .password').val();
+		var authCodeId=window.localStorage.getItem("authCodeId");
+
+		   if(!passW){
+		   	  alert('请填写验证码')
+		   }else{
+		   	console.log(authCodeId)
+				$.ajax({
+					url:host+"/client/html/user/easyLogin",
+					type:"POST",
+					contentType:"application/x-www-form-urlencoded",
+					data:{
+						userPhone:phoneNum,
+						authCode:passW,
+						authCodeId:authCodeId
+					},
+					success:function (data) {
+						if(data.resultCode==200){
+							console.log(data);
+							localStorage.setItem("userInfo",JSON.stringify(data.resultInfo.user));
+							window.localStorage.setItem("userId",data.resultInfo.user.userId);
+							window.history.go(-1);
+						}else{
+							alert('操作失败，请重试')
+						}
+					},
+					error:function (data) {
+						console.log(data);
+					}
+				});
+		   }
+
+	}
+</script>
+</body>
+</html>

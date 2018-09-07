@@ -1,0 +1,37 @@
+<view class='container'>
+  <view class='logo_box'>
+    <view class='logo_pic'>
+      <image mode='widthFix' src='http://img5.imgtn.bdimg.com/it/u=2640557337,2128270584&fm=26&gp=0.jpg'></image>
+      <text>认证</text>
+    </view>
+    <view class='brand_name'>曼道美容院</view>
+  </view>
+  <view class='brand_introduce'>
+    <text class='major_area'>
+    曼道美容院主要从事：皮肤美容、面部轮廓、肉毒素、眼部整形、抗衰老、美体塑形、耳部整形、唇部整形等医疗美容项目
+    </text>
+    <view class='institution_honor flex_space_between bor_b_1'>
+      <view class='licensing'>
+        <image mode='aspectFit' src='http://img5.imgtn.bdimg.com/it/u=2640557337,2128270584&fm=26&gp=0.jpg'></image>
+        <view>医疗执业许可</view>
+      </view>
+      <view class='brand_certification'>
+        <image mode='aspectFit' src='http://img5.imgtn.bdimg.com/it/u=2640557337,2128270584&fm=26&gp=0.jpg'></image>
+        <view>品牌认证</view>
+      </view>
+      <view class='honor'>
+        <image mode='aspectFit' src='http://img5.imgtn.bdimg.com/it/u=2640557337,2128270584&fm=26&gp=0.jpg'></image>
+        <view>荣誉展示</view>
+      </view>
+    </view>
+    <view class='flex_box'>
+      <image mode='aspectFill' src='http://img5.imgtn.bdimg.com/it/u=2640557337,2128270584&fm=26&gp=0.jpg'></image>
+      <text>北京市海淀区中关村甲8号b座909(地铁4号线中关村c1口出步行200米)</text>
+      <image class='right_picture' src='http://img5.imgtn.bdimg.com/it/u=2640557337,2128270584&fm=26&gp=0.jpg'></image>
+    </view>
+    <view class='flex_box'>
+      <image mode='aspectFill' src='http://img5.imgtn.bdimg.com/it/u=2640557337,2128270584&fm=26&gp=0.jpg'></image>
+      <text>周一至周日：09:00-21:00</text>
+    </view>
+  </view>
+</view>

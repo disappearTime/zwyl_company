@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta content="telephone=no" name="format-detection" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>直播</title>
+    <link rel="stylesheet" href="./css/common.css">
+    <link rel="stylesheet" href="./css/live.css">
+    <!-- <link rel="stylesheet" href="./videoJs/video-js.min.css"> -->
+</head>
+<body>
+    <div class="liveRoom">
+        <div class="video-box">
+            <!-- <script type="text/javascript" src="./player/sewise.player.min.js?host=streams.sewise.cn:8001&server=&type=&streamurl=rtmp://47.94.219.29:1935/livestream/yxmn2o7h&autostart=&buffer=&lang=&logo=http://onvod.sewise.com/libs/swfplayer/skin/images/logo.png&poster=http://jackzhang1204.github.io/materials/poster.png&title=&skin="></script> -->
+            <!-- <video id="roomVideo" class="video-js vjs-default-skin vjs-big-play-centered" x-webkit-airplay="allow" poster="" webkit-playsinline playsinline x5-video-player-type="h5" x5-video-player-fullscreen="true" preload="auto">
+                <source src="http://47.94.219.29:5080/live/DErJemz7.m3u8"  type="application/x-mpegURL">
+            </video> -->
+            <!-- <div class="video" style="width: 100%;height: 100%;box-sizing:border-box;"></div> -->
+
+            <video id="roomVideo" class="video-js vjs-default-skin vjs-big-play-centered" x-webkit-airplay="allow" poster="" webkit-playsinline playsinline x5-video-player-type="h5" x5-video-player-fullscreen="true" preload="auto" style="object-fit:fill">
+                <source src=""  type="application/x-mpegURL">
+            </video>
+        </div>
+        <div class="follow">
+            <div class="doctor_tx">
+                <img class="tx" src="./images/icon_user.png" alt="">
+                <img class="sign" src="./images/certification.png" alt="">
+            </div>
+            <div class="doctor-info">
+                <p class="doctor-name"></p>
+                <p class="view-num"></p>
+            </div>
+            <div class="concern-btn" onclick="toDownload()">关注</div>
+        </div>
+        <div class="chat">
+            <!-- <p class="chat-mes">
+                <span class="chat-user">美丽的小妖精</span>
+                <span class="message">送给啵主一个我喜欢你</span>
+            </p> -->
+        </div>
+        <div class="nav-btn">
+            <div class="pro-list">
+                <img src="./images/flower.png" alt="">
+            </div>
+            <div class="ear-cup">
+                <img onclick="toDownload()" src="./images/music.png" alt="">
+            </div>
+            <!-- <input onclick="toDownload()" disabled type="text" placeholder="输入区">  -->
+            <div class="entering" onclick="toDownload()">输入区</div>
+            <div class="gift">
+                <img onclick="toDownload()" src="./images/gift.png" alt="">
+            </div>
+            <div class="love">
+                <img onclick="toDownload()" src="./images/love.png" alt="">
+            </div>
+        </div>
+        <div class="project-list">
+            <div class="list-card">
+                <ul>
+                    <!-- <li>
+                        <div class="img-box">
+                            <img src="./images/wx.png" alt="">
+                        </div>
+                        <div class="project-info">
+                            <p class="info-mes">[埋线隆鼻]6D线雕隆鼻 无需手术 5分钟微创 打造高挺翘鼻</p>
+                            <p class="price">
+                                <span class="money">￥3999</span>
+                                <span class="doctor_">
+                                    <img class="doctor-img" src="./images/doctor.png" alt="">
+                                    <span>张医生</span>
+                                </span>
+                            </p>
+                        </div>
+                    </li> -->
+                </ul>
+            </div>
+        </div>
+        <div class="download">
+            <div class="download-card">
+                <img class="close" src="./images/close_.png" alt="">
+                <p>下载<span class="appName"></span>APP,美丽从此开始</p>
+                <button onclick="download_app()" type="button">立即下载</button>
+            </div>
+        </div>
+    </div>
+    <div class="loading" id="loading" ></div>
+    <div class="toload">
+        <div>
+            <button onclick="download_app()">付费直播，下载<span class="appName"></span>app观看</button>
+            <button class="cancle_download">暂不下载</button>
+        </div>
+    </div>
+    <div class="toast">
+        <span>您的网速有点慢，刷新试试！<span class="reload_video">刷新</span><span class="close_video">关闭</span></span>
+    </div>
+    <button id="playBtn">
+        <img width="60px" src="./images/play.png" alt="">
+    </button>
+    <!-- <div id="loadVideo">
+    </div> -->
+    <div class="endToast">
+        <span>视频已结束</span>
+    </div>
+    <script src="./js/zepto.js"></script>
+    <script src="./js/api.js"></script>
+    <script src="./js/jmessage-sdk-web.2.6.0.min.js"></script>
+    <script src="https://unpkg.com/video.js/dist/video.js"></script>
+    <script src="https://unpkg.com/videojs-contrib-hls/dist/videojs-contrib-hls.js"></script>
+    <script src="./js/common.js"></script>
+    <script src="./js/live.js"></script>
+</body>
+</html>

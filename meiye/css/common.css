@@ -1,0 +1,294 @@
+/*rem布局媒体查询*/
+@media screen and (min-width: 320px) {
+    html {font-size: 14px;}
+}
+ 
+@media screen and (min-width: 360px) {
+    html {font-size: 16px;}
+}
+ 
+@media screen and (min-width: 400px) {
+    html {font-size: 18px;}
+}
+ 
+@media screen and (min-width: 440px) {
+    html {font-size: 20px;}
+}
+ 
+@media screen and (min-width: 480px) {
+    html {font-size: 22px;}
+}
+ 
+@media screen and (min-width: 640px) {
+    html {font-size: 28px;}
+}
+* {
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	-webkit-touch-callout: none;
+	-moz-tap-highlight-color: rgba(0, 0, 0, 0);
+	-moz-touch-callout: none;
+}
+body, div, p, blockquote, hr, ul, ol, h1, h2, h3, h4, h5, h6, menu, dd, dl, form, fieldset, input, textarea, caption, select, button, input, pre, hr, td, th, address, section, article, aside, header, footer, nav, dialog, figure, hgroup {
+	margin: 0;
+	padding: 0;
+	font-family: '微软雅黑'
+}
+article, aside, details, figcaption, figure, footer, header, hgroup, main, nav, section, summary {
+	display: block
+}
+html, body {
+	width: 100%;
+	height: 100%
+}
+h1, h2, h3, h4, h5, h6 {
+	font-weight: normal;
+	font-size: 14px;
+}
+b {
+	font-weight: normal;
+}
+em, address {
+	font-style: normal
+}
+i{
+	font-style: normal;
+}
+ul, ol, li {
+	list-style: none
+}
+img {
+	vertical-align: middle;
+}
+img, a {
+	border: 0 none
+}
+a {
+	text-decoration: none;
+	color: #4a4a4a;
+	background: transparent
+}
+a:focus, a:active, a:hover {
+	outline: 0
+}
+input, *:focus, input, button, select, textarea {
+	outline: 0
+}
+:focus {
+	outline: 0
+}
+input{-webkit-appearance:none;}
+del {
+	margin: 0 3px
+}
+.underline {
+	text-decoration: underline;
+}
+
+html,body{
+	display:block;
+	width:100%;
+	height:100%;
+}
+
+body {
+	font-family: Helvetica, "Microsoft YaHei";
+	font-size: 14px;
+	line-height: 1.2;
+	color: #4a4a4a;
+	overflow:auto;   /* 用于 android4+，或其他设备 */
+    -webkit-overflow-scrolling:touch; /*解决ios滑动卡顿*/ 
+}
+/*解决一像素边框问题*/
+.bor_bott{
+	position: relative;
+}
+.bor_bott:after{
+	content: "";
+	display: block;
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	height: 1px;
+	background: #aaaaaa;
+	-webkit-transform: scaleY(0.5);	
+}
+/*清除浮动*/
+.clearfix{zoom: 1;}
+.clearfix:after{
+	clear:both;
+	content:'.';
+	display:block;
+	width: 0;
+	height: 0;
+	visibility:hidden;
+}
+.loading{
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	left: 0;
+	top: 0;
+	background-color:#fff;
+	background-image: url("../images/loading.gif");
+	background-repeat: no-repeat;
+	background-position: center center;
+	z-index:9999;
+}
+
+.my_shadow{
+	position:fixed;
+	left:0;
+	top:0;
+	width:100%;
+	height:100%;
+	background: rgba(0,0,0,0.8);
+	z-index:9;
+}
+.my_layer{
+	position: absolute;
+	top:18.77%;
+	left:0;
+	right:0;
+	margin: auto;
+	width:72.4%;
+	height:20rem;
+	background: url(../../images/hb.png) no-repeat center 0;
+	background-size:contain;
+	z-index:999;
+	text-align: center;
+	font-size:1.38rem;
+	color: #fff;
+	line-height: 1.8rem;
+}
+.my_layer p {
+	width:60%;
+	margin: 0 auto;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+   
+}
+.my_layer p.user-pic{
+	width:4rem;
+	height:4rem;
+	border-radius:50%;
+	background: #fff; 
+	margin: 3.788rem auto 0;
+}
+.my_layer p.user-name{
+	font-size:1.12rem;
+	margin-top: 0.02rem;
+	font-weight:600;
+}
+.my_layer p.des{
+	font-size:0.98rem; 
+	margin-bottom: 0.255rem;   
+}
+.my_layer p.nr{
+	font-size:1.50rem; 
+	padding: 0.26rem 0;
+	color: #fcee54; 
+	font-weight:600;  
+}
+.my_layer p.btn{
+	width:50%;
+	height:2.25rem;
+	text-align: center;
+	background: #fdee55;
+	margin: 1.68rem auto 0;
+	border-radius:40px;
+	line-height:2.25rem;
+	color:#CE0F32;
+	font-size: 1.18rem;
+	font-weight:700;
+	transform: translateY(-0.3rem)
+}
+.my_layer p.close{
+	width:2.7rem;
+	height:2.7rem;
+	border-radius:50%;
+	background: #fff;
+	position: absolute;
+	bottom: -5.4rem;
+	left:0;
+	right:0;
+	margin: 1rem auto;
+	background: url(../../images/close.png) no-repeat center 0;
+	background-size:contain;
+	cursor: pointer;
+}
+/* 下载框 */
+.download{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 1000;
+    background: rgba(0, 0, 0, 0.2);
+    display: none;
+}
+.download .download-card{
+    width: 100%;
+    height: 20.7%;
+    position: absolute;
+    bottom: 0;
+    background-color: #ffffff;
+    border-top-left-radius: 0.6rem;
+    border-top-right-radius: 0.6rem;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    text-align: center;
+}
+.download .download-card .close{
+    position: absolute;
+    width: 1.125rem;
+    top: 1rem;
+    right: 1rem;
+}
+.download .download-card p{
+    padding: 2.25rem 0 1.25rem 0;
+}
+.download .download-card button{
+    width: 7.375rem;
+    height: 1.875rem;
+    border: none;
+    border-radius: 0.9375rem;
+    background: #ce0f31;
+    color: #ffffff;
+}
+/*蒙层toast窗*/
+.layer_toast{
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	z-index: 1000;
+	background: rgba(0, 0, 0, 0.5);
+	display: none;
+}
+.layer_toast p{
+	height: 50px;
+	width: 100%;
+	position: absolute;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	margin: auto;
+	text-align: center;
+}
+.layer_toast p span{
+	display: inline-block;
+	height: 50px;
+	line-height: 50px;
+	font-size: 16px;
+	background: #ccc;
+	border-radius: 4px;
+	padding: 0 10px;
+	color: #333;
+}

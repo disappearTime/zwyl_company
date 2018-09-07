@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>项目</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <link rel="stylesheet" href="../../css/common.css">
+    <link rel="stylesheet" href="../css/groupPurchase.css">
+</head>
+<body>
+    <div id="app">
+        <div class="group_info">
+            <p class="group_status" v-if="surplusPeople<=0 && valid">拼团成功!</p>
+            <div class="group_img" v-if="valid">
+                <span class="img_box" v-if="groupUsers.length>0" v-for="(item,index) in groupUsers">
+                    <img :src="item" alt="" srcset="">
+                    <span v-if="index=='0'" class="group_owner">拼主</span>
+                </span>
+                <span class="img_box" v-if="surplusPeople>0" v-for="item in surplusPeople"><b>?</b></span>
+            </div>
+            <p class="group_time" v-if="valid">
+                剩余<span id="day"></span>:<span id="min"></span>:<span id="second"></span>结束
+            </p>
+            <p v-if="valid" class="quota_p">仅剩<span>{{surplusPeople}}个</span>名额</p>
+            <button class="join_group" @click="joinGroup" v-if="valid && !isEnd && surplusPeople>0">参与拼团</button>
+            <button class="valid_status" v-if="!valid || isEnd">该活动已过期或下架</button>
+            <p class="tip">拼团规则：拼单失败，活动过期自动退款</p>
+        </div>
+        <div class="cut_off"></div>
+        <div class="project_info">
+            <div class="projec_card">
+                <div class="project_detail" v-show="projectInfo">
+                    <div class="img_box">
+                        <img :src="projectInfo.projectImgUrl" alt="" srcset="">
+                    </div>
+                    <div class="project_explain">
+                        <p>{{projectInfo.projectName}}</p>
+                        <div>
+                            <div class="left">
+                                <span class="g_price">￥{{projectInfo.activityPrice}}</span>团购<br>
+                                <span class="o_price">￥{{projectInfo.projectPrice}}</span>
+                            </div>
+                            <div class="right">
+                                <button class="open_group" @click="openGroup" v-if="valid && !isEnd">我要开团</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="doctor_info" v-show="doctorInfo">
+                    <div class="doctor_img">
+                        <img :src="doctorInfo.doctorImg" alt="" srcset="">
+                        <span class="ident"></span>
+                    </div>
+                    <div class="doctor_name">
+                        <p class="name">{{doctorInfo.doctorName}}<span>{{doctorInfo.doctorPosition}}</span></p>
+                        <p class="opinion"><span>预约{{doctorInfo.reserve}}</span><span>案例{{doctorInfo.caseNum}}</span><span>好评率{{doctorInfo.goodRate}}</span></p>
+                    </div>
+                </div>
+                <p class="service_address">服务地址<span>{{projectInfo.projectArea}}</span></p>
+            </div>
+            <div class="project_introduce">
+                <h2>项目介绍</h2>
+                <div class="rich_text" v-html="projectInfo.projectInfo">
+                </div>
+            </div>
+        </div>
+        <div class="download_btn">
+            <button @click="download">查看更多，请下载APP</button>
+        </div>
+        <div class="loading" v-show="isLoadingShow"></div>
+        <div class="toast" v-show="isToastShow">不能重复参团</div>
+    </div>
+    <script src="../../js/api.js"></script>
+    <script src="../js/http.js"></script>
+    <script src="../../js/zepto.js"></script>
+    <script src="../../js/common.js"></script>
+    <script src="../js/vue2_5_13.js"></script>
+    <script src="../js/axios.min.js"></script>
+    <script src="https://cdn.bootcss.com/babel-polyfill/6.26.0/polyfill.min.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data () {
+                return {
+                    isLoadingShow: true,
+                    isToastShow: false,
+                    activityId: '',
+                    orderId: '',
+                    shareUserId: '',
+                    userId: '',
+                    groupUsers: [], // 已参团人数
+                    groupUserIds: [], // 已参团人数id
+                    allUserNum: 0, // 参团人数限制
+                    nowUserNum: 0, // 当前已参团人数
+                    endTime: 0, // 团购结束时间 只有团购活动期间内才能开团,
+                    isEnd: false, // 活动是否结束
+                    valid: true, // 团购是否有效 过期下架失效
+                    groupId: '',
+                    projectId: '',
+                    projectInfo:{},
+                    doctorInfo: {}
+                }
+            },
+            computed: {
+                surplusPeople: function () { // 参团剩余人数
+                    var ret = 0;
+                    if(this.allUserNum>=this.nowUserNum){
+                        ret = this.allUserNum - this.nowUserNum;
+                    }else{
+                        ret = 0
+                    }
+                    return ret;
+                }
+            },
+            methods: {
+                getGroupInfo: function () { // 获取团购信息
+                    var that = this;
+                    var data = {
+                        'orderId': this.orderId,
+                        'userId': this.userId // 非必传
+                    }
+                    myAxios.post('client-shopping/html/order/payFinish', data, function (res) {
+                        console.log(res);
+                        if(res.resultCode == 200){
+                            that.isLoadingShow = false;
+                            var result = res.resultInfo;
+                            if(result){
+                                if(result.groupUsers && result.groupUsers.length>0){
+                                    that.groupUsers = result.groupUsers;
+                                    that.nowUserNum = result.nowUserNum;
+                                    that.allUserNum = result.allUserNum;
+                                    that.endTime = result.endTime;
+                                    that.groupUserIds = result.groupUserIds || [];
+                                    that.groupId = result.groupRecordId;
+                                    that.projectId = result.projectId;
+                                    document.title = result.projectName;
+                                    that.projectInfo.projectName = result.projectName;
+                                    that.projectInfo.projectImgUrl = result.projectImgUrl;
+                                    that.projectInfo.projectPrice = result.projectPrice;
+                                    that.projectInfo.activityPrice = result.activityPrice;
+                                    that.projectInfo.projectArea = result.projectArea;
+                                    that.projectInfo.projectInfo = result.projectInfo
+                                    that.doctorInfo.doctorImg = result.doctorImg;
+                                    that.doctorInfo.doctorName = result.doctorName;
+                                    that.doctorInfo.doctorPosition = result.doctorPosition;
+                                    that.doctorInfo.caseNum = result.caseNum;
+                                    that.doctorInfo.goodRate = result.goodRate;
+                                    that.doctorInfo.reserve = result.reserve;
+                                    that.valid = result.valid
+                                    // 在接口调通后，获取当前时间，判断活动是否结束。
+                                    var nowTime = new Date().getTime();
+                                    if(nowTime>=that.endTime){ // 活动结束
+                                        that.isEnd = true;
+                                    }else{
+                                        var timer = setInterval(function(){
+                                            var now_time = new Date().getTime();
+                                            if(now_time >= that.endTime){
+                                                that.isEnd = true;
+                                                clearInterval(timer);
+                                            }
+                                            count_Down(that.endTime);
+                                        },1000)
+                                    }
+                                }
+                            }
+                        }
+                    });
+                },
+                joinGroup: function () { // 参团
+                    var that = this;
+                    if(this.userId){
+                        if(this.groupUserIds.length>0){
+                            var canJoin = true;
+                            for(var item of this.groupUserIds){
+                                if(item == this.userId){
+                                    canJoin = false;
+                                    break;
+                                }
+                            }
+                            if(!canJoin){
+                                this.isToastShow = true;
+                                setTimeout(function(){
+                                    that.isToastShow = false;
+                                },1000)
+                                return;
+                            }
+                        }
+                        // 去参团
+                        var data = {
+                            "groupRecordId": this.groupId,
+                            "isGroup": 1,
+                            "projectId": this.projectId,
+                            "projectType": '206002',
+                            "buyNum": 1,
+                            "userId": this.userId,
+                            "buyMethod": '229001' ,  //购买方式
+                            "buyMethodId": 0 ,
+                            "serviceId": 0,
+                            "activityId": this.activityId,
+                            "shareUserId": this.shareUserId,
+                            "shoppingCartId": '',
+                        }
+                        myAxios.post('client-shopping/html/order/cartAddOrder', data, function (res) {
+                            if(res.resultCode == 200){
+                                var result = res.resultInfo;
+                                if(result){
+                                    localStorage.setItem("orderData",JSON.stringify(res));
+                                    var order = res.resultMsg
+                                    window.location.href = "./order-payment.html?order="+order+"&isGroup=group"+"&activityId="+that.activityId+"&userId="+that.shareUserId;
+                                }
+                            }else{
+                                alert(res.resultMsg);
+                            }
+                        });
+                    }else{
+                        window.location.href="../../login.html?mark=1";	 
+                    }
+                },
+                openGroup: function () { // 开团
+                    window.location.href="./single-detail.html?projectId="+this.projectId+'&activityId='+this.activityId+"&userId="+this.shareUserId;
+                },
+                download: function () { // 下载
+                    download_app();
+                }
+            },
+            mounted: function () {
+                this.$nextTick(function(){
+                    if(GetQueryString('activityId')){
+                        this.activityId = GetQueryString('activityId');
+                    }
+                    if(GetQueryString('order')){
+                        this.orderId = GetQueryString('order');
+                    }
+                    if(GetQueryString('userId')){
+                        this.shareUserId = GetQueryString('userId');
+                    }
+                    if(localStorage.getItem("userId")){
+                        this.userId = localStorage.getItem("userId");
+                    }
+                    this.getGroupInfo();
+                })
+            }
+        })
+    </script>    
+</body>
+</html>

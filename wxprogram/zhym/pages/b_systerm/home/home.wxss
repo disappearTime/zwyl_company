@@ -1,0 +1,93 @@
+.home_content{
+  width: 100%;
+  flex-shrink: 1;
+  flex-grow: 1;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+}
+.tab_bar{
+  width: 100%;
+  height: 100rpx;
+  background: #ffffff;
+  box-sizing: border-box;
+  border-top: 1rpx solid #ccc;
+}
+.tab_item{
+  width: 33.3%;
+  height: 100%;
+  flex-grow: 1;
+  flex-shrink: 1;
+  text-align: center;
+}
+.tab_item image{
+  height: 50rpx;
+  width: 100%;
+  margin-top: 4rpx;
+}
+.tab_item view{
+  font-size: 24rpx;
+  text-align: center;
+}
+.beautyTask, .customerManage, .myPage{
+  width: 100%;
+}
+.manager_info{
+  width: 100%;
+  height: 160rpx;
+  padding: 20rpx;
+  box-sizing: border-box;
+}
+.manager_info .flex_left{
+  height: 100%;
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+}
+.manager_info .flex_left image{
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  margin-right: 20rpx;
+}
+.manager_info .flex_left .name_role{
+  height: 100%;
+  font-size: 24rpx;
+}
+.manager_info .flex_left .name_role .role{
+  color: #ccc;
+}
+.manager_info .flex_right{
+  height: 120rpx;
+  width: 120rpx;
+  flex-grow: 0
+}
+.manager_info .flex_right image{
+  width: 40rpx;
+  height: 40rpx;
+}
+.financial_statisc{
+  padding-left: 20rpx;
+  font-size: 24rpx;
+}
+.financial_statisc .total_income{
+  font-size: 32rpx;
+}
+.trends{
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+.trends>view{
+  width: 25%;
+  text-align: center;
+  margin-bottom: 30rpx;
+}
+.trends>view image{
+  width: 100%;
+  height: 50rpx;
+  margin-bottom: 10rpx;
+}
+.trends>view .text{
+  font-size: 24rpx;
+}

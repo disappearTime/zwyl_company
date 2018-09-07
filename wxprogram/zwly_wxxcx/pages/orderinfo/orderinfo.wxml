@@ -1,0 +1,78 @@
+<!--pages/orderinfo/orderinfo.wxml-->
+<view class="container">
+    <view class="orin-header">
+        <view class="orin-title">购物清单</view>
+        <view class="orin-status">
+            <text>
+                <block wx:if="{{orderinfo.pay_status==0 && orderinfo.order_status == 1}}">未付款</block>
+                <block wx:if="{{orderinfo.pay_status==1 && orderinfo.order_status == 1}}">已付款</block>
+                <block wx:if="{{orderinfo.pay_status==1 && orderinfo.order_status == 2}}">待发货</block>
+                <block wx:if="{{orderinfo.pay_status==1 && orderinfo.order_status == 3}}">待收货</block>
+                <block wx:if="{{orderinfo.pay_status==0 && orderinfo.order_status == 7}}">已取消</block>
+                <block wx:if="{{orderinfo.pay_status==1 && orderinfo.order_status == 6}}">已完成</block>        
+            </text>
+        </view>
+    </view>
+    <view class="orin-goodslist">
+        <block wx:for="{{orderinfo.order_goods}}" wx:key="index">
+            <view class="orin-goodsitem">
+                <image src="{{imgurl}}{{item.order_img}}" />
+                <view class="orin-item-info">
+                    <view class="orin-item-name">{{item.goods_name}}</view>
+                    <view class="orin-item-price">
+                        <view class="orin-item-pri">￥<text>{{item.goods_price}}</text></view>
+                        <!-- <view class="orin-item-jian">已降￥28.00</view> -->
+                    </view>
+                </view>
+            </view>
+        </block>
+    </view>
+    <view class="orin-item">
+        <view class="orin-item-tit">收货地址</view>
+        <view class="orin-item-msg">
+            <text>{{orderinfo.consignee}}  {{orderinfo.tel}}</text>
+            <text>{{orderinfo.province_name}}省{{orderinfo.city_name}}市{{orderinfo.district_name}}区{{orderinfo.address}}</text>
+        </view>
+    </view>
+    <view class="orin-item">
+        <view class="orin-item-tit">发票</view>
+        <view class="orin-item-msg">
+            <text>暂不支持发票功能</text>
+        </view>
+    </view>
+    <view class="orin-data-info">
+        <view class="orin-data-item">
+            订单编号:
+            <text>{{orderinfo.order_sn}}</text>
+        </view>
+        <view class="orin-data-item">
+            下单时间:
+            <text>{{orderinfo.instime}}</text>
+        </view>
+        <view class="orin-data-item">
+            支付方式:
+            <text wx:if="{{orderinfo.pay_id == 1}}">微信支付</text>
+        </view>
+        <view class="orin-data-item">
+            运费:
+            <text>￥{{orderinfo.logistics_price}}</text>
+        </view>
+        <view class="orin-data-item" wx:if="{{orderinfo.coupons != 0}}">
+            优惠券:
+            <text>-￥{{orderinfo.coupons_price}}</text>
+        </view>
+        <view class="orin-data-item">
+            实付总额:
+            <text>￥{{orderinfo.actual_price}}</text>
+        </view>
+    </view>
+    <view class="orin-fun">
+        <view></view>
+        <button bindtap="delorder" data-id="{{orderinfo.order_id}}" data-isdelete="2" wx:if="{{orderinfo.pay_status == 1 && orderinfo.order_status == 6 || orderinfo.pay_status==0 && orderinfo.order_status == 7}}">删除订单</button>
+        <button bindtap="editorder" data-id="{{orderinfo.order_id}}" data-order_status="7" wx:if="{{orderinfo.order_status != 7 && orderinfo.pay_status == 0}}">取消订单</button>
+        <!-- <button wx:if="{{orderinfo.order_status == 4 && orderinfo.pay_status == 2}}">再次购买</button> -->
+        <button bindtap="gaincode" data-Total_fee="{{orderinfo.order_price}}" data-goods_name="{{orderinfo.order_goods[0].goods_name}}" data-order_id="{{orderinfo.order_id}}" wx:if="{{orderinfo.pay_status != 1 && orderinfo.order_status != 7}}">立即付款</button>
+        <button bindtap="logistics" data-order_id="{{orderinfo.order_id}}" wx:if="{{ orderinfo.order_status == 3 && orderinfo.pay_status == 1 }}">查看物流</button>
+        <button bindtap="editorder" data-id="{{orderinfo.order_id}}" data-order_status="4" wx:if="{{orderinfo.order_status == 3 && orderinfo.pay_status == 1}}">确认收货</button>
+    </view>
+</view>

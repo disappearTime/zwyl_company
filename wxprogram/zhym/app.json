@@ -1,0 +1,59 @@
+{
+  "pages":[
+    "pages/c_systerm/start/start",
+    "pages/c_systerm/home/home",
+    "pages/c_systerm/store/store",
+    "pages/c_systerm/appointment/appointment",
+    "pages/c_systerm/my/my",
+    "pages/c_systerm/myOrder/myOrder",
+    "pages/c_systerm/beautyInstitution/beautyInstitution",
+    "pages/c_systerm/group/group",
+    "pages/c_systerm/brandIntroduce/brandIntroduce",
+    "pages/b_systerm/shopProject/shopProject",
+    "pages/b_systerm/addProject/addProject",
+    "pages/b_systerm/groupList/groupList",
+    "pages/b_systerm/openGroup/openGroup",
+    "pages/b_systerm/home/home",
+    "pages/b_systerm/extension/extension",
+    "pages/b_systerm/start/start",
+    "pages/logs/logs"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle":"black"
+  },
+  "tabBar": {
+    "color": "#A5A5A5",
+    "selectedColor": "#FF4948",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/c_systerm/home/home",
+        "text": "首页",
+        "iconPath": "image/index.png",
+        "selectedIconPath": "image/index-xz.png"
+      },
+      {
+        "pagePath": "pages/c_systerm/store/store",
+        "text": "门店",
+        "iconPath": "image/area.png",
+        "selectedIconPath": "image/area-xz.png"
+      },
+      {
+        "pagePath": "pages/c_systerm/appointment/appointment",
+        "text": "预约",
+        "iconPath": "image/clock.png",
+        "selectedIconPath": "image/clock-xz.png"
+      },
+      {
+        "pagePath": "pages/c_systerm/my/my",
+        "text": "我的",
+        "iconPath": "image/my.png",
+        "selectedIconPath": "image/my-xz.png"
+      }
+    ]
+  }
+}

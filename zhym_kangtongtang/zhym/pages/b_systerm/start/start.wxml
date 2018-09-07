@@ -1,0 +1,15 @@
+<view class="container">
+  <view class='policy'>我们专注为医美提供智慧化管理方式</view>
+  <view class='lemma'>智在应用，慧在管理</view>
+  <view class='main_business'>
+    <text>美容养生</text>
+    <text>足疗按摩</text>
+    <text>健身房</text>
+    <text>美发造型</text>
+    <text>美甲美睫</text>
+    <text>医疗美容</text>
+    <text>健康调理</text>
+    <text>塑型瘦身</text>
+    <text>瑜伽</text>
+  </view>
+</view>

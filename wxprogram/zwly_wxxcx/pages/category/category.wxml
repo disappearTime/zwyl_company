@@ -1,0 +1,29 @@
+<!--pages/category/category.wxml-->
+<view class='container'>
+    <!-- 搜索 -->
+    <view class='search' bindtap='gosearch'>
+        <view class='search-info'>
+            <input type='text' placeholder='搜索'></input>
+            <image src='/image/search.png'></image>
+        </view>
+    </view> 
+    <!-- 分类 -->
+    <view class='classify'>
+        <scroll-view scroll-y class='classify-left'>
+            <block wx:for="{{classifys}}" wx:key="{{item.cat_id}}">
+                <view class='classify-left-items {{ classifyactivite == index ? "activite" : "" }}' bindtap='activitycut' data-index="{{index}}" wx:if="{{item.parent_id == 0}}">
+                    {{item.name}}
+                </view>
+            </block>
+        </scroll-view>
+        <view class='classify-right' >
+            <block wx:for="{{classifys[classifyactivite].child}}" wx:key="{{item.cat_id}}">
+                <view class='classify-right-items' id="{{item.parent_id}}" bindtap="gosearch" data-catid="{{item.cat_id}}" data-catname="{{item.name}}"> 
+                    <image src='{{imgurl}}{{item.img}}' wx:if="{{item.img}}"></image>
+                    <image src="/image/2.jpg" wx:else />
+                    <text>{{item.name}}</text>
+                </view>
+            </block>
+        </view>
+    </view>
+</view>

@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>购物车</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <script type="text/javascript" src="../js/h5.js"></script>
+    <link rel="stylesheet" href="../css/h5.css"/>
+    <link rel="stylesheet" href="../css/mod.css"/>
+    <style>
+        input[type=button], li strong, li em, li span, li div {
+            height: 25px;
+            font-size: 18px;
+            line-height: 25px;
+            text-align: center;
+        }
+
+        input[type=button], li strong {
+            width: 40px;
+        }
+
+        li span, li em {
+            width: 80px;
+            background: pink;
+        }
+
+        li div {
+            width: 100px;
+        }
+
+        li strong, li span, li em, li div {
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+<div class="v-root state-buy" id="app" v-cloak>
+    <div class="v-main v-main-goods plr10">
+        <div v-for="item in goods">
+            <div class="fullsub" v-if="item.activityType==243001">
+                <span>{{item.activityName}}</span>
+                <i>购物满{{item.attainMoney}}元可减{{item.reduceMoney}}元</i>
+                <b @click="goback">去凑单＞</b>
+            </div>
+            <div class="goodsItem group" :class="{'group':item.projectType==206001,'single':item.projectType!=206001}">
+                <div v-if="item.projectType==206001">
+                    <div class="dt">
+                        <div class="d1">
+                            <b class="myRadio" @click="myRadio($event)"></b>
+                            <i class="media-txt__tit-badge">一体化方案</i>
+                            <span>{{item.projectName}}</span>
+                        </div>
+                        <div class="d2">
+                            <i>包含{{item.projects.length}}个子项目</i>
+                            <span>总价<b>￥{{toFixed_len(item.projectPrice,2)}}</b></span>
+                        </div>
+                    </div>
+                    <div class="dbItem" v-for="project in item.projects">
+                        <img :src="project.projectImg" class="img">
+                        <div class="imgR">
+                            <p>{{project.projectName}}</p>
+                            <i>￥{{toFixed_len(project.projectPrices,2)}}</i>
+                        </div>
+                    </div>
+                </div>
+
+                <div v-if="item.projectType!=206001">
+                    <b class="myRadio" @click="myRadio($event)"></b>
+                    <img :src="item.projectImg" class="img">
+                    <div class="imgR">
+                        <p>{{item.projectName}}</p>
+                        <div class="count">
+                            <i>￥{{toFixed_len(item.projectPrice,2)}}</i>
+                            <div class="countHandle">
+                                <input type="button" value="-" @click="deduct($event)"/>
+                                <strong>1</strong>
+                                <input type="button" value="+" @click="add($event)"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="bottomBtn">
+        <b class="myRadio all" @click="myRadio($event)">全选</b>
+        <span class="payBtn" @click="createOrder">结算</span>
+    </div>
+    <div class="loading" v-if="showLoading"></div>
+</div>
+<script src="../../js/zepto.js"></script>
+<script src="../js/vue2_5_13.js"></script>
+<script src="../js/axios.min.js"></script>
+<script src="../../js/api.js"></script>
+<script type="text/javascript" src="../js/http.js"></script>
+<script src="https://cdn.bootcss.com/babel-polyfill/6.26.0/polyfill.min.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            isShow: false,
+            showLoading: true,
+            goods: "",
+            userId: "",
+            shareUserId: "",
+        },
+        computed: {},
+        methods: {
+            toFixed_len(num,len){ // 保留参数len位小数,参数是字符串数字或则数字
+                var ret = num + "";
+                if(ret){ // 0为false "0"为真   参数不为空
+                var num_ = Number(num);
+                ret = num_.toFixed(len); 
+                }
+                return ret;
+            },
+            goback:function(){
+              window.history.go(-1);
+            },
+            createOrder: function () {
+                var projectId = "";
+                var projectType = "";
+                var buyNum = "";
+                var buyMethod = "";
+                var buyMethodId = "";
+                var serviceId = "";
+                var activityId = "";
+                var shoppingCartId = "";
+                var goods = this.goods;
+                console.log(goods);
+                $(".goodsItem").each(function (i) {
+                    if($(this).find(".active").length>0){
+                        var ids = "";
+                        if(goods[i].projectType == '206001'){
+                            if(goods[i].projects.length <= 0){
+                                alert("第"+(i+1)+"个商品为一体化方案，没有包含子项目，无法下单");
+                                return;
+                            }
+                        }
+                        if(goods[i].projects.length>0){
+                            for(var j in goods[i].projects){
+                                ids += "-" + goods[i].projects[j].projectId;
+                            }
+                        }
+                        projectId += goods[i].projectId + ids + ",";
+                        projectType += goods[i].projectType + ",";
+                        if($(this).find("strong").length>0){
+                            buyNum += $(this).find("strong").text() + ",";
+                        }else{
+                            buyNum += goods[i].buyNum + ",";
+                        }
+                        buyMethod += "0,";
+                        buyMethodId += "0,";
+                        serviceId += "0,";
+                        activityId += goods[i].activityId + ",";
+                        shoppingCartId += goods[i].shoppingCartId + ",";
+                    }
+
+
+                   
+                });
+
+                projectId= projectId.substring(0,projectId.length-1);
+                projectType=projectType.substring(0,projectType.length-1);
+                buyNum=buyNum.substring(0,buyNum.length-1);
+                buyMethod=buyMethod.substring(0,buyMethod.length-1);
+                buyMethodId=buyMethodId.substring(0,buyMethodId.length-1);
+                serviceId=serviceId.substring(0,serviceId.length-1);
+                activityId = activityId.substring(0,activityId.length-1);
+                shoppingCartId=  shoppingCartId.substring(0,shoppingCartId.length-1);
+
+                localStorage.setItem("orderData","");
+
+                if(!projectId){
+                    alert("请选择一个项目")
+                    return;
+                }
+                var self = this;
+                self.showLoading = true;
+                //创建订单
+                myAxios.post('client-shopping/html/order/cartAddOrder', {
+                    projectId: projectId,
+                    projectType: projectType,
+                    buyNum: buyNum,
+                    userId:this.userId,
+                    buyMethod: buyMethod,
+                    buyMethodId: buyMethodId,
+                    serviceId: serviceId,
+                    activityId: activityId,
+                    shareUserId: this.shareUserId,
+                    shoppingCartId: shoppingCartId,
+                }, function (data) {
+                    if(data.resultCode == 200){
+                        localStorage.setItem("orderData",JSON.stringify(data));
+                        //alert(JSON.stringify(data))
+                        console.log(JSON.stringify(data));
+                        var order = data.resultMsg
+                        window.location.href = "./order-payment.html"+"?order="+order
+                        
+                    }else if(data.resultCode == 400){
+                        self.showLoading = false;
+                        alert(data.resultMsg)
+                    }
+                    
+                });
+            },
+            myRadio: function (e) {
+                var that = e.target;
+                if ($(that).hasClass("all")) {//全选
+                    if ($(that).hasClass("active")) {
+                        $(".myRadio").removeClass("active");
+                    } else {
+                        $(".myRadio").addClass("active");
+                    }
+                } else {//单选
+                    if ($(that).hasClass("active")) {
+                        $(that).removeClass("active");
+                        $(".myRadio.all").removeClass("active");
+                    } else {
+                        $(that).addClass("active");
+                    }
+                }
+            },
+            add: function (e) {
+                var that = e.target;
+                var num = Number($(that).prev("strong").text());
+                $(that).prev("strong").text(++num)
+            },
+            deduct: function (e) {
+                var that = e.target;
+                var num = Number($(that).next("strong").text());
+                $(that).next("strong").text(num <= 1 ? 1 : --num)
+            }
+        },
+        mounted: function () {
+            var self = this;
+            this.userId = localStorage.getItem("userId");
+         //     alert(this.userId);
+         //    this.userId='3830344392618165676';
+
+            
+            this.shareUserId = localStorage.getItem("shareUserId");
+
+            //购物车列表
+            myAxios.post('client-shopping/html/cart/queryCartList', {
+                userId: this.userId
+            }, function (data) {
+                self.goods = data.resultInfo;
+                self.showLoading = false;
+            });
+        },
+    });
+</script>
+</body>
+</html>

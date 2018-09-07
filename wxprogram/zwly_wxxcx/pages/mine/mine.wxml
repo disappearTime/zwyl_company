@@ -1,0 +1,109 @@
+<!--pages/mine/mine.wxml-->
+<view class="container">
+    <!-- 头部 -->
+    <view class="mine-title">
+        <image class="mine-title-bj" src="/image/my-bg.png"></image>
+        <view class="mine-title-msg" wx:if="{{userinfo}}">
+            <view>
+                <image src="{{userinfo.avatarUrl}}" />
+            </view>
+            <view>{{userinfo.nickName}}</view>
+            <text>微信用户</text>
+        </view>
+        <view class="mine-title-msg" wx:else>
+            <view>
+                <image src="" />
+            </view>
+            <view><button open-type="getUserInfo" bindgetuserinfo="userinfo">点击获取用头像</button></view>
+            <text>微信用户</text>
+        </view>
+    </view>
+    <!-- 我的订单 -->
+    <view class="mine-indent">
+        <view class="mine-indent-info">
+            <view class="mine-indent-title" bindtap="goorder" data-index="0">
+                <view>我的订单</view>
+                <view>
+                    <text>查看全部</text>
+                    <image src="/image/jiantou.png" />
+                </view>
+            </view>
+            <view class="mine-indent-list">
+                <view class="mine-indent-items"  bindtap="goorder" data-index="1">
+                    <image src="/image/my-daifukuan.png"></image>
+                    <text>待付款</text>
+                    <view class="order_num" wx:if="{{dfknum != 0}}">{{dfknum}}</view>
+                </view>
+                <view class="mine-indent-items"  bindtap="goorder" data-index="2">
+                    <image src="/image/my-daifuhuo.png"></image>
+                    <text>待发货</text>
+                    <view class="order_num" wx:if="{{dfhnum != 0}}">{{dfhnum}}</view>
+                </view>
+                <view class="mine-indent-items"  bindtap="goorder" data-index="3">
+                    <image src="/image/my-yifahuo.png"></image>
+                    <text>待收货</text>
+                    <view class="order_num" wx:if="{{dshnum != 0}}">{{dshnum}}</view>
+                </view>
+                <view class="mine-indent-items"  bindtap="goorder" data-index="4">
+                    <image src="/image/my-yiwancheng.png"></image>
+                    <text>已完成</text>
+                    <!-- <view class="order_num" wx:if="{{ywcnum != 0}}">{{ywcnum}}</view> -->
+                </view>
+            </view>
+        </view>
+    </view>
+    <!-- 我的服务 -->
+    <view class="mypayqqcom">
+        <view class="mypayqqcom-title">
+            我的服务
+        </view>
+        <view class="mypayqqcom-list">
+            <button open-type='contact' class="mypayqqcom-items">
+                <view>
+                    <image src="/image/xq-kefu.png" />
+                    <text>在线服务</text>
+                </view>
+                <image src="/image/jiantou.png" />
+            </button>
+            <button class="mypayqqcom-items" bindtap="gosite">
+                <view>
+                    <image src="/image/zxkf-02.png" />
+                    <text>我的地址</text>
+                </view>
+                <image src="/image/jiantou.png" />
+            </button>
+            <button class="mypayqqcom-items" bindtap="gocoupon">
+                <view>
+                    <image src="/image/youhuijuan.png" />
+                    <text>我的优惠券</text>
+                </view>
+                <image src="/image/jiantou.png" />
+            </button>
+            <!-- <button class="mypayqqcom-items">
+                <view>
+                    <image src="/image/zxkf-03.png" />
+                    <text>帮助中心</text>
+                </view>
+                <image src="/image/jiantou.png" />
+            </button> -->
+            <button class="mypayqqcom-items" bindtap="sustain">
+                <view>
+                    <image src="/image/jishuzhichi.png" />
+                    <text>技术支持</text>
+                </view>
+                <image src="/image/jiantou.png" />
+            </button>
+            <button class="mypayqqcom-items">
+                <view>
+                    <image src="/image/zxkf-04.png" />
+                    <text>设置</text>
+                </view>
+                <image src="/image/jiantou.png" />
+            </button>
+        </view>
+    </view>
+    <!-- 优惠券 -->
+    <view class="couponfc" bindtap="gogetcoupon">
+        <image src="/image/lingjuanzx.png" />
+    </view>
+</view>

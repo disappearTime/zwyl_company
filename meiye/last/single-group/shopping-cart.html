@@ -1,0 +1,478 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>购物车</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <link rel="stylesheet" href="../../css/common.css">
+    <link rel="stylesheet" href="../../css/shooping-cart.css">
+</head>
+<body>
+<div id="app">
+    <div class="content">
+        <!-- 满减活动 -->
+        <div class="fullcut_project" v-if="fullCutActivity.length>0">
+            <!-- 参与满减的项目 -->
+            <div class="full_box_item" v-for="(item,index) in fullCutActivity">
+                <p class="full_rule project_title" v-if="!isFullcutProjectEmpty[index].isEmpty">
+                    <span class="rule_detail">
+                        <b>
+                            <i v-for="r_item in item.attainTypes">满{{toFixed_len(r_item.attainMoney,2)}}元减{{toFixed_len(r_item.reduceMoney,2)}}元、</i>
+                        </b>
+                    </span>
+                    <span class="piece_tog" @click="goPiece(item.activityId,item.activityType)">去凑单></span>
+                </p>
+                <div class="project_item" v-for="(p_item,p_index) in item.relative_projects" :data-index="p_index" v-if="!p_item.isDeleted">
+                    <i class="del" @click="delGoods(p_item.projectType,p_item.shoppingCartId,p_item.projectId)"></i>
+                    <div class="left">
+                        <div class="choose_box">
+                            <span @click="chooseGoods('1',index,'0',p_index)" :class="p_item.isChoose?'active':''"></span>
+                        </div>
+                        <div class="project_img">
+                            <img :src="p_item.projectImg" alt="">
+                        </div>
+                    </div>
+                    <div class="right">
+                        <p class="project_name">{{p_item.projectName}}</p>
+                        <p class="project_num" v-show="false">
+                            <span>-</span>1<span>+</span>
+                        </p>
+                        <p class="project_info">
+                            <span class="project_price">￥{{toFixed_len(p_item.projectPrice,2)}}(全款)</span>
+                            <span class="doctor_name">
+                                <img src="../../images/doctor.png" alt="">
+                                {{p_item.doctorName}}
+                            </span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <!-- 参与满减的一体化方案 -->
+            <div class="scheme" v-show="0">
+                <div class="scheme_item">
+                    <i class="del" @click="delGoods"></i>
+                    <p class="scheme_name">
+                        <span class="active"></span>
+                        <span>一体化方案</span>
+                        <span>玻尿酸</span>
+                    </p>
+                    <p class="contain_project">
+                        <span>包含0个子项目</span>
+                        <span>总价<span class="scheme_price">￥2.00</span></span>
+                    </p>
+                    <div class="scheme_project_item">
+                        <img src="http://meiye-tyc.oss-cn-beijing.aliyuncs.com/meiyeFiles/2a87b0c4c1d94741b945ff3468b34ee51530002753195.png" alt="">
+                        <div class="project_info">
+                            <p>玻尿酸</p>
+                            <p>￥3.00</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <p class="project_title" v-if="!isProjectNotFullCutEmpty">非满减项目</p>
+        <div class="else_project" v-if="!isProjectNotFullCutEmpty">
+            <!-- 单个项目 -->
+            <div class="single-project">
+                <div class="project_item" v-for="(item,index) in projectNotFullCut" :data-index="index" v-if="!item.isDeleted">
+                    <i class="del" @click="delGoods(item.projectType,item.shoppingCartId,item.projectId)"></i>
+                    <div class="left">
+                        <div class="choose_box">
+                            <span @click="chooseGoods('0',index,'0')" :class="item.isChoose?'active':''"></span>
+                        </div>
+                        <div class="project_img">
+                            <img :src="item.projectImg" alt="">
+                        </div>
+                    </div>
+                    <div class="right">
+                        <p class="project_name">{{item.projectName}}</p>
+                        <p class="project_num" v-show="false">
+                            <span>-</span>1<span>+</span>
+                        </p>
+                        <p class="project_info">
+                            <span class="project_price">
+                                <i v-if="item.readPrice>0">￥{{toFixed_len(item.readPrice,2)}}(预约金)</i>
+                                <i v-else>￥{{toFixed_len(item.projectPrice,2)}}(全款)</i>
+                            </span>
+                            <span class="doctor_name">
+                                <img src="../../images/doctor.png" alt="" srcset="">
+                                {{item.doctorName}}
+                            </span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <!-- 一体化方案 -->
+            <div class="scheme" v-show="0">
+                <div class="scheme_item">
+                    <i class="del" @click="delGoods"></i>
+                    <p class="scheme_name">
+                        <span class="active"></span>
+                        <span>一体化方案</span>
+                        <span>玻尿酸</span>
+                    </p>
+                    <p class="contain_project">
+                        <span>包含0个子项目</span>
+                        <span>总价<span class="scheme_price">￥2.00</span></span>
+                    </p>
+                    <div class="scheme_project_item">
+                        <img src="http://meiye-tyc.oss-cn-beijing.aliyuncs.com/meiyeFiles/2a87b0c4c1d94741b945ff3468b34ee51530002753195.png" alt="">
+                        <div class="project_info">
+                            <p>玻尿酸</p>
+                            <p>￥3.00</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="account">
+        <div class="chooseAll">
+            <span :class="checkedAll?'checkedAll':''" @click="chooseAllGoods"></span>全选
+            <span class="totalPrice">合计&nbsp;&nbsp;<span class="amount_price">￥{{toFixed_len(amountPrice,2)}}</span></span>
+        </div>
+        <div class="toPay" @click="creatOrder">结算</div>
+    </div>
+    <div class="empty_cart" v-if="isCartEmpty">
+        <span>购物车空空如也</span>
+    </div>
+    <div class="loading" v-if="showLoading"></div>
+</div>
+<script src="../../js/zepto.js"></script>
+<script src="../../js/api.js"></script>
+<script src="../../js/common.js"></script>
+<script src="../js/vue2_5_13.js"></script>
+<script src="https://cdn.bootcss.com/babel-polyfill/6.26.0/polyfill.min.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            showLoading: true,
+            goods: "",
+            userId: "",
+            shareUserId: "",
+            orderObj:{}, // 订单对象
+            fullCutActivity: [], // 满减活动
+            projectNotFullCut: [], // 未参与满减的项目,不包含一体化
+            projects: [], // 所有项目
+            checkedAll: false, // 是否全选
+            amountPrice: 0, // 总价
+        },
+        computed: {
+            isCartEmpty: function () { // 购物车是否清空
+                var isEmpty = true;
+                for(var item of this.projects){
+                    if(item.isDeleted == false){
+                        isEmpty = false;
+                        break;
+                    }
+                }
+                return isEmpty;
+            },
+            isProjectNotFullCutEmpty: function () { // 未参与满减的项目是否为空
+                var isEmpty = true;
+                for(var item of this.projectNotFullCut){
+                    if(item.isDeleted == false){
+                        isEmpty = false;
+                        break;
+                    }
+                }
+                return isEmpty;
+            },
+            isFullcutProjectEmpty: function () {
+                if(this.fullCutActivity.length>0){
+                    for(var item of this.fullCutActivity){
+                        item.isEmpty = true; // 给每一个活动添加一个空的状态
+                        for(var p_item of item.relative_projects){
+                            if(p_item.isDeleted == false){
+                                item.isEmpty = false;
+                                break;
+                            }
+                        }
+                    }
+                }
+                return this.fullCutActivity;
+            }
+        },
+        methods: {
+            toFixed_len: function(num,len){ // 保留参数len位小数,参数是字符串数字或则数字
+                var num = num?num:0
+                var ret = num + "";
+                if(ret){ // 0为false "0"为真   参数不为空
+                var num_ = Number(num);
+                ret = num_.toFixed(len); 
+                }
+                return ret;
+            },
+            getTotalPrice: function () {
+                var totalPrice = 0;
+                if(this.projectNotFullCut.length>0){
+                    for(var item of this.projectNotFullCut){
+                        if(item.isChoose){
+                            if(item.readPrice>0){ // 有预约金
+                                totalPrice += item.readPrice;
+                            }else{
+                                totalPrice += item.projectPrice;
+                            }
+                        }
+                        
+                    }
+                }
+                if(this.fullCutActivity.length>0){
+                    for(var item of this.fullCutActivity){ // 后台返回的活动规则已做过排序，从高到底
+                        var relative_pro_total_price = 0;// 每个活动下关联的项目的总价
+                        for(var p_item of item.relative_projects){ // 满减活动关联的项目不能有预约金
+                            if(p_item.isChoose){
+                                relative_pro_total_price += p_item.projectPrice;
+                            }
+                            
+                        }
+                        for(var r_item of item.attainTypes){
+                            if(relative_pro_total_price>=r_item.attainMoney){
+                                relative_pro_total_price -= r_item.reduceMoney;
+                                break;
+                            }
+                        }
+                        totalPrice += relative_pro_total_price
+                    }
+                }
+                return totalPrice;
+            },
+            delGoods: function (projectType,shoppingCardId,projectId) { // 删除商品
+                var that = this;
+                $.ajax({
+                    url: host + '/client-shopping/cart/deleteShoppingCart',
+                    type: 'post',
+                    dataType: 'json',
+                    data: {
+                        'userId': this.userId,
+                        'projectType': projectType,
+                        'shoppingCartId': shoppingCardId
+                    },
+                    success: function(res){
+                        if(res.resultCode == 200){
+                            //window.location.reload();
+                            for(var i=0; i<that.projects.length; i++){
+                                if(that.projects[i].projectId == projectId){
+                                    that.projects[i].isDeleted = true;
+                                    that.projects[i].isChoose = false;
+                                    break;
+                                }
+                            }  
+                            that.amountPrice = that.getTotalPrice();//计算价格
+                        }else{
+                            alert(res.resultMsg)
+                        }
+                    }
+                })
+            },
+            goPiece: function (id,activityType) { // 去凑单
+                window.location.href = '../../events.html?'+ "activityId=" + id + "&userId=" + this.shareUserId + "&activityType=" + activityType
+            },
+            chooseAllGoods: function(){ // 全选
+                this.checkedAll = !this.checkedAll;
+                for(var item of this.projects){ // 遍历所有项目，应用关系
+                    item.isChoose = this.checkedAll;
+                }
+                if(this.checkedAll){
+                    this.amountPrice = this.getTotalPrice();
+                }else{
+                    this.amountPrice = 0;
+                }
+            },
+            chooseGoods: function(isFullCut,groupIndex,ischeme,index){ // 参数为是否参见满减'0'否'1'是、每个分组下的索引、是否为方案，当为活动时传，表示关联项目一体化的索引
+                var toCheckAll = false;// 是否检测全选状态
+                if(isFullCut == '1'){ // 活动分组下的项目一体化方案
+                    if(ischeme == '1'){ // 一体化方案暂不处理 
+
+                    }else{
+                        this.fullCutActivity[groupIndex]['relative_projects'][index].isChoose = !this.fullCutActivity[groupIndex]['relative_projects'][index].isChoose;
+                        // vue监听不到通过索引改变的数据 需要通过以下方式
+                        Vue.set(this.fullCutActivity,groupIndex,this.fullCutActivity[groupIndex]);
+                        if(this.fullCutActivity[groupIndex]['relative_projects'][index].isChoose){ // 判断条件暂时写在这个分支，后期需处理
+                            toCheckAll = true;
+                        }
+                    }
+                }else{
+                    if(ischeme == '1'){ // 一体化方案暂不处理 
+
+                    }else{
+                        this.projectNotFullCut[groupIndex].isChoose = !this.projectNotFullCut[groupIndex].isChoose;
+                        Vue.set(this.projectNotFullCut,groupIndex,this.projectNotFullCut[groupIndex]);
+                        if(this.projectNotFullCut[groupIndex].isChoose){
+                            toCheckAll = true;
+                        }
+                    }
+                }
+                if(toCheckAll){
+                    var isAllCheck = true;
+                    for(var item of this.projects){
+                        if(item.isChoose == false){
+                            isAllCheck = false;
+                        }
+                    }
+                    if(isAllCheck){
+                        this.checkedAll = true;
+                    }
+                }else{
+                    this.checkedAll = false;
+                }
+                this.amountPrice = this.getTotalPrice();//计算价格
+            },
+            getGoodsList: function(){ // 获取购物车商品列表
+                var that = this;
+                $.ajax({
+                    url: host + '/client-shopping/cart/queryShoppingCartList',
+                    type: 'post',
+                    dataType: 'json',
+                    data: {
+                        'userId': this.userId,
+                        'pageIndex': 0,
+                        'pageSize': 100
+                    },
+                    success: function (res) {
+                        //console.log(res);
+                        if(res.resultCode == 200){
+                            that.showLoading = false;
+                            var resultInfo = res.resultInfo;
+                            var activity = []; // 活动
+                            var projects = []; // 项目
+                            var activity_fullCut = []; // 满减活动
+                            var activity_notFullCut = []; // 非满减活动
+                            var project_not_rel_fullCut= []; // 未参与满减的项目 不包含一体化方案
+                            if(resultInfo && resultInfo.activity && resultInfo.activity.length>0){
+                                activity = resultInfo.activity
+                            }
+                            if(resultInfo && resultInfo.project && resultInfo.project.length>0){
+                                projects = resultInfo.project
+                            }
+                            that.projects = projects
+                            if(activity.length>0){ // 活动分组
+                                for(var item of activity){
+                                    item.relative_projects = [];// 给每个活动赋值一个关联项目数组
+                                    item.relative_scheme = [];// 给每个活动赋值一个关联方案数组 后期处理
+                                    if(item.activityType == '243001'){ // 满减
+                                        activity_fullCut.push(item);
+                                    }else{
+                                        activity_notFullCut.push(item);
+                                    }
+                                }
+                            }
+                            if(projects.length>0){ // 项目分组
+                                for(var p_item of projects){ // 把参与满减活动的项目划分到该活动下
+                                    p_item.isChoose = false; // 给每个项目添加一个默认未选中的状态
+                                    p_item.isDeleted = false; // 给每个项目添加默认未删除的状态
+                                    var toPushFullCut = false; // 是否添加到活动组
+                                    if(p_item.projectType == '206001'){ // 206001一体化方案 206002项目，一体化暂不处理
+
+                                    }else{
+                                        for(var a_item of activity_fullCut){
+                                            if(a_item.activityId == p_item.activityId){
+                                                toPushFullCut = true;
+                                                a_item.relative_projects.push(p_item)
+                                            }
+                                        }
+                                        if(!toPushFullCut){
+                                            project_not_rel_fullCut.push(p_item);
+                                        }
+                                    }
+                                }
+                            }
+                            that.fullCutActivity = activity_fullCut;
+                            that.projectNotFullCut = project_not_rel_fullCut;
+                            //console.log(that.fullCutActivity);
+                            //console.log(that.projectNotFullCut)
+                        }else if(res.resultCode == 400){
+                            alert(res.resultMsg)
+                        }
+                    },
+                    error: function(e){
+                        console.log(e);
+                    }
+                })
+            },
+            creatOrder: function () { // 创建订单 shopping-cart-2.html暂时不能删除，后期要用
+                var that = this;
+                var projectId = '';
+                var choosedGoods = []; // 选中的商品
+                var projectType = '';
+                var buyNum = '';
+                var buyMethod = '';
+                var buyMethodId = '';
+                var serviceId = '';
+                var activityId = '';
+                var shoppingCartId = ''
+                for(var item of this.projects){
+                    if(item.isChoose){
+                        choosedGoods.push(item);
+                    }
+                }
+                if(choosedGoods.length == 0){
+                    alert('请选择至少一个商品下单');
+                    return;
+                }
+                for(var c_item of choosedGoods){
+                    if(c_item.projectType == '206001'){ // 一体化暂时不处理
+
+                    }else{
+                        projectId += c_item.projectId + ','; 
+                        projectType += c_item.projectType + ','
+                        buyNum += '1,';
+                        buyMethod += '0,'
+                        buyMethodId += '0,'
+                        serviceId += '0,'
+                        activityId += (c_item.activityId?c_item.activityId:'')+','; //直接分享的项目可能没有参与活动没有活动id
+                        shoppingCartId += c_item.shoppingCartId;
+                    }
+                }
+                projectId= projectId.substring(0,projectId.length-1);
+                projectType=projectType.substring(0,projectType.length-1);
+                buyNum=buyNum.substring(0,buyNum.length-1);
+                buyMethod=buyMethod.substring(0,buyMethod.length-1);
+                buyMethodId=buyMethodId.substring(0,buyMethodId.length-1);
+                serviceId=serviceId.substring(0,serviceId.length-1);
+                activityId = activityId.substring(0,activityId.length-1);
+                shoppingCartId=  shoppingCartId.substring(0,shoppingCartId.length-1);
+                var data = {
+                    projectId: projectId,
+                    projectType: projectType,
+                    buyNum: buyNum, // 购买数量现在都按1处理
+                    userId:this.userId,
+                    buyMethod: buyMethod,
+                    buyMethodId: buyMethodId,
+                    serviceId: serviceId,
+                    activityId: activityId,
+                    shareUserId: this.shareUserId,
+                    shoppingCartId: shoppingCartId,
+                }
+                $.ajax({
+                    url: host + '/client-shopping/html/order/cartAddOrder',
+                    type: 'post',
+                    dataType: 'json',
+                    data: data,
+                    success: function(res){
+                        if(res.resultCode == 200){
+                            localStorage.setItem("orderData",JSON.stringify(res)); // orderData在支付页面有用到，目前所有跳转支付界面的都有设置orderData,需要改动
+                            var order = res.resultMsg;
+                            window.location.href = "./order-payment.html"+"?order="+order+"&userId="+that.shareUserId
+                        }else if(res.resultCode == 400){
+                            alert(res.resultMsg);
+                        }
+                    }
+                })
+            }
+        },
+        mounted: function () {
+            this.$nextTick(function(){
+                var that = this;
+                if(GetQueryString('userId')){
+                    this.shareUserId = GetQueryString('userId');
+                }
+                this.userId = localStorage.getItem("userId");
+                this.getGoodsList();
+            })
+        },
+    });
+</script>
+</body>
+</html>

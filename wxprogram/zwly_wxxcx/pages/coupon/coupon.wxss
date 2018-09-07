@@ -1,0 +1,386 @@
+.container {
+  text-align: none;
+}
+.container .item-null {
+  flex: 1;
+}
+.container .coupon-title {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  align-items: center;
+}
+.container .coupon-title .coupon-tit-item {
+  flex: 1;
+  font-size: 32rpx;
+  color: #2D2D2D;
+  margin: 0 32rpx;
+}
+.container .coupon-title .coupon-tit-item.active {
+  font-size: 40rpx;
+  color: #FF5252;
+  padding: 12rpx 0;
+  border-bottom: 4rpx solid #FF5252;
+}
+.container .coupon-msg {
+  flex: 1;
+  width: 100%;
+}
+.container .coupon-msg .coupon-info {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  padding: 40rpx 30rpx 0;
+}
+.container .coupon-msg .coupon-info .coupon-info-item {
+  width: 100%;
+  height: 242.8rpx;
+  margin-bottom: 30rpx;
+}
+.container .coupon-msg .coupon-info .coupon-info-item .coupon-item-msg {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  border-radius: 8rpx;
+  overflow: hidden;
+}
+.container .coupon-msg .coupon-info .coupon-info-item .coupon-item-msg .item-msg-item {
+  background: #FFA8A8;
+  display: flex;
+  position: relative;
+}
+.container .coupon-msg .coupon-info .coupon-info-item .coupon-item-msg .item-msg-item .msg-item-info {
+  flex: 1;
+  margin: 7rpx;
+  border: 1rpx solid #FE4E4E;
+  border-radius: 8rpx;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+}
+.container .coupon-msg .coupon-info .coupon-info-item .coupon-item-msg .item-msg-item .msg-item-info .item-info-msg {
+  flex: 1;
+}
+.container .coupon-msg .coupon-info .coupon-info-item .coupon-item-msg .item-msg-item .msg-item-info .item-info-null {
+  width: 72rpx;
+  height: 72rpx;
+  padding: 7rpx;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  border-radius: 50%;
+  border: 1rpx solid #FE4E4E;
+}
+.container .coupon-msg .coupon-info .coupon-info-item .coupon-item-msg .item-msg-item .msg-item-null {
+  width: 72rpx;
+  height: 72rpx;
+  background: #fff;
+  padding: 7rpx;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 20;
+  background: #FFA8A8;
+}
+.container .coupon-msg .coupon-info .coupon-info-item .coupon-item-msg .item-msg-item .msg-item-null > view {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: #fff;
+}
+.container .coupon-msg .coupon-info .coupon-info-item .coupon-item-msg .item-msg-item .msg-item-quan {
+  width: 36rpx;
+  height: 36rpx;
+  border-radius: 50%;
+  background: #fff;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.container .coupon-msg .coupon-info .coupon-info-item .coupon-item-msg .item-msg-item .msg-item-quan.item-quan-shang {
+  top: -18rpx;
+}
+.container .coupon-msg .coupon-info .coupon-info-item .coupon-item-msg .item-msg-item .msg-item-quan.item-quan-xia {
+  bottom: -18rpx;
+}
+.container .coupon-msg .coupon-info .coupon-info-item .coupon-item-msg .item-msg-left {
+  flex: 1;
+}
+.container .coupon-msg .coupon-info .coupon-info-item .coupon-item-msg .item-msg-left .msg-info-left {
+  margin-right: 0;
+}
+.container .coupon-msg .coupon-info .coupon-info-item .coupon-item-msg .item-msg-left .msg-info-left .item-info-msg {
+  margin: 0 35rpx 0 70rpx;
+  display: flex;
+  flex-direction: column;
+}
+.container .coupon-msg .coupon-info .coupon-info-item .coupon-item-msg .item-msg-left .msg-info-left .item-info-msg .info-msg-top {
+  display: flex;
+  flex-direction: row;
+  padding-bottom: 5rpx;
+  border-bottom: 1rpx solid #fff;
+}
+.container .coupon-msg .coupon-info .coupon-info-item .coupon-item-msg .item-msg-left .msg-info-left .item-info-msg .info-msg-top .msg-top-left {
+  flex: 1;
+  text-align: right;
+  font-size: 90rpx;
+  color: #fff;
+}
+.container .coupon-msg .coupon-info .coupon-info-item .coupon-item-msg .item-msg-left .msg-info-left .item-info-msg .info-msg-top .msg-top-right {
+  flex: 1;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  margin-left: 11rpx;
+}
+.container .coupon-msg .coupon-info .coupon-info-item .coupon-item-msg .item-msg-left .msg-info-left .item-info-msg .info-msg-top .msg-top-right .top-right-title {
+  opacity: 0.5;
+  font-size: 20rpx;
+  color: #fff;
+}
+.container .coupon-msg .coupon-info .coupon-info-item .coupon-item-msg .item-msg-left .msg-info-left .item-info-msg .info-msg-top .msg-top-right .top-right-msg {
+  color: #fff;
+}
+.container .coupon-msg .coupon-info .coupon-info-item .coupon-item-msg .item-msg-left .msg-info-left .item-info-msg .info-msg-bottom {
+  flex: 1;
+  padding-top: 5rpx;
+}
+.container .coupon-msg .coupon-info .coupon-info-item .coupon-item-msg .item-msg-left .msg-info-left .item-info-msg .info-msg-bottom .msg-bottom-title {
+  font-size: 20rpx;
+  color: #fff;
+}
+.container .coupon-msg .coupon-info .coupon-info-item .coupon-item-msg .item-msg-left .msg-info-left .item-info-msg .info-msg-bottom .msg-bottom-msg {
+  font-size: 20rpx;
+  color: #fff;
+}
+.container .coupon-msg .coupon-info .coupon-info-item .coupon-item-msg .item-msg-left .msg-info-left .item-info-null {
+  left: -43rpx;
+}
+.container .coupon-msg .coupon-info .coupon-info-item .coupon-item-msg .item-msg-left .msg-info-left .item-info-bishi {
+  position: absolute;
+  left: 14rpx;
+  top: 0;
+  font-size: 28rpx;
+  color: #FFFFFF;
+}
+.container .coupon-msg .coupon-info .coupon-info-item .coupon-item-msg .item-msg-left .msg-item-null {
+  left: -36rpx;
+}
+.container .coupon-msg .coupon-info .coupon-info-item .coupon-item-msg .item-msg-center {
+  width: 50rpx;
+  display: flex;
+  flex-direction: row;
+}
+.container .coupon-msg .coupon-info .coupon-info-item .coupon-item-msg .item-msg-center .msg-item-msg {
+  flex: 1;
+}
+.container .coupon-msg .coupon-info .coupon-info-item .coupon-item-msg .item-msg-center .msg-item-msg:nth-child(1) {
+  border-right: 4rpx #FE4E4E dotted;
+}
+.container .coupon-msg .coupon-info .coupon-info-item .coupon-item-msg .item-msg-right {
+  width: 153rpx;
+}
+.container .coupon-msg .coupon-info .coupon-info-item .coupon-item-msg .item-msg-right .msg-info-right {
+  margin-left: 0;
+}
+.container .coupon-msg .coupon-info .coupon-info-item .coupon-item-msg .item-msg-right .msg-info-right .item-info-msg {
+  display: flex;
+  align-items: center;
+}
+.container .coupon-msg .coupon-info .coupon-info-item .coupon-item-msg .item-msg-right .msg-info-right .item-info-msg .info-msg-status {
+  width: 28rpx;
+  font-size: 40rpx;
+  color: #FE4E4E;
+  line-height: 50rpx;
+  margin-left: 43rpx;
+}
+.container .coupon-msg .coupon-info .coupon-info-item .coupon-item-msg .item-msg-right .msg-info-right .item-info-null {
+  right: -43rpx;
+}
+.container .coupon-msg .coupon-info .coupon-info-item .coupon-item-msg .item-msg-right .msg-item-null {
+  right: -36rpx;
+}
+.container .coupon-msg .coupon-info .coupon-info-item .coupon-item-yongmsg {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  border-radius: 8rpx;
+  overflow: hidden;
+}
+.container .coupon-msg .coupon-info .coupon-info-item .coupon-item-yongmsg .item-msg-item {
+  background: #F7F7F7;
+  display: flex;
+  position: relative;
+}
+.container .coupon-msg .coupon-info .coupon-info-item .coupon-item-yongmsg .item-msg-item .msg-item-info {
+  flex: 1;
+  margin: 7rpx;
+  border: 1rpx solid #E7E7E7;
+  border-radius: 8rpx;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+}
+.container .coupon-msg .coupon-info .coupon-info-item .coupon-item-yongmsg .item-msg-item .msg-item-info .item-info-msg {
+  flex: 1;
+}
+.container .coupon-msg .coupon-info .coupon-info-item .coupon-item-yongmsg .item-msg-item .msg-item-info .item-info-null {
+  width: 72rpx;
+  height: 72rpx;
+  padding: 7rpx;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  border-radius: 50%;
+  border: 1rpx solid #E7E7E7;
+}
+.container .coupon-msg .coupon-info .coupon-info-item .coupon-item-yongmsg .item-msg-item .msg-item-null {
+  width: 72rpx;
+  height: 72rpx;
+  background: #fff;
+  padding: 7rpx;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 20;
+  background: #F7F7F7;
+}
+.container .coupon-msg .coupon-info .coupon-info-item .coupon-item-yongmsg .item-msg-item .msg-item-null > view {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: #fff;
+}
+.container .coupon-msg .coupon-info .coupon-info-item .coupon-item-yongmsg .item-msg-item .msg-item-quan {
+  width: 36rpx;
+  height: 36rpx;
+  border-radius: 50%;
+  background: #fff;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.container .coupon-msg .coupon-info .coupon-info-item .coupon-item-yongmsg .item-msg-item .msg-item-quan.item-quan-shang {
+  top: -18rpx;
+}
+.container .coupon-msg .coupon-info .coupon-info-item .coupon-item-yongmsg .item-msg-item .msg-item-quan.item-quan-xia {
+  bottom: -18rpx;
+}
+.container .coupon-msg .coupon-info .coupon-info-item .coupon-item-yongmsg .item-msg-left {
+  flex: 1;
+}
+.container .coupon-msg .coupon-info .coupon-info-item .coupon-item-yongmsg .item-msg-left .msg-info-left {
+  margin-right: 0;
+}
+.container .coupon-msg .coupon-info .coupon-info-item .coupon-item-yongmsg .item-msg-left .msg-info-left .item-info-msg {
+  margin: 0 35rpx 0 70rpx;
+  display: flex;
+  flex-direction: column;
+}
+.container .coupon-msg .coupon-info .coupon-info-item .coupon-item-yongmsg .item-msg-left .msg-info-left .item-info-msg .info-msg-top {
+  display: flex;
+  flex-direction: row;
+  padding-bottom: 5rpx;
+  border-bottom: 1rpx solid #FFFFFF;
+}
+.container .coupon-msg .coupon-info .coupon-info-item .coupon-item-yongmsg .item-msg-left .msg-info-left .item-info-msg .info-msg-top .msg-top-left {
+  flex: 1;
+  text-align: right;
+  font-size: 90rpx;
+  color: #2D2D2D;
+}
+.container .coupon-msg .coupon-info .coupon-info-item .coupon-item-yongmsg .item-msg-left .msg-info-left .item-info-msg .info-msg-top .msg-top-right {
+  flex: 1;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  margin-left: 11rpx;
+}
+.container .coupon-msg .coupon-info .coupon-info-item .coupon-item-yongmsg .item-msg-left .msg-info-left .item-info-msg .info-msg-top .msg-top-right .top-right-title {
+  opacity: 0.5;
+  font-size: 20rpx;
+  color: #2D2D2D;
+}
+.container .coupon-msg .coupon-info .coupon-info-item .coupon-item-yongmsg .item-msg-left .msg-info-left .item-info-msg .info-msg-top .msg-top-right .top-right-msg {
+  color: #2D2D2D;
+}
+.container .coupon-msg .coupon-info .coupon-info-item .coupon-item-yongmsg .item-msg-left .msg-info-left .item-info-msg .info-msg-bottom {
+  flex: 1;
+  padding-top: 5rpx;
+}
+.container .coupon-msg .coupon-info .coupon-info-item .coupon-item-yongmsg .item-msg-left .msg-info-left .item-info-msg .info-msg-bottom .msg-bottom-title {
+  font-size: 20rpx;
+  color: #2D2D2D;
+}
+.container .coupon-msg .coupon-info .coupon-info-item .coupon-item-yongmsg .item-msg-left .msg-info-left .item-info-msg .info-msg-bottom .msg-bottom-msg {
+  font-size: 20rpx;
+  color: #2D2D2D;
+}
+.container .coupon-msg .coupon-info .coupon-info-item .coupon-item-yongmsg .item-msg-left .msg-info-left .item-info-null {
+  left: -43rpx;
+}
+.container .coupon-msg .coupon-info .coupon-info-item .coupon-item-yongmsg .item-msg-left .msg-info-left .item-info-bishi {
+  position: absolute;
+  left: 14rpx;
+  top: 0;
+  font-size: 28rpx;
+  color: #2D2D2D;
+}
+.container .coupon-msg .coupon-info .coupon-info-item .coupon-item-yongmsg .item-msg-left .msg-item-null {
+  left: -36rpx;
+}
+.container .coupon-msg .coupon-info .coupon-info-item .coupon-item-yongmsg .item-msg-center {
+  width: 50rpx;
+  display: flex;
+  flex-direction: row;
+}
+.container .coupon-msg .coupon-info .coupon-info-item .coupon-item-yongmsg .item-msg-center .msg-item-msg {
+  flex: 1;
+}
+.container .coupon-msg .coupon-info .coupon-info-item .coupon-item-yongmsg .item-msg-center .msg-item-msg:nth-child(1) {
+  border-right: 4rpx #E7E7E7 dotted;
+}
+.container .coupon-msg .coupon-info .coupon-info-item .coupon-item-yongmsg .item-msg-right {
+  width: 153rpx;
+}
+.container .coupon-msg .coupon-info .coupon-info-item .coupon-item-yongmsg .item-msg-right .msg-info-right {
+  margin-left: 0;
+}
+.container .coupon-msg .coupon-info .coupon-info-item .coupon-item-yongmsg .item-msg-right .msg-info-right .item-info-msg {
+  display: flex;
+  align-items: center;
+}
+.container .coupon-msg .coupon-info .coupon-info-item .coupon-item-yongmsg .item-msg-right .msg-info-right .item-info-msg .info-msg-status {
+  width: 28rpx;
+  font-size: 40rpx;
+  color: #8E8E8E;
+  line-height: 50rpx;
+  margin-left: 43rpx;
+}
+.container .coupon-msg .coupon-info .coupon-info-item .coupon-item-yongmsg .item-msg-right .msg-info-right .item-info-null {
+  right: -43rpx;
+}
+.container .coupon-msg .coupon-info .coupon-info-item .coupon-item-yongmsg .item-msg-right .msg-item-null {
+  right: -36rpx;
+}
+.container .coupon-msg .coupon-info .coupon-null {
+  width: 100%;
+  padding-top: 100rpx;
+}
+.container .coupon-msg .coupon-info .coupon-null image {
+  width: 300rpx;
+  height: 300rpx;
+  margin: 0 auto;
+}
+.container .coupon-msg .coupon-info .coupon-null text {
+  display: block;
+  text-align: center;
+  margin-top: 20rpx;
+}

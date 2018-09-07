@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta content="telephone=no" name="format-detection" />
+    <title>日记详情</title>
+    <link rel="stylesheet" href="css/tbase.css"/>
+    <link rel="stylesheet" href="last/css/mod.css"/>
+    <script type="text/javascript" src="js/tbase.js"></script>
+    <script src="./js/api.js"></script>
+</head>
+<style>
+
+</style>
+<body>
+<div class="v-root" id="app" v-cloak>
+    <!--header-->
+    <header style="display:none;" class="v-head bg-base">
+        <div class="v-head__in">
+            <div class="v-head__l left">
+                <span class="v-head__btn icon-back"></span>
+            </div>
+            <div class="v-head__m">
+                <h2 class="v-head-title">日记详情</h2>
+            </div>
+            <div class="v-head__r right"></div>
+        </div>
+    </header>
+    <!--diary-->
+    <div class="v-main plr15">
+        <section class="diary-header">
+            <div class="diary-author pos-rel">
+				<span class="author__icon">
+					<img :src="diaryDetail.userImgUrl">
+				</span>
+                <span class="author__name">{{diaryDetail.userName}}</span>
+                <div class="author__r pos-right" @click="goDownLoad">
+                    <a class="diary-author__focus-btn" href="javascript:void(0)"></a>
+                </div>
+            </div>
+            <div class="diary-product pos-rel" v-for="item in project" @click="goProjectDetail(item.projectId)">
+                <div class="diary-product__img pos-left">
+                    <img :src="item.projectImg" alt="">
+                    <span class="diary-product__flag">项目</span>
+                </div>
+                <div class="diary-product__r">
+                    <div class="diary-product__name">{{item.projectName}}</div>
+                    <div class="diary-product__info">
+                        <div class="diary-product__info-r">{{item.doctorName}}</div>
+                        <span class="diary-product__info-price">￥{{toFixed_len(item.projectPrices,2)}}</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="diary-content">
+            <p>{{diaryDetail.diaryInfo}}</p>
+            <img style="width:100%;" v-if="dairyImgList.length>0" v-for="item in dairyImgList" :src="item">
+
+            <!--<p>台湾的美丽日记面膜主要的包装方式是10片盒装 我的美丽日记我的美丽日记礼盒等除外，就是一种 口味10片放一个盒子里面。很多市场上无盒的，散装 的，有可能就不是真货噢！所以各位买前可以先问问-->
+            <!--是否有盒装的。另外真假的颜色也不同，这个可能用 过正品的才知道。面膜外皮包装的颜色正品和仿造的 会有一些色差。</p>-->
+            <!--<img src="upload/diary-0.jpg" alt="">-->
+            <!--<img src="upload/diary-1.jpg" alt="">-->
+        </section>
+        <section class="comment">
+            <h3>用户评论</h3>
+            <div class="comment-item" v-for="item in commentList">
+                <div class="comment-item__author pos-rel">
+					<span class="author__icon">
+						<img :src="item.userImgUrl">
+					</span><span class="author__name">{{ /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1})|(14[0-9]{1})|)+\d{8})$/.test(item.userName)?(item.userName.substring(0,3) + '****' + item.userName.substring(8) ):item.userName  }}</span>
+                    <div class="author__r pos-right">
+                        <span class="c-gray">{{new Date(item.commentDate).getFullYear()+'-'+(new Date(item.commentDate).getMonth()+1 < 10 ? '0'+(new Date(item.commentDate).getMonth()+1) : new Date(item.commentDate).getMonth()+1) + '-'+ (new Date(item.commentDate).getDate()+1 < 10 ? '0'+(new Date(item.commentDate).getDate()+1) : new Date(item.commentDate).getDate()+1)}}</span>
+                    </div>
+                </div>
+                <div class="comment-item__content">
+                    {{item.commentInfo}}
+                </div>
+                <div class="comment-item__op">
+                    <span class="op-item op-icon-like" @click="goDownLoad">{{item.thumpUpNumbers}}</span>
+                    <span v-if="0" class="op-item op-icon-report" @click="goDownLoad">举报</span>
+                </div>
+                <div class="comment-item__reply" v-if="item.childrenComment.length>0">
+                    <div class="comment-item__reply-item clear" v-for="child in item.childrenComment">
+                        <div class="comment-item__reply-hd">
+                            <span class="c-main">{{child.userName}}</span>
+                        </div>
+                        <div class="comment-item__reply-con c-gray">{{child.commentInfo}}</div>
+                    </div>
+                </div>
+            </div>
+
+            <!--<div class="comment-item">-->
+            <!--<div class="comment-item__author pos-rel">-->
+            <!--<span class="author__icon">-->
+            <!--<img src="upload/author.jpg" alt="">-->
+            <!--</span><span class="author__name">Daniel Tan</span>-->
+            <!--<div class="author__r pos-right">-->
+            <!--<span class="c-gray">12-26</span>-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--<div class="comment-item__content">-->
+            <!--又来更新了～～ 宝宝们有木有想偶啦？现在术后有三个，现在处在比较稳定的阶段啦-->
+            <!--</div>-->
+            <!--<div class="comment-item__op">-->
+            <!--<span class="op-item op-icon-like op-icon-liked">4560</span>-->
+            <!--<span class="op-item op-icon-report">举报</span>-->
+            <!--</div>-->
+            <!--<div class="comment-item__reply">-->
+            <!--<div class="comment-item__reply-item clear">-->
+            <!--<div class="comment-item__reply-hd">-->
+            <!--<span class="c-main">魅影</span>-->
+            <!--</div>-->
+            <!--<div class="comment-item__reply-con c-gray">送给了啵主一个我喜欢你。</div>-->
+            <!--</div>-->
+            <!--<div class="comment-item__reply-item clear">-->
+            <!--<div class="comment-item__reply-hd">-->
+            <!--<span class="c-main">田小美</span><strong>回复</strong><span class="c-main">小可爱</span>-->
+            <!--</div>-->
+            <!--<div class="comment-item__reply-con c-gray">喜欢你，真的。</div>-->
+            <!--</div>-->
+            <!--<div class="comment-item__reply-item clear">-->
+            <!--<div class="comment-item__reply-hd">-->
+            <!--<span class="c-main">田小美</span>-->
+            <!--</div>-->
+            <!--<div class="comment-item__reply-con c-gray">-->
+            <!--如果能够真的见到，和你一起看海哦。如果能够真的见到，和你一起看海哦。如果能够真的见到，和你一起看海哦。如果能够真的见到，和你一起看海哦。如果能够真的见到，和你一起看海哦。如果能够真的见到，和你一起看海哦。如果能够真的见到，和你一起看海哦。-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--</div>-->
+        </section>
+    </div>
+    <!-- 复制链接下载弹框-->
+    <div class="mask" style="display:none" id="my_mask"></div>
+    <div class="zkq_popup" style="display:none" id="my_popup">
+        <div class="popup_con" style="text-align:center;">
+            <div class="msg">更多操作请长按下方二维码下载APP</div>
+            <div class="msg" style="background:#eee;border-radius: 4px;padding:10px 0;">
+				<img style="width: 130px;" :src="codeUrl" alt="">
+			</div>
+			<div @click="hidePop" class="close_" style="display:inline-block;width:30px;height:30px;border-radius:50%;background:rgba(0,0,0,0.3);margin-top:10px;">
+				<img style="width:100%;" src="./last/images/close.png" alt="">
+			</div>
+        </div>
+    </div>
+    <!-- 底部下载弹框 -->
+    <div class="download">
+        <div class="download-card">
+            <img class="close" src="./images/close_.png" alt="">
+            <p>下载<span class="appName"></span>APP,美丽从此开始</p>
+            <button onclick="download_app()" type="button">立即下载</button>
+        </div>
+    </div>
+    <div class="loading" v-if="showLoading"></div>
+</div>
+<script src="js/zepto.js"></script>
+<script src="js/common.js"></script>
+<script src="js/api.js"></script>
+<script src="last/js/vue2_5_13.js"></script>
+<script src="last/js/axios.min.js"></script>
+<script type="text/javascript" src="last/js/http.js"></script>
+<script src="https://cdn.bootcss.com/babel-polyfill/6.26.0/polyfill.min.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            isShow: false,
+            showLoading: true,
+            copyPath:"http://www.baidu.com",
+            diaryDetail: '',
+            thumbUp: '',
+            project: '',
+            commentList: '',
+            codeUrl: '',
+            shareUserId: '',
+            userId: ''
+        },
+        computed:{
+            dairyImgList(){
+                var imgList = [];
+                var imgUrlStr = this.diaryDetail.diaryFileUrl
+                if(imgUrlStr){
+                    if(imgUrlStr.match(';')){
+                        imgList = imgUrlStr.split(';')
+                    }else{
+                        imgList.push(imgUrlStr)
+                    }
+                }
+                return imgList;
+            }
+        },
+        methods: {
+            getPhoneType: function (){ // 获取手机类型
+				var phoneType = '';
+				var u = navigator.userAgent;
+				if(u.indexOf('Android') > -1 || u.indexOf('Adr') > -1 ){
+					phoneType = 'android'
+				}else if(!!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/)){
+					phoneType = 'ios'
+				};
+				return phoneType;
+			},
+            hidePop(){
+				$('#my_popup').hide();
+                $('#my_mask').hide();
+			},
+            copyNum: function(){
+                var NumClip = document.getElementById("clip_num");
+                var NValue = NumClip.value;
+                var valueLength = NValue.length;
+                this.selectText(NumClip, 0, valueLength);
+                document.execCommand("Copy", "false", null); // 执行浏览器复制命令
+                document.getElementById("clip_num").blur();
+                $('#my_popup').hide();
+                $('#my_mask').hide();
+                alert("复制成功");
+            },
+            selectText: function(obj, startIndex, stopIndex) {
+                if (obj.setSelectionRange) {
+                    obj.setSelectionRange(startIndex, stopIndex);
+                } else if (obj.createTextRange) {
+                    var range = obj.createTextRange();
+                    range.collapse(true);
+                    range.moveStart('character', startIndex);
+                    range.moveEnd('character', stopIndex - startIndex);
+                    range.select();
+                }
+                obj.focus();
+            },
+            goDownLoad: function () {
+                // $('#my_popup').show();
+                // $('#my_mask').show();
+                $('.download').show();
+            },
+            toFixed_len(num,len){
+                var ret = num + "";
+                if(ret){ // 0为false "0"为真   参数不为空
+                var num_ = Number(num);
+                ret = num_.toFixed(len); 
+                }
+                return ret;
+            },
+            goProjectDetail: function (projectId) { //跳转项目详情
+                window.location.href = "./last/single-group/single-detail-2.html?projectId="+projectId+"&userId="+this.shareUserId
+            }
+        },
+        mounted: function () {
+            this.$nextTick(function(){
+                var self = this;
+                //this.userId = myAxios.GetQueryString('userId') || localStorage.getItem("userId");
+                this.diaryId = myAxios.GetQueryString('diaryId');
+                this.shareUserId = myAxios.GetQueryString('userId')
+                //获取日记详情
+                myAxios.post('client-community/html/community/diary/diaryDetails', {
+                    diaryId: this.diaryId,
+                    // userId: this.userId
+                }, function (data) {
+                    self.diaryDetail = data.resultInfo.diaryDetails;
+                    self.thumbUp = data.resultInfo.thumbUp;
+                    self.project = data.resultInfo.project;
+                });
+                //获取评论列表
+                myAxios.post('client-community/userlive/comment/list', {
+                    noteType: "201002",
+                    userId: this.userId,
+                    noteId: this.diaryId,
+                }, function (data) {
+                    self.commentList = data.resultInfo;
+                    self.showLoading = false;
+                });
+                // // 获取下载二维码地址
+                // var phoneType = this.getPhoneType();
+                // if(phoneType == 'ios' ){ // ios下载二维码
+                //     this.codeUrl = host_code + '/ios.png'
+                // }else if(phoneType == 'android'){ // android下载二维码
+                //     this.codeUrl = host_code + '/android.png'
+                // }
+                $('.download').on("click",function(e){
+                    var target = e.target;
+                    var loadCard = document.getElementsByClassName('download')[0];
+                    var close = document.getElementsByClassName('close')[0];
+                    if(target == loadCard || target == close){
+                        $(".download").hide();
+                    }
+                })
+            })
+        },
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>一体化方案</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta content="telephone=no" name="format-detection" />
+    <script type="text/javascript" src="../js/h5.js"></script>
+    <link rel="stylesheet" href="../css/h5.css"/>
+    <link rel="stylesheet" href="../css/mod.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.2.0/css/swiper.min.css">
+</head>
+<style>
+    .goods-imgs img {
+        margin-bottom: 0.4rem;
+    }
+
+    .v-main-goods {
+        margin-bottom: 2.213333rem;
+    }
+
+    .v-pop__goods-close {
+        position: absolute;
+        width: 1.2rem;
+        height: 1.2rem;
+        border: 1px solid #fff;
+        border-radius: 1.2rem;
+        left: 50%;
+        margin-left: -0.6rem;
+        top: -2.56rem;
+        cursor: pointer;
+    }
+</style>
+<body>
+<div class="v-root state-buy" id="app" v-cloak>
+    <!--header-->
+    <header style="display:none;" class="v-head bg-drak">
+        <div class="v-head__in">
+            <div class="v-head__l left">
+                <span class="v-head__btn icon-back"></span>
+            </div>
+            <div class="v-head__m">
+                <h2 class="v-head__title">一体化方案</h2>
+            </div>
+            <div class="v-head__r right"></div>
+        </div>
+    </header>
+
+    <div class="v-main v-main-goods">
+        <div class="goods-big">
+            <img :src="schemePlan.schemeImg" class="full-img">
+        </div>
+
+        <section class="goods__info">
+            <div class="goods__info-hd plr20 mt15">
+                <div class="goods__info-hd-tit fs16 lh25">
+                    <i class="media-txt__tit-badge">一体化方案</i> {{schemePlan.schemeName}}
+                </div>
+                <div class="goods__info-hd-price pos-rel mt10 pb15 line-b">
+                    <span class="c-red fs18 lh-1">￥{{toFixed_len(schemePlan.schemeReadyPrice,2)}}</span>
+                    <span class="fs12 c-gray">预约金</span>
+                    <div class="pos-fr goods__info-hd-old-price">
+                        <span class="fs12 c-gray">总价￥{{toFixed_len(schemePlan.schemePrice,2)}}</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="goods-imgs plr20 mt20">
+            <div class="b fs20 mb15">方案说明</div>
+            <img :src="schemePlan.schemeDescription" class="full-img">
+        </div>
+        <div class="goods-imgs plr20" v-if="schemePlan.projects">
+            <div class="b fs20 mb15 mt20">包含{{schemePlan.childProjectNum}}个子项目</div>
+            <div class="son-project">
+                <div class="item mt10" v-for="(item, index) in schemePlan.projects">
+                    <i>项目{{index+1}}</i>
+                    <p class="pl20 pr20 mt5 mb5"><b class="myRadio" @click="myRadio($event)" :data-id="item.projectId"></b><a  :href="'./single-detail-2.html?projectId='+item.projectId" style="display: inline;">{{item.projectName}}</a>
+                    </p>
+                    <a :href="'./single-detail-2.html?projectId='+item.projectId">
+                        <div class="pl20 pr20 fs18 c-red">
+                            ￥<span v-if="scheme.activityType==243001 && item.projectPrices>scheme.attainMoney">{{toFixed_len(item.projectPrices-scheme.reduceMoney,2)}}</span>
+                            <span v-if="scheme.activityType==243001 && item.projectPrices<scheme.attainMoney">{{toFixed_len(item.projectPrices,2)}}</span>
+                            <span v-if="scheme.activityType==243002">{{toFixed_len(item.projectPrices*item.rebate,2)}}</span>
+                            <span v-if="scheme.activityType==243004 && item.nowUserNum>scheme.attainPeople">{{toFixed_len(item.projectPrices*scheme.rebate,2)}}</span>
+                            <span v-if="scheme.activityType==243004 && item.nowUserNum<scheme.attainPeople">{{toFixed_len(item.projectPrices,2)}}</span>
+                            <em class="fs12 c-gray del">原价￥{{toFixed_len(item.projectPrices,2)}}</em>
+                        </div>
+                        <div class="pl20 pr20 mt5"><span class="rentou">{{item.doctorName}}</span><em class="fr">{{item.projectReserve}}人预约</em>
+                        </div>
+                    </a>
+                </div>
+                <!--<div class="bg-red c-fff plr20 pt10 pb10" style="border-radius: 0 0 .2rem .2rem;">-->
+                <!--<div class="fs16 mb10">帮您算</div>-->
+                <!--<p style="margin: 0;">薇诺娜舒敏保湿丝滑面膜6片改善敏感肌肤护肤品泛红补水面膜男女</p>-->
+                <!--</div>-->
+            </div>
+        </div>
+
+        <div class="goods-imgs plr20">
+            <div class="b fs20 mb15 mt20">其他一体化解决方案</div>
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide yitiCaseItem" v-for="(item, index) in otherSchemeList">
+                        <a :href="'?schemeId='+item.schemeId">
+                            <img :src="item.schemeImg">
+                            <p class="plr10">{{item.schemeName}}</p>
+                            <div class="plr10 fs18 c-red mb10">￥{{toFixed_len(item.schemePrice,2)}}
+                                <!--<span class="rentou fr c-default fs14">{{item.schemePrice}}</span>  -->
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section class="goods__buy-info plr20 pb20">
+            <div class="goods__buy-info-hd b">
+                购买须知
+            </div>
+            <div class="goods__buy-info-tit mt20 b">
+                消费流程
+            </div>
+            <div class="goods__buy-info-con mb10">
+                1. 在预约手术时间时，不可预约当日的手术，预约时间为次日至3个月内的时间。
+            </div>
+           
+            <div class="goods__buy-info-con mb10">
+                2. 预约时要准确无误的填写手机号码及所需相关信息，以保证到院治疗的信息与网上预约的信息一致。
+            </div>
+            <div class="goods__buy-info-con mb10">
+                3. 网上支付预约金后，<span class="buy_notice"></span>app会下发唯一的产品预约码短信到您的手机，到院需扫描预约二维码进行身份及预约项目确认，在您的项目内容、项目价格及项目时间未与医院达成一致前，请勿将预约码泄露给医院或其他人，以保障自己的合法权益。
+
+            </div>
+        </section>
+    </div>
+    <div class="bg-red w100 c-fff tc goumaim" @click="addCart">加入购物车</div>
+    <div class="loading" v-if="showLoading"></div>
+</div>
+</body>
+<script src="../../js/zepto.js"></script>
+<script src="../js/vue2_5_13.js"></script>
+<script src="../../js/api.js"></script>
+<script src="../js/axios.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.2.0/js/swiper.min.js"></script>
+<script type="text/javascript" src="../js/http.js"></script>
+<script src="https://cdn.bootcss.com/babel-polyfill/6.26.0/polyfill.min.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            isShow: false,
+            showLoading: true,
+            phoneNum: '',
+            verifyNum: '',
+            isSending: false,
+            coutDown: 60,
+            error: '',
+            authCodeId: '',
+            userId: '',
+            schemeId: '',
+            scheme: '',
+            schemePlan: '',
+            otherSchemeList: '',
+            projects: []
+
+        },
+        methods: {
+            toFixed_len(num,len){ // 保留参数len位小数,参数是字符串数字或则数字
+                var ret = num + "";
+                if(ret){ // 0为false "0"为真   参数不为空
+                var num_ = Number(num);
+                ret = num_.toFixed(len); 
+                }
+                return ret;
+            },
+            addCart: function () {
+                var childProjectId = "";
+                $(".myRadio").each(function(){
+                    if($(this).hasClass("active")){
+                        childProjectId += $(this).attr("data-id")+";";
+                    }
+                });
+                childProjectId = childProjectId.substr(0,childProjectId.length-1);
+                if(this.userId){
+                    myAxios.post('client-shopping/html/cart/addSchemeCart', {
+                        projectType: '206001',
+                        projectId: this.schemeId,
+                        userId: this.userId,
+                        childProjectId: childProjectId,
+                        }, function (data) {
+                            if(data.resultCode == 200){
+                                window.location.href = "./shopping-cart.html"
+                            }else if(data.resultCode == 400){
+                                alert(data.resultMsg);
+                                window.location.href = "./shopping-cart.html"
+                            }
+                            
+                    });
+
+                }else{
+                    window.location.href="../../login.html";
+                }
+
+               
+            },
+            myRadio: function (e) {
+                e.stopPropagation();
+                var that = e.target;
+                if ($(that).hasClass("all")) {//全选
+                    if ($(that).hasClass("active")) {
+                        $(".myRadio").removeClass("active");
+                    } else {
+                        $(".myRadio").addClass("active");
+                    }
+                } else {//单选
+                    if ($(that).hasClass("active")) {
+                        $(that).removeClass("active");
+                        $(".myRadio.all").removeClass("active");
+                    } else {
+                        $(that).addClass("active");
+                    }
+                }
+            },
+        },
+        mounted: function () {
+            this.$nextTick(function () {
+                $('.buy_notice').html(platFormName)
+                var self = this;
+                this.userId = localStorage.getItem("userId");
+                this.schemeId = myAxios.GetQueryString('schemeId');
+
+                myAxios.post('client-shopping/html/project/oneSchemeDetails', {
+                    schemeId: this.schemeId,
+                    userId: this.userId
+                }, function (data) {
+                    self.schemePlan = data.resultInfo[0].schemePlan;
+                    self.otherSchemeList = data.resultInfo[0].otherSchemeList;
+                    self.scheme = data.resultInfo[0];
+                    for (var i = 0; i < data.resultInfo[0].schemePlan.projects.length; i++) {
+                        self.projects.push(data.resultInfo[0].schemePlan.projects[i].projectId)
+                    }
+                    setTimeout(function () {
+                        var mySwiper = new Swiper('.swiper-container', {
+                            autoplay: false,
+                            slidesPerView: 1.5,
+                            spaceBetween: 10
+                        });
+                        self.showLoading = false;
+                    }, 500)
+//                    var projectIdStr = self.projects.join('-')
+//                    btn_buy.onclick = function () {
+//                        window.location.href = "./confirm-pay-type.html?schemeId=" + this.schemeId + "&projects=" + projectIdStr
+//                    }
+                });
+            })
+        }
+    });
+</script>
+</html>

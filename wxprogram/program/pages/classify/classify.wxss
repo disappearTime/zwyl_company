@@ -1,0 +1,79 @@
+.search-box{
+  padding: 15rpx 20rpx;
+  height: 80rpx;
+  width: 100%;
+  box-sizing: border-box;
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  background: #ffffff;
+}
+.search{
+  width: 100%;
+  height: 100%;
+  padding: 0 18rpx;
+  box-sizing: border-box;
+  border-radius: 25rpx;
+  background-color: #ccc;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 24rpx;
+  color: #333;
+}
+.search image{
+  width: 40rpx;
+  height: 40rpx;
+}
+.all-goods{
+  padding-top: 80rpx;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.goods-classify{
+  width: 26%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.1);
+}
+.goods-classifyName{
+  width: 74%;
+  height: 100%;
+  padding-right: 20rpx;
+  box-sizing: border-box;
+}
+.goods-classify view{
+  height: 80rpx;
+  text-align: center;
+  font-size: 14px;
+  line-height: 80rpx;
+}
+.goods-classify view.current{
+  background: #ffffff;
+}
+
+.goods-classifyName{
+  display: flex;
+  align-content: flex-start;/* 适用于多行弹性盒模型容器 */
+  flex-wrap: wrap;
+}
+.goods-classifyName view{
+  width: 120rpx;
+  margin: 20rpx;
+  text-align: center;
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+.goods-classifyName view image{
+  width: 100%;
+  height: 120rpx;
+}
+.goods-classifyName view text{
+  width: 100%;
+  font-size: 12px;
+  display: inline-block;
+}

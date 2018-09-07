@@ -1,0 +1,36 @@
+<!--pages/siteeditor/siteeditor.wxml-->
+<view class="container">
+    <view class="siteeditor-info">
+        <view class="siteeditor-item">
+            <input type="text" placeholder="收货人姓名" value="{{ress.name}}" bindblur="inputname" />
+        </view>
+        <view class="siteeditor-item">
+            <input type="number" placeholder="手机号" value="{{ress.tel}}" bindblur="inputtel" />
+        </view>
+        <view class="siteeditor-item">
+            <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" range="{{regionarrys}}"  range-key="region_name">
+                <view class="picker">
+                    <block wx:if="{{district}}">
+                        <block wx:if="{{province.region_name != city.region_name}}">{{province.region_name}}省</block>{{city.region_name}}市{{district.region_name}}区
+                    </block>
+                    <block wx:else>省、市、区</block>
+                </view>
+            </picker>
+            <image src="/image/jiantou.png" class="fx" />
+        </view>
+        <!-- <view class="siteeditor-item">
+            <input type="text" placeholder="街道" />
+            <image src="/image/jiantou.png" />
+        </view> -->
+        <view class="siteeditor-item">
+            <textarea placeholder="详细地址" value="{{ress.address}}" bindblur="inputmsg"></textarea>
+        </view>
+        <view class="siteeditor-item" bindtap="default">
+            <image src="/image/xuanzhong.png" class="xz" wx:if="{{is_default == 1}}" />
+            <image src="/image/weixuanzhong.png" class="xz" wx:else/>
+            <text>设为默认地址</text>
+        </view>
+    </view>
+    <view class="siteeditor-save" wx:if="{{shade}}" bindtap="editsite" >保存</view>  
+    <view class="siteeditor-save" bindtap="addsite" wx:else>保存</view>  
+</view>

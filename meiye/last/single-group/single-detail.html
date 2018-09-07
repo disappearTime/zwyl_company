@@ -1,0 +1,1020 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>团购项目详情</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<meta content="telephone=no" name="format-detection" />
+	<script type="text/javascript" src="../js/h5.js"></script>
+	<link rel="stylesheet" href="../css/h5.css" />
+	<link rel="stylesheet" href="../css/mod.css" />
+</head>
+<style>
+	.goods-imgs img{
+		margin-bottom:0.4rem;
+	}
+	.v-main-goods{
+		margin-bottom:2.213333rem;
+	}
+	.goods__info-std .rules,.goods__info-std1 .rules{
+		float: right;
+		padding-right: 0.3rem;
+	}
+	.goods__info-std1{
+		line-height: 1.333333rem;
+	}
+	.goods__info-std .rules em,.goods__info-std1 .rules em{
+		color:#de7186;
+		margin: -2px 5px 0;
+
+	}
+	.goods__buy-info{
+		margin-bottom: 1.813333rem!important;
+	}
+	.goods__info-std .address em,.goods__info-std1 .address em{
+		color:#de7186;
+		margin: -2px 5px 0;
+	}
+	.pin-list{
+		background:#f7f7f7; 	
+		height:7.8rem;
+		overflow-y: scroll;	
+	}
+	.pin-list .item{
+		padding: 0.45rem 0.2rem;
+		height:2.5rem;
+		overflow: hidden;
+		
+
+	}
+	.pin-list .item img{
+		width:1.45rem;
+		height:1.45rem;
+		border-radius:50%;
+		float:left;
+		margin-right:0.36rem;
+	}
+	.pin-list .item span.pingBtn{
+		float:right;
+		display: inline;
+		padding: 0.25rem 0.74rem;
+		background:#cd0f31; 
+		border-radius:32px;
+		color: #fff;
+		margin-top: 0.34rem;
+	}
+	.pin-list .item .desc{
+		float: left;
+		line-height: 0.7rem;
+		padding-top: 0.3rem;
+	}
+	.pin-list .item .desc p{
+		line-height: 0.28rem;
+		font-size: 0.373333rem;
+	}
+	.pin-list .item .desc p.name{
+		font-weight:400;
+		font-size: 0.39rem;
+	}
+	.pin-list .item .desc p em{
+		color: #cd0f31;
+	}
+	.act_over{
+		display: inline-block;
+		transform: translate(8px,7px );
+	}
+	.disable_click{
+		background: #ccc!important;
+	}
+	.download{
+		width: 100%;
+		height: 100%;
+		position: fixed;
+		left: 0;
+		top: 0;
+		z-index: 1000;
+		background: rgba(0, 0, 0, 0.2);
+		display: none;
+	}
+	.download .download-card{
+		width: 100%;
+		height: 20.7%;
+		position: absolute;
+		bottom: 0;
+		background-color: #ffffff;
+		border-top-left-radius: 0.3rem;
+		border-top-right-radius: 0.3rem;
+		-webkit-box-sizing: border-box;
+		box-sizing: border-box;
+		text-align: center;
+	}
+	.download .download-card .close{
+		position: absolute;
+		width: 0.5rem;
+		top: 0.5rem;
+		right: 0.5rem;
+	}
+	.download .download-card p{
+		padding: 0.625rem 0 0.65rem 0;
+	}
+	.download .download-card button{
+		width: 3.675rem;
+		height: 0.975rem;
+		border: none;
+		border-radius: 0.4675rem;
+		background: #ce0f31;
+		color: #ffffff;
+	}
+</style>
+<body>
+	<div class="my_warp">
+			<div class="v-root" id="app">
+					<div class="my_head" style="display: none">
+							<a href="../../login.html"><span class="loginBtn">贴换账号</span></a>
+							
+						<img src="###" id="currentImg" ><label id="currentName" >spring698</label> 
+					</div> 
+
+				<div class="v-main v-main-goods">
+					<div class="goods-big">
+						<img src="" class="full-img">
+					</div>
+			
+					<div class="group-buy pos-rel clear">
+			
+						<div class="group-buy__heads ml20" id="pic1">
+							
+							
+						</div>
+			
+			
+						<div class="group-buy__info">
+							<div class="b group-buy__info-count ct"></div>
+							<div class="fs10 cantuan" id="cantuan"></div>
+						</div>
+						<div class="group-buy__countdown pos-fr mr20">
+							<div class="fs12">团购截止时间</div>
+							<div class="group-buy__countdown-time" >
+								<span id="day">24</span> : <span id="min">12</span> : <span id="second">20</span>
+							</div>
+						</div>
+					</div>
+			
+					<section class="goods__info">
+						<div class="goods__info-hd plr20 mt15">
+							<div class="goods__info-hd-tit fs16 lh25">
+								薇诺娜舒敏保湿丝滑面膜6片改善敏感肌肤护肤品泛红补水面膜男女
+							</div>
+			
+							<div class="goods__info-hd-price pos-rel mt10 pb15 line-b">
+								<span class="c-red fs20 lh-1"></span>
+								<span class="fs12 c-gray  c-gray01">团购价</span>
+								<div class="pos-fr goods__info-hd-old-price">
+									<span class="fs12 c-gray oldPrice">原价</span>
+								</div>
+							</div>
+			
+						</div>
+						<div class="pos-rel pt10 pb10 ml20 mr20 line-b clear doctor">
+							<div class="fl pos-rel mr10">
+								<span class="single-head">
+									<span class="pinBtn">去拼单</span>
+									<img src="../upload/head-01.jpg">
+			
+								</span>
+								<span class="badge-v"></span>
+							</div>
+							<div class="fl lh">
+								<!--<div><span class="fs14 mr10">张医生</span><span>主任医生</span></div>
+								<div class="c-gray">操作143 预约143 案例98 好评率92%</div>-->
+							</div>
+							<span class="arrow-r" onclik=""></span>
+						</div>
+						<div class="goods__info-std1 pos-rel1 ml20 mr20 line-b" style="display: none">
+							<span class="fs14">促销</span>
+							<span class="arrow-r"></span>
+							<span class="rules">
+								
+							</span>
+						</div>
+						<div class="goods__info-std pos-rel ml20 mr20 line-b ">
+							<span class="fs14">服务地址</span>
+							<span class="arrow-r"></span>
+							<span class="address">
+								<em></em>	
+							</span>
+						</div>
+					</section>
+					
+					<section class="group-step plr20" >
+						<div class="b fs20 mb15 pintun">20人在拼团</div>
+						<div class="pin-list" id="pingList">
+						   
+						</div>	
+					</section>
+			
+					<section class="group-step plr20">
+						<div class="b fs20 mb15">步骤说明</div>
+						<div class="group-step__legend"></div>
+					</section>
+			
+					<section class="comment plr20" id="comments">
+						<div class="b fs20 mb15">用户评论</div>
+						<!-- <div class="comment-item">
+							<div class="comment-item__author pos-rel">
+								<span class="comment-item__author-icon">
+									<img src="../upload/author.jpg" alt="">
+								</span><span class="comment-item__author-name">Daniel Tan</span>
+								<div class="comment-item__time pos-fr">
+									<span class="c-gray">4小时前</span>
+								</div>
+							</div>
+							<div class="comment-item__content">
+								又来更新了～～  宝宝们有木有想偶啦？现在术后有三个，现在处在比较稳定的阶段啦
+							</div>
+							<div class="comment-item__op">
+								<span class="comment-item__op-item op-icon-like op-icon-liked">10</span>
+								<span class="comment-item__op-item op-icon-report">举报</span>
+							</div>
+							<div class="comment-item__reply">
+								<div class="comment-item__reply-item clear">
+									<div class="comment-item__reply-hd">
+										<span class="comment-item__reply-name">魅影</span>
+									</div>
+									<div class="comment-item__reply-con c-gray">送给了啵主一个我喜欢你。</div>
+								</div>
+								<div class="comment-item__reply-item clear">
+									<div class="comment-item__reply-hd">
+										<span class="comment-item__reply-name">田小美</span><strong>回复</strong><span class="comment-item__reply-name">小可爱</span>
+									</div>
+									<div class="comment-item__reply-con c-gray">喜欢你，真的。</div>
+								</div>
+								<div class="comment-item__reply-item clear">
+									<div class="comment-item__reply-hd">
+										<span class="comment-item__reply-name">田小美</span>
+									</div>
+									<div class="comment-item__reply-con c-gray">如果能够真的见到，和你一起看海哦。如果能够真的见到，和你一起看海哦。如果能够真的见到，和你一起看海哦。如果能够真的见到，和你一起看海哦。如果能够真的见到，和你一起看海哦。如果能够真的见到，和你一起看海哦。如果能够真的见到，和你一起看海哦。</div>
+								</div>
+							</div>
+						</div> -->
+					</section>
+					<div class="goods-imgs plr20" id="proInfo">
+						
+					</div>
+					<section class="goods__buy-info plr20 pb20">
+						<div class="goods__buy-info-hd b">
+							购买须知
+						</div>
+						<div class="goods__buy-info-con mb10">
+							1.为保证活动的顺利进行，参与用户须确保已年满18周岁，具备完全民事行为能力。用户须妥善保管自己的用户名、密码等注册信息，因注册信息有误、遗忘遗失密码造成用户损失的，不承担任何责任。
+						</div>
+						<div class="goods__buy-info-con mb10">
+							2.此次活动的参与用户必须与实际购买人一致。
+
+						</div>
+						<div class="goods__buy-info-con mb10">
+							3.活动期间，因参与用户操作不当或参与用户所在区域网络故障、电信运营商故障等非本医疗机构投资集团所能控制的原因导致的参与用户无法参与活动、或者参与失败，本医疗机构投资集团不予负责。
+						</div>
+						<div class="goods__buy-info-con mb10">
+							4.在法律允许的范围内，本医疗机构投资集团有权决定取消、终止、修改或暂停本活动，本医疗机构投资集团无需为此承担赔偿责任或进行任何形式的补偿。
+						</div>
+						<div class="goods__buy-info-con mb10">
+							5.本次活动如价格或优惠政策有调整，请以到院实际价格或优惠政策为准。
+						</div>
+					</section>
+				</div>
+				<div class="group-buy-bar pos-abs">
+					<div class="group-buy-bar__l w50" id="singleBuy" onclick="openGroup('','',229001,206002)">
+						<div class="group-buy-bar__tit" >单人购买</div>
+						<div class="group-buy-bar__price oldPrice" >原价￥1399</div>
+					</div>
+					<div class="group-buy-bar__r pos-abs pos-fr w50" id="doubleBuy" onclick="openGroup('',0,229001,206002)">
+						<div class="group-buy-bar__tit">立即开团</div>
+						<div class="group-buy-bar__price newPrice">团购价￥399</div>
+					</div>
+				</div>
+				<div class="v-make"></div>
+				<div class="v-pop">
+					<div class="v-pop__goods pos-rel">
+						<span class="v-pop__goods-close">x</span>
+						<div class="v-pop__goods-img">
+							<img src="../upload/goods-2.jpg">
+						</div>
+						<div class="v-pop__goods-r pos-fr mt10">
+							<div class="v-pop__goods-price fs18 c-red b">￥2399</div>
+							<div class="v-pop__goods-price fs14 b mt10">已选: 6片装</div>
+						</div>
+					</div>
+					<div class="v-pop__goods-std plr20">
+						<div class="v-pop__goods-std-tit fs16 b mb15">产品规格</div>
+						<div class="v-pop__goods-std-items mt15">
+							<span class="current">6片装</span>
+							<span>10片装</span>
+						</div>
+					</div>
+					<div class="v-pop__goods-num plr20">
+						<div class="v-pop__goods-numt__tit fs16 b mb15">产品数量</div>
+						<div class="v-pop__goods-numt__set mt15">
+							<span class="num-btn">-</span>
+							<input type="text" value="1">
+							<span class="num-btn">+</span>
+						</div>
+					</div>
+					<a href="javascript: void(0)" class="v-pop__buy-btn bg-red tc fs16 ">立即购买</a>
+				</div>
+				<div class="download">
+					<div class="download-card">
+						<img class="close" src="../../images/close_.png" alt="">
+						<p>下载<span class="appName"></span>APP,美丽从此开始</p>
+						<button onclick="download_app()" type="button">立即下载</button>
+					</div>
+				</div>
+			</div>
+
+	</div>
+
+
+<script src="../../js/zepto.js"></script>
+<script src="../../js/api.js"></script>
+<script src="../../js/common.js"></script>
+<script src="../../js/mutual.js"></script>
+
+
+<script>
+	$('.buy_notice').html(platFormName)
+	var urlStr = window.location.href;
+	var strUrl=urlStr.split("?")[1];
+	var pro = GetQueryString('projectId');
+	var shareUserId;
+	var isInApp;
+	var canClick = true;// 控制是否能开团；
+	var currentUser=window.localStorage.getItem('userId');
+
+
+
+	if(currentUser){
+       // $('.my_head').show()
+	}else{
+        $('.my_head').hide()
+	}
+
+	//获取头部用户信息；
+	$.ajax({
+		url:host+'/client/client/user/userDetailInfo',
+		data:{
+			userId:currentUser
+		},
+		type:'post',
+		dataType:'json',
+		success:function(res){
+			if(res.resultCode==200){
+				var s=res.resultInfo.userImgUrl;
+				var n=res.resultInfo.userName;
+				    n= hidePhone(n)
+			   $('#currentImg').attr('src',s )
+			   $('#currentName').text(n)
+			}else{
+				alert(res.resultMsg)
+			}
+		}
+	})
+
+
+
+	if(GetQueryString('userId')){
+		shareUserId = GetQueryString('userId')
+	}
+	if(GetQueryString('isInApp')){
+		isInApp = GetQueryString('isInApp')
+	}
+	window.localStorage.setItem('setPayUrl',strUrl);
+	window.localStorage.setItem('projectId',pro)
+
+	if (urlStr.indexOf("?") != -1) {
+		var urlStr = urlStr.substr(urlStr.indexOf("?") + 1);
+		var strs = urlStr.split("&");
+		var tempArr = strs[0].split("=");
+		var projectId = window.decodeURIComponent(tempArr[1]).replace(/(\d{4})\/(\d{2})\/(\d{2})\s+(\d{2})-(\d{2})-(\d{2})/g, "$1-$2-$3 $4:$5:$6");
+		detailBack(projectId);
+		comment(projectId);
+		getPingList(projectId);
+	}
+
+	/*立即购买*/
+	function purchase(that) {
+		window.location.href="../login.html?projectId="+projectId;
+	}
+	/*详情背景*/
+	function detailBack(proId) {
+		//proId="75229400233975537329";//测试数据
+
+		$.ajax({
+			url:host+"/client-shopping/html/project/oneProjectDetails",
+			type:"POST",
+			contentType:"application/x-www-form-urlencoded",
+			data:{
+				projectId:proId
+			},
+			success:function (data) {
+				if(data.resultCode==200){
+					var result=data.resultInfo[0];
+					var attainMoney=result.attainMoney||0;
+					var reduceMoney=result.reduceMoney||0;
+					
+					var project=result.project;
+					if(project && project.projectImg){
+						var bg=$('<img class="full-img" src="'+project.projectImg+'">');
+						$('.v-main .goods-big').empty().append(bg);
+					}
+
+					var nowUserNum=result.nowUserNum;
+					 var userNum=$('<div class="b group-buy__info-count">目前已团'+nowUserNum+'份</div>');
+					// $('.v-main .group-buy__info').empty().append(userNum);
+
+					$('#proInfo').html(project.projectInfo)
+					
+
+					var projectName='';
+					if(project && project.projectName){
+						projectName=project.projectName
+					}
+					//倒计时
+					var endTime=result.endTime ||0;
+					var startTime = result.startTime
+					var nowTime = new Date().getTime();
+					if(nowTime>endTime){ // 活动结束
+						canClick = false;
+						$(".group-buy__countdown").html('<span class="act_over">团购活动已结束<span>');
+					}else{
+						if(nowTime <startTime){
+							canClick = false;
+							$(".group-buy__countdown fs12").html('团购开始时间');
+							var timing;
+							var timer = setInterval(function(){
+								var now_time = new Date().getTime();
+								if(now_time<startTime){
+									timing = startTime;
+								}else{
+									timing = endTime;
+									canClick = true;
+									if($('.pingBtn').hasClass('disable_click')){
+										$('#doubleBuy').removeClass('disable_click');
+										$('.pingBtn').removeClass('disable_click')
+									}
+									var html = $(".group-buy__countdown fs12").html();
+									if(html == '团购开始时间'){
+										$(".group-buy__countdown fs12").html('团购截止时间');
+									}
+								}
+								count_Down(timing);
+							},1000)
+						}else if(nowTime < endTime){
+							$(".group-buy__countdown fs12").html('团购截止时间');
+							canClick = true;
+							var timer = setInterval(function(){
+								var now_time = new Date().getTime();
+								if(now_time > endTime){ //团购结束
+									canClick = false;
+									clearInterval(timer);
+									$('#doubleBuy').addClass('disable_click');
+									$('.pingBtn').addClass('disable_click')
+									$(".group-buy__countdown").html('<span class="act_over">团购活动已结束<span>');
+								}else{
+									if($('.pingBtn').hasClass('disable_click')){
+										$('#doubleBuy').removeClass('disable_click');
+										$('.pingBtn').removeClass('disable_click')
+									}
+									
+								}
+								count_Down(endTime);
+							},1000)
+						}
+					}
+					// 活动下架，活动未开始，活动结束不会返回项目关联的活动信息
+					var act_type = result.activityType;
+					if(!act_type){ // 没有活动类型，不在活动期间内
+						canClick = false;
+					}
+					if(!canClick){
+						$('#doubleBuy').addClass('disable_click');
+						$('.pingBtn').addClass('disable_click')
+					}
+
+
+
+					// $('.goods__info .goods__info-hd').append($('<div class="goods__info-hd-tit fs16 lh25">'+projectName+'</div>'));
+					$('.goods__info-hd-tit').html(projectName)
+					//var price= $('.goods__info .goods__info-hd-price');
+					
+					var act_price = result.activityPrice?result.activityPrice:0;
+					act_price = toFixed_len(act_price,2);
+					var projectBeforePrices = project.projectBeforePrices?project.projectBeforePrices:0;
+					projectBeforePrices = toFixed_len(projectBeforePrices,2)
+					$('.c-red, .newPrice').html('￥'+act_price)
+					$(".yuyue").html("已预约"+project.projectReserve+'人')
+					$(".oldPrice").html('原价￥'+projectBeforePrices);
+					//$('.c-gray01').html('折后价'+project.projectPrices)
+
+					//$('.c-gray').html('原价￥'+project.projectPrices+');
+
+					/*预约医生*/
+					var doctor=result.doctor;
+					var doctorInfo=$('.goods__info .doctor');
+					var doctorId = doctor.doctorId
+					doctorInfo.empty();
+
+					doctorInfo.append($('<div class="fl pos-rel mr10">'+
+							'<span class="single-head">'+
+							'<img src="'+doctor.doctorImgUrl+'">'+
+							'</span>'+
+							'<span class="badge-v"></span>'+
+							'</div>'));
+
+					doctorInfo.append($('<div class="fl lh">'+
+							'<div><span class="fs14 mr10">'+doctor.doctorName+'</span><span>'+doctor.doctorPosition+'</span></div>'+
+							'<div class="c-gray">'+' 预约'+doctor.doctorReserveCount+' 案例'+doctor.caseNum+' 好评率'+doctor.goodRate+'</div>'+
+					'</div>'));
+
+					doctorInfo.append('<span class="arrow-r" onclick="goDownLoad(\''+ 1 +'\',\''+ doctorId +'\')"></span>');/*跳转医生详情*/
+
+					//var str='<span class="rules">'
+					//	+'<em>'满'+attainMoney+'减'+reduceMoney+'</em>
+					//	+'</span>';
+					var str='<span class="rules"><em>满'+ attainMoney+'减'+reduceMoney +'</em></span>'
+
+						/*满减规则*/
+					$('.goods__info .goods__info-std1 ').append(str);
+
+
+
+					/*服务地址*/
+					$('.goods__info .goods__info-std ').append($('<span class="c-gray fs14 ">'+result.serviceAddress+'</span>'));
+
+					/*项目案例*/
+					var diary=result.diary;
+					var projectLists=$('.project-case .project-list');
+					projectLists.empty();
+					if(diary.length>0){
+							for(var i=0;i<diary.length;i++){
+							var diaryObj=diary[i];
+							var oneCase=null;
+							var diaryBeforeImgArr = [];
+							var diaryBeforeImg_ = diaryObj.diaryBeforeImg;
+							if(diaryBeforeImg_){
+								if(diaryBeforeImg_.indexOf(';')>-1){ // 多张
+									var diaryBeforeImg_arr = diaryBeforeImg_.split(';');
+									for(var k=0;k<diaryBeforeImg_arr.length;k++){
+										diaryBeforeImgArr.push(diaryBeforeImg_arr[k])
+									}
+								}else{
+									diaryBeforeImgArr.push(diaryBeforeImg_)
+								}
+							}
+							var diaryBeforeImg_str = '';
+							if(diaryBeforeImgArr.length>0){
+								// for(var n=0;n<diaryBeforeImgArr.length;n++){
+								// 	diaryBeforeImg_str+= '<li><img src="'+ diaryBeforeImgArr[n] +'" alt=""><span class="compare-tag">Before</span></li>'
+								// }
+								diaryBeforeImg_str = '<li><img src="'+ diaryBeforeImgArr[0] +'" alt=""><span class="compare-tag">Before</span></li>'
+							}
+
+							var diaryAfterImgArr = [];
+							var diaryAfterImg_ = diaryObj.diaryAfterImg;
+							if(diaryAfterImg_){
+								if(diaryAfterImg_.indexOf(';')>-1){ // 多张
+									var diaryAfterImg_arr = diaryAfterImg_.split(';');
+									for(var k=0;k<diaryAfterImg_arr.length;k++){
+										diaryAfterImgArr.push(diaryAfterImg_arr[k])
+									}
+								}else{
+									diaryAfterImgArr.push(diaryAfterImg_)
+								}
+							}
+							var diaryAfterImg_str = '';
+							if(diaryAfterImgArr.length>0){
+								// for(var n=0;n<diaryAfterImgArr.length;n++){
+								// 	diaryAfterImg_str+= '<li><img src="'+diaryAfterImgArr[n]+'" alt=""><span class="compare-tag">After</span></li>'
+								// }
+								diaryAfterImg_str = '<li><img src="'+diaryAfterImgArr[0]+'" alt=""><span class="compare-tag">After</span></li>'
+							}
+							if(diaryObj.diaryFileType==202001){
+								oneCase=$('<div class="project-case-item">'+
+										'<div class="project-case-item__hd clear">'+
+										'<div class="fl">'+
+										'<div class="single-head mr10">'+
+										'<img src="'+diaryObj.userImg+'" alt="">'+
+										'</div>'+
+										'</div>'+
+										'<div class="fl">'+
+										'<div class="fs14 b">'+diaryObj.userName+'</div>'+
+										'<div class="c-gray fs10 mt10">'+diaryObj.createTime+'</div>'+
+										'</div>'+
+										'<div class="fr">'+
+	//								'<button class="focus-btn"></button>'+
+										'</div>'+
+										'</div>'+
+										'<div class="project-case-item__con">'+diaryObj.diaryInfo +'</div>'+
+										'<div class="project-case-item__tags clear">'+
+										'<span class="project-case-item__tag">自有脂肪填充面部</span>'+
+										'<span class="project-case-item__tag">隆鼻</span>'+
+										'<span class="project-case-item__tag">开眼角</span>'+
+										'</div>'+
+										'<ul class="project-case-item__imgs imgs-x2 clear">'+
+										diaryBeforeImg_str +
+										diaryAfterImg_str+
+										'</ul>'+
+										/*'<div class="project-case-item__ft">'+
+										'<span class="icon-nice">赞25</span>'+
+										'<span class="icon-comment">评论245</span>'+
+										'</div>'+*/
+										'</div>');
+							}else if(diaryObj.diaryFileType==202001){
+								oneCase=$('<div class="project-case-item">'+
+										'<div class="project-case-item__hd clear">'+
+										'<div class="fl">'+
+										'<div class="single-head mr10">'+
+										'<img src="'+diaryObj.userImg+'" alt="">'+
+										'</div>'+
+										'</div>'+
+										'<div class="fl">'+
+										'<div class="fs14 b">'+diaryObj.userName+'</div>'+
+										'<div class="c-gray fs10 mt10">'+diaryObj.createTime+'</div>'+
+										'</div>'+
+										'<div class="fr">'+
+	//								'<button class="focus-btn"></button>'+
+										'</div>'+
+										'</div>'+
+										'<div class="project-case-item__con">'+diaryObj.diaryInfo +'</div>'+
+										'<div class="project-case-item__tags clear">'+
+										'<span class="project-case-item__tag">自有脂肪填充面部</span>'+
+										'<span class="project-case-item__tag">隆鼻</span>'+
+										'<span class="project-case-item__tag">开眼角</span>'+
+										'</div>'+
+										'<ul class="project-case-item__imgs">'+
+										'<li><img src="'+diaryObj.diaryFileUrl+'" alt=""></li>'+
+										'</ul>'+
+										/*'<div class="project-case-item__ft">'+
+										'<span class="icon-nice">赞25</span>'+
+										'<span class="icon-comment">评论245</span>'+
+										'</div>'+*/
+										'</div>');
+							}
+							projectLists.append(oneCase);
+						}
+					};
+
+					/*一体化方案推荐*/
+					// var recommend=result.recommendScheme[0];
+					// var recommendDiv=$('.integration-case .integration-case__wrapper');
+					// recommendDiv.empty();
+					// var recommendHead=$('<div class="integration-case__hd">'+
+					// 	'<div class="integration-case__hd-tit"><b>[一体化方案]+</b><span>'+recommend.schemeName+'</span><img src="'+recommend.schemeDescription+'" width="100%"/></div>'+
+					// '<div class="clear">'+
+					// 		'<div class="fl c-red fs18 mt5">￥'+recommend.schemePrice+'</div>'+
+					// 		'</div>'+
+					// 		'</div>');
+
+					// var recommendMain=$('<div class="integration-case__imgs clear"></div>');
+					// var projects=recommend.projects;
+					// recommendMain.empty();
+					// recommendMain.append($('<ul class="intergration-case-list" id="rec-project"></ul>'));
+					// recommendDiv.append(recommendHead);
+					// recommendDiv.append(recommendMain);
+					// //recommendDiv.append(recommendMain);
+					// var len=projects.length;
+					// var recommendList=$('.integration-case__imgs .intergration-case-list');
+					// $('#rec-project').css('width',3.65*len+'rem')
+
+					// for(var k=0;k<projects.length;k++){
+					// 	var oli=$('<li>'+
+					// 			'<div class="img-wrapper">'+
+					// 			'<img src="'+projects[k].projectImg.split(';')[0]+'" alt="" >'+
+					// 			'</div>'+
+					// 			'<div class="integration-case__imgs-tit">'+ projects[k].projectName+'</div>'+
+					// 			'</li>');
+					// 	recommendList.append(oli);
+					// }
+
+					/*项目介绍*/
+					
+                     var _s=result.endTime||0;
+					//活动倒计时;
+				}
+			},
+			error:function (data) {
+				console.log(data);
+			}
+		});
+	}
+
+	/*用户评论*/
+	function comment(proId) {
+		//proId="75229400233975537329";//测试数据
+		$.ajax({
+			url:host+"/client-shopping/html/project/queryOrderComment",
+			type:"POST",
+			contentType:"application/x-www-form-urlencoded",
+			data:{
+				projectId:proId
+			},
+			success:function (data) {
+				if(data.resultCode==200){	
+					var result=data.resultInfo;
+					var lists=$('#comments');
+					lists.empty();
+					for(var i=0;i<result.length;i++){
+						var commentObj=result[i];
+						var oneComment=$('<div class="comment-item">'+
+								'<div class="comment-item__author pos-rel">'+
+								'<span class="comment-item__author-icon">'+
+								'<img src="'+commentObj.userImg+'" alt="">'+
+								'</span><span class="comment-item__author-name">'+commentObj.userName+'</span>'+
+						'<div class="comment-item__time pos-fr">'+
+								'<span class="c-gray">'+new Date(commentObj.createTime).toLocaleString()+'</span>'+
+						'</div>'+
+						'</div>'+
+						'<div class="comment-item__content">'+commentObj.commentInfo+'</div>'+
+						'<div class="comment-item__op">'+
+								'<span class="comment-item__op-item op-icon-like"  style="diaplay:none" onclick="goDownLoad()">20</span>'+
+								'<span class="comment-item__op-item op-icon-report"  style="diaplay:none"  onclick="goDownLoad()">举报</span>'+
+								'</div>'+
+								'</div>');
+						 //lists.append('<p>5645665</p>');
+						   $("#comments").append(oneComment);
+					}
+				}
+			}
+		});
+	}
+	
+	/*返回按钮*/
+	function back(){
+		window.history.go(-1);
+	};
+
+
+
+
+
+    //去下载
+	function goDownLoad(type,id){ // type用来区分是点击举报，还是医生，type='1'为医生主页
+		// $('#my_popup').show();
+		// $('#my_mask').show();
+		// var phoneType = getPhoneType()
+		// if(phoneType == 'ios'){
+		// 	$('.img_code').attr('src',host_code + '/ios.png')
+		// }else if(phoneType == 'android'){
+		// 	$('.img_code').attr('src',host_code + '/android.png')
+		// }
+		if(isInApp == '1'){ // app内不让下载，应该跳与原生进行相应的交互，暂时没处理
+			if(type && type == '1'){ // app内交互跳转医生主页
+				if(id){
+					var json = {
+						'doctorID': id
+					}
+					mutual(json,'doctorDetail')
+				}
+			}
+		}else{
+			$('.download').show();
+		}	
+	}
+	// 隐藏下载弹窗
+	$('.download').on("click",function(e){
+		var target = e.target;
+		var loadCard = document.getElementsByClassName('download')[0];
+		var close = document.getElementsByClassName('close')[0];
+		if(target == loadCard || target == close){
+			$(".download").hide();
+		}
+	})
+
+	//立即支付；
+	//$('#pay-btn,.pingBtn').on('click',function(){
+	//});
+
+
+    $('#singleBuy,#doubleBuy').live('click',function(){
+		//goBuy();
+	});
+
+
+	
+
+
+
+
+
+
+
+	//3种购买方式 1直接购买  2参团 3开团
+	function openGroup(id,n,buyMethod,projectType,user_ID){ // 最后一个参数为开团人，参团时传入
+		// id:代表参团id   n:代表参与方式 0是开团 1是参团   buyMethod:购买方式   projectType：活动类型  
+		//在此交互跳转app页面；
+		var groupId=id;
+		var str=window.location.href;
+		var projectId=GetQueryString("projectId");
+		var userId;
+
+		 console.log(window.localStorage.getItem('userId'))
+		if(window.localStorage.getItem('userId')){
+			userId=window.localStorage.getItem('userId');
+		}
+		if(n===''){ // 单人购买
+
+		}else{
+			if(!canClick){
+				alert('不在团购期间内无法拼单或开团');
+			return;
+		}
+		}
+		if(user_ID){
+			if(user_ID == userId){
+				alert('不能参与自己的开团');
+				return;
+			}
+		}
+		//console.log(canClick)
+		// if(n == '0' || n == 0){ // 参团
+		// 	if($('#doubleBuy').hasClass('disable_click')){
+		// 		alert('不在团购活动期间内,无法开团');
+		// 		return;
+		// 	}
+		// }
+		var activityId = GetQueryString("activityId");
+		var isInApp;
+		if(GetQueryString('isInApp')){
+			isInApp = GetQueryString('isInApp');
+		}
+		if(isInApp && isInApp=='1'){ // app里的详情页
+			var phoneType = getPhoneType();
+			var json = {
+				"groupRecordId":groupId,
+				"isGroup":n,
+				"projectId": projectId,
+				"projectType": projectType,
+				"buyNum": 1,
+				"userId": userId,
+				"buyMethod": buyMethod ,  //购买方式
+				"buyMethodId": 0 ,
+				"serviceId": 0,
+				"activityId": activityId,
+				"shareUserId": '',
+				"shoppingCartId": '', 
+			}
+			if(phoneType == 'ios'){ // ios交互
+				window.webkit.messageHandlers.openGroup.postMessage(json);
+			}else if(phoneType == 'android'){ // android交互
+				//window.ProjectDetail.postMessage(JSON.stringify(json));
+				toolFunc.setupWebViewJavascriptBridge(function(bridge) {
+					//向app发送消息       //方法名
+					bridge.callHandler('openGroup', json, function (response,responseCallback) {
+							responseCallback({'result': 'handle success'})
+						})	
+					});	
+					bridge.registerHandler('openGroup', function (data, responseCallback) {
+					responseCallback({'result': 'handle success'})
+				});		
+			}
+		}else{ 
+			if(userId){			 
+				$.ajax({
+					url:host+"/client-shopping/html/order/cartAddOrder",
+					type:"POST",
+					contentType:"application/x-www-form-urlencoded",
+					data:{
+						"groupRecordId":groupId,
+						"isGroup":n,
+						"projectId": projectId,
+						"projectType": projectType,
+						"buyNum": 1,
+						"userId": userId,
+						"buyMethod": buyMethod ,  //购买方式
+						"buyMethodId": 0 ,
+						"serviceId": 0,
+						"activityId": activityId,
+						"shareUserId": shareUserId,
+						"shoppingCartId": '', 
+					},
+					success(res){
+						if(res.resultCode==200){								
+							//alert(JSON.stringify(res))
+							localStorage.setItem("orderData",JSON.stringify(res));
+							var order = res.resultMsg
+							if(n===''){ // 单人购买
+								window.location.href = "./order-payment.html?order="+order+"&groupsinglebuy=1"+"&activityId="+activityId+"&userId="+shareUserId;
+								self.showLoading = false;
+							}else{
+								window.location.href = "./order-payment.html?order="+order+"&isGroup=group"+"&activityId="+activityId+"&userId="+shareUserId;
+								self.showLoading = false;
+							}
+							
+						}else if(res.resultCode == 400){
+							alert(res.resultMsg)
+							//window.location.href="../../login.html?mark=1";		
+						}
+					}
+				})
+			}else{
+				//没登录，去登录;
+				window.location.href="../../login.html?mark=1";		
+			}
+		}	
+	
+	 }
+
+	
+    //去购买，去详情页
+	function goBuy(){
+		//判断当前用户是否登录；
+		var str=window.location.href;
+		var projectId=GetQueryString("projectId");
+		var userId=window.localStorage.getItem('userId');
+		
+		var activityId='';
+		if(userId){
+            $.ajax({
+                url:host+"/client-shopping/html/cart/addSchemeCart",
+                type:"POST",
+                contentType:"application/x-www-form-urlencoded",
+                data:{
+                    projectType: '206002',
+                    projectId: projectId,
+                    userId: userId,
+                    childProjectId:"",
+                },
+                success:function (data) {
+                    if(data.resultCode==200){
+						window.location.href="./shopping-cart.html";
+                    }
+                },
+                error:function (data) {
+                    console.log(data);
+                }
+            });
+		}else{
+			window.location.href="../../login.html?mark=1";		
+		}
+	};
+	
+	window.document.onreadystatechange = function() {
+		if(document.readyState == 'complete'){
+			console.log('加载完毕')
+			$('.loading').hide();
+		}
+	}
+
+    //拼团列表；
+	function getPingList(projectId){
+		//var proId='5967735247814479732';
+		$.ajax({
+			url:host+"/supplier/html/activity/queryGroupInfo",
+			type:"POST",
+			contentType:"application/x-www-form-urlencoded",
+			data:{
+				projectId:pro
+			},
+			success:function(res){
+				if(res.resultCode==200){
+					var data=res.resultInfo;
+					var len=data.length;
+					if(len>0){
+						var s1='';
+						var s2='';
+						for(var i=0;i<len;i++){	
+							var tpl='<div class="item" data-groupId='+data[i].groupRecordId+' onclick="openGroup(\''+data[i].groupRecordId+'\',1,229001,206002,\''+ data[i].userId +'\')">'
+											+'<span class="pingBtn">去拼单</span>'
+											+'<img src="'+data[i].userImg +'" />'
+											+'<div class="desc">'
+												+'<p class="name">'+hidePhone(data[i].userName) +'</p>'
+												+'<p>还差<em>'+data[i].residuePeople+'</em>人拼成</p>'
+											+'</div>'
+									+'</div>';
+							s1+=tpl;
+							if(i<3){
+								var tpl2="<span><img src="+data[i].userImg+"></span>";
+							    s2+=tpl2;	
+							}	
+						};
+
+						$('#pingList').append(s1);
+						$('#pic1').append(s2);
+						$('.group-buy__info-count').html(len+'人在拼团')
+						$('.pintun').html(len+'人在拼团');
+						$('#cantuan').html(len+'人在拼团')
+						$('ct').html(len+'人')
+					}else{
+						$('#pingList').hide()
+						$('.pintun').hide()
+					}	
+				}else{
+					alert(res.resultMsg)	
+				}
+			}
+		})
+	};
+	
+
+</script>
+</body>
+</html>

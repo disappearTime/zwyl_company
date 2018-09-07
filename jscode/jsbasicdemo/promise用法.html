@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Promise能解决回调地狱问题
+        function fn1(){
+            return new Promise(function(resolve,reject){
+                //执行异步操作
+                setTimeout(function(){
+                    resolve('fn1异步执行完后返回的数据');
+                },2000)
+            })
+        }
+        function fn2(){
+            return new Promise(function(resolve,reject){
+                setTimeout(function(){
+                    resolve('fn2异步执行完后返回的数据');
+                },4000)
+            })
+        }
+        fn1().then(function(data){
+            console.log(data);
+            return fn2();
+        }).then(function(data){
+            console.log(data);
+        })
+        // Promise all的用法 Promise的all方法提供了并行执行异步操作的能力，并且在所有异步操作执行完后才执行回调,返回数据顺序按数组的异步函数返回数据依次返回
+        // 这个race有什么用呢？使用场景还是很多的，比如我们可以用race给某个异步请求设置超时时间，并且在超时后执行相应的操作，代码如下：
+        Promise.all([fn2(),fn1()]).then(function(result){
+            console.log(result);
+        })
+        // Promise race的用法 all是所有异步操作执行完后执行回调 
+        Promise.race([fn2(),fn1()]).then(function(res){
+            console.log(res);
+        })
+        //请求某个图片资源
+        function requestImg(){
+            var p = new Promise(function(resolve, reject){
+                var img = new Image();
+                img.onload = function(){
+                    resolve(img);
+                }
+                img.src = 'xxxxxx';
+            });
+            return p;
+        }
+
+        //延时函数，用于给请求计时
+        function timeout(){
+            var p = new Promise(function(resolve, reject){
+                setTimeout(function(){
+                    reject('图片请求超时');
+                }, 5000);
+            });
+            return p;
+        }
+
+        Promise.race([requestImg(), timeout()]).then(function(results){
+            console.log(results);
+        }).catch(function(reason){
+            console.log(reason);
+        });
+    </script>
+</body>
+</html>

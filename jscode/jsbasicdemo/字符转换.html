@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function normarlize_str(str){ // 接收以‘|’分隔的字符串
+            var retStr = '';
+            if(str){
+                if(str.indexOf('|')>-1){
+                    var arr = str.split('|');
+                    for(var i=0;i<arr.length;i++){
+                        if(arr[i] == 'undefined' || arr[i] == undefined){
+                            arr[i] = '\"' + '\"';
+                        }
+                    }
+                    retStr = arr.join('|')
+                }else{
+                    if(str == undefined || str == 'undefined'){
+                        retStr = '\"' + '\"';
+                    }else{
+                        retStr = str;
+                    }
+                }
+            }
+            return retStr;
+        }
+        console.log(normarlize_str('undefined|2|undefined'));
+    </script>
+</body>
+</html>

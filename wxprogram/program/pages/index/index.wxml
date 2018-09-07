@@ -1,0 +1,40 @@
+<view class="wrapper">
+  <view class='search-box'>
+    <view class='search'>
+      <text>搜索</text>
+      <image src='/image/search.png'></image>
+    </view>
+  </view>
+  <scroll-view style='margin-top:80rpx;' class='scroll-view' scroll-y bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll">
+    <view class='banner'>
+      <swiper indicator-dots="{{swiperConfig.indicatorDots}}" autoplay='{{swiperConfig.autoplay}}' interval='{{swiperConfig.interval}}' duration='{{swiperConfig.duration}}'>
+        <block wx:for="{{swiperConfig.imgUrls}}">
+          <swiper-item>
+            <image class='slide-image' src='{{item}}'></image>
+          </swiper-item>
+        </block>
+      </swiper>
+    </view>
+    <view id='sale' class='goods-area'>
+      <view class='area-title'>
+        <text>打折专区</text>
+        <image src='../../image/jiantou.png'></image>
+      </view>
+      <view class='goods-detail'></view>
+    </view>
+    <view id='hot' class='goods-area'>
+      <view class='area-title'>
+        <text>热销商品</text>
+        <image src='../../image/jiantou.png'></image>
+      </view>
+      <view class='goods-detail'></view>
+    </view>
+    <view id='recommend' class='goods-area'>
+      <view class='area-title'>
+        <text>新品推荐</text>
+        <image src='../../image/jiantou.png'></image>
+      </view>
+      <view class='goods-detail'></view>
+    </view>
+  </scroll-view>
+</view>

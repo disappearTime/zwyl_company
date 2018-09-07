@@ -1,0 +1,19 @@
+<view class="order_container" bindtap='_viewOrderDetail'>
+  <view class='order_left'>
+    <image class='project_image' mode='aspectFill' src='http://img5.imgtn.bdimg.com/it/u=2053377847,2838900842&fm=27&gp=0.jpg'></image>
+    <slot name="sale_img_class_discount"></slot>
+  </view>
+  <view class='order_right'>
+    <view class='order_title'>
+      <text class="title">{{projectTitle}}</text>
+      <text class='project_intro'>{{projectIntro}}</text>
+    </view>
+    <view class='order_price'>
+      <view class='price_info'>
+        <text class='pay_price'>￥{{payPrice}}</text>
+        <text class='origin_price'>￥{{originPrice}}</text>
+      </view>
+      <image class='shop_cart' src='/image/shop-cart.png' mode='aspectFit'></image>
+    </view>
+  </view>
+</view>

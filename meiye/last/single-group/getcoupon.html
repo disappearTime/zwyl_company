@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta content="telephone=no" name="format-detection" />
+    <title>优惠券</title>
+    <link rel="stylesheet" href="../../css//common.css"/>
+    <link rel="stylesheet" href="../../css/coupon.css"/>
+</head>
+<body>
+    <style>
+        .getCoupon-wrap{
+            width:100%;
+            height:150%;
+            margin: 0 auto;
+            background: url('../../images/lingqv.png') #f9f0e7 no-repeat center 5%;
+            background-size:88%;   
+        }
+        .getCoupon-wrap .get-redbags{
+            width:100%;
+            overflow: hidden;
+            position:absolute;
+            top:10%;
+            left:0;
+            right:0;
+            margin: auto;
+        }
+        .getCoupon-wrap .get-redbags .redbag{
+           width:78%;
+           height:10rem;
+           background: mediumseagreen;
+           margin:0 auto;
+           background: url('../../images/redbags.png') no-repeat center 2%;
+           background-size:90%;  
+        }
+        .getCoupon-wrap .get-redbags .redbag h3{
+            font-size:1.58rem;
+            text-align: center;
+            padding-top: 0.7rem;
+            color:#fff;
+            margin: 0 2px;
+        }
+        .getCoupon-wrap .get-redbags .redbag h3 span{
+            color: rgba(253,238,85,1)
+        }
+        .getCoupon-wrap .get-redbags .user{
+            width:72%;
+            height:3.9rem;
+            margin:0.2rem auto 0;
+        }
+        .getCoupon-wrap .get-redbags .user span{
+            display:block;
+            width:3rem;
+            height:3rem;   
+            border-radius:50%;
+            float:left;
+            margin: 0.3rem 2px;
+            position: relative;
+        }
+        .getCoupon-wrap .get-redbags .user span img{
+            width:100%;
+            height:100%;
+            position: absolute;
+            left:0;
+            top:0;
+        }
+        .getCoupon-wrap .get-redbags .user span em{
+            position: absolute;
+            bottom:-7%;
+            left:0;
+            right:0;
+            margin:auto;
+            background:#ce0f31;
+            color: #fff; 
+            border-radius:9px;
+            width:80%;
+           
+            z-index:99;
+            font-size:0.12rem;
+            text-align: center;
+        }
+        .getCoupon-wrap .get-redbags .countdown{
+            width:78%;
+            margin:0 auto;
+            text-align: center;
+            line-height: 1.78rem;
+            margin-top: 1.04rem;
+            color: #333;
+            font-weight:600;
+        }
+        .getCoupon-wrap .get-redbags .countdown em{
+            display: inline;
+            width:0.5rem;
+            background:#2d2d2d ;
+            color:#fff;
+            padding: 0 0.2rem;
+            margin: 0 1px;
+        }
+        .getCoupon-wrap .get-redbags .countdown span.span1{
+            color:red;
+        }
+        .getCoupon-wrap .btns{
+            padding-top:1.2rem;
+        }
+        .getCoupon-wrap .commonstyle{
+            width:78%;
+            height:2.5rem;
+            border-radius:28px;
+            border:1px solid #ce0f31;
+            background: #ce0f31;
+            margin:1rem auto;
+            text-align: center;
+            line-height: 2.5rem;
+        }
+        .getCoupon-wrap .btns p.p1{
+            color: #fff;
+        }
+        .getCoupon-wrap .btns p.p2{
+            color: #ce0f31;
+            background: #fff;
+        }
+        .getCoupon-wrap .lists{
+            width:96%;
+            margin:2.3rem auto;
+            overflow: hidden;
+
+        }
+        .getCoupon-wrap .lists nav{
+             text-align: center;
+             font-size:1.2rem;
+             line-height: 3rem;
+             margin-bottom:1.2rem;
+        }
+        .getCoupon-wrap .lists .content ul li{
+            padding:1rem;
+            background:#fff;
+            clear: both;
+            overflow: hidden;
+            font-size:0.9rem;
+            margin-bottom:0.9rem;
+        }
+        .getCoupon-wrap .lists .content ul li img{
+            width:5rem;
+            height:5rem;
+            float: left;
+        }
+        .getCoupon-wrap .lists .content ul li .des{
+            width:14.4rem;
+            float: left;
+            padding-left:0.4rem;
+        }
+        .getCoupon-wrap .lists .content ul li .item:after{
+            clear: both;
+            height:0;
+            content:'';
+        }
+        .getCoupon-wrap .lists .content ul li .item .des p.p1{
+            font-size:0.85rem;
+            font-weight:600;
+            line-height: 1.1rem;
+            margin-bottom:0.4rem;
+            overflow:hidden;
+            text-overflow:ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;      
+        }
+        .getCoupon-wrap .lists .content ul li .item .des p.p2{
+            font-size:0.75rem;
+            line-height: 1.1rem;
+            margin-bottom:0.3rem; 
+            color:#ce0f31;    
+        }
+        .getCoupon-wrap .lists .content ul li .item .des p.p2 span{
+           color:#a6a6a6;
+        }
+        .getCoupon-wrap .lists .content ul li .item .des p.p3{
+            font-size:0.7rem;
+            line-height: 1.1rem;
+            color:#a6a6a6;      
+        }
+        .getCoupon-wrap .lists .content ul li .item .des p.p3 label{
+            color:#a6a6a6; 
+            text-decoration:line-through; 
+        }
+        .getCoupon-wrap .lists .content ul li .item .des p.p3 span{
+           float:right;
+           background: url('../../images/doctor.png') no-repeat left center;
+           background-size:26%;
+           padding-left:1rem;
+            
+        }
+        
+        
+        
+     
+    </style>
+
+    <div class="getCoupon-wrap">
+        <div class="get-redbags">
+            <div class="redbag">
+                <h3>瓜分<span>2000</span>元红包</h3>
+            </div>
+            <div class="user">
+                <span><img src="../../images/user.png"/><em>团长</em></span>
+                <span><img src="../../images/user.png"/><em>团员</em></span>
+                <span><img src="../../images/user.png"/><em>团员</em></span>
+                <span><img src="../../images/user.png"/><em>团员</em></span>
+                <span><img src="../../images/user.png"/><em>团员</em></span>  
+            </div>
+            <div class="countdown">
+                <p>剩余<em>1</em><em>2</em>:<em>1</em><em>3</em>:<em>3</em><em>0</em>结束</p>
+                <p>还差<span class="span1">3</span>人就可以助力瓜分红包了</p>
+            </div>
+            <div class="btns">
+                <p class="commonstyle p1">分享好友一起拆</p>
+                <p class="commonstyle p2">拆一个新红包</p>
+            </div>
+            <div class="lists">
+                <nav>
+                    <a href="#">项目</a>
+                    <a href="#">家居产品</a>
+                </nav>
+                <div class="content">
+                    <ul>
+                        <li>
+                            <div class="item">
+                                <img src="###"/>
+                                <div class="des">
+                                    <p class="p1">[硅胶隆鼻]混血小翘鼻 院长亲自手术 下单送面膜混血小翘鼻 院长亲自手术 下单送面膜混血小翘鼻 院长亲自手术 下单送面膜混血小翘鼻 院长亲自手术 下单送面膜混血小翘鼻 院长亲自手术 下单送面膜</p>
+                                    <p class="p2">&nbsp; &yen;16500 <span>折后价</span></p>
+                                    <p class="p3"><span>张晓璐</span><label>原价25000</label> </p>
+                                </div>
+                            </div>
+                        </li>
+                           <li>
+                                <div class="item">
+                                    <img src="###"/>
+                                    <div class="des">
+                                        <p class="p1">[硅胶隆鼻]混血小翘鼻 院长亲自手术 下单送面膜</p>
+                                        <p class="p2">&nbsp; &yen;16500 <span>折后价</span></p>
+                                        <p class="p3"><span>张晓璐</span><label>原价25000</label> </p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                    <div class="item">
+                                        <img src="###"/>
+                                        <div class="des">
+                                            <p class="p1">[硅胶隆鼻]混血小翘鼻 院长亲自手术 下单送面膜</p>
+                                            <p class="p2">&nbsp; &yen;16500 <span>折后价</span></p>
+                                            <p class="p3"><span>张晓璐</span><label>原价25000</label> </p>
+                                        </div>
+                                    </div>
+                            </li>
+                            
+
+                    </ul>
+
+                </div>
+
+
+            </div>
+        </div>
+    </div> 
+</body>
+</html>

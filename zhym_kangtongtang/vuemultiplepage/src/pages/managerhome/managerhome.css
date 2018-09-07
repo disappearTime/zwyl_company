@@ -1,0 +1,216 @@
+html{
+    position: relative
+}
+#app{
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+}
+.managerhome_content{
+    padding-top: 2.75rem;
+}
+.managerhome_content, .manager_picture{
+    width: 100%;
+}
+.manager_picture img{
+    width: 100%;
+}
+.manager_relative{
+    width: 100%;
+    padding: 0 1.25rem;
+    box-sizing: border-box;
+}
+.manager_info{
+    width: 100%;
+    border-radius: 0.5rem;
+    background: #ffffff;
+    box-shadow: 0 0 0.625rem 0;
+    transform: translateY(-3.46875rem);
+}
+.manager_info .managername{
+    width: 100%;
+    height: 3.46875rem;
+    padding: 0.9375rem;
+    box-sizing: border-box;
+    border-bottom: 1px solid #E7E7E7;
+}
+.manager_info .managername .left_flex{
+    display: flex;
+    align-items: center;
+}
+.manager_info .managername .left_flex .name{
+    font-family: 'PingFangSC-Medium';
+    font-size: 1rem;
+    color: #2D2D2D;
+    letter-spacing: 0;
+}
+.manager_info .managername .left_flex .is_online{
+    display: inline-block;
+    height: 1rem;
+    padding: 0 5px;
+    color: #ffffff;
+    line-height: 0.9rem;
+    border-radius: 0.5rem;
+    font-size: 12px;
+    transform: scale(0.8);
+    margin-right: 5px;
+    margin-top: 2px;
+}
+.manager_info .managername .left_flex .manager_role{
+    font-family: 'PingFangSC-Regular';
+    font-size: 12px;
+    color: #8E8E8E;
+}
+.manager_info .managername .right_flex span{
+    display: inline-block;
+    height: 1.5625rem;
+    padding: 0 0.8125rem;
+    box-sizing: border-box;
+    border: 1px solid;
+    border-radius: 0.78125rem;
+    line-height: 1.5625rem;
+    font-size: 12px;
+}
+.manager_info .manager_service{
+    width: 100%;
+    height: 3.96875rem;
+    padding: 0.78125rem 1.625rem;
+    border-bottom: 1px solid #E7E7E7;
+    box-sizing: border-box;
+}
+.manager_info .manager_service .left_flex, .manager_info .manager_service .right_flex{
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+.manager_info .manager_service .left_flex .left, .manager_info .manager_service .right_flex .left{
+    height: 100%;
+    width: 2.5rem;
+    padding-right: 0.625rem;
+}
+.manager_info .manager_service .left_flex .left img, .manager_info .manager_service .right_flex .left img{
+    width: 100%;
+    height: 100%;
+}
+.manager_info .manager_service .left_flex .right, .manager_info .manager_service .right_flex .right{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around
+}
+.manager_info .manager_service .left_flex .right p:nth-of-type(1), .manager_info .manager_service .right_flex .right p:nth-of-type(1){
+    font-size: 0.875rem;
+}
+.manager_info .manager_service .left_flex .right p:nth-of-type(2), .manager_info .manager_service .right_flex .right p:nth-of-type(2){
+    font-size: 12px;
+    color: #8E8E8E;
+}
+.manager_info .manager_mes{
+    width: 100%;
+    padding: 0 1.1875rem;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+}
+.manager_info .manager_mes .sign{
+    width: 4.125rem;
+    flex-grow: 0;
+    flex-shrink: 0;
+    color: #2D2D2D;
+    line-height: 1.4;
+}
+.manager_info .manager_mes .message{
+    color: #8E8E8E;
+    line-height: 1.4;
+    flex-grow: 1;
+    flex-shrink: 1;
+}
+.manager_info .manager_good_at{
+    margin: 0.8125rem 0;
+}
+.manager_info .manager_area{
+    padding-top: 0.8125rem;
+    padding-bottom: 0.8125rem;
+    border-bottom: 1px solid #E7E7E7;
+}
+.manager_info .service_quality{
+    width: 100%;
+    padding: 0 1.1875rem;
+    box-sizing: border-box;
+}
+.manager_relative .service_project{
+    font-size: 1rem;
+    color: #2D2D2D;
+    font-family: 'PingFangSC-Medium';
+    transform: translateY(-1.5rem);
+}
+.relative_project{
+    width: 100%;
+    height: 9.34375rem;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    white-space: nowrap;
+    transform: translateY(-0.6rem);
+}
+.relative_project>div{
+    display: inline-block;
+    height: 100%;
+    width: 18.75rem;
+    margin-right: 0.9375rem;
+}
+.relative_project>div:nth-last-of-type(1){
+    margin-right: 0;
+}
+.manager_about{
+    width: 100%;
+    height: 2.1875rem;
+    white-space: nowrap;
+    overflow-y: hidden;
+    overflow-x: scroll;
+    -webkit-overflow-scrolling: touch;
+    margin-top: 1rem;
+}
+.manager_about button{
+    background: none;
+    border: none;
+    height: 2.1875rem;
+    border-radius: 1.09375rem;
+    padding: 0 0.9rem;
+    font-size: 1rem;
+    color: #2D2D2D;
+    margin-right: 0.8rem;
+}
+.manager_about button:nth-last-of-type(1){
+    margin-right: 0;
+}
+.manager_about button.active{
+    color: #ffffff;
+}
+.user_evaluation{
+    width: 100%;
+}
+.user_evaluation .user_box{
+    padding: 0.9rem 0;
+}
+.user_evaluation .trends_time{
+    font-family: 'PingFangSC-Regular';
+    font-size: 12px!important;
+    color: #8E8E8E!important;
+}
+.user_evaluation .evaluation_mes{
+    padding-top: 0.5rem;
+    font-family: 'PingFangSC-Regular';
+    font-size: 0.874rem;
+    color: #2D2D2D;
+    letter-spacing: 0;
+    text-align: justify;
+    line-height: 1.25rem;
+}
+.manager_diary, .diary_box, .case_box{
+    width: 100%;
+}
+.diary_box, .case_box{
+    padding: 0.9rem 0;
+}

@@ -1,0 +1,6 @@
+<!--index.wxml-->
+<view class="container">
+  <view class='welcome'>曼道美容院欢迎您</view>
+  <view class='company'>北京智网易联科技有限公司</view>
+  <view class='remanin_time' wx:if="{{showRemainTime}}">{{ remainTime }}s</view>
+</view>

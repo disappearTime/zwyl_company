@@ -1,0 +1,173 @@
+.container .mine-title {
+  width: 100%;
+  height: 400rpx;
+  position: relative;
+}
+.container .mine-title .mine-title-bj {
+  width: 100%;
+  height: 100%;
+}
+.container .mine-title .mine-title-msg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.container .mine-title .mine-title-msg view:nth-child(1) {
+  padding: 10rpx;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+}
+.container .mine-title .mine-title-msg view:nth-child(1) image {
+  width: 159rpx;
+  height: 159rpx;
+  border-radius: 50%;
+  background-color: #fff;
+}
+.container .mine-title .mine-title-msg view {
+  font-size: 32rpx;
+  color: #FFFFFF;
+  margin: 6rpx 0 4rpx 0;
+}
+.container .mine-title .mine-title-msg view button{
+  font-size: 32rpx;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0);
+}
+.container .mine-title .mine-title-msg view button::after{
+  border: none;
+}
+.container .mine-title .mine-title-msg text {
+  color: #fff;
+  font-size: 24rpx;
+}
+.container .mine-indent {
+  width: 100%;
+  box-sizing: border-box;
+}
+.container .mine-indent .mine-indent-info {
+  margin: 34rpx 30rpx;
+  background: #FFFFFF;
+  box-shadow: 0 0 15rpx 0 rgba(0, 0, 0, 0.1);
+  border-radius: 7rpx;
+  display: flex;
+  flex-direction: column;
+}
+.container .mine-indent .mine-indent-info .mine-indent-title {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 22rpx 30rpx;
+  border-bottom: 1rpx solid #F7F7F7;
+}
+.container .mine-indent .mine-indent-info .mine-indent-title view:nth-child(1) {
+  flex: 1;
+  font-size: 32rpx;
+  color: #2D2D2D;
+}
+.container .mine-indent .mine-indent-info .mine-indent-title view:nth-child(2) {
+  display: flex;
+  flex-direction: row;
+}
+.container .mine-indent .mine-indent-info .mine-indent-title view:nth-child(2) text {
+  font-size: 24rpx;
+  color: #8E8E8E;
+}
+.container .mine-indent .mine-indent-info .mine-indent-title view:nth-child(2) image {
+  width: 12.5rpx;
+  height: 25.5rpx;
+  margin-left: 20rpx;
+}
+.container .mine-indent .mine-indent-info .mine-indent-list {
+  display: flex;
+  flex-direction: row;
+}
+.container .mine-indent .mine-indent-info .mine-indent-list .mine-indent-items {
+  flex: 1;
+  text-align: center;
+  padding: 30rpx 0;
+  position: relative;
+}
+.container .mine-indent .mine-indent-info .mine-indent-list .mine-indent-items image {
+  width: 45rpx;
+  height:45rpx;
+  margin: 0 auto;
+}
+.container .mine-indent .mine-indent-info .mine-indent-list .mine-indent-items text {
+  display: block;
+  font-size: 24rpx;
+  color: #8E8E8E;
+  margin-top: 10rpx;
+}
+.container .mine-indent .mine-indent-info .mine-indent-list .mine-indent-items .order_num{
+  position: absolute;
+  top: 10rpx;
+  right: 30rpx;
+  min-width: 30rpx;
+  height: 30rpx;
+  text-align: center;
+  line-height: 30rpx;
+  border-radius: 50%;
+  background: #FE4E4E;
+  color: #fff;
+}
+.container .mypayqqcom {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.container .mypayqqcom .mypayqqcom-title {
+  font-size: 32rpx;
+  color: #2D2D2D;
+  padding: 23rpx 30rpx;
+}
+.container .mypayqqcom .mypayqqcom-list {
+  padding: 0 30rpx;
+}
+.container .mypayqqcom .mypayqqcom-list .mypayqqcom-items {
+  margin-bottom: 10rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0);
+  padding: 0
+}
+.container .mypayqqcom .mypayqqcom-list .mypayqqcom-items::after{
+    border:none;
+}
+.container .mypayqqcom .mypayqqcom-list .mypayqqcom-items image {
+  width: 12.5rpx;
+  height: 25.5rpx;
+}
+.container .mypayqqcom .mypayqqcom-list .mypayqqcom-items view {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.container .mypayqqcom .mypayqqcom-list .mypayqqcom-items view image {
+  width: 35rpx;
+  height: 35rpx;
+}
+.container .mypayqqcom .mypayqqcom-list .mypayqqcom-items view text {
+  font-size: 28rpx;
+  color: #2D2D2D;
+  margin-left: 10rpx;
+}
+.container .couponfc{
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  padding: 20rpx;
+  z-index: 100;
+}
+.container .couponfc image{
+   width: 80rpx;
+   height: 80rpx;
+}

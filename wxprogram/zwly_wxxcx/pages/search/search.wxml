@@ -1,0 +1,106 @@
+<!--pages/search/search.wxml-->
+<view class="container">
+    <!-- 搜索 -->
+    <view class='search'>
+        <view class='search-info'>
+            <input type='text' placeholder='搜索' value="{{serchrank}}" bindinput="cz" bindconfirm="seaval" wx:if="{{!serchrank}}"></input>
+            <input type='text' placeholder='搜索' value="{{serchrank}}" disabled="false" wx:else></input>
+            <image src='/image/search.png' bindtap="tsearch"></image>
+            <view class="seaval" wx:if="{{serchrank}}">
+                <text>{{serchrank}}</text>
+                <image src="/image/cha-icon.png"  bindtap="seacancel" />
+            </view>
+        </view>
+        <view class='search-cancel' bindtap="seacancel">取消</view>
+    </view>
+    <view class="search-msg">
+        <!-- 搜索结果 -->
+        <view wx:if="{{serchrank}}" class='search-result'>
+            <view class='sea-res-title'>
+                <block wx:for="{{xstart}}">
+                    <view class='res-tit-items {{index == xsindex ? "activite" : ""}}' bindtap="cutxstart" data-index="{{index}}">
+                        <view></view>
+                        <text>{{item}}</text>
+                        <image src="/image/xialats-hei.png" wx:if="{{index!=0 && index == xsindex}}" />                        
+                        <image src="/image/xialats-hui.png" wx:if="{{index!=0 && index != xsindex}}" />
+                        <view></view>
+                    </view>
+                    <view class="sea-res-nature" wx:if="{{index!=0 && index == xsindex && xs==2}}">
+                        <block wx:if="{{sortord==1}}">
+                            <view class="sea-nat-items {{price==1?'activite':''}}" bindtap="sortorder" data-start="1">
+                                <text>{{item}}升序</text>
+                                <image src="/image/duigou.png" />
+                            </view>
+                            <view class="sea-nat-items {{price==2?'activite':''}}" bindtap="sortorder" data-start="2" >
+                                <text>{{item}}降序</text>
+                                <image src="/image/duigou.png" />
+                            </view>
+                        </block>
+                        <block wx:else>
+                            <view class="sea-nat-items {{sales==1?'activite':''}}" bindtap="sortorder" data-start="1">
+                                <text>{{item}}升序</text>
+                                <image src="/image/duigou.png" />
+                            </view>
+                            <view class="sea-nat-items {{sales==2?'activite':''}}" bindtap="sortorder" data-start="2">
+                                <text>{{item}}降序</text>
+                                <image src="/image/duigou.png" />
+                            </view>
+                        </block>
+                    </view>
+                </block>
+            </view>
+            <scroll-view scroll-y class='sea-res-list' wx:if="{{searchlist.length != 0}}">
+                <block wx:for="{{searchlist}}" wx:key="index">
+                    <view class='res-list-items' bindtap="goprodet" data-goodsid="{{item.goods_id}}">
+                        <image src='{{imgurl}}{{item.cover_img}}' class='res-items-img'></image>
+                        <view class='res-items-info'>
+                            <view class='res-info-name'>{{item.goods_name}}</view>
+                            <view class='res-info-label'>
+                                <text wx:if="{{item.discount == 2}}">折扣</text>
+                                <text wx:if="{{item.new == 2}}">新品</text>
+                                <text wx:if="{{item.hot == 2}}">热销</text>
+                            </view>
+                            <view class='res-info-data'>
+                                <view class='res-data-price' wx:if="{{item.discount == 2}}">￥<text>{{item.discount_price}}</text></view>
+                                <view class='res-data-price' wx:else>￥<text>{{item.shop_price}}</text></view>
+                                <view class='res-data-num'>已售{{item.sales}}件</view>
+                            </view>
+                            <!-- <image class='addcart'>添加购物车</image>  -->
+                        </view>
+                    </view>
+                </block>
+            </scroll-view>
+            <view class="sea-list-null" wx:else>
+                <image src="/image/zanwudd.png" />
+                <text>暂无数据</text>
+            </view>
+        </view>
+        <!-- 默认展示 -->
+        <view wx:else class='search-default'>
+            <view class='sea-def-items' wx:if="{{msh}}">
+                <view class='sea-def-title'>
+                    <text>最近搜索</text>
+                    <image src="/image/shanchu.png" bindtap="removecache"></image>
+                    <view></view>
+                </view>
+                <view class='items-def-list'>
+                    <block wx:for="{{msh}}" wx:key="{{index}}" >
+                         <view class='items-def-items' bindtap="searchs" data-name="{{item}}">{{item}}</view>
+                    </block>
+                </view>
+            </view>
+            <view class='sea-def-items' wx:if="{{keywords}}">
+                <view class='sea-def-title'>
+                    <text>热门搜索</text>
+                    <image src="/image/huanyip.png" bindtap="refresh"></image>
+                    <view bindtap="refresh">换一批</view>
+                </view>
+                <view class='items-def-list'>
+                    <block wx:for="{{keywords}}" wx:key="{{item.kid}}">
+                        <view class='items-def-items' bindtap="searchs" data-name="{{item.keyword}}">{{item.keyword}}</view>
+                    </block>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

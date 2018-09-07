@@ -1,0 +1,18 @@
+.tab_bar{
+  width: 100%;
+  height: 80rpx;
+  overflow-y: hidden;
+  overflow-x: scroll;
+  -webkit-overflow-scrolling: touch;
+}
+.tab_item{
+  display: inline-block;
+  height: 100%;
+  padding: 0 30rpx;
+  box-sizing: border-box;
+  font-size: 24rpx;
+  line-height: 80rpx;
+}
+.tab_item.tab_active{
+  border-bottom: 4rpx solid #FF6600;
+}

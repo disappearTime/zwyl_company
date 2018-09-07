@@ -1,0 +1,115 @@
+.container {
+  display: block;
+}
+.container .orin-header {
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 24rpx 29rpx 22rpx 39rpx;
+}
+.container .orin-header .orin-title {
+  font-size: 32rpx;
+  color: #000000;
+}
+.container .orin-header .orin-status {
+  font-size: 28rpx;
+  color: #FE4E4E;
+}
+.container .orin-goodslist {
+  width: 100%;
+}
+.container .orin-goodslist .orin-goodsitem {
+  display: flex;
+  flex-direction: row;
+  padding: 20rpx 30rpx;
+  background-color: #F7F7F7;
+  margin-bottom: 10rpx;
+}
+.container .orin-goodslist .orin-goodsitem image {
+  width: 200rpx;
+  height: 200rpx;
+  margin-right: 30rpx;
+}
+.container .orin-goodslist .orin-goodsitem .orin-item-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.container .orin-goodslist .orin-goodsitem .orin-item-info .orin-item-name {
+  flex: 1;
+  font-size: 28rpx;
+  color: #2D2D2D;
+  line-height: 46rpx;
+  overflow: hidden;
+}
+.container .orin-goodslist .orin-goodsitem .orin-item-info .orin-item-price {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.container .orin-goodslist .orin-goodsitem .orin-item-info .orin-item-price .orin-item-pri {
+  font-size: 20rpx;
+  color: #EB0000;
+}
+.container .orin-goodslist .orin-goodsitem .orin-item-info .orin-item-price .orin-item-pri text {
+  font-size: 28rpx;
+  line-height: 28rpx;
+}
+.container .orin-goodslist .orin-goodsitem .orin-item-info .orin-item-price .orin-item-jian {
+  font-size: 20rpx;
+  color: #B8B8B8;
+}
+.container .orin-item {
+  margin: 0 30rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 26rpx 0;
+  border-bottom: 1rpx solid #E7E7E7;
+}
+.container .orin-item .orin-item-tit {
+  flex: 1;
+  font-size: 28rpx;
+  color: #2D2D2D;
+}
+.container .orin-item .orin-item-msg {
+  width: 433rpx;
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+}
+.container .orin-item .orin-item-msg text {
+  display: inline-block;
+  color: #8E8E8E;
+}
+.container .orin-data-info {
+  margin: 0 30rpx;
+  display: flex;
+  flex-direction: column;
+}
+.container .orin-data-info .orin-data-item {
+  text-align: right;
+  color: #2D2D2D;
+  line-height: 50rpx;
+}
+.container .orin-data-info .orin-data-item text {
+  color: #8E8E8E;
+}
+.container .orin-fun {
+  display: flex;
+  flex-direction: row;
+  padding: 18rpx 30rpx;
+  border-top: 1rpx solid #E7E7E7;
+}
+.container .orin-fun view {
+  flex: 1;
+}
+.container .orin-fun button {
+  font-size: 28rpx;
+  color: #2D2D2D;
+  margin: 0;
+  margin-left: 20rpx;
+}

@@ -1,0 +1,40 @@
+/**app.wxss**/
+page{
+  height: 100%;
+}
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 200rpx 0;
+  box-sizing: border-box;
+} 
+.wrapper{
+  width: 100%;
+  height: 100%;
+}
+.nav{
+  width: 100%;
+  height: 80rpx;
+  background: #eee;
+  flex-grow: 0;
+  flex-shrink: 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.contentNav{
+  width: 100%;
+  height: 100%;
+  flex-grow: 1;
+  flex-shrink: 1;
+  background: skyblue;
+}
+.active-nav{
+  color: #f85959;
+}
+.normal-nav{
+  color: #ccc;
+}

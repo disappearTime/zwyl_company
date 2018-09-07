@@ -1,0 +1,12 @@
+<view class="container">
+  <view class='item_title'>当前美丽机构</view>
+  <view class='current_beauty_parlor'>
+    <BeautyParlor></BeautyParlor>
+  </view>
+  <view class='item_title'>全部美丽机构</view>
+  <view class='all_beauty_parlor'>
+    <BeautyParlor></BeautyParlor>
+    <BeautyParlor></BeautyParlor>
+    <BeautyParlor></BeautyParlor>
+  </view>
+</view>

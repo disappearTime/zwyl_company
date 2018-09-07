@@ -1,0 +1,61 @@
+<!--pages/event/event.wxml-->
+<view class="container">
+    <!-- 打折商品 -->
+    <view class="discount-list" wx:if="{{ type == 'discount' }}" >
+        <block wx:for="{{list}}" wx:key="{{item.goods_id}}">
+            <view class="discount-items" bindtap="goprodet" data-goodsid="{{item.goods_id}}">
+                <image src="{{imgurl}}{{item.discount_img}}" wx:if="{{item.discount_img != ''}}"></image>
+                <image src="{{imgurl}}{{item.cover_img}}" wx:else></image>
+                <view class="discount-info" >
+                    <view class="dis-info-name">{{item.goods_name}}</view>
+                    <view class="dis-info-count">
+                        <view class="discounth">折后</view>
+                        <view class="dis_price">￥<text>{{item.discount_price}}</text></view>
+                        <image src=""></image>
+                    </view>
+                    <view class="dis-info-price">
+                        <view>原价:{{item.shop_price}}</view>
+                        <view>已售{{item.sales}}件</view>
+                    </view>
+                </view>
+            </view>
+        </block>
+    </view>
+    <!-- 新品推荐 -->
+    <view class="new-list" wx:if="{{ type == 'new' }}" >
+        <block wx:for="{{list}}" wx:key="index">
+            <view class="new-items" wx:key="{{item.goods_id}}" bindtap="goprodet" data-goodsid="{{item.goods_id}}">
+                <image src="{{imgurl}}{{item.cover_img}}"></image>
+                <view class="new-info">
+                    <view class="new-info-name">{{item.goods_name}}</view>
+                    <view class="item-null"></view>
+                    <view class="new-info-price">
+                        <view class="new-pri">￥<text wx:if="{{item.discount == 2}}">{{item.discount_price}}</text><text wx:else>{{item.shop_price}}</text></view>
+                        <view class="new-num">已售{{item.sales}}件</view>
+                        <image src=""></image>
+                    </view>
+                </view>
+            </view>
+        </block>
+    </view>
+    <!-- 热销商品 -->
+    <view class="hot-list" wx:if="{{ type == 'hot' }}" >
+        <block wx:for="{{list}}"  wx:key="index">
+            <view class="hot-items" bindtap="goprodet" data-goodsid="{{item.goods_id}}">
+                <image src="{{imgurl}}{{item.hot_img}}" wx:if="{{item.hot_img != ''}}"></image>
+                <image src="{{imgurl}}{{item.cover_img}}" wx:else></image>
+                <view class="hot-info">
+                    <view class="hot-name">{{item.goods_name}}</view>
+                    <view class="hot-price">
+                        <view class="hot-price-info">
+                            <view class="hot-dis-pri">￥<text>{{item.discount_price}}</text></view>
+                            <view class="hot-old-pri">原价:<text>{{item.shop_price}}</text></view>
+                        </view>
+                        <view class="hot-num">已售{{item.sales}}件</view>
+                        <view class="buy">立即购买</view>
+                    </view>
+                </view>
+            </view>
+        </block>
+    </view>
+</view>

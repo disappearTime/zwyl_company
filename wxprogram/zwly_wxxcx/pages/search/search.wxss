@@ -1,0 +1,288 @@
+/* pages/search/search.wxss */
+page{
+    position: relative;
+}
+.container{
+
+}
+/* 搜索 */
+.search{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 23rpx 30rpx;
+    background: #fff;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.search .search-info{
+    flex: 1;
+    height: 60rpx;
+    padding: 0 30rpx;
+    background: #F7F7F7;
+    border-radius: 100px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-right: 28rpx;
+    position: relative;
+}
+.search .search-info input{
+    flex: 1;
+    height: 100%;
+}
+.search .search-info image{
+    width: 33.3rpx;
+    height: 33.3rpx;
+}
+.search .search-info .seaval{
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-color: #FE4E4E;
+    opacity: 1;
+    border-radius: 100rpx;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 40rpx;
+    margin: 10rpx;
+    z-index: 10;
+}
+.search .search-info .seaval text{
+    color: #fff;
+    margin-left: 16rpx;
+}
+.search .search-info .seaval image{
+    width: 22.6rpx;
+    height: 22.6rpx;
+    margin: 0 10rpx;
+}
+.search .search-cancel{
+    font-size: 28rpx;
+    color: #000000;
+}
+/* 展示 */
+.search-msg{
+    width: 100%;
+    height: 100%;
+    margin-top: 104rpx;
+    border-top: 1rpx solid #F7F7F7;
+    display: flex;
+    flex-direction: column;
+}
+/* 默认展示 */
+.search-msg .search-default{
+    flex: 1;
+    padding: 0 30rpx;
+}
+.search-msg .search-default .sea-def-items{
+    margin-bottom: 10rpx;
+}
+/* 默认展示标题 */
+.search-msg .search-default .sea-def-items .sea-def-title{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 25rpx 0;
+}
+.search-msg .search-default .sea-def-items .sea-def-title text{
+    flex: 1;
+    font-size: 24rpx;
+    color: #8E8E8E;
+}
+.search-msg .search-default .sea-def-items .sea-def-title image{
+    width: 24rpx;
+    height: 24rpx;
+}
+.search-msg .search-default .sea-def-items .sea-def-title  view{
+    font-size: 20rpx;
+    color: #D2D2D2;
+    margin-left: 9rpx;
+}
+/* 默认展示列表 */
+.search-msg .search-default .sea-def-items .items-def-list{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.search-msg .search-default .sea-def-items .items-def-list .items-def-items{
+    margin: 0 20rpx 20rpx 0;
+    padding: 10rpx 20rpx;
+    font-size: 28rpx;
+    color: #2D2D2D;
+    background: #F7F7F7;
+    border-radius: 8px;
+}
+/* 搜索结果 */
+.search-msg .search-result{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+/* 搜索结果头 */
+.search-msg .search-result .sea-res-title{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    padding: 18rpx 0 22rpx 0;
+    background-color: #F7F7F7;
+    z-index: 10;
+}
+.search-msg .search-result .sea-res-title .res-tit-items{
+    flex: 1;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.search-msg .search-result .sea-res-title .res-tit-items  view{
+    flex: 1;
+}
+.search-msg .search-result .sea-res-title .res-tit-items text{
+    font-size: 28rpx;
+    color: #8E8E8E;
+}
+.search-msg .search-result .sea-res-title .res-tit-items image{
+    width: 11rpx;
+    height: 6rpx;
+    margin-left: 9rpx;
+    /* border-top: 6rpx solid rgba(0, 0, 0, 1);
+    border-bottom: 6rpx solid rgba(0, 0, 0, 0);
+    border-left: 6rpx solid rgba(0, 0, 0, 0);
+    border-right: 6rpx solid rgba(0, 0, 0, 0); */
+}
+.search-msg .search-result .sea-res-title .res-tit-items.activite text{
+    color: #2D2D2D;
+}
+/* 属性 */
+.search-msg .search-result .sea-res-title .sea-res-nature{
+    position: absolute;
+    left: 0;
+    top: 80rpx;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: #F7F7F7;
+    padding: 18rpx 30rpx 21rpx 30rpx;
+    z-index: 10;
+}
+.search-msg .search-result .sea-res-title .sea-res-nature .sea-nat-items{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 15rpx 0;
+}
+.search-msg .search-result .sea-res-title .sea-res-nature .sea-nat-items text{
+    flex: 1;
+    font-size: 28rpx;
+    color: #8E8E8E;
+}
+.search-msg .search-result .sea-res-title .sea-res-nature .sea-nat-items image{
+    width: 31rpx;
+    height: 31rpx;
+    display: none;
+}
+.search-msg .search-result .sea-res-title .sea-res-nature .sea-nat-items.activite text{
+    color: #FE4E4E;
+}
+.search-msg .search-result .sea-res-title .sea-res-nature .sea-nat-items.activite image{
+    display: block;
+}
+/* 搜索结果列表 */
+.search-msg .search-result .sea-res-list{
+    flex: 1;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    padding-top: 80rpx;
+}
+.search-msg .search-result .sea-res-list .res-list-items{
+    padding: 30rpx 0;
+    border-bottom: 1px solid #E7E7E7;
+    display: flex;
+    flex-direction: row;
+    margin: 0 30rpx;
+}
+.search-msg .search-result .sea-res-list .res-list-items .res-items-img{
+    width: 200rpx;
+    height: 200rpx;
+    margin-right: 30rpx;
+}
+.search-msg .search-result .sea-res-list .res-list-items .res-items-info{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+.search-msg .search-result .sea-res-list .res-list-items .res-items-info .res-info-name{
+    flex: 1;
+    font-size: 28rpx;
+    color: #2D2D2D;
+    line-height: 46rpx;
+    max-height: 88rpx;
+}
+.search-msg .search-result .sea-res-list .res-list-items .res-items-info .res-info-label{
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.search-msg .search-result .sea-res-list .res-list-items .res-items-info .res-info-label text{
+    height: 30rpx;
+    box-sizing: border-box;
+    display: inline-block;
+    font-size: 20rpx;
+    padding: 0 10rpx;
+    color: #FFFFFF;
+    background: #FE4E4E;
+    border-radius: 7rpx;
+    margin: 12rpx 10rpx 12rpx 0;
+}
+.search-msg .search-result .sea-res-list .res-list-items .res-items-info .res-info-data{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.search-msg .search-result .sea-res-list .res-list-items .res-items-info .res-info-data .res-data-price{
+    font-size: 20rpx;
+    color: #EB0000;
+}
+.search-msg .search-result .sea-res-list .res-list-items .res-items-info .res-info-data .res-data-price text{
+    font-size: 28rpx;
+}
+.search-msg .search-result .sea-res-list .res-list-items .res-items-info .res-info-data .res-data-num{
+    font-size: 20rpx;
+    color: #B8B8B8;
+    margin-left: 27rpx;
+}
+.search-msg .search-result .sea-res-list .res-list-items .res-items-info .addcart{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 50rpx;
+    height: 50rpx;
+    background-color: red;
+}
+.search-msg .search-result .sea-list-null{
+    width: 100%;
+    height: 100%;
+}
+.search-msg .search-result .sea-list-null image{
+    width: 300rpx;
+    height: 300rpx;
+    margin: 0 auto;
+    margin-top: 100rpx;
+}
+.search-msg .search-result .sea-list-null  text{
+    display: block;
+    text-align: center;
+    margin-top: 20rpx;
+}

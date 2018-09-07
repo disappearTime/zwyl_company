@@ -1,0 +1,4 @@
+<view class="container">
+  <text>店内项目</text>
+  <button bindtap='toAddProject'>新增</button>
+</view>

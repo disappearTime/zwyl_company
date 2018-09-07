@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta content="telephone=no" name="format-detection" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>预约直播</title>
+    <link rel="stylesheet" href="./css/common.css">
+    <link rel="stylesheet" href="./css/liveDetail.css">
+</head>
+<body>
+    <div class="wrapper">
+        <img class="liveImg" src="" alt="">
+        <div class="info_content">
+            <p class="liveTitle"></p>
+            <div class="doctorInfo">
+                <p class="doctorName">主讲人：<span class="main_doctor"></span>&nbsp;<span class="director_doctor"></span></p>
+                <p class="liveTime">直播时间：<span></span></p>
+                <p>
+                    <button onclick="toDownload()">预约</button><span class="livePrice"></span>
+                </p>
+            </div>
+            <h1>已报名用户</h1>
+            <div class="userHeadImg">
+                <div class="img_box">
+                    
+                </div>
+                <div class="totalNum"></div>
+            </div>
+            <h1>直播详情</h1>
+            <div class="detaiImg">
+                
+            </div>
+            <div class="loading" id="loading"></div>
+        </div>
+        <div class="download">
+            <div class="download-card">
+                <img class="close" src="./images/close_.png" alt="">
+                <p>下载<span class="appName"></span>APP,美丽从此开始</p>
+                <button onclick="download_app()" type="button">立即下载</button>
+            </div>
+        </div>
+    </div>
+    <script src="./js/zepto.js"></script>
+    <script src="./js/api.js"></script>
+    <script src="./js/common.js"></script>
+    <script src="./js/liveDetail.js"></script>
+</body>
+</html>

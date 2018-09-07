@@ -1,0 +1,366 @@
+#app{
+    width: 100%;
+}
+i,b{
+    font-style: normal;
+}
+@-webkit-keyframes marquee{
+    from{
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+    }
+    to{
+        -webkit-transform: translateX(-100%);
+        transform: translateX(-100%);
+    }
+}
+@keyframes marquee{
+    from{
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+    }
+    to{
+        -webkit-transform: translateX(-100%);
+        transform: translateX(-100%);
+    }
+}
+.content{
+    width: 100%;
+    padding: 0 10px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    margin-bottom: 50px;
+}
+.full_box_item,.else_project,.single-project,.scheme{
+    width: 100%;
+}
+.project_title{
+    padding: 10px 0;
+    width: 100%;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    font-size: 0.875rem;
+    color: #333;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+.rule_detail{
+    width: 80%;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.rule_detail b{
+    display: inline-block;
+    -webkit-animation: marquee 15s 2s infinite;
+    animation: marquee 15s 2s infinite;
+    -webkit-animation-direction: alternate;
+    animation-direction: alternate;
+}
+.project_title .piece_tog{
+    color: #febeb4
+}
+.project_item{
+    width: 100%;
+    height: 6.25rem;
+    padding: 0.625rem;
+    margin-bottom: 10px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    background: #F0F0F0;
+    border-radius: 4px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    position: relative;
+}
+.project_item .left{
+    width: 31%;
+    height: 100%;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+.project_item .left .choose_box{
+    width: 0.94rem;
+    height: 100%;
+    margin-right: 0.31rem;
+    -ms-flex-negative: 0;
+    flex-shrink: 0;
+    -webkit-box-flex: 0;
+    -ms-flex-positive: 0;
+    flex-grow: 0;
+}
+.project_item .left .choose_box span{
+    width: 0.94rem;
+    height: 0.94rem;
+    border-radius: 50%;
+    background: #ffffff;
+    display: inline-block;
+}
+.project_item .left .choose_box span.active{
+    background: url(../images/checkbox-selected.png) no-repeat center center;
+    background-size: cover;
+}
+.project_item .left .project_img{
+    height: 100%;
+    width: 5rem;
+    -webkit-box-flex: 0;
+    -ms-flex-positive: 0;
+    flex-grow: 0;
+    -ms-flex-negative: 0;
+    flex-shrink: 0;
+}
+.project_item .left .project_img img{
+    width: 100%;
+    height: 100%;
+    border-radius: 3px;
+}
+.project_item .right{
+    width: 67%;
+    height: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -ms-flex-pack: distribute;
+    justify-content: space-around;
+    font-size: 0.875rem;
+}
+.project_item .right .project_name{
+    color: #333;
+}
+.project_item .right .project_num span{
+    display: inline-block;
+    width: 2.5rem;
+    height: 1.25rem;
+    border: 1px solid #333;
+    vertical-align: middle;
+    text-align: center;
+    font-size: 1.5rem;
+    line-height: 1.1rem;
+    background: #ccc;
+}
+.project_item .right .project_info{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+.project_item .right .project_info .project_price{
+    color: #ccc;
+}
+.project_item .right .project_info .doctor_name img{
+    height: 1rem;
+    vertical-align: middle;
+}
+/*一体化方案样式*/
+.scheme_item{
+    width: 100%;
+    padding: 0.625rem;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    background: #F0F0F0;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    position: relative;
+}
+.scheme_item .scheme_name span{
+    display: inline-block;
+    vertical-align: middle
+}
+.scheme_item .scheme_name span.active{
+    background: url(../images/checkbox-selected.png) no-repeat center center!important;
+    background-size: cover!important;
+}
+.scheme_item .scheme_name span:nth-of-type(1){
+    width: 0.94rem;
+    height: 0.94rem;
+    border-radius: 50%;
+    background: #ffffff;
+    margin-right: 0.31rem;
+}
+.scheme_item .scheme_name span:nth-of-type(2){
+    font-size: 12px;
+    color: #ffffff;
+    border-radius: 3px;
+    background: #CE0F32;
+    padding: 3px;
+}
+.scheme_item .scheme_name span:nth-of-type(3){
+    font-size: 14px;
+    color: #000000;
+}
+.scheme_item .contain_project{
+    font-size: 12px;
+    color: #ccc;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+.scheme_item .contain_project .scheme_price{
+    font-size: 1rem;
+    color: #CE0F32;
+}
+.scheme_item .scheme_project_item{
+    width: 100%;
+    height: 5rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin-top: 10px;
+    -webkit-box-pack: start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+.scheme_item .scheme_project_item img{
+    height: 100%;
+    width: 5rem;
+    margin-right: 10px;
+}
+.scheme_item .scheme_project_item .project_info p:nth-of-type(1){
+    padding: 10px 0;
+    font-size: 0.875rem;
+    color: #333;
+}
+.scheme_item .scheme_project_item .project_info p:nth-of-type(2){
+    padding: 10px 0;
+    font-size: 12px;
+    color: #ccc;
+}
+.account{
+    width: 100%;
+    height: 50px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    z-index: 100;
+}
+.account .chooseAll{
+    height: 100%;
+    width: 60%;
+    background: #ccc;
+    font-size: 14px;
+    padding-left: 10px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    line-height: 50px;
+}
+.account .chooseAll>span:nth-of-type(1){
+    width: 0.94rem;
+    height: 0.94rem;
+    border-radius: 50%;
+    background: #ffffff;
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-transform: translateY(-1px);
+    -ms-transform: translateY(-1px);
+    transform: translateY(-1px);
+}
+.account .chooseAll span.checkedAll{
+    background: url(../images/checkbox-selected.png) no-repeat center center;
+    background-size: cover;
+}
+.account .chooseAll .totalPrice{
+    float: right;
+    display: inline-block;
+    margin-right: 15px;
+    font-size: 12px
+}
+.account .chooseAll .amount_price{
+    color: #CE0F32;
+}
+.toPay{
+    width: 40%;
+    height: 100%;
+    background: #CE0F32;
+    font-size: 16px;
+    color: #ffffff;
+    text-align: center;
+    line-height: 50px;
+}
+.empty_cart{
+    width: 100%;
+    height: 100%;
+    background: #ffffff;
+    position: fixed;
+    z-index: 100;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+.empty_cart span{
+    display: inline-block;
+    width: 150px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    background: rgba(0, 0, 0, 0.5);
+    color: #ffffff;
+    border-radius: 4px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+}
+.project_item .del, .scheme_item .del{
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    border: 1px solid #ccc;
+    background: url(../last/images/del.png) no-repeat center center;
+    background-size: cover;
+}

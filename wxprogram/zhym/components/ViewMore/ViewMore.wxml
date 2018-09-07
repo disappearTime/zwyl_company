@@ -1,0 +1,4 @@
+<view class="view_more_container" bindtap='_handleClick'>
+  <view class='text_content'>{{content}}</view>
+  <image class='right_cursor' mode='aspectFit' src='/image/right-cursor.png'></image>
+</view>

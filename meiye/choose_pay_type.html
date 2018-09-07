@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta content="telephone=no" name="format-detection" />
+	<title>选择支付方式</title>
+	<link rel="stylesheet" href="css/tbase.css" />
+	<script type="text/javascript" src="js/tbase.js"></script>
+</head>
+<style>
+
+</style>
+<body>
+<div class="v-root" id="app">
+	<!--header-->
+	<header style="display:none;" class="v-head bg-base">
+		<div class="v-head__in">
+			<div class="v-head__l left">
+				<span class="v-head__btn icon-back"></span>
+			</div>
+			<div class="v-head__m">
+				<h2 class="v-head-title">选择支付方式</h2>
+			</div>
+			<div class="v-head__r right">
+				<span class="v-head__btn-r pr20">确定</span>
+			</div>
+		</div>
+	</header>
+	<!--pay-type-->
+	<div class="v-main">
+		<section class="pay-type plr20">
+			<form action="#">
+				<div class="pay-type-item">
+					<div class="pos-rel">
+						<i class="pay-icon"></i><span class="pay-title">微信支付</span>
+						<label class="pay-type-item__r"><input type="radio" name="payType" checked> <i class="pay-icon__radio"></i></label>
+					</div>
+				</div>
+				<div class="pay-type-item">
+					<div class="pos-rel">
+						<i class="pay-icon pay-icon__zfb"></i><span class="pay-title">支付宝支付</span>
+						<label class="pay-type-item__r"><input type="radio" name="payType"> <i class="pay-icon__radio"></i></label>
+					</div>
+				</div>
+			</form>
+		</section>
+	</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,4 @@
+<view class="container">
+  <button bindtap='toOpenGroupPage'>拼团活动</button>
+  <button>折扣活动</button>
+</view>

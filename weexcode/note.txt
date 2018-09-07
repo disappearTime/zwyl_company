@@ -1,0 +1,103 @@
+                    weex学习
+一、环境搭建
+    1 安装node (下载地址：https://nodejs.org/en/download/)
+    2 安装java的环境 (下载地址：http://www.java.com/zh_CN/)
+        您可以使用 Weex 构建一个真正的原生应用。更贴心的是你的代码只需使用 HTML、CSS、JavaScript 可以构建原生应用，
+        上手非常简单。但实际上，应用的底层是 Objective-C 或 Java(我们最终开发的是android原生程序，所以需要安装java环境)
+    3 git的安装(下载地址：https://git-scm.com)
+    4 安装week-toolkit 
+        npm install weex-toolkit -g(在安装weex-toolkit的时候，尽量不要使用cnpm) weex -v 弹出版本说明安装成功
+        (安装失败以管理员身份重新安装)
+    5 全局安装webpack 
+        npm install webpack -g (使用webpack -v查看版本)
+    6 安装android-studio 
+        ① 到上一步已经可以使用了，但是没有原生开发的感觉，为了这个feel我们需要再安装android-studio.安装过程中需要记录一下sdk安装位置，安装好后，要配置环境变量。
+        ② 配置环境变量 ：控制面板-系统和安全-系统-高级系统设置-环境变量
+        ③ 新建：ANDROID_HOME并把我们刚才sdk安装位置路径作为值插入(在用户变量中添加ANDROID_HOME并把sdk的安装路径插入)
+        ④ 添加platform-tools和tools到path下(在系统变量path中将platform-tools和tools的路径插入，这俩个路径在sdk安装目录的下级目录，在windows左下方的搜索框中输入sdk的安装路径就能进入sdk的文件夹)
+        ⑤ AndroidStudio配置
+            在AndroidStudio欢迎界面，点击右下方的Configure进行老版本的SDK tool配置
+            步骤：Configure-SDKManager-SDK Tools-勾选show Package Details-勾选23.0.2，然后进行安装
+    7 上边环境弄好就可以开始我们的项目了
+        ① 建立weex项目目录(weex -v查看版本)(类似于vue-cli)
+            weex create helloWeex 输入完这条命令 如果你没有安装weexpack 他会提醒你安装，这个weexpack也可以单独安装 npm install weexpack -g
+            注意：使用vscode的终端可能会创建失败，使用系统命令行(以管理员身份运行)创建项目
+        ② 执行完上一步 你会发现已经建立好了项目所需要的基本结构和文件。这个时候可以cd到项目目录下，然后使用npm install安装依赖包了
+        ③ 添加Android应用支持
+            建好了项目的基本目录，还要添加平台的支持 weex platform add android(如果你要支持IOS平台的话，你还要添加IOS应用)
+        ④ 发布成Android应用
+            想在写完一段代码时进行预览效果 这时候就要使用run命令了 weex run android
+            这里是有一个坑，在命令执行完，它会报一个错误，错误是找不到安装设备。No android devices found.如果你自学这个坑会够你添一会的了。那这里我们安装的android-studio就排上用途了。
+        ⑤ 在Anriod Studio里运行weex(这里是坑的重灾区)
+            打开android studio 选择第二项(打开一个存在的项目)
+            然后选择你用weex创建的项目下的platforms/android目录，打开项目。这时候坑就来了，会报好多错误，但是你不要惊慌，双击安装就好
+            报错：Cannot set the value of read-only property 'outputFile' for ApkVariantOutputImpl_Decorated{apkData=Main{type=MAIN, fullName=debug, filters=[]}} of type com.android.build.gradle.internal.api.ApkVariantOutputImpl.
+            解决：android studio版本3以上使用以下配置
+            applicationVariants.all { variant ->
+                variant.outputs.each { output ->
+                    def outputFile = output.outputFile
+                    if (outputFile != null && outputFile.name.equals('app-debug.apk')) {
+                        def fileName = outputFile.name.replace("app-debug.apk", "weex-app.apk")
+                        output.outputFile = new File(outputFile.parent, fileName)
+                    }
+                }
+            }
+        ⑥ AVD虚拟机的安装
+            等待错误和loading条消失以后，就可以配置虚拟机了，选择菜单栏里的Tools->Android->AVD Manager 进行配置
+            点击Create Virtual Device 按钮创建视频。这时候要根据自己的电脑配置，选择屏幕的大小，这个虚拟机很吃内存，所以尽量选择小屏幕分辨率的。然后点击Next，之后进入虚拟机的安装过程
+            安装好后点击三角按钮开始运行虚拟机，然后稍等一会，不用作任何操作就会出现weex程序的默认界面
+
+            坑：Annotation processors must be explicitly declared now.  The following dependencies on the compile classpath are found to contain annotation processor.  Please add them to the annotationProcessor configuration.- butterknife-7.0.1.jar
+            Alternatively, set android.defaultConfig.javaCompileOptions.annotationProcessorOptions.includeCompileClasspath = true to continue with previous behavior.  Note that this option is deprecated and will be removed in the future.
+            解决：
+            android {
+                ...
+                defaultConfig {
+                    ...
+                    javaCompileOptions {
+                        annotationProcessorOptions {
+                            includeCompileClasspath = true  
+                        }
+                    }
+                }
+            }
+    8 weex常用命令和热更新
+        ① 目前版本package.json已配置好，具备热更新，npm run start或npm run server就可以实现开发热更新预览了、
+        ② 在Anriod Studio中预览项目 打开android studio-选择打开一个已存在的项目-在weex创建的项目目录下选择platform/android-点击确定-点击AVD虚拟机中三角按钮预览
+        ③ 终端输入weex 可以查看week的常用命令 其中有week init 和week create 两种方式创建项目（前面介绍的是weex create） weex init方式可以看技术胖教程
+    9 Android Studio 开发设置
+        ① 先打开我们的Android Studio，启动AVD。把我们在工程项目里的dist/index.js文件内容，复制到Android Studio下的app/assets/index.js中。
+        ② 保存后，点击工具栏上的⚡（闪电）符号进行更新。就可以预览到原生的真实效果了（看不到效果从新启动虚拟机）
+        ③ 如何修改图标
+            现在你看到的app图标还是weex自带的图标，修改这个图片很简单。他存放在Android Studio 工程目录下的app/res/mipmap/ic_launcher.png文件夹中。
+        ④ 打包成Apk
+            打包操作很简单，只要点击菜单栏中的Build/build Apk 就可以了。打包完成后在Android Studio右下角会有提示，并可以点击查看我们打包成功的Apk。打包好后，可以拷贝到andorid手机上进行安装了。
+    10 weex和vue的爱恨情仇
+        一 weex组件
+            ① weex中只支持Flex布局(移动端全部支持) 不支持百分比布局 不支持浮动布局
+            ② 不支持综合写法，例如写边框样式 border: 1px solid red;必须分开写
+            ③ 长度单位只支持px(weex中的px会根据设备缩放，相当于rem,Weex 的标准尺寸单位是PX, 并且规定了宽度满屏为750PX. )如果你想了解一下dpi的知识，我推荐一篇文章：http://blog.csdn.net/yuzhouxiang/article/details/7283931
+        二 从服务端获取数据
+            使用weex中的内置模块stream
+            ① 引入 const stream = weex.requireModule('stream');
+                created(){
+                    let url='http://www.jspang.com/DemoApi/newsApi.php';
+                    this.getNews(url,res=>{
+                        modal.toast({message:'请求成功',duration:1});
+                        this.lists=res.data;
+                        console.log(res.data);
+                    });
+                },
+                methods: {
+                    getNews(url,callback){
+                    return stream.fetch({
+                        method:'GET',
+                        type:'json',
+                        url:url
+                    },callback);
+                    }
+                }
+    11 weex官网 http://weex.apache.org/cn/references/components/div.html
+
+
+        

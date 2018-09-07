@@ -1,0 +1,59 @@
+.userInfo{
+  width: 100%;
+  height: 212rpx;
+  padding: 40rpx;
+  box-sizing: border-box;
+}
+.userInfo .flex_left, .userInfo .flex_right{
+  height: 100%;
+}
+.userInfo .flex_left{
+  flex-grow: 1;
+  flex-shrink: 1;
+  display: flex;
+  align-items: center;
+}
+.userInfo .flex_left .user_header{
+  width: 132rpx;
+  height: 132rpx;
+  padding-right: 20rpx;
+}
+.userInfo .flex_left .user_header image{
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+.userInfo .flex_left .user_name{
+  height: 100%;
+  font-size: 12px;
+}
+.userInfo .flex_left .user_name text{
+  padding: 5px 0;
+}
+.userInfo .flex_right{
+  display: flex;
+  align-items: center;
+}
+.userInfo .flex_right image{
+  width: 40rpx;
+  height: 40rpx;
+}
+.trends{
+  height: 90rpx;
+  width: 100%;
+  padding: 20rpx 0;
+}
+.trends>view{
+  height: 100%;
+  width: 33.3%;
+  flex-grow: 1;
+  box-sizing: border-box;
+  align-items: center;
+}
+.trends>view image{
+  height: 50rpx;
+  width: 50rpx;
+}
+.trends>view text{
+  font-size: 24rpx;
+}

@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <link rel="stylesheet" href="../../css/common.css">
+    <link rel="stylesheet" href="../css/success2.css">
+</head>
+<body>
+<div class="wrapper">
+    <img class="s_img" src="../images/zf-head.png" alt="">
+    <div class="orderInfo">
+        <p>
+            <span>订单ID</span>
+            <span class="order_id"></span>
+        </p>
+        <p>
+            <span>支付金额</span>
+            <span class="payPrice"></span>
+        </p>
+        <p>
+            <span>交易时间</span>
+            <span class="tradeTime"></span>
+        </p>
+    </div>
+    <div class="downloadBtn">
+        <button onclick="download_app()" type="button">查看订单&nbsp;&nbsp;去下载APP</button>
+    </div>
+</div>
+<div class="loading"></div>
+<script src="../../js/zepto.js"></script>
+<script src="../../js/api.js"></script>
+<script src="../../js/common.js"></script>
+<script>
+    // 除团购之外的支付成功界面
+    var activityParam = window.localStorage.getItem("activityParam");
+    var userId = localStorage.getItem("userId");
+    var orderId = GetQueryString('order');// 多个商品时该字符串以分号分隔	
+    if(orderId.indexOf(',')){
+        var orderArr = orderId.split(',');
+        orderId = orderArr[0];
+    }
+    // 进入页面轮训查支付结果
+    var timer;
+    var count = 0;
+    timer = setInterval(function(){
+        count++;
+        if(count>6){
+            clearInterval(timer);
+            //window.location.href='./single-detail-2.html?'+activityParam;
+        }else{
+            getpay();
+        }
+    },1000)
+    function getpay(){
+        var random = Math.random();
+        $.ajax({
+            url:host+'/supplier-shopping/html/order/queryIsPay?random='+random,
+            type:'post',
+            data:{
+                orderId:orderId
+            },
+            dataType:'json',
+            success:function(res){
+                if(res.resultCode==200){
+                    if(res.resultInfo.success==1){
+                        renderData();
+                        clearInterval(timer);
+                    }
+                }
+            }
+        });
+    }
+    function renderData(){
+        $.ajax({
+            url:host+'/client-shopping/html/order/payFinish',
+            data:{
+                "userId":userId,
+                "orderId":orderId
+            },
+            dataType:'json',
+            type:'post',
+            success:function(res){
+                if(res.resultCode==200){
+                    var outTradeNo = res.resultInfo.outTradeNo?res.resultInfo.outTradeNo:''
+                    $(".order_id").html(outTradeNo);
+                    var projectPrice = '';
+                    if(res.resultInfo && res.resultInfo.projectPrice){
+                        projectPrice = res.resultInfo.projectPrice
+                    }
+                    $(".payPrice").html(toFixed_len(projectPrice,2));
+                    var payTime;
+                    if( res.resultInfo && res.resultInfo.payTime){
+                        payTime = res.resultInfo.payTime
+                    }
+                    var time = formatTime_ymdhms(payTime)
+                    $(".tradeTime").html(time);
+                    $('.loading').hide();
+                }else if(res.resultCode==400){
+                    $(".order_id").html(orderId);
+                    $('.loading').hide();
+                    alert('活动已结束');
+                }
+            }
+        })
+	}
+</script>    
+</body>
+</html>

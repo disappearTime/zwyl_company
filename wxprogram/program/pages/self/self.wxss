@@ -1,0 +1,57 @@
+.self-wrapper{
+  background: #eee;
+}
+.userInfo{
+  width: 100%;
+  padding: 10rpx 0 80rpx 0;
+  text-align: center;
+  background: url('http://pic.616pic.com/bg_w1180/00/03/66/R6r59kZwxY.jpg!/fh/300') no-repeat center center;
+  background-size: cover;
+}
+.userInfo image{
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+}
+.userInfo view{
+  font-size: 14px;
+}
+.userInfo .nickName{
+  padding: 10rpx 0;
+}
+.box-item{
+  width: 100%;
+  padding: 20rpx;
+  box-sizing: border-box;
+  box-shadow: 1px 2px 10px 0 rgba(0, 0, 0, 0.4);
+}
+.img_box>view{
+  width: 100%;
+  display: flex;
+  align-content: space-around;
+  flex-wrap: wrap;
+}
+.img_box>view view{
+  width: 100rpx;
+  height: 100rpx;
+  margin: 10rpx;
+  position: relative;
+}
+.img_box>view .upImg{
+  width: 100rpx;
+  height: 100rpx;
+}
+.img_box>view .close{
+  width: 20rpx;
+  height: 20rpx;
+  position: absolute;
+  top: 6rpx;
+  right: 6rpx;
+}
+.location_box{
+  font-size: 28rpx;
+  color: #ccc;
+}
+.location_box text{
+  margin-right: 20rpx;
+}

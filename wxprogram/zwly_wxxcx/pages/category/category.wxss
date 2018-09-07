@@ -1,0 +1,75 @@
+/* pages/category/category.wxss */
+.container{
+    display: flex;
+    flex-direction: column;
+}
+/* 分类 */
+.classify{
+    flex:1;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+/* 左边 */
+.classify .classify-left{
+    width: 200rpx;
+    background-color: #F7F7F7;
+}
+.classify .classify-left .classify-left-items{
+    height: 90rpx;
+    line-height: 90rpx;
+    text-align: center;
+    box-sizing: border-box;
+    font-size: 28rpx;
+    color: #2D2D2D;
+}
+.classify .classify-left .classify-left-items.activite{
+    background-color: #fff;
+    border-left: 4rpx solid #FE4E4E;
+}
+/* 右边 */
+.classify .classify-right{
+    flex: 1;
+}
+.classify .classify-right .classify-right-items{
+    width: 30%;
+    text-align: center;
+    float: left;
+    margin-top: 37rpx;
+}
+.classify .classify-right .classify-right-items image{
+    width:120rpx;
+    height: 120rpx;
+    margin: 0 auto;
+}
+.classify .classify-right .classify-right-items text{
+    display: block;
+    height: 33rpx;
+    line-height: 33rpx;
+    font-size: 24Rpx;
+    color: #2D2D2D;
+    margin: 9rpx 0;
+}
+/* 搜索 */
+.search{
+    width: 100%;
+    background: #fff;
+}
+.search .search-info{
+    height: 60rpx;
+    margin: 23rpx 30rpx;
+    padding: 0 30rpx;
+    background: #F7F7F7;
+    border-radius: 100px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.search .search-info input{
+    flex: 1;
+    height: 100%;
+}
+.search .search-info image{
+    width: 33.3rpx;
+    height: 33.3rpx;
+}

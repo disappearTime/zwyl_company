@@ -1,0 +1,538 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>团购活动</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<script type="text/javascript" src="../js/h5.js"></script>
+	<link rel="stylesheet" href="../css/h5.css" />
+    <link rel="stylesheet" href="../css/mod.css" />
+</head>
+<style>
+    .groupbuy-nav{
+        /*height: 2.34375rem;*/
+        height:1rem;
+        text-align: center;
+    }
+    .groupbuy-nav__item{
+        color: rgba(255, 255, 255, 0.6);
+        font-size: .5rem;
+        line-height: .78125rem;
+        display: inline-block;
+        vertical-align: middle;
+        min-width: 3rem;
+        margin-top: 1rem;
+    }
+    .groupbuy-nav__item.current{
+        font-size: .625rem;
+        color: #fff;
+    }
+    .group-list{
+        padding: 0 .3125rem;
+        overflow:hidden;
+        
+    }
+    .group-list .img-wrapper{
+        height: 4.609375rem;
+        overflow: hidden;
+        border-radius: 6px;
+    }
+    .img-wrapper img{
+        width: 100%;
+    }
+    .group-list ul{
+        width:100%;
+    }
+    .group-list li{
+        position: relative;
+        width: 4.609375rem;
+        overflow: hidden;
+        background: #fff;
+        border-radius: 6px;
+        float: left;
+        margin-right: .15625rem;
+        margin-bottom: .15625rem;
+        position: relative;
+    }
+    .group-list li .iconBg{
+        position: absolute;
+        top:0;
+        left:0;
+        width:1.5rem;
+        height:1.5rem;
+        z-index:99;
+    
+    }
+    .bt{
+        font-size:1rem;
+        text-align: center;
+    }
+
+
+    .group-list-item__tit{
+        font-size: .4rem;
+        line-height: .625rem;
+        margin-top: .3125rem;
+        margin-bottom: .1875rem;
+        overflow : hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+
+    }
+    .group-list-item__ft{
+        height: 1.875rem;
+        line-height: 1.875rem;
+    }
+    .group-list-item__ft button{
+        height: .933333rem;
+        text-align: center;
+        width: 2.34375rem;
+        color: #fff;
+        background: #ce0f32;
+        border: none;
+        border-radius: 1rem;
+        font-size: .375rem;
+        font-weight: 400;
+    }
+
+    ul.block-list {
+        width: 100%;
+    }
+    .block-list li{
+        position: relative;
+        width: 100%;
+        margin-right: 0;
+        background-color: #f7f7f7;
+        margin:0 auto 0.7rem;
+    }
+    .block-list .img-wrapper{
+        position: absolute;
+        left:0;
+        top:0;
+        z-index: 9;
+        width: 2.65625rem;
+        height: 2.65625rem;
+        margin-top: .3125rem;
+        margin-left: .3125rem;
+    }
+    .block-list__r{
+        padding-left: 3.28125rem;
+        padding-right: .3125rem;
+        height: 3.28125rem;
+        overflow: hidden;
+        position: relative;
+    }
+    .group-list-item__price{
+        position: absolute;
+        left: 3.28125rem;
+        right: .3125rem;
+        bottom: .625rem;
+    }
+    .line-ft-white{
+        border-bottom: 1px solid #fff;
+    }
+    .block-list .group-list-item__ft{
+        height: 1.6rem;
+        line-height: 1.6rem;
+    }
+    .icon-doctor{
+        display: inline-block;
+        width: .375rem;
+        height: .375rem;
+        vertical-align: middle;
+        background: url(../images/icon_doctor.png) no-repeat;
+        background-size: cover;
+    }
+    .group-list ul{
+        display:none;
+    }
+    .group-list ul.on{
+        display: block;
+    }
+    .group-list li .fullcutBg{
+        background: url('../images/fullcut.png') no-repeat ;
+        background-size:contain;
+    }
+    .group-list li .saleBg{
+        background: url('../images/sale.png') no-repeat ;
+        background-size:contain;
+    }
+    .full-img img{
+        width:100%;
+    }
+    .bgClass{
+    padding-bottom:2rem;
+    min-height:80%;
+    }
+    .full-img p{
+        margin-bottom:0;
+    }
+    .countDown{
+        height:2.6rem;
+        line-height: 0.8rem;
+        color: #fff;  
+        background:#ce0f32;
+        font-size:0.55rem;
+        text-align: center;
+        padding: 0.9rem 0;
+    }
+    .countDown span{
+        display: inline-block;
+        background: black ;
+        border-radius:0.1rem;
+        padding: 0 0.1rem;
+        font-size:0.4rem;      
+    }
+    /*蒙层toast窗*/
+    .layer_toast{
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        z-index: 1000;
+        background: rgba(0, 0, 0, 0.5);
+        display: none;
+    }
+    .layer_toast p{
+        height: 50px;
+        width: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        margin: auto;
+        text-align: center;
+    }
+    .layer_toast p span{
+        display: inline-block;
+        height: 50px;
+        line-height: 50px;
+        font-size: 16px;
+        background: #ccc;
+        border-radius: 4px;
+        padding: 0 10px;
+        color: #333;
+    }
+</style>
+
+<body>
+<div class="v-root" id="app">
+	<!-- header -->
+	<header style="display:none;" class="v-head bg-drak">
+		<div class="v-head__in">
+			<div class="v-head__l left">
+				<span class="v-head__btn icon-back"></span>
+			</div>
+			<div class="v-head__m">
+				<h2 class="v-head__title">活动</h2>
+			</div>
+			<div class="v-head__r right"></div>
+		</div>
+	</header>
+	<!-- main -->
+	<div class="v-main v-sale">
+        <!-- <img src="../upload/sale.png" class="full-img"> -->
+        <div class="full-img"></div>
+        <div class="countDown">
+            <label>活动倒计时：</label><span id="day">00</span>:
+            <span id="min">00</span>:
+            <span id="second">00</span>
+        </div> 
+        <div class="bgClass">
+                  
+                  <div class="groupbuy-nav" id="groupbuy-nav">
+                        <span class="groupbuy-nav__item current" style="display:none">项目</span>
+                        <!-- <span class="groupbuy-nav__item " >家居产品</span>-->
+                    </div>
+            
+                    <section class="group-list">
+                        <ul class="block-list on" id="ul0">    
+                        </ul>
+                        <ul class="clear ">
+                                <li>
+                                    <div class="img-wrapper">
+                                        <img class="lazy"  data-original="../upload/goods-1.jpg" alt="活动团购"  title="活动团购介绍">
+                                    </div>
+                                    <div class="plr10">
+                                        <div class="group-list-item__tit">
+                                            膜法世家樱桃睡眠面膜125ml 深层补水保湿
+                                        </div>
+                                        <div class="clear fs10 c-gray">
+                                            <span class="fl">折后价￥12500</span>
+                                            <span class="fr del">原价￥15000</span>
+                                        </div>
+                                        <div class="group-list-item__ft clear">
+                                            <span class="fl fs14 c-red">￥6500</span>
+                                            <div class="fr">
+                                                <button>立即开团</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>      
+                        </ul>
+                    </section>
+
+        </div>
+		
+	</div>
+	<div class="v-footer"></div>
+</div>
+<div class="loading"></div>
+<div class="layer_toast">
+    <p>
+        <span>该活动已下架</span>
+    </p>
+</div>
+<script src="../../js/api.js"></script>
+<script src="../../js/common.js"></script>
+<script  src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<script  src="http://www.w3cways.com/demo/LazyLoad/js/jquery.lazyload.js"></script>
+
+<script>
+    $(window).load(function() { 
+       $('.loading').hide();  
+    }); 
+
+    var activityId = GetQueryString('activityId') || "749ea7f64db4497fac62605727b50c60";
+    var activityType=GetQueryString('activityType') || "243003";
+  
+    
+
+    function getPhoneType(){ // 获取手机类型
+        var phoneType = '';
+        var u = navigator.userAgent;
+        if(u.indexOf('Android') > -1 || u.indexOf('Adr') > -1 ){
+            phoneType = 'android'
+        }else if(!!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/)){
+            phoneType = 'ios'
+        };
+        return phoneType;
+    }
+
+    /*获取url参数*/
+	function GetQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return unescape(r[2]);
+        return null;
+    }
+    var shareUserId;
+    if(GetQueryString('userId')){
+        shareUserId = GetQueryString('userId')
+    }
+
+
+    /*点击进入详情页(满减详情页)*/
+    function goDetail(pId) {
+        //var self=$(that);
+        var projectId=pId;
+        var isInApp = GetQueryString('isInApp'); // 同android，ios约定app中加载此页面加此字段
+  
+        if(isInApp && isInApp=='1'){ // app里的详情页
+            window.location.href="./single-detail.html?projectId="+projectId+'&activityId='+activityId+'&isInApp=1';
+            // var phoneType = getPhoneType();
+            // var json = {
+            //     "projectId":projectId
+            // }
+            // if(phoneType == 'ios'){ // ios交互
+            //     window.webkit.messageHandlers.ProjectDetail.postMessage(json);
+            // }else if(phoneType == 'android'){ // android交互
+            //     //window.ProjectDetail.postMessage(JSON.stringify(json));
+            //     toolFunc.setupWebViewJavascriptBridge(function(bridge) {
+            //         //向app发送消息       //方法名
+            //         bridge.callHandler('ProjectDetail', json, function (response,responseCallback) {
+            //                 responseCallback({'result': 'handle success'})
+            //             })	
+            //         });	
+            //         bridge.registerHandler('ProjectDetail', function (data, responseCallback) {
+            //         responseCallback({'result': 'handle success'})
+            //     });		
+            // }
+        }else{
+            // 分享出去的详情页 
+            window.location.href="./single-detail.html?projectId="+projectId+'&activityId='+activityId+"&userId="+shareUserId;
+        }	
+    }
+
+    
+
+
+   
+
+
+    $(document).ready(function(){
+        //tab切换;
+        $('.groupbuy-nav span').on('click',function(){      
+          $(this).addClass('current').siblings().removeClass('current');
+           var index=$(this).index();
+          $('.group-list ul').eq(index).addClass('on').siblings().removeClass('on')   
+        })  
+
+        //判断活动类型；243001是满减,243002是打折；x先判断活动类型，然后调取不同的接口；
+
+        getIntroduce();
+
+       //获取项目列表数据;  
+        function getList(url){
+            $.ajax({
+                url:host+url,
+                data:{"activityId":activityId},
+                type:"POST",
+                dataType:'json',
+                contentType:"application/x-www-form-urlencoded",
+                success:function(res){
+                    if(res.resultCode==200){
+                       
+                        var data=res.resultInfo||'';
+                        console.log(res.resultInfo)
+                        console.log(data);
+                        readData(data);
+                    }else{
+                        alert('网络请求出错')
+                    }            
+                }
+            })
+        };
+
+      
+
+       //获取活动介绍
+        function getIntroduce(){
+            $.ajax({
+                url:host+'/client/html/activity/single',
+                data:{"activityId":activityId},
+                type:'post',
+                success:function(res){
+                    console.log(res)
+                    if(res.resultCode==200){
+                        var result = res.resultInfo;
+                        if(result && result.activityIntroduce){	
+                            $('.full-img').html(result.activityIntroduce);
+					    }
+                        if(result && result.activityName){
+                            var titleContent = result.activityName;
+                            $('title').html(titleContent);						
+                        }
+                        if(result && result.acvitityBackdropUrlPath){
+                            $(".bgClass").css({
+                                'background':"url("+res.resultInfo.acvitityBackdropUrlPath+") no-repeat center center",
+                                'backgroundSize': "cover"
+                            });
+                        }
+                        // 活动默认为上架false,点击上架状态为true,点击下架状态为false,只有点击上架才会出现在banner位上。分享出来的链接一定是上架过的
+                        var isOnLine = result.online; // 是否下架
+                        var isOver = result.over; // 活动是否过期 true为活动未过期
+                        if(isOnLine){ // 已上架活动
+                            var nowTime = new Date().getTime();
+                            var activityStartTime = result.startdate; // 活动开始时间
+                            var activityEndTime = result.enddate
+                            if(isOver){ // 活动未过期 
+                                if(nowTime<activityStartTime){ // 活动未开始
+                                    $('.countDown label').html('距活动开始:');
+                                    var timer = setInterval(function(){
+                                        var timing;
+                                        var now_time = new Date().getTime();
+                                        if(now_time<activityStartTime){
+                                            timing = activityStartTime
+                                        }else{
+                                            var html = $('.countDown label').html();
+                                            if(html == '距活动开始:'){
+                                                $('.countDown label').html('活动倒计时:');
+                                            }
+                                            timing = activityEndTime
+                                        }
+                                        count_Down(timing)
+                                    },1000)
+                                }else{ // 活动期间
+                                    $('.countDown label').html('活动倒计时:');
+                                    var timer = setInterval(function(){
+                                        var now_time = new Date().getTime();
+                                        if(now_time>activityEndTime){
+                                            $('.countDown').html('该活动已过期，仍可原价购买');
+                                            clearInterval(timer);
+                                        }
+                                        count_Down(activityEndTime);
+                                    },1000)
+                                }
+                                
+                            }else{ // 活动过期，不显示倒计时
+                                $('.countDown').html('该活动已过期，仍可原价购买');
+                            }
+                        }else{ // 活动下架 
+                            //$('#app').hide();
+                            $('.countDown').hide();
+                            $('.layer_toast').show();
+                        }
+                        //判断活动类型；243001是满减,243002是打折；x先判断活动类型，然后调取不同的接口；
+                        if(activityType=='243001'){
+                            getList('/client/html/activity/attainReduce/project');
+                        }else{
+                            getList('/client/html/activity/rebate/project');   
+                        }
+                    }
+                }
+            })
+        };
+
+        //读取数据,并渲染页面；
+        function readData(data){
+            var tpl='';
+            if(data.length){
+                for(var i=0; i<data.length; i++){
+                    var tpl_li=data[i];
+                    var str_id=tpl_li.projectId;
+                    var projectType=tpl_li.projectType; 
+                    var projectShortName=tpl_li.projectShortName || '';
+                    var projectDiscountedPrice=tpl_li.projectDiscountedPrice?tpl_li.projectDiscountedPrice.toFixed(2):0;
+                    var projectPrices=tpl_li.projectPrices?tpl_li.projectPrices.toFixed(2):0;
+                    var projectBeforePrices=tpl_li.projectBeforePrices?tpl_li.projectBeforePrices.toFixed(2):0;
+                    console.log(str_id)
+                    var str='<li data-id='+tpl_li.projectId +' onclick="goDetail(\''+str_id+'\')">'
+                            +'<div class="iconBg"></div>'
+                            +'<div class="img-wrapper">'
+                                +'<img  class="lazy" alt="活动团购"  title="活动团购" data-original='+tpl_li.projectImg+'>'
+                        +'</div>'
+                        +'<div class="block-list__r line-ft-white">'
+                                +'<div class="group-list-item__tit fs16">'
+                                +'【'+tpl_li.projectShortName+'】'+ tpl_li.projectName
+                                +'</div>'
+                                +' <div class="clear fs18 c-gray group-list-item__price">'
+                                +' <span class="fl"><span class="c-red">团购价￥'+ projectPrices+'</span></span>'
+                                +'<span class="fr del fs14">原价￥'+ projectBeforePrices +'</span>'
+                            +'</div>'
+                            +'</div>'
+                        +' <div class="group-list-item__ft clear plr10">'
+                                +'<div class="fl fs12 c-gray">'
+                                +' <span class="icon-doctor"></span>'
+                                +' <span class="ib vm">'+tpl_li.doctorName+'</span>'
+                                +'</div>'
+                            +' <div class="fr">'
+                                +' <button>立即开团</button>'
+                            +' </div>'
+                        +' </div>'
+                        +'</li>';
+                    tpl+=str;
+                };      
+                $('#ul0').append(tpl)
+                //所有图片延迟加载；
+                $("img.lazy").lazyload({
+                    effect: "fadeIn",
+                });
+            }else{
+                $('#ul0').html("暂无数据...")
+            }
+        };
+    });
+
+
+
+</script>
+
+</body>
+</html>

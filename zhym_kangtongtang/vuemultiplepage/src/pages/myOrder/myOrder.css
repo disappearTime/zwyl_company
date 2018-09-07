@@ -1,0 +1,81 @@
+.header{
+    width: 100%;
+    height: 2.75rem;
+    padding: 0 1.275rem;
+    box-sizing: border-box;
+    background: #ffffff;
+}
+.header img{
+    width: 2.1875rem;
+    height: 2.1875rem;
+    flex-shrink: 0;
+    flex-grow: 0;
+}
+.header .right{
+    width: 2.1875rem;
+    height: 2.1875rem;
+    flex-shrink: 0;
+    flex-grow: 0;
+}
+.header .center{
+    flex-grow: 1;
+    flex-shrink: 1;
+    height: 2.1875rem;
+    text-align: center;
+}
+.header .center span{
+    display: inline-block;
+    margin: 0 1.09rem;
+    box-sizing: border-box;
+    height: 1.375rem;
+}
+.header .center span.active{
+    border-bottom: 2px solid;
+}
+.content{
+    width: 100%;
+    padding: 0 1.25rem;
+    box-sizing: border-box;
+}
+.sign_bar{
+    padding: 0.9375rem 0;
+    overflow-y: hidden;
+    overflow-x: scroll;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+}
+.sign_bar span{
+    display: inline-block;
+    margin-right: 0.99rem;
+    font-size: 0.875rem;
+    color: #8E8E8E; 
+}
+.sign_bar span.sign_active{
+    color: #2D2D2D;
+}
+.sign_bar span:nth-last-of-type(1){
+    margin-right: 0;
+}
+.order_buy_time{
+    width: 100%;
+    padding: 0.625rem;
+    box-sizing: border-box;
+    background: #F7F7F7;
+}
+.order_buy_time .left{
+    font-size: 12px;
+    color: #8E8E8E; 
+}
+.order_buy_time button{
+    width: 3.9375rem;
+    height: 1.4375rem;
+    box-sizing: border-box;
+    font-size: 12px;
+    margin-left: 5px;
+    background: #ffffff;
+    border-radius: 3px;
+    border: none;
+}
+.order_buy_time button:nth-of-type(2){
+    border: 1px solid;
+}

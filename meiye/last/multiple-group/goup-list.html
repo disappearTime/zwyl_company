@@ -1,0 +1,450 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>活动</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<script type="text/javascript" src="../js/h5.js"></script>
+	<link rel="stylesheet" href="../css/h5.css" />
+	<link rel="stylesheet" href="../css/mod.css" />
+</head>
+<style>
+.groupbuy-nav{
+    height: 2.34375rem;
+    text-align: center;
+}
+.v-group-buy{
+    background: #9E3377;
+}
+.groupbuy-nav__item{
+    color: rgba(255, 255, 255, 0.6);
+    font-size: .5rem;
+    line-height: .78125rem;
+    display: inline-block;
+    vertical-align: middle;
+    min-width: 3rem;
+    margin-top: 1rem;
+}
+.groupbuy-nav__item.current{
+    font-size: .625rem;
+    color: #fff;
+}
+.group-list{
+    padding: 0 .3125rem;
+	overflow:hidden;
+}
+.group-list .img-wrapper{
+    height: 4.609375rem;
+    overflow: hidden;
+    border-radius: 6px;
+}
+.img-wrapper img{
+    width: 100%;
+}
+.group-list ul{
+    width: 10.5rem;
+}
+.group-list li{
+    width: 4.609375rem;
+    overflow: hidden;
+    background: #fff;
+    border-radius: 6px;
+    float: left;
+    margin-right: .15625rem;
+    margin-bottom: .15625rem;
+    position: relative;
+}
+.group-list-item__tit{
+    font-size: .4rem;
+    line-height: .625rem;
+    margin-top: .3125rem;
+    margin-bottom: .1875rem;
+}
+.group-list-item__ft{
+    height: 1.875rem;
+    line-height: 1.875rem;
+}
+.group-list-item__ft button{
+    height: .933333rem;
+    text-align: center;
+    width: 2.34375rem;
+    color: #fff;
+    background: #ce0f32;
+    border: none;
+    border-radius: 1rem;
+    font-size: .375rem;
+    font-weight: 400;
+}
+
+ul.block-list {
+    width: 100%;
+}
+.block-list li{
+    width: auto;
+    margin-right: 0;
+    background-color: #f7f7f7;
+}
+.block-list .img-wrapper{
+    position: absolute;
+    left:0;
+    top:0;
+    z-index: 9;
+    width: 2.65625rem;
+    height: 2.65625rem;
+    margin-top: .3125rem;
+    margin-left: .3125rem;
+}
+.block-list__r{
+    padding-left: 3.28125rem;
+    padding-right: .3125rem;
+    height: 3.28125rem;
+    overflow: hidden;
+    position: relative;
+}
+.group-list-item__price{
+    position: absolute;
+    left: 3.28125rem;
+    right: .3125rem;
+    bottom: .625rem;
+}
+.line-ft-white{
+    border-bottom: 1px solid #fff;
+}
+.block-list .group-list-item__ft{
+    height: 1.6rem;
+    line-height: 1.6rem;
+}
+.icon-doctor{
+    display: inline-block;
+    width: .375rem;
+    height: .375rem;
+    vertical-align: middle;
+    background: url(../images/icon_doctor.png) no-repeat;
+    background-size: cover;
+}
+</style>
+<body>
+<div class="v-root" id="app">
+	<!-- header -->
+	<header style="display:none;" class="v-head bg-drak">
+		<div class="v-head__in">
+			<div class="v-head__l left">
+				<span class="v-head__btn icon-back"></span>
+			</div>
+			<div class="v-head__m">
+				<h2 class="v-head__title">活动</h2>
+			</div>
+			<div class="v-head__r right"></div>
+		</div>
+	</header>
+	<!-- main -->
+	<div class="v-main v-group-buy">
+		<img src="../upload/duopintuangou.png" class="full-img">
+		<div class="groupbuy-nav">
+            <span class="groupbuy-nav__item">项目</span>
+            <span class="groupbuy-nav__item current">家居产品</span>
+        </div>
+
+        <section class="group-list">
+            <ul class="clear">
+                <li>
+                    <div class="img-wrapper">
+                        <img src="../upload/goods-1.jpg" alt="">
+                    </div>
+                    <div class="plr10">
+                        <div class="group-list-item__tit">
+                            膜法世家樱桃睡眠面膜125ml 深层补水保湿
+                        </div>
+                        <div class="clear fs10 c-gray">
+                            <span class="fl">折后价￥12500</span>
+                            <span class="fr del">原价￥15000</span>
+                        </div>
+                        <div class="group-list-item__ft clear">
+                            <span class="fl fs14 c-red">￥6500</span>
+                            <div class="fr">
+                                <button>立即开团</button>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="img-wrapper">
+                        <img src="../upload/goods-1.jpg" alt="">
+                    </div>
+                    <div class="plr10">
+                        <div class="group-list-item__tit">
+                            膜法世家樱桃睡眠面膜125ml 深层补水保湿
+                        </div>
+                        <div class="clear fs10 c-gray">
+                            <span class="fl">折后价￥12500</span>
+                            <span class="fr del">原价￥15000</span>
+                        </div>
+                        <div class="group-list-item__ft clear">
+                            <span class="fl fs14 c-red">￥6500</span>
+                            <div class="fr">
+                                <button>立即开团</button>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="img-wrapper">
+                        <img src="../upload/goods-1.jpg" alt="">
+                    </div>
+                    <div class="plr10">
+                        <div class="group-list-item__tit">
+                            膜法世家樱桃睡眠面膜125ml 深层补水保湿
+                        </div>
+                        <div class="clear fs10 c-gray">
+                            <span class="fl">折后价￥12500</span>
+                            <span class="fr del">原价￥15000</span>
+                        </div>
+                        <div class="group-list-item__ft clear">
+                            <span class="fl fs14 c-red">￥6500</span>
+                            <div class="fr">
+                                <button>立即开团</button>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="img-wrapper">
+                        <img src="../upload/goods-1.jpg" alt="">
+                    </div>
+                    <div class="plr10">
+                        <div class="group-list-item__tit">
+                            膜法世家樱桃睡眠面膜125ml 深层补水保湿
+                        </div>
+                        <div class="clear fs10 c-gray">
+                            <span class="fl">折后价￥12500</span>
+                            <span class="fr del">原价￥15000</span>
+                        </div>
+                        <div class="group-list-item__ft clear">
+                            <span class="fl fs14 c-red">￥6500</span>
+                            <div class="fr">
+                                <button>立即开团</button>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="img-wrapper">
+                        <img src="../upload/goods-1.jpg" alt="">
+                    </div>
+                    <div class="plr10">
+                        <div class="group-list-item__tit">
+                            膜法世家樱桃睡眠面膜125ml 深层补水保湿
+                        </div>
+                        <div class="clear fs10 c-gray">
+                            <span class="fl">折后价￥12500</span>
+                            <span class="fr del">原价￥15000</span>
+                        </div>
+                        <div class="group-list-item__ft clear">
+                            <span class="fl fs14 c-red">￥6500</span>
+                            <div class="fr">
+                                <button>立即开团</button>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="img-wrapper">
+                        <img src="../upload/goods-1.jpg" alt="">
+                    </div>
+                    <div class="plr10">
+                        <div class="group-list-item__tit">
+                            膜法世家樱桃睡眠面膜125ml 深层补水保湿
+                        </div>
+                        <div class="clear fs10 c-gray">
+                            <span class="fl">折后价￥12500</span>
+                            <span class="fr del">原价￥15000</span>
+                        </div>
+                        <div class="group-list-item__ft clear">
+                            <span class="fl fs14 c-red">￥6500</span>
+                            <div class="fr">
+                                <button>立即开团</button>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="img-wrapper">
+                        <img src="../upload/goods-1.jpg" alt="">
+                    </div>
+                    <div class="plr10">
+                        <div class="group-list-item__tit">
+                            膜法世家樱桃睡眠面膜125ml 深层补水保湿
+                        </div>
+                        <div class="clear fs10 c-gray">
+                            <span class="fl">折后价￥12500</span>
+                            <span class="fr del">原价￥15000</span>
+                        </div>
+                        <div class="group-list-item__ft clear">
+                            <span class="fl fs14 c-red">￥6500</span>
+                            <div class="fr">
+                                <button>立即开团</button>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="img-wrapper">
+                        <img src="../upload/goods-1.jpg" alt="">
+                    </div>
+                    <div class="plr10">
+                        <div class="group-list-item__tit">
+                            膜法世家樱桃睡眠面膜125ml 深层补水保湿
+                        </div>
+                        <div class="clear fs10 c-gray">
+                            <span class="fl">折后价￥12500</span>
+                            <span class="fr del">原价￥15000</span>
+                        </div>
+                        <div class="group-list-item__ft clear">
+                            <span class="fl fs14 c-red">￥6500</span>
+                            <div class="fr">
+                                <button>立即开团</button>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="img-wrapper">
+                        <img src="../upload/goods-1.jpg" alt="">
+                    </div>
+                    <div class="plr10">
+                        <div class="group-list-item__tit">
+                            膜法世家樱桃睡眠面膜125ml 深层补水保湿
+                        </div>
+                        <div class="clear fs10 c-gray">
+                            <span class="fl">折后价￥12500</span>
+                            <span class="fr del">原价￥15000</span>
+                        </div>
+                        <div class="group-list-item__ft clear">
+                            <span class="fl fs14 c-red">￥6500</span>
+                            <div class="fr">
+                                <button>立即开团</button>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="img-wrapper">
+                        <img src="../upload/goods-1.jpg" alt="">
+                    </div>
+                    <div class="plr10">
+                        <div class="group-list-item__tit">
+                            膜法世家樱桃睡眠面膜125ml 深层补水保湿
+                        </div>
+                        <div class="clear fs10 c-gray">
+                            <span class="fl">折后价￥12500</span>
+                            <span class="fr del">原价￥15000</span>
+                        </div>
+                        <div class="group-list-item__ft clear">
+                            <span class="fl fs14 c-red">￥6500</span>
+                            <div class="fr">
+                                <button>立即开团</button>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <ul class="block-list">
+                <li>
+                    <div class="img-wrapper">
+                        <img src="../upload/mm2.jpg" alt="">
+                    </div>
+                    <div class="block-list__r line-ft-white">
+                        <div class="group-list-item__tit fs16">
+                            膜法世家樱桃睡眠面膜125ml 深层补水保湿
+                        </div>
+                        <div class="clear fs12 c-gray group-list-item__price">
+                            <span class="fl"><span class="c-red">￥12500</span> 折后价</span>
+                            <span class="fr del">原价￥15000</span>
+                        </div>
+                    </div>
+                    <div class="group-list-item__ft clear plr10">
+                        <div class="fl fs12 c-gray">
+                            <span class="icon-doctor"></span>
+                            <span class="ib vm">张小路</span>
+                        </div>
+                        <div class="fr">
+                            <button>立即开团</button>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="img-wrapper">
+                        <img src="../upload/mm2.jpg" alt="">
+                    </div>
+                    <div class="block-list__r line-ft-white">
+                        <div class="group-list-item__tit fs16">
+                            膜法世家樱桃睡眠面膜125ml 深层补水保湿
+                        </div>
+                        <div class="clear fs12 c-gray group-list-item__price">
+                            <span class="fl"><span class="c-red">￥12500</span> 折后价</span>
+                            <span class="fr del">原价￥15000</span>
+                        </div>
+                    </div>
+                    <div class="group-list-item__ft clear plr10">
+                        <div class="fl fs12 c-gray">
+                            <span class="icon-doctor"></span>
+                            <span class="ib vm">张小路</span>
+                        </div>
+                        <div class="fr">
+                            <button>立即开团</button>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="img-wrapper">
+                        <img src="../upload/mm2.jpg" alt="">
+                    </div>
+                    <div class="block-list__r line-ft-white">
+                        <div class="group-list-item__tit fs16">
+                            膜法世家樱桃睡眠面膜125ml 深层补水保湿
+                        </div>
+                        <div class="clear fs12 c-gray group-list-item__price">
+                            <span class="fl"><span class="c-red">￥12500</span> 折后价</span>
+                            <span class="fr del">原价￥15000</span>
+                        </div>
+                    </div>
+                    <div class="group-list-item__ft clear plr10">
+                        <div class="fl fs12 c-gray">
+                            <span class="icon-doctor"></span>
+                            <span class="ib vm">张小路</span>
+                        </div>
+                        <div class="fr">
+                            <button>立即开团</button>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="img-wrapper">
+                        <img src="../upload/mm2.jpg" alt="">
+                    </div>
+                    <div class="block-list__r line-ft-white">
+                        <div class="group-list-item__tit fs16">
+                            膜法世家樱桃睡眠面膜125ml 深层补水保湿
+                        </div>
+                        <div class="clear fs12 c-gray group-list-item__price">
+                            <span class="fl"><span class="c-red">￥12500</span> 折后价</span>
+                            <span class="fr del">原价￥15000</span>
+                        </div>
+                    </div>
+                    <div class="group-list-item__ft clear plr10">
+                        <div class="fl fs12 c-gray">
+                            <span class="icon-doctor"></span>
+                            <span class="ib vm">张小路</span>
+                        </div>
+                        <div class="fr">
+                            <button>立即开团</button>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </section>
+	</div>
+	<div class="v-footer"></div>
+</div>
+</body>
+</html>

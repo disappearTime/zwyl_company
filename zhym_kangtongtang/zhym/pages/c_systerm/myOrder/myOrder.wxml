@@ -1,0 +1,44 @@
+<view class="container">
+  <view class='tab_bar'>
+    <text bindtap='tabClick' data-cur='1' class='{{current=="1"?"tab_active":""}}'>全部</text>
+    <text bindtap='tabClick' data-cur='2' class='{{current=="2"?"tab_active":""}}'>待支付</text>
+    <text bindtap='tabClick' data-cur='3' class='{{current=="3"?"tab_active":""}}'>可使用</text>
+    <text bindtap='tabClick' data-cur='4' class='{{current=="4"?"tab_active":""}}'>退款/售后</text>
+  </view>
+  <view class='tab_item all_order' hidden='{{current!="1"}}'>
+    <ProjectInfo wx:for="{{[1,2,3]}}" 
+      projectTitle="鼻部综合" 
+      projectIntro="三八女神节，让你美美做女神！！！"
+      payPrice="488"
+      originPrice="2000">
+      <image class='discount' src='/image/sale.png' slot="sale_img_class_discount"></image>
+    </ProjectInfo>
+  </view>
+  <view class='tab_item to_be_paid_order' hidden='{{current!="2"}}'>
+    <ProjectInfo wx:for="{{[1,2,3]}}" 
+      projectTitle="鼻部综合" 
+      projectIntro="三八女神节，让你美美做女神！！！"
+      payPrice="488"
+      originPrice="2000">
+      <image class='discount' src='/image/sale.png' slot="sale_img_class_discount"></image>
+    </ProjectInfo>
+  </view>
+  <view class='tab_item valid_order' hidden='{{current!="3"}}'>
+    <ProjectInfo wx:for="{{[1,2,3]}}" 
+      projectTitle="鼻部综合" 
+      projectIntro="三八女神节，让你美美做女神！！！"
+      payPrice="488"
+      originPrice="2000">
+      <image class='discount' src='/image/sale.png' slot="sale_img_class_discount"></image>
+    </ProjectInfo>
+  </view>
+  <view class='tab_item refused_order' hidden='{{current!="4"}}'>
+    <ProjectInfo wx:for="{{[1,2,3]}}" 
+      projectTitle="鼻部综合" 
+      projectIntro="三八女神节，让你美美做女神！！！"
+      payPrice="488"
+      originPrice="2000">
+      <image class='discount' src='/image/sale.png' slot="sale_img_class_discount"></image>
+    </ProjectInfo>
+  </view>
+</view>

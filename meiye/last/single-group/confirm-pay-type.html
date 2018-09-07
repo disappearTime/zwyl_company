@@ -1,0 +1,390 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>确认支付</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<meta content="telephone=no" name="format-detection" />
+	<script type="text/javascript" src="../js/h5.js"></script>
+	<link rel="stylesheet" href="../css/h5.css" />
+	<link rel="stylesheet" href="../css/mod.css" />
+</head>
+<style>
+
+</style>
+<body>
+<div class="v-root state-buy" id="app" v-cloak>
+	<!--header-->
+	<header style="display:none;" class="v-head bg-drak">
+		<div class="v-head__in">
+			<div class="v-head__l left">
+				<span class="v-head__btn icon-back"></span>
+			</div>
+			<div class="v-head__m">
+				<h2 class="v-head__title">确认支付</h2>
+			</div>
+			<div class="v-head__r right"></div>
+		</div>
+	</header>
+
+	<div class="v-main v-confirm-pay">
+		<div class="v-gray-box" v-if="payInfo.projectType==206001">
+			<div class="media-txt">
+				<div class="media-txt__tit">
+					<span class="media-txt__tit-badge">一体化方案</span>
+					<span class="b">{{payInfo.schemeName}}</span>
+				</div>
+				<div class="clear media-ft">
+					<div class="fl">包含{{payInfo.schemeDiscount}}个子项目 <span class="fs18 ib">&nbsp;</span></div>
+					<div class="fr">总价 <span class="fs18 c-red">￥{{toFixed_len(payInfo.schemePrice,2)}}</span></div>
+				</div>
+			</div>
+
+			<div class="plr15 pt15 oh">
+				<div class="media-img-txt pos-rel" v-for="(item,index) in payInfo.projects">
+					<div class="media-img-txt__img-box pos-abs pos-fl">
+						<img :src="item.projectImg">
+					</div>
+					<div class="media-img-txt__con">
+						<div class="media-img-txt__con-tit">
+							{{item.projectName}}
+						</div>
+						<div class="media-img-txt__con-ft clear">
+							<div class="fl"><span>￥{{toFixed_len(item.projectPrices,2)}}</span><small>x1</small></div>
+							<div class="fr"><span class="icon"></span><span>{{item.doctorName}}</span></div>
+						</div>
+					</div>
+				</div>
+
+				<!--<div class="media-img-txt pos-rel">-->
+					<!--<div class="media-img-txt__img-box pos-abs pos-fl">-->
+						<!--<img src="../upload/head-01.jpg">-->
+					<!--</div>-->
+					<!--<div class="media-img-txt__con">-->
+						<!--<div class="media-img-txt__con-tit">-->
+							<!--[硅胶隆鼻] 混血小翘鼻 院长手术下单送面膜-->
+						<!--</div>-->
+						<!--<div class="media-img-txt__con-ft clear">-->
+							<!--<div class="fl c-gray"><span>￥6500</span><small class="fs12">x1</small></div>-->
+							<!--<div class="fr"><span class="icon"></span><span>张医生</span></div>-->
+						<!--</div>-->
+					<!--</div>-->
+				<!--</div>-->
+			</div>
+		</div>
+
+		<div class="v-gray-box" v-if="payInfo.projectType==206002">
+			<div class="plr15 oh pt15">
+				<div class="media-img-txt pos-rel">
+					<div class="media-img-txt__img-box pos-abs pos-fl">
+						<img :src="projectPay.projectImg">
+					</div>
+					<div class="media-img-txt__con">
+						<div class="media-img-txt__con-tit">
+							{{projectPay.projectName}}
+						</div>
+						<div class="media-img-txt__con-ft clear">
+							<div class="fl c-gray"><span>￥{{toFixed_len(projectPay.projectPrices,2)}}</span><small class="fs12">x1</small></div>
+							<div class="fr"><span class="icon"></span><span>{{projectPay.doctorName}}</span></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!--<div class="block-menu-item mt15">
+			<span class="fs14">预约金小计</span>
+			<span class="fs14">￥2500</span>
+			<div class="block-menu-item__r">
+				<span class="c-gray">选择</span>
+				<span class="menu-icon menu-icon-tor"></span>
+			</div>
+		</div>
+		<div class="block-menu-item">
+			<span class="fs14">尾款小计</span>
+			<span class="fs14">￥12500</span>
+			<div class="block-menu-item__r">
+				<span class="menu-icon menu-icon-hb"></span>
+				<span class="c-red">已优惠500元</span>
+				<span class="menu-icon menu-icon-tor"></span>
+			</div>
+		</div>-->
+	</div>
+
+	<div class="footer-buy-bar">
+		<div class="footer-buy-bar__l fs12">
+			<div><span class="c-gray">预约金合计</span> ￥{{toFixed_len(readPayMoney,2)}}</div>
+			<div class="pt10"><span class="c-gray">到店需付尾款合计</span> ￥{{toFixed_len(residueMoney,2)}}</div>
+		</div>
+		<div class="footer-buy-bar__r">
+			<span class="ib pt15 fs16" @click="showpop">确认付款</span>
+		</div>
+	</div>
+
+
+	<!--微信支付宝选择弹框 -->
+	<div class="v-make" v-if="false"></div>
+	<div class="v-pop" v-if="false">
+		<div class="pay-type-select">
+			<div class="pay-type-select__tit">选择支付方式</div>
+			<div class="pay-type-select__items">
+				<div class="pay-type-select__item">
+					<div class="pay-type-select__item-icon zf-icon-wx"></div>
+					<div class="pay-type-select__item-tit" @click="showPay">微信支付</div>
+				</div>
+				<div class="pay-type-select__item">
+					<div class="pay-type-select__item-icon zf-icon-zfb"></div>
+					<div class="pay-type-select__item-tit" @click="showPay">支付宝支付</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+    <!-- 复制链接下载弹框-->
+	<div class="mask" v-if="isShow"></div>
+	<div class="zkq_popup" v-if="isShow">
+        <div class="popup_con" style="text-align:center;">
+            <div class="msg">更多操作请长按下方二维码下载APP</div>
+            <div class="msg" style="background:#eee;border-radius: 4px;padding:10px 0;">
+				<img style="width: 130px;" :src="codeUrl" alt="">
+			</div>
+			<div @click="hidePop" class="close_" style="display:inline-block;width:30px;height:30px;border-radius:50%;background:rgba(0,0,0,0.3);margin-top:10px;">
+				<img style="width:100%;" src="../images/close.png" alt="">
+			</div>
+        </div>
+    </div>
+	<!-- 底部下载弹框 -->
+	<div class="download">
+		<div class="download-card">
+			<img class="close" src="./images/close_.png" alt="">
+			<p>下载<span class="appName"></span>APP,美丽从此开始</p>
+			<button onclick="download_app()" type="button">立即下载</button>
+		</div>
+	</div>
+
+
+
+	<div class="mask" v-if="isPay"></div>
+	<div class="zkq_popup" v-if="isPay">
+		<div class="popup_con">
+			<div class="msg">复制下方链接在Safair/浏览器中打开下载“XXXX”即刻购买</div>
+			<div class="msg">http://www.baidu.com</div>
+			<input style="position: absolute;left: -100rem;" type="text" id="clip_num" readonly v-model="copyPath">
+			<div class="popupBtn">
+				<i @click="copyNum">复制链接并前往</i>
+			</div>
+		</div>
+	</div>
+</div>
+<script src="../../js/zepto.js"></script>
+<script src="../../js/api.js"></script>
+<script src="../js/vue2_5_13.js"></script>
+<script src="../js/axios.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.2.0/js/swiper.min.js"></script>
+<script type="text/javascript" src="../js/http.js"></script>
+<script src="https://cdn.bootcss.com/babel-polyfill/6.26.0/polyfill.min.js"></script>
+<script>
+	// 从url中获取某个指定的参数
+	function getUrlParam(name){
+		var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+		var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+		if (r!=null) return unescape(r[2]); return null; //返回参数值
+	}
+	var urlStr = window.location.href;
+	if (urlStr.indexOf("?") != -1) {
+		var urlStr = urlStr.substr(urlStr.indexOf("?") + 1);
+		console.log(urlStr);
+		var strs = urlStr.split("&");
+		console.log(strs);
+		var tempArr = strs[0].split("=");
+		var projectId = window.decodeURIComponent(tempArr[1]).replace(/(\d{4})\/(\d{2})\/(\d{2})\s+(\d{2})-(\d{2})-(\d{2})/g, "$1-$2-$3 $4:$5:$6");
+		console.log(projectId);
+
+	}
+
+	var userInfo=JSON.parse(localStorage.getItem("userInfo"));
+	new Vue({
+		el: '#app',
+		data: {
+			isShow: false,
+			isPay:false,
+			phoneNum: '',
+			verifyNum: '',
+			isSending: false,
+			coutDown: 60,
+			error: '',
+			authCodeId: '',
+			userId: '1',
+			id: '',
+			copyPath:'http://www.baidu.com',
+			scheme: '',
+			schemePlan: '',
+			otherSchemeList: '',
+			projectId:projectId,
+			buyNum:1,
+			buyMethod:0,
+			buyMethodId:0,
+			serviceId:0,
+			projectType:0,
+			payInfo:'',
+			projectPay:'',
+            readPayMoney:'',
+            residueMoney:'',
+			schemeStr:'',
+			codeUrl: '' // 二维码地址
+		},
+		methods: {
+			toFixed_len(num,len){ // 保留参数len位小数,参数是字符串数字或则数字
+				var ret = num + "";
+				if(ret){ // 0为false "0"为真   参数不为空
+				var num_ = Number(num);
+				ret = num_.toFixed(len); 
+				}
+				return ret;
+			},
+			getPhoneType: function (){ // 获取手机类型
+				var phoneType = '';
+				var u = navigator.userAgent;
+				if(u.indexOf('Android') > -1 || u.indexOf('Adr') > -1 ){
+					phoneType = 'android'
+				}else if(!!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/)){
+					phoneType = 'ios'
+				};
+				return phoneType;
+			},
+			showpop: function(){
+				this.isShow = true;
+			},
+			copyNum: function(){
+				var NumClip = document.getElementById("clip_num");
+				var NValue = NumClip.value;
+				var valueLength = NValue.length;
+				this.selectText(NumClip, 0, valueLength);
+				document.execCommand("Copy", "false", null); // 执行浏览器复制命令
+				document.getElementById("clip_num").blur();
+				this.isShow = false;
+				alert("复制成功");
+			},
+			selectText: function(obj, startIndex, stopIndex) {
+				if (obj.setSelectionRange) {
+					obj.setSelectionRange(startIndex, stopIndex);
+				} else if (obj.createTextRange) {
+					var range = obj.createTextRange();
+					range.collapse(true);
+					range.moveStart('character', startIndex);
+					range.moveEnd('character', stopIndex - startIndex);
+					range.select();
+				}
+				obj.focus();
+			},
+			showPay:function () {
+				this.isPay=true;
+			},
+			getOrder:function(projectId,userId,activityId){
+				var info={
+		            projectId:projectId,
+					projectType:'206002',
+					buyNum:1,
+					userId:this.userId,
+					buyMethod:0,
+					buyMethodId:0,
+					serviceId:0,
+					activityId:activityId||'',
+					shareUserId:''
+				};
+				$.ajax({
+					url:host+"/client-shopping/html/order/cartAddOrder",
+					type:"POST",
+					contentType:"application/x-www-form-urlencoded",
+					data:info,
+					success(res){
+						if(res.resultCode==200){
+							window.location.href="./confirm-pay-type.html?projectId="+projectId;
+		                   console.log(res)
+						}else{
+							alert('获取订单失败')
+						}
+
+					}
+				})
+			},
+			getOrderScheme(schemeStr,type){
+				myAxios.post('/client-shopping/html/order/cartAddOrder',{
+				projectId:schemeStr,
+				userId: this.userId,
+				projectType:type,
+				buyNum:this.buyNum,
+				buyMethod:this.buyMethod,
+				buyMethodId:this.buyMethodId,
+				serviceId:this.serviceId
+				},function(data){
+					console.log(data);
+					self.payInfo=data.resultInfo[0];
+					self.projectPay=data.resultInfo[0].projects[0];
+					self.readPayMoney=data.resultInfo[0].projects[0].readPayMoney;
+					self.residueMoney=data.resultInfo[0].projects[0].residueMoney;
+				});
+			},
+			hidePop(){
+				this.isShow = false;
+			}
+		},
+		mounted: function () {
+			this.$nextTick(function(){
+				var self = this;
+				var str=window.location.href;
+				this.projectId=str.split('?')[1].split('=')[1];
+				this.userId=window.localStorage.getItem('userId');
+				var activityId='';
+				var project = getUrlParam('projectId')
+				var schemeId = getUrlParam('schemeId');
+				var projects = getUrlParam('projects');
+				if (project) {
+					myAxios.post('/client-shopping/html/order/cartAddOrder',{
+						projectId:project,
+						userId: this.userId,
+						projectType:206002,
+						buyNum:this.buyNum,
+						buyMethod:this.buyMethod,
+						buyMethodId:this.buyMethodId,
+						serviceId:this.serviceId
+					},function(data){
+						console.log(data);
+						self.payInfo=data.resultInfo[0];
+						self.projectPay=data.resultInfo[0].projects[0];
+						self.readPayMoney=data.resultInfo[0].projects[0].readPayMoney;
+						self.residueMoney=data.resultInfo[0].projects[0].residueMoney;
+					});
+				}else{
+					var str_ = schemeId+ '-' + projects;
+					myAxios.post('/client-shopping/html/order/cartAddOrder',{
+						projectId:str_,
+						userId: this.userId,
+						projectType:206001,
+						buyNum:this.buyNum,
+						buyMethod:this.buyMethod,
+						buyMethodId:this.buyMethodId,
+						serviceId:this.serviceId
+					},function(data){
+						console.log(data);
+						self.payInfo=data.resultInfo[0];
+						self.projectPay=data.resultInfo[0].projects[0];
+						self.readPayMoney=data.resultInfo[0].projects[0].readPayMoney;
+						self.residueMoney=data.resultInfo[0].projects[0].residueMoney;
+					});
+				};
+				// 获取下载二维码地址
+				var phoneType = this.getPhoneType();
+				if(phoneType == 'ios' ){ // ios下载二维码
+					this.codeUrl = host_code + '/ios.png'
+				}else if(phoneType == 'android'){ // android下载二维码
+					this.codeUrl = host_code + '/android.png'
+				}
+			})
+		}
+	});
+
+
+</script>
+</body>
+</html>

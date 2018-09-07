@@ -1,0 +1,21 @@
+<view class='wrapper'>
+  <view class='search-box'>
+    <view class='search'>
+      <text>搜索</text>
+      <image src='/image/search.png'></image>
+    </view>
+  </view>
+  <view class='all-goods'>
+    <view class='goods-classify'>
+      <view wx:for="{{goods_classify}}" class="{{index==current?'current':''}}" data-index="{{index}}" bindtap='togglegoods'>
+        <text>{{item}}</text>
+      </view>
+    </view>
+    <view class='goods-classifyName'>
+      <view wx:for="{{currentGoods}}">
+        <image src='{{item.goods_img}}'></image>
+        <text>{{item.goods_name}}</text>
+      </view>
+    </view>
+  </view>
+</view>

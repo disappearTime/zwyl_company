@@ -1,0 +1,72 @@
+<!--pages/cart/cart.wxml-->
+<view class='container'>
+    <!-- 空购物车 -->
+    <view class="cart-null" wx:if="{{cartlist == ''}}">
+        <image src="/image/gouwuche.png"></image>
+        <text>购物车空空如也，快去逛逛吧</text>
+    </view>
+    <!-- 购物车列表 -->
+    <view class='cart-list' wx:if="{{cartlist != ''}}">
+        <block wx:for="{{cartlist}}" wx:key="id">
+            <view class='cart-items'>
+                <image src="/image/xuanzhong.png" class="cart-items-start" wx:if="{{item.status}}"  bindtap="xz" data-index="{{index}}" />
+                <image src="/image/weixuanzhong.png" class="cart-items-start" wx:else bindtap="xz" data-index="{{index}}" />
+                <image class='cart-items-img' src="{{imgurl}}{{item.cover_img}}"></image>
+                <view class='cart-items-info'>
+                    <view class='cart-items-name'>
+                        {{item.goods_name}}
+                    </view>
+                    <view class='cart-items-label'>
+                        <text wx:if="{{item.discount == 2}}">折扣</text>
+                        <text wx:if="{{item.new == 2}}">新品</text>
+                        <text wx:if="{{item.hot == 2}}">热销</text>
+                    </view>
+                    <view class='cart-items-priinfo'>
+                        <view class='citem-price'>
+                            ￥<text wx:if="{{item.sku_id != 0 }}">{{item.price}}</text>
+                            <text wx:else>
+                                <block wx:if="{{item.discount == 2}}">{{item.discount_price}}</block>
+                                <block wx:else>{{item.shop_price}}</block>
+                            </text>
+                        </view>
+                        <view class='citem-discounts'>
+                            <block wx:if="{{item.discount == 2}}">已降￥{{item.shop_price - item.discount_price}}</block>
+                        </view>
+                        <view class='citem-number'>
+                            <text bindtap="cartnumdel" data-id="{{item.cart_id}}">-</text>
+                            <view>{{item.num}}</view>
+                            <text bindtap="cartnumadd" data-id="{{item.cart_id}}">+</text>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </block>
+    </view>
+    <!-- 购物车底部 -->
+    <view class='cart-feature' wx:if="{{cartlist != ''}}">
+        <view class='cart-complie'>
+            <image src="/image/xuanzhong.png" wx:if="{{allstart}}" bindtap="allstatus" />
+            <image src="/image/weixuanzhong.png" wx:else bindtap="allstatus" />
+            <view class="cart-allsel" bindtap="allstatus">全选</view>
+            <view class='cart-delete' bindtap="cartdel">删除</view>
+        </view>
+        <view class='cart-price-info'>
+            <view class='cart-total'>
+                合计:
+                <view>
+                    ￥
+                    <text>{{amount}}</text>
+                </view>
+            </view>
+            <view class='cart-discounts'>
+                活动优惠：-￥{{activities}}
+            </view>
+        </view>
+        <view class='cart-closing' wx:if="{{totality == 0}}">
+            结算({{totality}})
+        </view>
+        <view class='cart-closing act' wx:else bindtap="closing">
+            结算({{totality}})
+        </view>
+    </view>
+</view>

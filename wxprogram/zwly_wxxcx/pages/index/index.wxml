@@ -1,0 +1,223 @@
+<!-- index.wxml -->
+<view class="container">
+    <scroll-view scroll-y class="container-msg">
+            <!-- 轮播图 -->
+            <view class="swiper-container" wx:if="{{swipers}}">
+                <swiper autoplay="auto" interval="5000" duration="500" current="{{swiperCurrent}}" bindchange="swiperChange" class="swiper">
+                    <block wx:for="{{swipers}}" wx:key="{{item.aid}}">
+                        <swiper-item>
+                            <image src="{{imgurl}}{{item.img}}" class="img" wx:if="{{item.img}}"></image>
+                            <image src="/image/banner.png" class="img" wx:else />
+                        </swiper-item>
+                    </block>
+                </swiper>
+                <view class="dots">
+                    <block wx:for="{{swipers}}" wx:key="unique">
+                        <view class="dot{{index == swiperCurrent ? ' active' : ''}}"></view>
+                    </block>
+                </view>
+            </view>
+            <!-- 打折专区 -->
+            <view class='discount' wx:if="{{discount.length != undefined}}">
+                <view class='public-title' bindtap="goevent" data-type="discount">
+                    <text>打折专区</text>
+                    <view>
+                        <image src='/image/jiantou.png'></image>
+                    </view>
+                </view>
+                <view class='discount-msg'>
+                    <view class='discount-item' bindtap="goproductdetail" data-goodsid="{{discount[0].goods_id}}" wx:if="{{discount[0].goods_id}}">
+                        <image wx:if="{{discount[0].discount_img != ''}}" src='{{imgurl}}{{discount[0].discount_img}}'></image>
+                        <image wx:else src='{{imgurl}}{{discount[0].cover_img}}'></image>
+                        <text>{{discount[0].goods_name}}</text>
+                        <image src='/image/zhekou.png' class='zk'></image>
+                        <view class="zk-zi">
+                            <text>{{discount[0].discounts}}</text>
+                            折
+                        </view>
+                    </view>
+                    <view class='discount-items' bindtap="goproductdetail" data-goodsid="{{discount[1].goods_id}}" wx:if="{{discount[1].goods_id}}">
+                        <image wx:if="{{discount[1].discount_img != ''}}" src='{{imgurl}}{{discount[1].discount_img}}'></image>
+                        <image wx:else src='{{imgurl}}{{discount[1].cover_img}}'></image>
+                        <text>{{discount[1].goods_name}}</text>
+                        <view>限时{{discount[1].discounts}}折</view>
+                    </view>
+                    <view class='discount-items' bindtap="goproductdetail" data-goodsid="{{discount[2].goods_id}}" wx:if="{{discount[2].goods_id}}">
+                        <image wx:if="{{discount[2].discount_img != ''}}" src='{{imgurl}}{{discount[2].discount_img}}'></image>
+                        <image wx:else src='{{imgurl}}{{discount[2].cover_img}}'></image>
+                        <text>{{discount[2].goods_name}}</text>
+                        <view>限时{{discount[2].discounts}}折</view>
+                    </view>
+                </view>
+            </view>
+            <!-- 热销商品 -->
+            <view class='hotsell' wx:if="{{hotlist}}">
+                <view class='public-title' bindtap="goevent" data-type="hot">
+                    <text>热销商品</text>
+                    <view>
+                        <image src='/image/jiantou.png'></image>
+                    </view>
+                </view>
+                <view class='hotsell-list'>
+                    <block wx:for="{{hotlist}}" wx:key="{{items.goods_id}}">
+                        <view class='hotsell-items' bindtap="goproductdetail" data-goodsid="{{item.goods_id}}">
+                            <image wx:if="{{item.hot_img != ''}}" src='{{imgurl}}{{item.hot_img}}'></image>
+                            <image wx:else src='{{imgurl}}{{item.cover_img}}'></image>
+                            <view>
+                                <text>{{item.goods_name}}</text>
+                                <view>
+                                    ￥
+                                    <text wx:if="{{item.discount == 2}}">{{item.discount_price}}</text>
+                                    <text wx:else>{{item.shop_price}}</text>
+                                </view>
+                            </view>
+                        </view>
+                    </block>
+                </view>
+            </view>
+            <!-- 新品推荐 -->
+            <view class='NewProducts' wx:if="{{newgoodlist}}">
+                <view class='public-title' bindtap="goevent" data-type="new">
+                    <text>新品推荐</text>
+                    <view>
+                        <image src='/image/jiantou.png'></image>
+                    </view>
+                </view>
+                <view class='nproduct-list'>
+                    <block wx:for="{{newgoodlist}}" wx:key="{{item.goods_id}}">
+                        <view class='nproduct-items' bindtap="goproductdetail" data-goodsid="{{item.goods_id}}">
+                            <image src='{{imgurl}}{{item.cover_img}}' wx:if="{{item.cover_img}}"></image>
+                            <image src='/image/2.jpg' wx:else></image>
+                            <view>
+                                <text>{{item.goods_name}}</text>
+                                <view>
+                                    ￥
+                                    <text wx:if="{{item.discount == 2}}">{{item.discount_price}}</text>
+                                    <text wx:else>{{item.shop_price}}</text>
+                                </view>
+                            </view>
+                        </view>
+                    </block>
+                </view>
+            </view>
+            <!-- 猜你喜欢 -->
+            <view class='youlike' wx:if="{{relateds}}">
+                <view class='youlike-title'>
+                    <view>
+                        <image src='/image/cnxh-l.png'></image>
+                    </view>
+                    <text>猜你喜欢</text>
+                    <view>
+                        <image src='/image/cnxh-r.png'></image>
+                    </view>
+                </view>
+                <view class='youlike-list'>
+                    <block wx:for="{{relateds}}" wx:key="{{item.goods_id}}">
+                        <view class='youlike-items' bindtap="goproductdetail" data-goodsid="{{item.goods_id}}">
+                            <image src='{{imgurl}}{{item.cover_img}}' wx:if="{{item.cover_img}}"></image>
+                            <image src='/image/3.jpg' wx:else></image>
+                            <view class='items-info'>
+                                <text>{{item.goods_name}}</text>
+                                <view class='items-data'>
+                                    <view>
+                                        ￥
+                                        <text wx:if="{{item.discount == 2}}">{{item.discount_price}}</text>
+                                        <text wx:else>{{item.shop_price}}</text>
+                                    </view>
+                                    <view>已售:{{item.sales}}件</view>
+                                </view>
+                            </view>
+                        </view>
+                    </block>
+                </view>
+            </view>
+    </scroll-view>
+    <!-- 客服 -->
+    <button class='kf' open-type='contact'>
+        <image src='/image/kefu.png'></image>
+    </button>
+    <!-- 搜索 -->
+    <view class='search' bindtap='gosearch'>
+        <view class='search-info'>
+            <input type='text' placeholder='搜索'></input>
+            <image src='/image/search.png'></image>
+        </view>
+    </view>
+    <!-- 优惠券 -->
+    <view class="onsale {{ coupon ? '' :show }}" wx:if="{{coupon}}">
+        <view class="onsale-msg">
+            <image src="/image/guanbi-yhj.png" class="onsale-tit-close" bindtap="couponclos" />
+            <view class="onsale-msg-title">{{couponlist.data.length}}张优惠券</view>
+            <view class="onsale-msg-list">
+                <scroll-view scroll-y="{{true}}" class="msg-list-info">
+                    <block wx:for="{{couponlist.data}}" wx:key="index" wx:if="{{item.new_time < item.end_times}}">
+                        <view class="coupon-info-item">
+                            <view class="coupon-item-msg">
+                                <view class="item-msg-item item-msg-left">
+                                    <view class="msg-item-info msg-info-left">
+                                        <view class="item-info-msg">
+                                            <view class="info-msg-top">
+                                                <view class="msg-top-left">{{item.price}}</view>
+                                                <view class="msg-top-right">
+                                                    <view class="item-null"></view>
+                                                    <view class="top-right-title">
+                                                        满{{item.min_price}}可使用
+                                                    </view>
+                                                    <view class="top-right-msg">{{item.name}}</view>
+                                                    <view class="item-null"></view>
+                                                </view>
+                                            </view>
+                                            <!-- <view class="info-msg-bottom">
+                                            <view class="msg-bottom-title">
+                                                有效期：2018-06-02至2018-06-30
+                                            </view>
+                                            <view class="msg-bottom-msg">
+                                                用券规则说明：仅针对在小程序商城内使用小金库进行支付时使用
+                                            </view>
+                                        </view> -->
+                                        </view>
+                                        <view class="item-info-null">
+                                            <view class="info-null-nei"></view>
+                                        </view>
+                                        <view class="item-info-bishi">￥</view>
+                                    </view>
+                                    <view class="msg-item-null">
+                                        <view></view>
+                                    </view>
+                                </view>
+                                <view class="item-msg-item item-msg-center">
+                                    <view class="msg-item-msg"></view>
+                                    <view class="msg-item-msg"></view>
+                                    <view class="msg-item-quan item-quan-shang"></view>
+                                    <view class="msg-item-quan item-quan-xia"></view>
+                                </view>
+                                <view class="item-msg-item item-msg-right">
+                                    <view class="msg-item-info msg-info-right">
+                                        <view class="item-info-msg">
+                                            <view class="info-msg-status" bindtap="gaincoupon" data-cid="{{item.id}}" wx:if="{{item.status == 1}}">
+                                                领取
+                                            </view>
+                                            <view class="info-msg-status info-msg-status-hui" wx:elif="{{item.status == 2}}">
+                                                已领取
+                                            </view>
+                                        </view>
+                                        <view class="item-info-null">
+                                            <view class="info-null-nei"></view>
+                                        </view>
+                                    </view>
+                                    <view class="msg-item-null">
+                                        <view></view>
+                                    </view>
+                                </view>
+                            </view>
+                        </view>
+                    </block>
+                </scroll-view>
+            </view>
+            <view class="onsale-msg-btn">
+                <button bindtap="gogetcoupon">进入卡卷中心</button>
+            </view>
+        </view>
+        <image src="/image/youhuijuan-img.png" class="onsale-tit-img" />
+    </view>
+</view>

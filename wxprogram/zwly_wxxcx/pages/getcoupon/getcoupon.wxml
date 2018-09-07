@@ -1,0 +1,71 @@
+<!-- pages/getcoupon/getcoupon.wxml -->
+<view class="container">
+    <view class="getcoupon">
+        <scroll-view scroll-y="{{true}}" class="couponlist">
+            <block wx:if="{{couponlist.status == 1}}">
+                <block wx:for="{{couponlist.data}}" wx:key="index">
+                    <view class="coupon-info-item">
+                        <view class="coupon-item-msg">
+                            <view class="item-msg-item item-msg-left">
+                                <view class="msg-item-info msg-info-left">
+                                    <view class="item-info-msg">
+                                        <view class="info-msg-top">
+                                            <view class="msg-top-left">{{item.price}}</view>
+                                            <view class="msg-top-right">
+                                                <view class="item-null"></view>
+                                                <view class="top-right-title">满{{item.min_price}}可使用</view>
+                                                <view class="top-right-msg">{{item.name}}</view>
+                                                <view class="item-null"></view>
+                                            </view>
+                                        </view>
+                                        <view class="info-msg-bottom">
+                                            <view class="msg-bottom-title">
+                                                有效期：{{item.start_time}}至{{item.end_time}}
+                                            </view>
+                                            <view class="msg-bottom-msg">
+                                                用券规则说明：仅针对在小程序商城内使用小金库进行支付时使用
+                                            </view>
+                                        </view>
+                                    </view>
+                                    <view class="item-info-null">
+                                        <view class="info-null-nei"></view>
+                                    </view>
+                                    <view class="item-info-bishi">￥</view>
+                                </view>
+                                <view class="msg-item-null">
+                                    <view></view>
+                                </view>
+                            </view>
+                            <view class="item-msg-item item-msg-center">
+                                <view class="msg-item-msg"></view>
+                                <view class="msg-item-msg"></view>
+                                <view class="msg-item-quan item-quan-shang"></view>
+                                <view class="msg-item-quan item-quan-xia"></view>
+                            </view>
+                            <view class="item-msg-item item-msg-right">
+                                <view class="msg-item-info msg-info-right">
+                                    <view class="item-info-msg">
+                                        <view class="info-msg-status" bindtap="gaincoupon" data-cid="{{item.id}}" wx:if="{{item.status == 1}}">领取</view>
+                                        <view class="info-msg-status info-msg-status-hui" wx:elif="{{item.status == 2}}">已领取</view>
+                                    </view>
+                                    <view class="item-info-null">
+                                        <view class="info-null-nei"></view>
+                                    </view>
+                                </view>
+                                <view class="msg-item-null">
+                                    <view></view>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                </block>
+            </block>
+            <!-- <block wx:else>
+                <view class="couponlist-null">
+                    <image src="/image/zanwudd.png" />
+                    <view>暂无优惠券</view>
+                </view>
+            </block> -->
+        </scroll-view>
+    </view>
+</view>

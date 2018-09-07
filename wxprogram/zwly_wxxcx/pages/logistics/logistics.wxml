@@ -1,0 +1,45 @@
+<!--pages/logistics/logistics.wxml-->
+<view class="container">
+    <view class="logistics-title">
+        <view class="log-tit-img">
+            <image src="{{imgurl}}{{orderinfo.order_goods[0].order_img}}" />
+            <text>{{orderinfo.order_goods.length}}件商品</text>
+        </view>
+        <view class="log-tit-msg">
+            <view class="log-tit-msg-items">
+                物流公司：<text>{{orderinfo.logistics_name}}</text>
+            </view>
+            <view class="log-tit-msg-items">
+                运单编辑：<text>{{orderinfo.logistics_num}}</text>
+            </view>
+        </view>
+    </view>
+    <view class="logistics-info">
+        <scroll-view scroll-y class="logistics-info-msg">
+            <block wx:if="{{logisinfo.length != 0}}">
+                <block wx:for="{{logisinfo}}" wx:key="index">
+                    <view class="log-info-items">
+                        <view class="info-items-left">
+                            <image src="../../image/wl-dqh.png" class="dian" wx:if="{{index == 0}}"/>
+                            <image src="../../image/wl-dq.png" class="dian" wx:else/>
+                            <view class="info-items-sx">
+                                <view></view>
+                                <view></view>
+                            </view>
+                        </view>
+                        <view class="info-items-right">
+                            <view class="info-items-msg">
+                                {{item.context}}
+                            </view>
+                            <view class="info-items-time">{{item.time}}</view>
+                        </view>
+                    </view>
+                </block>
+            </block>
+            <view class="logistics-null" wx:else>
+                <image src="../../image/zanwudd.png" />
+                <text>等待快件揽收</text>
+            </view>
+        </scroll-view>
+    </view>
+</view>

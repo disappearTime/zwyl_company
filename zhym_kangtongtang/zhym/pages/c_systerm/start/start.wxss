@@ -1,0 +1,25 @@
+/**index.wxss**/
+.welcome{
+  text-align: center;
+  padding-top: 100rpx;
+  font-size: 36rpx;
+  color: #FF6600;
+}
+.company{
+  width: 100%;
+  padding: 20rpx 0;
+  text-align: center;
+  font-size: 24rpx;
+  position: absolute;
+  bottom: 0;
+}
+.remanin_time{
+  display: inline-block;
+  padding: 5rpx 40rpx;
+  position: absolute;
+  top: 10rpx;
+  right: 20rpx;
+  border-radius: 15rpx;
+  background: #ccc;
+  color: #ffffff;
+}

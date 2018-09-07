@@ -1,0 +1,11 @@
+<view class="beauty_parlor_container">
+  <image class='beauty_left' mode='aspectFit' src='http://img5.imgtn.bdimg.com/it/u=2053377847,2838900842&fm=27&gp=0.jpg'></image>
+  <view class='beauty_right'>
+    <text class='beauty_parlor_name'>曼道美容院</text>
+    <view class='beauty_area'>
+      <image mode='aspectFit' class='area_icon' src='/image/local.png'></image>
+      <text class='area_text'>北京市海淀区中关村甲8号B座909(地铁4号线中关村站c1口出步行200米)</text>
+      <image class='phone_icon' mode='aspectFit' src='https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1781978374,1605104174&fm=200&gp=0.jpg'></image>
+    </view>
+  </view>
+</view>
