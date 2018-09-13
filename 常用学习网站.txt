@@ -1,0 +1,11 @@
+微信支付开发者文档 https://pay.weixin.qq.com/wiki/doc/api/jsapi.php?chapter=7_7&index=6
+在线css转换 http://autoprefixer.github.io/
+移动端常见兼容问题 https://www.cnblogs.com/changningios/p/6486694.html
+h5微信分享 https://www.cnblogs.com/zhuweipeng/p/8583840.html
+微信小程序保持会话 https://blog.csdn.net/kkkun_joe/article/details/79921169
+vscode插件推荐 https://segmentfault.com/a/1190000006697219
+h5调用原生分享 http://www.cnblogs.com/zhengshize/archive/2018/01/02/8178531.html
+npm依赖包下载地址 https://www.npmjs.com/
+vue插件集合 https://blog.csdn.net/hjh15827475896/article/details/78207066?from=timeline
+vue构建多页面应用 http://www.php.cn/js-tutorial-386308.html
+移动端touch.js https://blog.csdn.net/wangjiaohome/article/details/49364177
